@@ -3,11 +3,18 @@ from django.db import models
 
 class Business(models.Model):
     name = models.CharField(max_length=255, unique=True)
-    owner = models.ForeignKey("auth_app.CustomUser", on_delete=models.CASCADE, related_name="businesses")
+    owner = models.ForeignKey(
+        "auth_app.CustomUser",
+        on_delete=models.CASCADE,
+        related_name="businesses",
+        null=True,  # Permitir que sea `null` inicialmente
+        blank=True
+    )
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return self.name
+
 
 class CustomUser(AbstractUser):  
     business = models.ForeignKey("auth_app.Business", on_delete=models.CASCADE, null=True, blank=True)
