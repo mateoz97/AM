@@ -47,4 +47,13 @@ class UserSerializer(serializers.ModelSerializer):
                 raise serializers.ValidationError("Rol no válido.")
 
         user.save()
+        
         return user
+
+    def get_role(self, obj):
+        return obj.role.name if obj.role else None
+
+    def get_business(self, obj):
+        return obj.business.name if obj.business else None
+    
+        r

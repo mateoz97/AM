@@ -17,8 +17,18 @@ class Business(models.Model):
 
 
 class CustomUser(AbstractUser):  
-    business = models.ForeignKey("auth_app.Business", on_delete=models.CASCADE, null=True, blank=True)
-    role = models.ForeignKey(Group, on_delete=models.SET_NULL, null=True, blank=True)  # Relación con roles
+    business = models.ForeignKey(
+        "auth_app.Business", 
+        on_delete=models.CASCADE, 
+        null=True, 
+        blank=True
+    )
+    role = models.ForeignKey(
+        Group, 
+        on_delete=models.SET_NULL, 
+        null=True, 
+        blank=True
+    )  # Relación con roles
 
     groups = models.ManyToManyField(
         Group,
