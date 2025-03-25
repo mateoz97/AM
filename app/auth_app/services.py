@@ -4,7 +4,10 @@ from .models import Business
 
 class RoleService:
     @staticmethod
-    def create_business_roles(Business):
+    def create_business_roles(business):
+        if not business or not business.name:
+            return  # Evita errores si el negocio aún no está completamente creado
+
         roles_permissions = {
             "Admin": ["add", "change", "delete", "view"],
             "Gerente": ["view", "change"],
@@ -14,10 +17,10 @@ class RoleService:
         }
 
         for role, permissions in roles_permissions.items():
-            group_name = f"{Business.name}_{role}"
+            group_name = f"{business.name}_{role}"
             group, created = Group.objects.get_or_create(name=group_name)
 
-            if created:  
+            if created:
                 for permission in permissions:
                     perms = Permission.objects.filter(codename__startswith=permission)
                     group.permissions.add(*perms)

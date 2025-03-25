@@ -17,32 +17,34 @@ class BusinessSerializer(serializers.ModelSerializer):
 User = get_user_model()
     
 class UserSerializer(serializers.ModelSerializer):
-    role = serializers.CharField(write_only=True, required=False)  # Opcional
+    role = serializers.CharField(write_only=True, required=False, allow_null=True)
     business = serializers.PrimaryKeyRelatedField(
-        queryset=Business.objects.all(), allow_null=True, required=False
-    )  # Permitir None
+        queryset=Business.objects.all(), required=False, allow_null=True
+    )
 
     class Meta:
         model = User
-        fields = ["id", "username", "email", "password", "role", "business"]
+        fields = ["id", "username", "password", "email","role","business"]
         extra_kwargs = {"password": {"write_only": True}}
 
     def create(self, validated_data):
         role_name = validated_data.pop("role", None)
         business = validated_data.pop("business", None)
+
+        # Crear usuario sin rol ni negocio
         user = User.objects.create_user(**validated_data)
 
+        # Asignar negocio si se proporciona
         if business:
             user.business = business
-            user.save()
 
-        if role_name and business:
+            # Si se une a un negocio, darle rol de Mesero
             try:
-                role = Group.objects.get(name=f"{business.name}_{role_name}")
-                user.role = role
-                user.groups.add(role)
-                user.save()
+                mesero_role = Group.objects.get(name=f"{business.name}_Mesero")
+                user.role = mesero_role
+                user.groups.add(mesero_role)
             except Group.DoesNotExist:
                 raise serializers.ValidationError("Rol no válido.")
 
+        user.save()
         return user
