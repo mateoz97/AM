@@ -55,5 +55,3 @@ class UserSerializer(serializers.ModelSerializer):
 
     def get_business(self, obj):
         return obj.business.name if obj.business else None
-    
-        r

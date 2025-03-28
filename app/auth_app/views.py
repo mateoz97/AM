@@ -1,5 +1,6 @@
-from rest_framework import viewsets, generics, permissions
+from rest_framework import viewsets, generics, permissions, status
 from rest_framework.response import Response
+from rest_framework_simplejwt.tokens import RefreshToken
 from .models import Business
 from .serializers import BusinessSerializer, UserSerializer
 from django.contrib.auth import get_user_model
@@ -39,15 +40,34 @@ class JoinBusinessView(APIView):
             return Response({"error": "Negocio no encontrado."}, status=404)
         except Group.DoesNotExist:
             return Response({"error": "El rol Mesero no está definido."}, status=400)
-
+'corsheaders.middleware.CorsMiddleware', 
 
 
 User = get_user_model()
+
 
 class RegisterUserView(generics.CreateAPIView):
     queryset = User.objects.all()
     serializer_class = UserSerializer
     permission_classes = [permissions.AllowAny]
+
+    def create(self, request, *args, **kwargs):
+        serializer = self.get_serializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        user = serializer.save()
+        print(user)
+
+        # Generar tokens JWT para el usuario registrado
+        refresh = RefreshToken.for_user(user)
+        print(refresh)
+        access_token = str(refresh.access_token)
+        print(access_token)
+
+        return Response({
+            "user": serializer.data,
+            "refresh": str(refresh),
+            "access": access_token,
+        }, status=status.HTTP_201_CREATED)
 
 class UserInfoView(generics.RetrieveAPIView):
     queryset = User.objects.all()
