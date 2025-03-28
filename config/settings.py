@@ -26,10 +26,15 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework.authtoken',
     'rest_framework_simplejwt',
+    'corsheaders',
     'django_filters',
     'app.auth_app',
     'app.ping',
 ]
+
+
+CORS_ALLOW_ALL_ORIGINS = True  
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
