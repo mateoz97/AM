@@ -32,8 +32,12 @@ INSTALLED_APPS = [
     'app.ping',
 ]
 
+CORS_ALLOWED_ORIGINS = [
+    "http://127.0.0.1:8080",
+    # Agrega otros orígenes permitidos según sea necesario
+]
 
-CORS_ALLOW_ALL_ORIGINS = True  
+CORS_ALLOW_CREDENTIALS = True
 
 
 MIDDLEWARE = [
@@ -90,6 +94,7 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
+
 
 # Internationalization
 LANGUAGE_CODE = 'es-us'

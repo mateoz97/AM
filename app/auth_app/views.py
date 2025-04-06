@@ -3,9 +3,10 @@ from rest_framework.response import Response
 from rest_framework_simplejwt.tokens import RefreshToken
 from .models import Business
 from .serializers import BusinessSerializer, UserSerializer
-from django.contrib.auth import get_user_model
+from django.contrib.auth import get_user_model, authenticate
 from django.contrib.auth.models import Group
 from rest_framework.views import APIView
+from rest_framework_simplejwt.views import TokenObtainPairView
 
 
 class BusinessViewSet(viewsets.ModelViewSet):
@@ -68,6 +69,24 @@ class RegisterUserView(generics.CreateAPIView):
             "refresh": str(refresh),
             "access": access_token,
         }, status=status.HTTP_201_CREATED)
+
+class CustomLoginView(TokenObtainPairView):
+    
+    def post(self, request, *args, **kwargs):
+        identifier = request.data.get("username")  # Puede ser username o email
+        password = request.data.get("password")
+
+        user = User.objects.filter(email=identifier).first() or User.objects.filter(username=identifier).first()
+
+        if user and user.check_password(password):
+            refresh = RefreshToken.for_user(user)
+            return Response({
+                "access": str(refresh.access_token),
+                "refresh": str(refresh),
+                "username": user.username
+            })
+
+        return Response({"error": "Invalid credentials"}, status=status.HTTP_401_UNAUTHORIZED)
 
 class UserInfoView(generics.RetrieveAPIView):
     queryset = User.objects.all()

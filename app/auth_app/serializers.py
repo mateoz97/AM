@@ -1,4 +1,5 @@
 from rest_framework import serializers
+from django.contrib.auth import authenticate
 from .models import Business
 from .services import RoleService  
 from django.contrib.auth import get_user_model
@@ -19,7 +20,7 @@ User = get_user_model()
 class UserSerializer(serializers.ModelSerializer):
     role = serializers.CharField(write_only=True, required=False, allow_null=True)
     business = serializers.PrimaryKeyRelatedField(
-        queryset=Business.objects.all(), required=False, allow_null=True
+    queryset=Business.objects.all(), required=False, allow_null=True
     )
 
     class Meta:
@@ -55,3 +56,29 @@ class UserSerializer(serializers.ModelSerializer):
 
     def get_business(self, obj):
         return obj.business.name if obj.business else None
+
+class LoginSerializer(serializers.Serializer):
+    email = serializers.EmailField(required=False)
+    username = serializers.CharField(required=False)
+    password = serializers.CharField(write_only=True)
+
+    def validate(self, data):
+        email = data.get("email")
+        username = data.get("username")
+        password = data.get("password")
+        
+        if not username and not email:
+            raise serializers.ValidationError("Se requiere username o email")
+        
+        if email and not username:
+            try:
+                user = User.objects.get(email=email)
+                username = user.username  # Obtener el username para autenticación
+            except User.DoesNotExist:
+                raise serializers.ValidationError("Usuario no encontrado")
+        
+        user = authenticate(username=username, password=password)
+        if not user:
+            raise serializers.ValidationError("Credenciales inválidas")
+        
+        return {"user": user}
