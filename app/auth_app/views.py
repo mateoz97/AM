@@ -1,9 +1,8 @@
 from rest_framework import viewsets, generics, permissions, status
 from rest_framework.response import Response
 from rest_framework_simplejwt.tokens import RefreshToken
-from .models import Business
+from .models import Business,CustomUser
 from .serializers import BusinessSerializer, UserSerializer
-from django.contrib.auth import get_user_model, authenticate
 from django.contrib.auth.models import Group
 from rest_framework.views import APIView
 from rest_framework_simplejwt.views import TokenObtainPairView
@@ -21,6 +20,7 @@ class BusinessViewSet(viewsets.ModelViewSet):
         self.request.user.role = admin_role
         self.request.user.groups.add(admin_role)
         self.request.user.save()
+        
 
 class JoinBusinessView(APIView):
     permission_classes = [permissions.IsAuthenticated]
@@ -41,14 +41,10 @@ class JoinBusinessView(APIView):
             return Response({"error": "Negocio no encontrado."}, status=404)
         except Group.DoesNotExist:
             return Response({"error": "El rol Mesero no está definido."}, status=400)
-'corsheaders.middleware.CorsMiddleware', 
-
-
-User = get_user_model()
-
-
+        
+        
 class RegisterUserView(generics.CreateAPIView):
-    queryset = User.objects.all()
+    queryset = CustomUser.objects.all()
     serializer_class = UserSerializer
     permission_classes = [permissions.AllowAny]
 
@@ -76,7 +72,7 @@ class CustomLoginView(TokenObtainPairView):
         identifier = request.data.get("username")  # Puede ser username o email
         password = request.data.get("password")
 
-        user = User.objects.filter(email=identifier).first() or User.objects.filter(username=identifier).first()
+        user = CustomUser.objects.filter(email=identifier).first() or CustomUser.objects.filter(username=identifier).first()
 
         if user and user.check_password(password):
             refresh = RefreshToken.for_user(user)
@@ -89,7 +85,7 @@ class CustomLoginView(TokenObtainPairView):
         return Response({"error": "Invalid credentials"}, status=status.HTTP_401_UNAUTHORIZED)
 
 class UserInfoView(generics.RetrieveAPIView):
-    queryset = User.objects.all()
+    queryset = CustomUser.objects.all()
     serializer_class = UserSerializer
     pagination_class = [permissions.IsAuthenticated]
 

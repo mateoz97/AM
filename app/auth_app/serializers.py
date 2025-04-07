@@ -2,8 +2,10 @@ from rest_framework import serializers
 from django.contrib.auth import authenticate
 from .models import Business
 from .services import RoleService  
-from django.contrib.auth import get_user_model
+from .models import CustomUser
 from django.contrib.auth.models import Group
+
+
 
 class BusinessSerializer(serializers.ModelSerializer):
     class Meta:
@@ -15,17 +17,17 @@ class BusinessSerializer(serializers.ModelSerializer):
         RoleService.create_business_roles(business)
         return business
     
-User = get_user_model()
+
     
 class UserSerializer(serializers.ModelSerializer):
-    role = serializers.CharField(write_only=True, required=False, allow_null=True)
+    role = serializers.SerializerMethodField()
     business = serializers.PrimaryKeyRelatedField(
-    queryset=Business.objects.all(), required=False, allow_null=True
+        queryset=Business.objects.all(), required=False, allow_null=True
     )
 
     class Meta:
-        model = User
-        fields = ["id", "username", "password", "email","role","business"]
+        model = CustomUser
+        fields = ["id", "username", "password", "email", "role", "business"]
         extra_kwargs = {"password": {"write_only": True}}
 
     def create(self, validated_data):
@@ -33,19 +35,19 @@ class UserSerializer(serializers.ModelSerializer):
         business = validated_data.pop("business", None)
 
         # Crear usuario sin rol ni negocio
-        user = User.objects.create_user(**validated_data)
+        user = CustomUser.objects.create_user(**validated_data)
 
-        # Asignar negocio si se proporciona
         if business:
             user.business = business
-
-            # Si se une a un negocio, darle rol de Mesero
-            try:
-                mesero_role = Group.objects.get(name=f"{business.name}_Mesero")
-                user.role = mesero_role
-                user.groups.add(mesero_role)
-            except Group.DoesNotExist:
-                raise serializers.ValidationError("Rol no válido.")
+            # Usar role_name o un rol por defecto
+            role = self.get_role_instance(role_name or 'Visualizador')
+            user.role = role
+            user.groups.add(role)
+        else:
+            # Usar role_name o un rol por defecto
+            role = self.get_role_instance(role_name or 'Administrador')
+            user.role = role
+            user.groups.add(role)
 
         user.save()
         
@@ -53,6 +55,10 @@ class UserSerializer(serializers.ModelSerializer):
 
     def get_role(self, obj):
         return obj.role.name if obj.role else None
+
+    def get_role_instance(self, role_name):
+        role, created = Group.objects.get_or_create(name=role_name)
+        return role
 
     def get_business(self, obj):
         return obj.business.name if obj.business else None
@@ -72,9 +78,9 @@ class LoginSerializer(serializers.Serializer):
         
         if email and not username:
             try:
-                user = User.objects.get(email=email)
+                user = CustomUser.objects.get(email=email)
                 username = user.username  # Obtener el username para autenticación
-            except User.DoesNotExist:
+            except CustomUser.DoesNotExist:
                 raise serializers.ValidationError("Usuario no encontrado")
         
         user = authenticate(username=username, password=password)
