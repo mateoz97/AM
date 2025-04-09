@@ -87,7 +87,7 @@ class CustomLoginView(TokenObtainPairView):
 class UserInfoView(generics.RetrieveAPIView):
     queryset = CustomUser.objects.all()
     serializer_class = UserSerializer
-    pagination_class = [permissions.IsAuthenticated]
+    permission_classes = [permissions.IsAuthenticated]
 
     def get_object(self):
         return self.request.user
