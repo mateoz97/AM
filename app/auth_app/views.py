@@ -53,12 +53,10 @@ class RegisterUserView(generics.CreateAPIView):
         serializer.is_valid(raise_exception=True)
         user = serializer.save()
         print(user)
-
-        # Generar tokens JWT para el usuario registrado
+        
         refresh = RefreshToken.for_user(user)
-        print(refresh)
+        
         access_token = str(refresh.access_token)
-        print(access_token)
 
         return Response({
             "user": serializer.data,
