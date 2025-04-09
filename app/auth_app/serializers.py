@@ -80,6 +80,22 @@ class UserSerializer(serializers.ModelSerializer):
 
     def get_business(self, obj):
         return obj.business.name if obj.business else None
+    
+    def delete(self, using=None, keep_parents=False):
+        """Sobrescribe el método delete para hacer un borrado lógico"""
+        self.is_active = False
+        self.save()
+        return (1, {})
+    
+    def deactivate(self):
+        """Desactiva el negocio sin eliminarlo"""
+        self.is_active = False
+        self.save()
+    
+    def reactivate(self):
+        """Reactiva un negocio previamente desactivado"""
+        self.is_active = True
+        self.save()
 
 class LoginSerializer(serializers.Serializer):
     email = serializers.EmailField(required=False)
