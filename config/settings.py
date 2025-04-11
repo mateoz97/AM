@@ -31,6 +31,7 @@ INSTALLED_APPS = [
     'django_filters',
     'app.auth_app',
     'app.ping',
+    'app.core',
 ]
 
 CORS_ALLOWED_ORIGINS = [
@@ -73,12 +74,20 @@ TEMPLATES = [
 WSGI_APPLICATION = 'config.wsgi.application'
 
 # Database
+# Configuración multi-tenant
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'NAME': BASE_DIR / 'db_django_core.sqlite3',
+    },
+    'business_1': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db_business_1.sqlite3',
     }
 }
+
+# Router para dirigir consultas a la base de datos correcta
+DATABASE_ROUTERS = ['config.db_routers.BusinessRouter']
 
 # Password validation
 AUTH_PASSWORD_VALIDATORS = [
