@@ -39,6 +39,17 @@ class Business(models.Model):
     def get_active_members(self):
         """Retorna todos los miembros activos del negocio"""
         return self.members.filter(is_active=True)
+    
+    def save(self, *args, **kwargs):
+        # Guardamos primero para obtener un ID si es nuevo
+        is_new = self.pk is None
+        super().save(*args, **kwargs)
+        
+        # Si es un objeto nuevo y ya tiene ID, intentamos crear su base de datos
+        if is_new and self.id:
+            # Importamos aquí para evitar importaciones circulares
+            from .services import DatabaseService
+            DatabaseService.create_business_database(self)
 
 
 class CustomUser(AbstractUser):  

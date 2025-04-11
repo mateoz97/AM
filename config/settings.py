@@ -74,18 +74,32 @@ TEMPLATES = [
 WSGI_APPLICATION = 'config.wsgi.application'
 
 # Database
-# Configuración multi-tenant
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db_django_core.sqlite3',
+        'ATOMIC_REQUESTS': False,  # o True, según tus necesidades
+        'AUTOCOMMIT': True,
+        'OPTIONS': {},
+        'TIME_ZONE': None,
+        'USER': '',
+        'PASSWORD': '',
+        'HOST': '',
+        'PORT': '',
     },
     'business_1': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db_business_1.sqlite3',
+        'ATOMIC_REQUESTS': False,  # mismo valor que default
+        'AUTOCOMMIT': True,
+        'OPTIONS': {},
+        'TIME_ZONE': None,
+        'USER': '',
+        'PASSWORD': '',
+        'HOST': '',
+        'PORT': '',
     }
 }
-
 # Router para dirigir consultas a la base de datos correcta
 DATABASE_ROUTERS = ['config.db_routers.BusinessRouter']
 

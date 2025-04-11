@@ -14,12 +14,22 @@ class BusinessViewSet(viewsets.ModelViewSet):
     permission_classes = [permissions.IsAuthenticated]
 
     def perform_create(self, serializer):
+        # Guardar el negocio
         business = serializer.save(owner=self.request.user)
+        
+        # Crear roles como ya haces
         admin_role = Group.objects.get(name=f"{business.name}_Admin")
         self.request.user.business = business
         self.request.user.role = admin_role
         self.request.user.groups.add(admin_role)
         self.request.user.save()
+        
+        # Crear base de datos para el nuevo negocio
+        from .services import DatabaseService
+        success = DatabaseService.create_business_database(business)
+        
+        if not success:
+            print(f"Advertencia: No se pudo crear la base de datos para el negocio {business.name}")
         
 
 class JoinBusinessView(APIView):

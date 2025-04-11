@@ -1,5 +1,4 @@
 
-
 class BusinessRouter:
     """
     Router para dirigir consultas a la base de datos correcta según el business.
@@ -15,13 +14,14 @@ class BusinessRouter:
     def db_for_read(self, model, **hints):
         """Determina qué base de datos usar para lecturas"""
         app_label = model._meta.app_label
+        model_name = model._meta.model_name
         
         # Los modelos de Django core siempre a default
         if app_label in self.django_core_apps:
             return 'default'
         
         # El modelo Business y CustomUser van a default
-        if app_label == 'auth_app' and model._meta.model_name in ['business', 'customuser']:
+        if app_label == 'auth_app' and model_name in ['business', 'customuser']:
             return 'default'
             
         # Para el desarrollo inicial, usamos business_1 para todos los demás modelos
