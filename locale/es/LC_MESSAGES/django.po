@@ -1,0 +1,183 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-04-08 21:41-0500\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=n == 1 ? 0 : n != 0 && n % 1000000 == 0 ? "
+"1 : 2;\n"
+#: app/auth_app/models.py:7 app/auth_app/models.py:77
+msgid "Nombre"
+msgstr ""
+
+#: app/auth_app/models.py:14
+msgid "Propietario"
+msgstr ""
+
+#: app/auth_app/models.py:16
+msgid "Fecha de creación"
+msgstr ""
+
+#: app/auth_app/models.py:17 app/auth_app/models.py:80
+msgid "Activo"
+msgstr ""
+
+#: app/auth_app/models.py:18
+msgid "Última actualización"
+msgstr ""
+
+#: app/auth_app/models.py:19
+msgid "Descripción"
+msgstr ""
+
+#: app/auth_app/models.py:20 app/auth_app/models.py:87
+msgid "Dirección"
+msgstr ""
+
+#: app/auth_app/models.py:21 app/auth_app/models.py:86
+msgid "Teléfono"
+msgstr ""
+
+#: app/auth_app/models.py:22
+msgid "Email de contacto"
+msgstr ""
+
+#: app/auth_app/models.py:23
+msgid "Sitio web"
+msgstr ""
+
+#: app/auth_app/models.py:24
+msgid "Logo"
+msgstr ""
+
+#: app/auth_app/models.py:27 app/auth_app/models.py:51
+msgid "Negocio"
+msgstr ""
+
+#: app/auth_app/models.py:28
+msgid "Negocios"
+msgstr ""
+
+#: app/auth_app/models.py:31
+msgid "Puede ver negocios inactivos"
+msgstr ""
+
+#: app/auth_app/models.py:32
+msgid "Puede activar o desactivar negocios"
+msgstr ""
+
+#: app/auth_app/models.py:36
+msgid "activo"
+msgstr ""
+
+#: app/auth_app/models.py:36
+msgid "inactivo"
+msgstr ""
+
+#: app/auth_app/models.py:58
+msgid "Rol"
+msgstr ""
+
+#: app/auth_app/models.py:65
+msgid "grupos"
+msgstr ""
+
+#: app/auth_app/models.py:71
+msgid "permisos de usuario"
+msgstr ""
+
+#: app/auth_app/models.py:74
+msgid "Número de identificación"
+msgstr ""
+
+#: app/auth_app/models.py:75
+msgid "Nombre de usuario"
+msgstr ""
+
+#: app/auth_app/models.py:76
+msgid "Contraseña"
+msgstr ""
+
+#: app/auth_app/models.py:78
+msgid "Apellido"
+msgstr ""
+
+#: app/auth_app/models.py:79
+msgid "Correo electrónico"
+msgstr ""
+
+#: app/auth_app/models.py:81
+msgid "Es staff"
+msgstr ""
+
+#: app/auth_app/models.py:82
+msgid "Es superusuario"
+msgstr ""
+
+#: app/auth_app/models.py:83
+msgid "Fecha de registro"
+msgstr ""
+
+#: app/auth_app/models.py:84
+msgid "Último ingreso"
+msgstr ""
+
+#: app/auth_app/models.py:85
+msgid "Verificado"
+msgstr ""
+
+#: app/auth_app/models.py:88
+msgid "Foto de perfil"
+msgstr ""
+
+#: app/auth_app/models.py:89
+msgid "Fecha de nacimiento"
+msgstr ""
+
+#: app/auth_app/models.py:90
+msgid "Nacionalidad"
+msgstr ""
+
+#: app/auth_app/models.py:93
+msgid "Usuario"
+msgstr ""
+
+#: app/auth_app/models.py:94
+msgid "Usuarios"
+msgstr ""
+
+#: app/auth_app/models.py:97
+msgid "Puede cambiar el rol de un usuario"
+msgstr ""
+
+#: app/auth_app/models.py:98
+msgid "Puede asignar usuarios a negocios"
+msgstr ""
+
+#: app/auth_app/models.py:102
+msgid "Sin rol"
+msgstr ""
+
+#: app/auth_app/models.py:103
+msgid "Sin negocio"
+msgstr ""
+
+#: config/settings.py:111
+msgid "Spanish"
+msgstr ""
+
+#: config/settings.py:112
+msgid "English"
+msgstr ""

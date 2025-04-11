@@ -3,6 +3,7 @@
 import os
 from pathlib import Path
 from datetime import timedelta
+from django.utils.translation import gettext_lazy as _
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -30,6 +31,7 @@ INSTALLED_APPS = [
     'django_filters',
     'app.auth_app',
     'app.ping',
+    'app.core',
 ]
 
 CORS_ALLOWED_ORIGINS = [
@@ -72,12 +74,20 @@ TEMPLATES = [
 WSGI_APPLICATION = 'config.wsgi.application'
 
 # Database
+# Configuración multi-tenant
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'NAME': BASE_DIR / 'db_django_core.sqlite3',
+    },
+    'business_1': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db_business_1.sqlite3',
     }
 }
+
+# Router para dirigir consultas a la base de datos correcta
+DATABASE_ROUTERS = ['config.db_routers.BusinessRouter']
 
 # Password validation
 AUTH_PASSWORD_VALIDATORS = [
@@ -97,11 +107,24 @@ AUTH_PASSWORD_VALIDATORS = [
 
 
 # Internationalization
-LANGUAGE_CODE = 'es-us'
-TIME_ZONE = 'UTC'
+
+TIME_ZONE = 'America/Bogota'  # Ajusta a tu zona horaria
+
 USE_I18N = True
+
+USE_L10N = True
+
 USE_TZ = True
 
+LANGUAGES = [
+    ('es', _('Spanish')),
+    ('en', _('English')),
+]
+LANGUAGE_CODE = 'es'  # Idioma por defecto
+
+LOCALE_PATHS = [
+    os.path.join(BASE_DIR, 'locale'),
+]
 # Static files (CSS, JavaScript, Images)
 STATIC_URL = 'static/'
 
