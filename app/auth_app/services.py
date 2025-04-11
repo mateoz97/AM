@@ -1,7 +1,7 @@
 from django.contrib.auth.models import Group, Permission
 import os
 from django.conf import settings
-from django.db import connections
+
 
 
 class RoleService:
@@ -47,8 +47,8 @@ class DatabaseService:
             return True
             
         # Para crear una nueva base de datos SQLite, simplemente creamos un archivo vacío
-        with open(db_path, 'wb') as f:
-            pass
+        # with open(db_path, 'wb') as f:
+        #     pass
             
         # Añadir la nueva base de datos a la configuración en runtime
         if db_name not in settings.DATABASES:

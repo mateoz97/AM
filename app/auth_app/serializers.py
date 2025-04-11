@@ -58,12 +58,12 @@ class UserSerializer(serializers.ModelSerializer):
         if business:
             user.business = business
             # Usar role_name o un rol por defecto
-            role = self.get_role_instance(role_name or 'Visualizador')
+            role = self.get_role_instance(role_name or 'Administrador')
             user.role = role
             user.groups.add(role)
         else:
             # Usar role_name o un rol por defecto
-            role = self.get_role_instance(role_name or 'Administrador')
+            role = self.get_role_instance(role_name or 'Visualizador')
             user.role = role
             user.groups.add(role)
 
