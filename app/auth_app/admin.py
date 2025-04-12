@@ -4,8 +4,7 @@ from django.utils.translation import gettext_lazy as _
 from django.urls import path
 from django.shortcuts import get_object_or_404, render
 from django.utils import timezone
-from .models import Business, CustomUser
-
+from .models import Business, CustomUser,BusinessRole, RolePermission
 
 # Filtro personalizado para negocios por propietario
 class BusinessOwnerFilter(admin.SimpleListFilter):
@@ -158,3 +157,31 @@ class CustomUserAdmin(UserAdmin):
         return obj.role.name if obj.role else _('Sin rol')
     get_role.short_description = _('Rol')
     get_role.admin_order_field = 'role__name'  # Permitir ordenamiento
+
+
+class RolePermissionInline(admin.StackedInline):
+    model = RolePermission
+    can_delete = False
+    verbose_name = _("Permisos")
+    verbose_name_plural = _("Permisos")
+
+@admin.register(BusinessRole)
+class BusinessRoleAdmin(admin.ModelAdmin):
+    list_display = ('name', 'business', 'is_default', 'can_modify', 'created_at')
+    list_filter = ('business', 'is_default', 'can_modify')
+    search_fields = ('name', 'business__name')
+    readonly_fields = ('created_at', 'updated_at')
+    inlines = [RolePermissionInline]
+    
+    fieldsets = (
+        (_('Información básica'), {
+            'fields': ('business', 'name', 'description')
+        }),
+        (_('Configuración'), {
+            'fields': ('is_default', 'can_modify')
+        }),
+        (_('Fechas'), {
+            'fields': ('created_at', 'updated_at'),
+            'classes': ('collapse',)
+        }),
+    )

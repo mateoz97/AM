@@ -19,13 +19,11 @@ class BusinessMiddleware:
         # Limpiar al inicio
         set_current_business_id(None)
         
-        # En desarrollo inicial, siempre usamos business_id=1
-        set_current_business_id(1)
-        
-        # En futuras versiones, obtendremos el business del usuario autenticado
-        # if request.user.is_authenticated and hasattr(request.user, 'business_id'):
-        #     business_id = request.user.business_id
-        #     set_current_business_id(business_id)
+        # Obtener el business_id del usuario autenticado
+        if request.user.is_authenticated and hasattr(request.user, 'business'):
+            if request.user.business:
+                business_id = request.user.business.id
+                set_current_business_id(business_id)
         
         response = self.get_response(request)
         
