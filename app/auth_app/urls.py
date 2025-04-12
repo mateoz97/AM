@@ -1,6 +1,8 @@
-from django.urls import path
+from django.urls import path, include
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
-from .views import RegisterUserView, JoinBusinessView, UserInfoView, CustomLoginView
+from .views import (
+    RegisterUserView, JoinBusinessView, UserInfoView, CustomLoginView, AssignRoleToUserView, RolePermissionUpdateView
+)
 
 urlpatterns = [
     path('login/', CustomLoginView.as_view(), name='login'),
@@ -9,5 +11,7 @@ urlpatterns = [
     path("register/", RegisterUserView.as_view(), name="register"),
     path("join-business/", JoinBusinessView.as_view(), name="join_business"),
     path("user-info/", UserInfoView.as_view(), name="user_info"),
+    path("assign-role/", AssignRoleToUserView.as_view(), name="assign_role"),
+    path("roles/<int:role_id>/permissions/", RolePermissionUpdateView.as_view(), name="update_role_permissions"),
 ]
 
