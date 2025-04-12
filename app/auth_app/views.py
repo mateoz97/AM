@@ -280,3 +280,44 @@ class RolePermissionUpdateView(APIView):
                 status=status.HTTP_500_INTERNAL_SERVER_ERROR
             )
 
+class UserPermissionsView(APIView):
+    """
+    Devuelve los permisos del usuario actual basados en su rol de negocio.
+    """
+    permission_classes = [permissions.IsAuthenticated]
+    
+    def get(self, request):
+        user = request.user
+        
+        # Si no tiene rol de negocio, devolver permisos vacíos
+        if not user.business_role:
+            return Response({
+                "role": None,
+                "permissions": {}
+            })
+            
+        # Obtener permisos del rol
+        try:
+            role = user.business_role
+            permissions = role.role_permissions
+            
+            # Convertir el modelo de permisos a diccionario
+            permission_dict = {}
+            for field in permissions._meta.get_fields():
+                if field.name.startswith('can_'):
+                    permission_dict[field.name] = getattr(permissions, field.name)
+                    
+            return Response({
+                "role": {
+                    "id": role.id,
+                    "name": role.name,
+                    "is_default": role.is_default,
+                    "can_modify": role.can_modify
+                },
+                "permissions": permission_dict
+            })
+        except Exception as e:
+            return Response(
+                {"error": f"Error al obtener permisos: {str(e)}"}, 
+                status=status.HTTP_500_INTERNAL_SERVER_ERROR
+            )

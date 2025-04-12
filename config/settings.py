@@ -4,15 +4,19 @@ import os
 from pathlib import Path
 from datetime import timedelta
 from django.utils.translation import gettext_lazy as _
+from dotenv import load_dotenv
+
+# Cargar variables de entorno
+load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-# Quick-start development settings - unsuitable for production
-SECRET_KEY = 'django-insecure-replace-this-with-a-proper-secret-key'
+# SECURITY WARNING: keep the secret key used in production secret!
+SECRET_KEY = os.getenv('SECRET_KEY', 'default-insecure-key-for-dev')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.getenv('DEBUG', 'False') == 'True'
 
 # ALLOWED_HOSTS = ['127.0.0.1:8000']
 
@@ -51,6 +55,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'config.middleware.BusinessMiddleware', 
 ]
 
 ROOT_URLCONF = 'config.urls'
@@ -170,7 +175,8 @@ SIMPLE_JWT = {
     "ROTATE_REFRESH_TOKENS": True,
     "BLACKLIST_AFTER_ROTATION": True,
     "ALGORITHM": "HS256",
-    "SIGNING_KEY": "Teoz1997*",
+    "SIGNING_KEY": os.getenv('JWT_SIGNING_KEY', SECRET_KEY),
 }
 
 
+AUTH_USER_MODEL = 'auth_app.CustomUser'

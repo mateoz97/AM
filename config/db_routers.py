@@ -20,13 +20,18 @@ class BusinessRouter:
         if app_label in self.django_core_apps:
             return 'default'
         
-        # El modelo Business y CustomUser van a default
-        if app_label == 'auth_app' and model_name in ['business', 'customuser']:
+        # Todos los modelos de auth_app van a default
+        if app_label == 'auth_app' and model_name in ['business', 'customuser', 'businessrole', 'rolepermission']:
             return 'default'
             
-        # Para el desarrollo inicial, usamos business_1 para todos los demás modelos
-        # Más adelante implementaremos la lógica para obtener el business del contexto
-        return 'business_1'
+        # Para el resto, consultar el business desde el contexto
+        from config.middleware import get_current_business_id
+        business_id = get_current_business_id()
+        if business_id:
+            return f'business_{business_id}'
+            
+        # Si no hay business en el contexto, usar default
+        return 'default'
     
     def db_for_write(self, model, **hints):
         """Misma lógica que para lectura"""
@@ -52,12 +57,12 @@ class BusinessRouter:
         if app_label in self.django_core_apps:
             return db == 'default'
             
-        # Business y CustomUser migran a default
-        if app_label == 'auth_app' and model_name in ['business', 'customuser']:
+        # Modelos de auth_app migran a default
+        if app_label == 'auth_app' and model_name in ['business', 'customuser', 'businessrole', 'rolepermission']:
             return db == 'default'
             
         # En etapa inicial, permitimos migrar todos los demás modelos a business_1
-        if db == 'business_1' and app_label not in self.django_core_apps:
+        if db.startswith('business_') and app_label not in self.django_core_apps:
             return True
             
         # Por defecto, permitir migración a default

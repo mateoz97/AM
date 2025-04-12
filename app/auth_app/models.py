@@ -168,8 +168,11 @@ class CustomUser(AbstractUser):
             
         # Para otros roles, verificar el permiso específico
         try:
-            return getattr(self.business_role.role_permissions, permission_name, False)
-        except (AttributeError, RolePermission.DoesNotExist):
+            permissions = self.business_role.role_permissions
+            if not permissions:
+                return False
+            return getattr(permissions, permission_name, False)
+        except (AttributeError, Exception):
             return False
     
 
