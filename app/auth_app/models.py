@@ -41,17 +41,40 @@ class Business(models.Model):
         return self.members.filter(is_active=True)
     
     def save(self, *args, **kwargs):
-        # Reemplazar espacios por underscores en el nombre
+        # Código existente para manejar el nombre
         if self.name:
             self.name = self.name.replace(" ", "_")
         
-        # Guardamos primero para obtener un ID si es nuevo
-        is_new = self.pk is None
+        # Detectar cambio de propietario
+        owner_changed = False
+        old_owner = None
+        if not self.pk is None:
+            try:
+                old_instance = Business.objects.get(pk=self.pk)
+                if old_instance.owner != self.owner:
+                    owner_changed = True
+                    old_owner = old_instance.owner
+            except Business.DoesNotExist:
+                pass
+        
+        # Guardar primero el negocio
         super().save(*args, **kwargs)
         
-        # Si es un objeto nuevo y ya tiene ID, intentamos crear su base de datos
-        if is_new and self.id:
-            # Importamos aquí para evitar importaciones circulares
+        # Si el propietario cambió, actualizar las relaciones
+        if owner_changed and old_owner:
+            # Si el antiguo propietario tenía este negocio como su negocio, eliminamos esa relación
+            if old_owner.business == self:
+                old_owner.business = None
+                old_owner.save(update_fields=['business'])
+        
+        # Actualizar el nuevo propietario si existe
+        if self.owner and (owner_changed or self.owner.business is None):
+            # Sólo actualizamos si el propietario no tiene ya un negocio o si tenemos permiso para cambiarlo
+            self.owner.business = self
+            self.owner.save(update_fields=['business'])
+        
+        # Código existente para crear base de datos
+        if self.pk is None and self.id:
             from .services import DatabaseService
             DatabaseService.create_business_database(self)
 
