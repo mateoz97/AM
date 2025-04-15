@@ -53,18 +53,20 @@ class BusinessSerializer(serializers.ModelSerializer):
 
     
 class UserSerializer(serializers.ModelSerializer):
-    role = serializers.SerializerMethodField()
+    business_role = serializers.PrimaryKeyRelatedField(
+        queryset=BusinessRole.objects.all(), required=False, allow_null=True
+    )
     business = serializers.PrimaryKeyRelatedField(
         queryset=Business.objects.all(), required=False, allow_null=True
     )
 
     class Meta:
         model = CustomUser
-        fields = ["id", "username", "password", "email", "role", "business"]
+        fields = ["id", "username", "password", "email", "business_role", "business", "first_name", "last_name"]
         extra_kwargs = {"password": {"write_only": True}}
 
     def create(self, validated_data):
-        role_name = validated_data.pop("role", None)
+        role_id = validated_data.pop("business_role", None)
         business = validated_data.pop("business", None)
 
         # Crear usuario sin rol ni negocio
@@ -72,22 +74,26 @@ class UserSerializer(serializers.ModelSerializer):
 
         if business:
             user.business = business
-            # Usar role_name o un rol por defecto
-            role = self.get_role_instance(role_name or 'Administrador')
-            user.role = role
-            user.groups.add(role)
-        else:
-            # Usar role_name o un rol por defecto
-            role = self.get_role_instance(role_name or 'Visualizador')
-            user.role = role
-            user.groups.add(role)
+            # Si se especificó un rol, asignarlo
+            if role_id:
+                user.business_role = role_id
+            else:
+                # Buscar rol de visualizador para asignar por defecto
+                try:
+                    default_role = BusinessRole.objects.get(business=business, is_default=True, name="admin")
+                    user.business_role = default_role
+                except BusinessRole.DoesNotExist:
+                    # Si no existe el rol, crear roles por defecto
+                    from .services import BusinessRoleService
+                    roles = BusinessRoleService.create_default_roles(business)
+                    user.business_role = roles.get("viewer")
 
         user.save()
         
         return user
 
     def get_role(self, obj):
-        return obj.role.name if obj.role else None
+        return obj.business_role.name if obj.business_role else None
 
     def get_role_instance(self, role_name):
         role, created = Group.objects.get_or_create(name=role_name)

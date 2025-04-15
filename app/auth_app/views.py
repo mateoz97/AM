@@ -11,6 +11,7 @@ from .models import BusinessRole
 from django.core.exceptions import PermissionDenied, ValidationError
 
 
+# app/auth_app/views.py 
 class BusinessViewSet(viewsets.ModelViewSet):
     queryset = Business.objects.all()
     serializer_class = BusinessSerializer
@@ -18,12 +19,19 @@ class BusinessViewSet(viewsets.ModelViewSet):
 
     def perform_create(self, serializer):
         business = serializer.save(owner=self.request.user)
-        admin_role = Group.objects.get(name=f"{business.name}_Admin")
         self.request.user.business = business
-        self.request.user.role = admin_role
-        self.request.user.groups.add(admin_role)
-        self.request.user.save()
         
+        # Crear roles para el negocio
+        from .services import BusinessRoleService
+        roles = BusinessRoleService.create_default_roles(business)
+        
+        # Asignar rol de administrador al creador
+        admin_role = roles.get("admin")
+        if admin_role:
+            self.request.user.business_role = admin_role
+            self.request.user.save(update_fields=['business', 'business_role'])
+        
+        # Crear base de datos para el negocio
         from .services import DatabaseService
         success = DatabaseService.create_business_database(business)
         
@@ -38,18 +46,29 @@ class JoinBusinessView(APIView):
         business_id = request.data.get("business")
         try:
             business = Business.objects.get(id=business_id)
-            mesero_role = Group.objects.get(name=f"{business.name}_Mesero")
+            
+            # Obtener rol predeterminado (Mesero o Visualizador)
+            from .services import BusinessRoleService
+            roles = BusinessRoleService.get_roles_for_business(business)
+            default_role = roles.filter(name="viewer").first() or roles.filter(is_default=True).first()
+            
+            if not default_role:
+                # Si no hay roles, crearlos
+                roles_dict = BusinessRoleService.create_default_roles(business)
+                default_role = roles_dict.get("viewer")
 
             request.user.business = business
-            request.user.role = mesero_role
-            request.user.groups.add(mesero_role)
+            request.user.business_role = default_role
             request.user.save()
 
-            return Response({"message": "Usuario unido al negocio exitosamente."}, status=200)
+            return Response({
+                "message": "Usuario unido al negocio exitosamente.", 
+                "role": default_role.name
+            }, status=200)
         except Business.DoesNotExist:
             return Response({"error": "Negocio no encontrado."}, status=404)
-        except Group.DoesNotExist:
-            return Response({"error": "El rol Mesero no está definido."}, status=400)
+        except Exception as e:
+            return Response({"error": f"Error: {str(e)}"}, status=400)
         
         
 class RegisterUserView(generics.CreateAPIView):

@@ -87,14 +87,7 @@ class CustomUser(AbstractUser):
         blank=True,
         verbose_name=_("Negocio")
     )
-    role = models.ForeignKey(
-        Group, 
-        on_delete=models.SET_NULL, 
-        null=True, 
-        blank=True,
-        verbose_name=_("Rol")
-    )
-    
+
     business_role = models.ForeignKey(
         "auth_app.BusinessRole",
         on_delete=models.SET_NULL,
@@ -104,12 +97,6 @@ class CustomUser(AbstractUser):
         verbose_name=_("Rol de negocio")
     )
 
-    groups = models.ManyToManyField(
-        Group,
-        related_name="auth_app_users", 
-        blank=True,
-        verbose_name=_("grupos")
-    )
     user_permissions = models.ManyToManyField(
         Permission,
         related_name="auth_app_users_permissions",
@@ -145,22 +132,16 @@ class CustomUser(AbstractUser):
         ]
 
     def __str__(self):
-        role_name = self.role.name if self.role else _('Sin rol')
+        role_name = self.business_role.name if self.business_role else _('Sin rol')
         business_name = self.business.name if self.business else _('Sin negocio')
         return f"{self.get_full_name() or self.username} - {role_name} ({business_name})"
     
     def has_role(self, role_name):
         """Verifica si el usuario tiene un rol específico"""
-        if not self.role:
+        if not self.business_role:
             return False
         
-        # Permite verificar tanto el nombre completo como solo la parte del rol
-        business_prefix = f"{self.business.name}_" if self.business else ""
-        full_role_name = f"{business_prefix}{role_name}"
-        
-        return (self.role.name == role_name or 
-                self.role.name == full_role_name or 
-                self.role.name.endswith(f"_{role_name}"))
+        return self.business_role.name.lower() == role_name.lower()
     
     def get_full_name(self):
         """Retorna el nombre completo del usuario"""
@@ -335,4 +316,4 @@ class RolePermission(models.Model):
         verbose_name_plural = _("Permisos de roles")
     
     def __str__(self):
-        return f"Permisos para {self.role}"
+        return f"Permisos para {self.role.name}"
