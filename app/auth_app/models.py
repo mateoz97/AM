@@ -279,6 +279,7 @@ class RolePermission(models.Model):
     Permisos específicos para cada rol de negocio.
     Define las acciones que pueden realizar los usuarios con este rol.
     """
+    
     business_role = models.OneToOneField(
         BusinessRole, 
         on_delete=models.CASCADE, 
