@@ -68,16 +68,31 @@ class Business(models.Model):
                 old_owner.save(update_fields=['business'])
         
         # Actualizar el nuevo propietario si existe
-        if self.owner and (owner_changed or self.owner.business is None):
-            # Sólo actualizamos si el propietario no tiene ya un negocio o si tenemos permiso para cambiarlo
-            self.owner.business = self
-            self.owner.save(update_fields=['business'])
+        if self.owner:
+            # Buscar el rol de administrador para este negocio
+            from app.auth_app.models import BusinessRole
+            admin_role = BusinessRole.objects.filter(
+                business=self, 
+                name__in=['Admin', 'Administrador']
+            ).first()
+            
+            # Si no existe el rol de administrador, crearlo
+            if not admin_role:
+                from app.auth_app.services import BusinessRoleService
+                roles = BusinessRoleService.create_default_roles(self)
+                admin_role = roles.get("Admin") or roles.get("Administrador")
+            
+            # Asignar el rol al propietario
+            if admin_role:
+                self.owner.business = self
+                self.owner.business_role = admin_role
+                self.owner.save(update_fields=['business', 'business_role'])
         
         # Código existente para crear base de datos
         if self.pk is None and self.id:
             from .services import DatabaseService
             DatabaseService.create_business_database(self)
-
+            
 class CustomUser(AbstractUser):  
     business = models.ForeignKey(
         "auth_app.Business", 
@@ -167,7 +182,7 @@ class CustomUser(AbstractUser):
             return False
             
         # Los administradores tienen todos los permisos en su negocio
-        if self.business_role.name.lower() in ['administrador', 'admin']:
+        if self.business_role.name.lower() in ['admin']:
             return True
             
         # Para otros roles, verificar el permiso específico
@@ -221,7 +236,7 @@ class BusinessRole(models.Model):
         # Al crear el rol, crear también sus permisos predeterminados
         if creating:
             default_permissions = self.get_default_permissions()
-            RolePermission.objects.create(role=self, **default_permissions)
+            RolePermission.objects.create(business_role=self, **default_permissions)
     
     def get_default_permissions(self):
         """Define permisos predeterminados según el nombre del rol"""

@@ -178,7 +178,7 @@ class LoginSerializer(serializers.Serializer):
 class RolePermissionSerializer(serializers.ModelSerializer):
     class Meta:
         model = RolePermission
-        exclude = ['id', 'role', 'created_at', 'updated_at']
+        exclude = ['id', 'business_role', 'created_at', 'updated_at']
 
 
 class BusinessRoleSerializer(serializers.ModelSerializer):
