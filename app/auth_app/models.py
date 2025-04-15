@@ -92,7 +92,47 @@ class Business(models.Model):
         if not self._state.adding:  # Esta condición es True cuando el objeto acaba de ser guardado
             from .services import DatabaseService
             DatabaseService.create_business_database(self)
-            
+    
+    
+    def delete(self, using=None, keep_parents=False):
+        """
+        Sobrescribe el método delete para eliminar la base de datos asociada al negocio
+        """
+        # Nombre de la base de datos asociada
+        db_name = f"business_{self.name}"
+        db_path = None
+        
+        # Verificar si la base de datos existe en la configuración
+        from django.conf import settings
+        if db_name in settings.DATABASES:
+            db_path = settings.DATABASES[db_name]['NAME']
+            # Eliminar la base de datos de la configuración
+            del settings.DATABASES[db_name]
+            print(f"Eliminada configuración de base de datos {db_name}")
+        
+        # Llamar al método delete original
+        result = super().delete(using=using, keep_parents=keep_parents)
+        
+        # Eliminar físicamente el archivo de la base de datos
+        if db_path:
+            import os
+            if os.path.exists(db_path):
+                try:
+                    os.remove(db_path)
+                    print(f"Eliminado archivo de base de datos {db_path}")
+                except Exception as e:
+                    print(f"Error al eliminar archivo de base de datos {db_path}: {str(e)}")
+        
+        return result
+    
+    def soft_delete(self):
+        """
+        Realiza una eliminación lógica del negocio sin eliminar la base de datos
+        """
+        self.is_active = False
+        self.save(update_fields=['is_active'])
+        return True
+    
 class CustomUser(AbstractUser):  
     business = models.ForeignKey(
         "auth_app.Business", 
