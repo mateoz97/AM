@@ -1,0 +1,21 @@
+# Entornos virtuales
+.venv/
+venv/
+ENV/
+
+# Poetry
+.poetry/
+poetry.lock
+# No excluir poetry.lock si quieres que esté en el control de versiones
+
+# Archivos de caché
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Archivos locales
+.env
+*.sqlite3

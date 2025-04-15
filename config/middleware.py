@@ -11,6 +11,7 @@ def set_current_business_id(business_id):
     """Establece el business_id en el hilo actual"""
     _thread_local.business_id = business_id
 
+# Actualización en middleware.py
 class BusinessMiddleware:
     def __init__(self, get_response):
         self.get_response = get_response
@@ -19,13 +20,11 @@ class BusinessMiddleware:
         # Limpiar al inicio
         set_current_business_id(None)
         
-        # En desarrollo inicial, siempre usamos business_id=1
-        set_current_business_id(1)
-        
-        # En futuras versiones, obtendremos el business del usuario autenticado
-        # if request.user.is_authenticated and hasattr(request.user, 'business_id'):
-        #     business_id = request.user.business_id
-        #     set_current_business_id(business_id)
+        # Obtener el business_id del usuario autenticado
+        if request.user.is_authenticated and hasattr(request.user, 'business'):
+            if request.user.business:
+                business_id = request.user.business.id
+                set_current_business_id(business_id)
         
         response = self.get_response(request)
         

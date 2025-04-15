@@ -2,11 +2,9 @@ from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
 from django.utils.translation import gettext_lazy as _
 from django.urls import path
-from django.http import HttpResponse
 from django.shortcuts import get_object_or_404, render
 from django.utils import timezone
-from .models import Business, CustomUser
-
+from .models import Business, CustomUser,BusinessRole, RolePermission
 
 # Filtro personalizado para negocios por propietario
 class BusinessOwnerFilter(admin.SimpleListFilter):
@@ -30,7 +28,7 @@ class BusinessOwnerFilter(admin.SimpleListFilter):
 class BusinessMemberInline(admin.TabularInline):
     model = CustomUser
     fk_name = 'business'
-    fields = ('username', 'email', 'role', 'is_active')
+    fields = ('username', 'email', 'business_role', 'is_active')
     extra = 0
     verbose_name = _("Miembro")
     verbose_name_plural = _("Miembros")
@@ -120,8 +118,8 @@ class UserOwnedBusinessInline(admin.TabularInline):
 
 @admin.register(CustomUser)
 class CustomUserAdmin(UserAdmin):
-    list_display = ('username', 'email', 'first_name', 'last_name', 'get_business', 'get_role', 'is_active', 'date_joined')
-    list_filter = ('is_active', 'is_staff', 'business', 'role', 'is_verified')
+    list_display = ('username', 'email', 'first_name', 'last_name', 'get_business', 'get_business_role', 'is_active', 'date_joined')
+    list_filter = ('is_active', 'is_staff', 'business', 'business_role', 'is_verified')
     search_fields = ('username', 'email', 'first_name', 'last_name', 'id_number')
     readonly_fields = ('date_joined', 'last_login')
     inlines = [UserOwnedBusinessInline]
@@ -130,8 +128,8 @@ class CustomUserAdmin(UserAdmin):
         (None, {'fields': ('username', 'password')}),
         (_('Información personal'), {'fields': ('first_name', 'last_name', 'email', 'phone', 'address',
                                               'profile_picture', 'date_of_birth', 'nationality', 'id_number')}),
-        (_('Permisos'), {'fields': ('is_active', 'is_staff', 'is_superuser', 'is_verified')}),
-        (_('Negocio y rol'), {'fields': ('business', 'role')}),
+
+        (_('Negocio y rol'), {'fields': ('business', 'business_role')}),
         (_('Fechas importantes'), {'fields': ('last_login', 'date_joined')}),
     )
     
@@ -155,7 +153,35 @@ class CustomUserAdmin(UserAdmin):
     get_business.short_description = _('Negocio')
     get_business.admin_order_field = 'business__name'  # Permitir ordenamiento
     
-    def get_role(self, obj):
-        return obj.role.name if obj.role else _('Sin rol')
-    get_role.short_description = _('Rol')
-    get_role.admin_order_field = 'role__name'  # Permitir ordenamiento
+    def get_business_role(self, obj):
+        return obj.business_role.name if obj.business_role else _('Sin rol')
+    get_business_role.short_description = _('Rol')
+    get_business_role.admin_order_field = 'business_role__name'
+
+
+class RolePermissionInline(admin.StackedInline):
+    model = RolePermission
+    can_delete = False
+    verbose_name = _("Permisos")
+    verbose_name_plural = _("Permisos")
+
+@admin.register(BusinessRole)
+class BusinessRoleAdmin(admin.ModelAdmin):
+    list_display = ('name', 'business', 'is_default', 'can_modify', 'created_at')
+    list_filter = ('business', 'is_default', 'can_modify')
+    search_fields = ('name', 'business__name')
+    readonly_fields = ('created_at', 'updated_at')
+    inlines = [RolePermissionInline]
+    
+    fieldsets = (
+        (_('Información básica'), {
+            'fields': ('business', 'name', 'description')
+        }),
+        (_('Configuración'), {
+            'fields': ('is_default', 'can_modify')
+        }),
+        (_('Fechas'), {
+            'fields': ('created_at', 'updated_at'),
+            'classes': ('collapse',)
+        }),
+    )

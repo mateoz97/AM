@@ -3,7 +3,7 @@ from django.contrib.auth import authenticate
 from .models import Business
 from .services import RoleService  
 from .models import CustomUser
-from django.contrib.auth.models import Group
+from .models import BusinessRole, RolePermission
 
 
 
@@ -14,7 +14,21 @@ class BusinessSerializer(serializers.ModelSerializer):
 
     def create(self, validated_data):
         business = Business.objects.create(**validated_data)
+        
+        # Mantener compatibilidad con el sistema anterior
         RoleService.create_business_roles(business)
+        
+        # Crear roles personalizados para el nuevo negocio
+        from .services import BusinessRoleService
+        roles = BusinessRoleService.create_default_roles(business)
+        
+        # Si hay un propietario, asignarle el rol de Administrador
+        if business.owner:
+            admin_role = roles.get("Admin")
+            if admin_role:
+                business.owner.business_role = admin_role
+                business.owner.save(update_fields=['business_role'])
+        
         return business
     
     def get_queryset(self):
@@ -38,18 +52,20 @@ class BusinessSerializer(serializers.ModelSerializer):
 
     
 class UserSerializer(serializers.ModelSerializer):
-    role = serializers.SerializerMethodField()
+    business_role = serializers.PrimaryKeyRelatedField(
+        queryset=BusinessRole.objects.all(), required=False, allow_null=True
+    )
     business = serializers.PrimaryKeyRelatedField(
         queryset=Business.objects.all(), required=False, allow_null=True
     )
 
     class Meta:
         model = CustomUser
-        fields = ["id", "username", "password", "email", "role", "business"]
+        fields = ["id", "username", "password", "email", "business_role", "business", "first_name", "last_name"]
         extra_kwargs = {"password": {"write_only": True}}
 
     def create(self, validated_data):
-        role_name = validated_data.pop("role", None)
+        role_id = validated_data.pop("business_role", None)
         business = validated_data.pop("business", None)
 
         # Crear usuario sin rol ni negocio
@@ -57,26 +73,62 @@ class UserSerializer(serializers.ModelSerializer):
 
         if business:
             user.business = business
-            # Usar role_name o un rol por defecto
-            role = self.get_role_instance(role_name or 'Visualizador')
-            user.role = role
-            user.groups.add(role)
-        else:
-            # Usar role_name o un rol por defecto
-            role = self.get_role_instance(role_name or 'Administrador')
-            user.role = role
-            user.groups.add(role)
+            # Si se especificó un rol, asignarlo
+            if role_id:
+                user.business_role = role_id
+            else:
+                # Buscar rol de visualizador para asignar por defecto
+                try:
+                    default_role = BusinessRole.objects.get(business=business, is_default=True, name="admin")
+                    user.business_role = default_role
+                except BusinessRole.DoesNotExist:
+                    # Si no existe el rol, crear roles por defecto
+                    from .services import BusinessRoleService
+                    roles = BusinessRoleService.create_default_roles(business)
+                    user.business_role = roles.get("viewer")
 
         user.save()
         
         return user
 
     def get_role(self, obj):
-        return obj.role.name if obj.role else None
+        return obj.business_role.name if obj.business_role else None
 
-    def get_role_instance(self, role_name):
-        role, created = Group.objects.get_or_create(name=role_name)
-        return role
+    def get_business_role_instance(self, role_name, business=None):
+        """
+        Obtiene o crea un rol de negocio basado en el nombre.
+        
+        Args:
+            role_name (str): Nombre del rol
+            business (Business): Instancia del negocio (obligatorio)
+            
+        Returns:
+            BusinessRole: Instancia del rol o None si no se pudo crear
+        """
+        if not business:
+            return None
+            
+        try:
+            # Primero intentar obtener un rol existente
+            role = BusinessRole.objects.get(
+                business=business,
+                name=role_name
+            )
+            return role
+        except BusinessRole.DoesNotExist:
+            # Si no existe, intentar crearlo con valores predeterminados
+            try:
+                role = BusinessRole.objects.create(
+                    business=business,
+                    name=role_name,
+                    description=f"Rol {role_name} creado automáticamente",
+                    is_default=False,
+                    can_modify=True
+                )
+                return role
+            except Exception:
+                # Si hay algún error, retornar None
+                return None
 
     def get_business(self, obj):
         return obj.business.name if obj.business else None
@@ -122,3 +174,59 @@ class LoginSerializer(serializers.Serializer):
             raise serializers.ValidationError("Credenciales inválidas")
         
         return {"user": user}
+
+class RolePermissionSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = RolePermission
+        exclude = ['id', 'business_role', 'created_at', 'updated_at']
+
+
+class BusinessRoleSerializer(serializers.ModelSerializer):
+    role_permissions = RolePermissionSerializer(read_only=True)
+    
+    class Meta:
+        model = BusinessRole
+        fields = ['id', 'name', 'description', 'is_default', 'can_modify', 'created_at', 'role_permissions']
+        read_only_fields = ['is_default', 'can_modify', 'created_at']
+
+    def create(self, validated_data):
+        business = self.context.get('business')
+        if not business:
+            raise serializers.ValidationError("Se requiere un negocio para crear un rol")
+            
+        role = BusinessRole.objects.create(
+            business=business,
+            **validated_data
+        )
+        return role
+
+
+class BusinessRoleUpdateSerializer(serializers.ModelSerializer):
+    role_permissions = RolePermissionSerializer()
+    
+    class Meta:
+        model = BusinessRole
+        fields = ['name', 'description', 'role_permissions']
+        
+    def validate(self, data):
+        instance = getattr(self, 'instance', None)
+        if instance and not instance.can_modify:
+            raise serializers.ValidationError("Este rol no puede ser modificado")
+        return data
+        
+    def update(self, instance, validated_data):
+        permissions_data = validated_data.pop('role_permissions', {})
+        
+        # Actualizar campos básicos del rol
+        instance.name = validated_data.get('name', instance.name)
+        instance.description = validated_data.get('description', instance.description)
+        instance.save()
+        
+        # Actualizar permisos si se proporcionaron
+        if permissions_data:
+            permissions = instance.role_permissions
+            for attr, value in permissions_data.items():
+                setattr(permissions, attr, value)
+            permissions.save()
+            
+        return instance

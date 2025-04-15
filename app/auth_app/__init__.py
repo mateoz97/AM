@@ -1,0 +1,1 @@
+default_app_config = 'app.auth_app.apps.AuthAppConfig'
