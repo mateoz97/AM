@@ -25,12 +25,13 @@ class BusinessViewSet(viewsets.ModelViewSet):
         roles = BusinessRoleService.create_default_roles(business)
         
         # Asignar rol de administrador al creador
-        admin_role = roles.get("admin")
+        admin_role = roles.get("Admin") or roles.get("Administrador")
         if admin_role:
             self.request.user.business_role = admin_role
             self.request.user.save(update_fields=['business', 'business_role'])
         
-        # Crear base de datos para el negocio
+        # Crear base de datos para el negocio - Asegurarse que esto se ejecute
+        print(f"Creando base de datos para negocio: {business.name} ({business.id})")
         from .services import DatabaseService
         success = DatabaseService.create_business_database(business)
         

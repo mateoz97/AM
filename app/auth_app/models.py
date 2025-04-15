@@ -89,7 +89,7 @@ class Business(models.Model):
                 self.owner.save(update_fields=['business', 'business_role'])
         
         # Código existente para crear base de datos
-        if self.pk is None and self.id:
+        if not self._state.adding:  # Esta condición es True cuando el objeto acaba de ser guardado
             from .services import DatabaseService
             DatabaseService.create_business_database(self)
             
