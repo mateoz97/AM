@@ -3,7 +3,6 @@ from rest_framework.response import Response
 from rest_framework_simplejwt.tokens import RefreshToken
 from .models import Business,CustomUser
 from .serializers import BusinessSerializer, UserSerializer
-from django.contrib.auth.models import Group
 from rest_framework.views import APIView
 from rest_framework_simplejwt.views import TokenObtainPairView
 from .serializers import BusinessRoleSerializer, RolePermissionSerializer, BusinessRoleUpdateSerializer

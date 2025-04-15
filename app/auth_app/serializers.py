@@ -3,7 +3,6 @@ from django.contrib.auth import authenticate
 from .models import Business
 from .services import RoleService  
 from .models import CustomUser
-from django.contrib.auth.models import Group
 from .models import BusinessRole, RolePermission
 
 
@@ -95,9 +94,41 @@ class UserSerializer(serializers.ModelSerializer):
     def get_role(self, obj):
         return obj.business_role.name if obj.business_role else None
 
-    def get_role_instance(self, role_name):
-        role, created = Group.objects.get_or_create(name=role_name)
-        return role
+    def get_business_role_instance(self, role_name, business=None):
+        """
+        Obtiene o crea un rol de negocio basado en el nombre.
+        
+        Args:
+            role_name (str): Nombre del rol
+            business (Business): Instancia del negocio (obligatorio)
+            
+        Returns:
+            BusinessRole: Instancia del rol o None si no se pudo crear
+        """
+        if not business:
+            return None
+            
+        try:
+            # Primero intentar obtener un rol existente
+            role = BusinessRole.objects.get(
+                business=business,
+                name=role_name
+            )
+            return role
+        except BusinessRole.DoesNotExist:
+            # Si no existe, intentar crearlo con valores predeterminados
+            try:
+                role = BusinessRole.objects.create(
+                    business=business,
+                    name=role_name,
+                    description=f"Rol {role_name} creado automáticamente",
+                    is_default=False,
+                    can_modify=True
+                )
+                return role
+            except Exception:
+                # Si hay algún error, retornar None
+                return None
 
     def get_business(self, obj):
         return obj.business.name if obj.business else None

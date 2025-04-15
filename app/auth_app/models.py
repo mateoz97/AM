@@ -1,4 +1,4 @@
-from django.contrib.auth.models import AbstractUser, Group, Permission
+from django.contrib.auth.models import AbstractUser, Permission
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 
@@ -279,7 +279,7 @@ class RolePermission(models.Model):
     Permisos específicos para cada rol de negocio.
     Define las acciones que pueden realizar los usuarios con este rol.
     """
-    role = models.OneToOneField(
+    business_role = models.OneToOneField(
         BusinessRole, 
         on_delete=models.CASCADE, 
         related_name='role_permissions',
@@ -316,4 +316,4 @@ class RolePermission(models.Model):
         verbose_name_plural = _("Permisos de roles")
     
     def __str__(self):
-        return f"Permisos para {self.role.name}"
+        return f"Permisos para {self.business_role.name}"
