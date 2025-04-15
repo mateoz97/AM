@@ -28,7 +28,7 @@ class BusinessOwnerFilter(admin.SimpleListFilter):
 class BusinessMemberInline(admin.TabularInline):
     model = CustomUser
     fk_name = 'business'
-    fields = ('username', 'email', 'role', 'is_active')
+    fields = ('username', 'email', 'business_role', 'is_active')
     extra = 0
     verbose_name = _("Miembro")
     verbose_name_plural = _("Miembros")
