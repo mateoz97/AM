@@ -128,8 +128,7 @@ class CustomUserAdmin(UserAdmin):
         (None, {'fields': ('username', 'password')}),
         (_('Información personal'), {'fields': ('first_name', 'last_name', 'email', 'phone', 'address',
                                               'profile_picture', 'date_of_birth', 'nationality', 'id_number')}),
-        (_('Permisos'), {'fields': ('is_active', 'is_staff', 'is_superuser', 'is_verified')}),
-        # Aquí también cambiamos para usar solo business_role
+
         (_('Negocio y rol'), {'fields': ('business', 'business_role')}),
         (_('Fechas importantes'), {'fields': ('last_login', 'date_joined')}),
     )

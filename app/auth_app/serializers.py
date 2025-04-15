@@ -24,7 +24,7 @@ class BusinessSerializer(serializers.ModelSerializer):
         
         # Si hay un propietario, asignarle el rol de Administrador
         if business.owner:
-            admin_role = roles.get("Administrador")
+            admin_role = roles.get("Admin")
             if admin_role:
                 business.owner.business_role = admin_role
                 business.owner.save(update_fields=['business_role'])
