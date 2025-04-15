@@ -16,18 +16,14 @@ class BusinessMiddleware:
         self.get_response = get_response
 
     def __call__(self, request):
-        # Limpiar al inicio
-        set_current_business_id(None)
         
-        # Obtener el business_id del usuario autenticado
+        set_current_business_id(None)
         if request.user.is_authenticated and hasattr(request.user, 'business'):
             if request.user.business:
                 business_id = request.user.business.id
                 set_current_business_id(business_id)
-        
         response = self.get_response(request)
-        
-        # Limpiar al final
         set_current_business_id(None)
-        
+    
         return response
+    
