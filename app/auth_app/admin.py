@@ -228,13 +228,13 @@ class BusinessRoleAdmin(admin.ModelAdmin):
 class BusinessJoinRequestAdmin(admin.ModelAdmin):
     list_display = ('user', 'business', 'status', 'created_at', 'updated_at')
     list_filter = ('status', 'created_at', 'business')
-    search_fields = ('user__username', 'user__email', 'business__name')
+    search_fields = ('user__username', 'user__email', 'business__name', 'message')
     readonly_fields = ('created_at', 'updated_at')
     actions = ['approve_requests', 'reject_requests']
     
     fieldsets = (
         (_('Información de solicitud'), {
-            'fields': ('user', 'business', 'status')
+            'fields': ('user', 'business', 'status', 'message')  # Añadir 'message'
         }),
         (_('Fechas'), {
             'fields': ('created_at', 'updated_at'),

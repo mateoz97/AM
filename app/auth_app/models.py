@@ -375,6 +375,9 @@ class RolePermission(models.Model):
     def __str__(self):
         return f"Permisos para {self.business_role.name}"
     
+# app/auth_app/models.py
+
+# Actualiza la clase BusinessJoinRequest para incluir el mensaje
 class BusinessJoinRequest(models.Model):
     user = models.ForeignKey('auth_app.CustomUser', on_delete=models.CASCADE, related_name='join_requests')
     business = models.ForeignKey('auth_app.Business', on_delete=models.CASCADE, related_name='join_requests')
@@ -383,6 +386,7 @@ class BusinessJoinRequest(models.Model):
         ('approved', 'Aprobada'),
         ('rejected', 'Rechazada')
     ], default='pending')
+    message = models.TextField(_("Mensaje"), blank=True, null=True)  # Añadir este campo
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     
