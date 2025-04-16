@@ -3,8 +3,6 @@ from rest_framework import serializers
 
 # Modesls and services
 from app.business.models.business import Business, BusinessJoinRequest, BusinessInvitation
-# Services
-from app.roles.services.role_service import RoleService  
 
 
 
@@ -16,8 +14,6 @@ class BusinessSerializer(serializers.ModelSerializer):
     def create(self, validated_data):
         business = Business.objects.create(**validated_data)
         
-        # Mantener compatibilidad con el sistema anterior
-        RoleService.create_business_roles(business)
         
         # Crear roles personalizados para el nuevo negocio
         from app.business.services.business_service import BusinessRoleService

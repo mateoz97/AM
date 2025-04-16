@@ -97,6 +97,7 @@ class BusinessRole(models.Model):
             
         return permissions
 
+
 class RolePermission(models.Model):
     """
     Permisos específicos para cada rol de negocio.

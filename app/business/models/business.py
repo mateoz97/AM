@@ -59,7 +59,6 @@ class Business(models.Model):
                 pass
         
         # Guardar primero el negocio
-        is_new = self.pk is None
         super().save(*args, **kwargs)
         
         # Si el propietario cambió, actualizar las relaciones
@@ -75,30 +74,25 @@ class Business(models.Model):
             from app.roles.models.role import BusinessRole
             admin_role = BusinessRole.objects.filter(
                 business=self, 
-                name__in=['Admin', 'Administrador']
+                name="Admin"
             ).first()
             
             # Si no existe el rol de administrador, crearlo
             if not admin_role:
-                from app.roles.services.role_service import BusinessRoleService
-                roles = BusinessRoleService.create_default_roles(self)
-                admin_role = roles.get("Admin") or roles.get("Administrador")
+                from app.roles.services.role_service import RoleService
+                roles = RoleService.create_business_roles(self)
+                admin_role = roles.get("Admin")
             
             # Asignar el rol al propietario
             if admin_role:
                 self.owner.business = self
                 self.owner.business_role = admin_role
                 self.owner.save(update_fields=['business', 'business_role'])
-        
-        # Código existente para crear base de datos
+    
+        # Crear base de datos del negocio si es nuevo
         if not self._state.adding:  # Esta condición es True cuando el objeto acaba de ser guardado
             from app.business.services.business_service import DatabaseService
             DatabaseService.create_business_database(self)
-        
-        if is_new:
-            from app.business.services.business_service import DatabaseService
-            DatabaseService.create_business_database(self)
-    
     
     def delete(self, using=None, keep_parents=False):
         """

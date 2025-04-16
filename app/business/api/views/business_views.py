@@ -50,15 +50,19 @@ class JoinBusinessView(APIView):
         try:
             business = Business.objects.get(id=business_id)
             
-            # Obtener rol predeterminado (Mesero o Visualizador)
-            from app.roles.services.role_service import BusinessRoleService
-            roles = BusinessRoleService.get_roles_for_business(business)
-            default_role = roles.filter(name="viewer").first() or roles.filter(is_default=True).first()
+            # Obtener rol predeterminado (Viewer)
+            from app.roles.models.role import BusinessRole
+            default_role = BusinessRole.objects.filter(
+                business=business,
+                name="Viewer",
+                is_default=True
+            ).first()
             
             if not default_role:
                 # Si no hay roles, crearlos
-                roles_dict = BusinessRoleService.create_default_roles(business)
-                default_role = roles_dict.get("viewer")
+                from app.roles.services.role_service import BusinessRoleService
+                roles_dict = BusinessRoleService.create_business_roles(business)
+                default_role = roles_dict.get("Viewer")
 
             request.user.business = business
             request.user.business_role = default_role
@@ -72,9 +76,6 @@ class JoinBusinessView(APIView):
             return Response({"error": "Negocio no encontrado."}, status=404)
         except Exception as e:
             return Response({"error": f"Error: {str(e)}"}, status=400)
-          
-
-        return Response({"error": "Invalid credentials"}, status=status.HTTP_401_UNAUTHORIZED)
 
 class LeaveBusinessView(APIView):
     permission_classes = [permissions.IsAuthenticated]

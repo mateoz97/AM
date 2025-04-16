@@ -86,16 +86,17 @@ class BusinessJoinService:
                         name=role_name
                     ).first()
                 else:
-                    # Usar rol de Visualizador por defecto
+                    # Usar rol de Viewer por defecto
                     role = BusinessRole.objects.filter(
                         business=business,
-                        name__in=['Visualizador', 'viewer']
+                        name="Viewer"
                     ).first()
                 
                 # Si no existe el rol, crear roles predeterminados
                 if not role:
-                    roles = BusinessRoleService.create_default_roles(business)
-                    role = roles.get('Visualizador')
+                    from app.roles.services.role_service import BusinessRoleService
+                    roles = BusinessRoleService.create_business_roles(business)
+                    role = roles.get("Viewer")
                 
                 # Asignar negocio y rol
                 user.business = business
