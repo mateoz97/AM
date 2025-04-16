@@ -19,3 +19,8 @@ htmlcov/
 # Archivos locales
 .env
 *.sqlite3
+
+# Archivos de entorno
+.env
+.env.*
+!.env.example

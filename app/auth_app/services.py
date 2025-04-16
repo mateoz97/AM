@@ -6,6 +6,9 @@ from app.auth_app.models import BusinessRole, RolePermission, BusinessJoinReques
 
 # Management
 import os
+import logging
+
+logger = logging.getLogger(__name__)
 
 class RoleService:
     @staticmethod

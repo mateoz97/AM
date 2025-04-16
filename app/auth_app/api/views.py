@@ -4,6 +4,7 @@ from rest_framework.response import Response
 from rest_framework_simplejwt.tokens import RefreshToken
 from rest_framework.views import APIView
 from rest_framework_simplejwt.views import TokenObtainPairView
+from rest_framework import serializers
 
 # Models    
 from app.auth_app.models import Business,CustomUser,BusinessRole, BusinessJoinRequest, BusinessInvitation
@@ -16,6 +17,9 @@ from .serializers import (BusinessSerializer, UserSerializer,
 # Validators
 from django.core.exceptions import PermissionDenied, ValidationError
 from django.utils import timezone
+import logging
+
+logger = logging.getLogger(__name__)
 
 
 class BusinessViewSet(viewsets.ModelViewSet):
@@ -344,6 +348,14 @@ class JoinBusinessRequestView(APIView):
     permission_classes = [permissions.IsAuthenticated]
 
     def post(self, request):
+        class JoinRequestSerializer(serializers.Serializer):
+            business = serializers.IntegerField(required=True)
+            message = serializers.CharField(required=False, allow_blank=True)
+            
+        serializer = JoinRequestSerializer(data=request.data)
+        if not serializer.is_valid():
+            return Response(serializer.errors, status=400)
+        
         business_id = request.data.get("business")
         message = request.data.get("message", "")  # Mensaje opcional
         
