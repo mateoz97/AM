@@ -6,11 +6,12 @@ from rest_framework.views import APIView
 from rest_framework_simplejwt.views import TokenObtainPairView
 
 # Models    
-from app.auth_app.models import Business,CustomUser,BusinessRole
+from app.auth_app.models import Business,CustomUser,BusinessRole, BusinessJoinRequest, BusinessInvitation
 
 # Serializers
-from .serializers import BusinessSerializer, UserSerializer
-from .serializers import BusinessRoleSerializer, RolePermissionSerializer, BusinessRoleUpdateSerializer
+from .serializers import (BusinessSerializer, UserSerializer, 
+                          BusinessRoleSerializer, RolePermissionSerializer, 
+                          BusinessRoleUpdateSerializer, BusinessJoinRequestSerializer)
 
 # Validators
 from django.core.exceptions import PermissionDenied, ValidationError
@@ -337,3 +338,99 @@ class UserPermissionsView(APIView):
                 {"error": f"Error al obtener permisos: {str(e)}"}, 
                 status=status.HTTP_500_INTERNAL_SERVER_ERROR
             )
+
+class JoinBusinessRequestView(APIView):
+    permission_classes = [permissions.IsAuthenticated]
+
+    def post(self, request):
+        business_id = request.data.get("business")
+        try:
+            business = Business.objects.get(id=business_id)
+            
+            # Verificar si ya existe una solicitud pendiente
+            existing_request = BusinessJoinRequest.objects.filter(
+                user=request.user,
+                business=business,
+                status='pending'
+            ).exists()
+            
+            if existing_request:
+                return Response({"error": "Ya tienes una solicitud pendiente para este negocio"}, status=400)
+            
+            # Crear nueva solicitud
+            join_request = BusinessJoinRequest.objects.create(
+                user=request.user,
+                business=business
+            )
+            
+            return Response({
+                "message": "Solicitud enviada exitosamente. El propietario debe aprobarla.",
+                "request_id": join_request.id
+            }, status=201)
+            
+        except Business.DoesNotExist:
+            return Response({"error": "Negocio no encontrado."}, status=404)
+        
+class BusinessJoinRequestManagementView(APIView):
+    permission_classes = [permissions.IsAuthenticated]
+    
+    def get(self, request):
+        """Ver solicitudes pendientes para el negocio del usuario"""
+        if not request.user.business or not request.user.has_business_permission('can_manage_users'):
+            return Response({"error": "No tienes permiso para ver solicitudes"}, status=403)
+            
+        pending_requests = BusinessJoinRequest.objects.filter(
+            business=request.user.business,
+            status='pending'
+        )
+        
+        serializer = BusinessJoinRequestSerializer(pending_requests, many=True)
+        return Response(serializer.data)
+    
+    def post(self, request):
+        """Aprobar o rechazar una solicitud"""
+        request_id = request.data.get('request_id')
+        action = request.data.get('action')  # 'approve' o 'reject'
+        
+        if not request_id or not action:
+            return Response({"error": "Se requiere request_id y action"}, status=400)
+            
+        if not request.user.business or not request.user.has_business_permission('can_manage_users'):
+            return Response({"error": "No tienes permiso para gestionar solicitudes"}, status=403)
+            
+        try:
+            join_request = BusinessJoinRequest.objects.get(
+                id=request_id, 
+                business=request.user.business,
+                status='pending'
+            )
+            
+            if action == 'approve':
+                # Asignar rol de visualizador
+                join_request.status = 'approved'
+                
+                # Buscar rol de visualizador
+                viewer_role = BusinessRole.objects.filter(
+                    business=request.user.business,
+                    name__in=['Visualizador', 'viewer']
+                ).first()
+                
+                # Asignar negocio y rol al usuario
+                user = join_request.user
+                user.business = request.user.business
+                user.business_role = viewer_role
+                user.save(update_fields=['business', 'business_role'])
+                
+                message = "Solicitud aprobada exitosamente"
+            elif action == 'reject':
+                join_request.status = 'rejected'
+                message = "Solicitud rechazada"
+            else:
+                return Response({"error": "Acción no válida"}, status=400)
+                
+            join_request.save()
+            return Response({"message": message})
+            
+        except BusinessJoinRequest.DoesNotExist:
+            return Response({"error": "Solicitud no encontrada"}, status=404)
+        
