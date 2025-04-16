@@ -1,3 +1,4 @@
+# Django
 from django.contrib.auth.models import AbstractUser, Permission
 from django.db import models
 from django.utils.translation import gettext_lazy as _
@@ -48,7 +49,7 @@ class Business(models.Model):
         # Detectar cambio de propietario
         owner_changed = False
         old_owner = None
-        if not self.pk is None:
+        if self.pk is not None:
             try:
                 old_instance = Business.objects.get(pk=self.pk)
                 if old_instance.owner != self.owner:
@@ -233,8 +234,7 @@ class CustomUser(AbstractUser):
             return getattr(permissions, permission_name, False)
         except (AttributeError, Exception):
             return False
-    
-
+        
 class BusinessRole(models.Model):
     """
     Modelo para roles específicos de cada negocio.
