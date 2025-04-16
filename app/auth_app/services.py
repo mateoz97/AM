@@ -1,7 +1,13 @@
+# Django
 from django.contrib.auth.models import Group, Permission
-from app.auth_app.models import BusinessRole, RolePermission
-import os
 from django.conf import settings
+
+# Models
+from app.auth_app.models import BusinessRole, RolePermission
+
+# Management
+import os
+
 
 
 

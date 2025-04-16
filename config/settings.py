@@ -34,7 +34,6 @@ INSTALLED_APPS = [
     'corsheaders',
     'django_filters',
     'app.auth_app',
-    'app.ping',
     'app.core',
 ]
 

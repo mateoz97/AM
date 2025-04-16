@@ -1,10 +1,12 @@
+# Django REST Framework
 from rest_framework import serializers
-from django.contrib.auth import authenticate
-from .models import Business
-from .services import RoleService  
-from .models import CustomUser
-from .models import BusinessRole, RolePermission
 
+# Django
+from django.contrib.auth import authenticate
+
+# Modesls and services
+from app.auth_app.models import Business, BusinessRole, RolePermission, CustomUser
+from app.auth_app.services import RoleService  
 
 
 class BusinessSerializer(serializers.ModelSerializer):
@@ -49,7 +51,6 @@ class BusinessSerializer(serializers.ModelSerializer):
         """Reactiva un negocio previamente desactivado"""
         self.is_active = True
         self.save()
-
     
 class UserSerializer(serializers.ModelSerializer):
     business_role = serializers.PrimaryKeyRelatedField(
@@ -180,7 +181,6 @@ class RolePermissionSerializer(serializers.ModelSerializer):
         model = RolePermission
         exclude = ['id', 'business_role', 'created_at', 'updated_at']
 
-
 class BusinessRoleSerializer(serializers.ModelSerializer):
     role_permissions = RolePermissionSerializer(read_only=True)
     
@@ -199,7 +199,6 @@ class BusinessRoleSerializer(serializers.ModelSerializer):
             **validated_data
         )
         return role
-
 
 class BusinessRoleUpdateSerializer(serializers.ModelSerializer):
     role_permissions = RolePermissionSerializer()

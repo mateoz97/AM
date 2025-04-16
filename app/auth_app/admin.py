@@ -1,10 +1,13 @@
+# Django admin configuration for the auth_app
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
 from django.utils.translation import gettext_lazy as _
 from django.urls import path
 from django.shortcuts import get_object_or_404, render
 from django.utils import timezone
-from .models import Business, CustomUser,BusinessRole, RolePermission
+
+# Models
+from app.auth_app.models import Business, CustomUser,BusinessRole, RolePermission
 
 # Filtro personalizado para negocios por propietario
 class BusinessOwnerFilter(admin.SimpleListFilter):
@@ -23,7 +26,6 @@ class BusinessOwnerFilter(admin.SimpleListFilter):
         if self.value() == 'no_owner':
             return queryset.filter(owner__isnull=True)
 
-
 # Inline para ver miembros de un negocio
 class BusinessMemberInline(admin.TabularInline):
     model = CustomUser
@@ -34,7 +36,6 @@ class BusinessMemberInline(admin.TabularInline):
     verbose_name_plural = _("Miembros")
     max_num = 15  # Limitar el número de filas mostradas
     can_delete = False  # Prevenir eliminación desde inline
-
 
 @admin.register(Business)
 class BusinessAdmin(admin.ModelAdmin):
@@ -109,7 +110,6 @@ class BusinessAdmin(admin.ModelAdmin):
         # que a su vez activará la señal pre_delete
         obj.delete()
 
-
 # Inline para ver negocios donde el usuario es propietario
 class UserOwnedBusinessInline(admin.TabularInline):
     model = Business
@@ -121,7 +121,6 @@ class UserOwnedBusinessInline(admin.TabularInline):
     verbose_name_plural = _("Negocios propiedad")
     max_num = 5
     can_delete = False
-
 
 @admin.register(CustomUser)
 class CustomUserAdmin(UserAdmin):

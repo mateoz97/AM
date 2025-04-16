@@ -1,16 +1,21 @@
+# API views for managing user authentication, business roles, and permissions.
 from rest_framework import viewsets, generics, permissions, status
 from rest_framework.response import Response
 from rest_framework_simplejwt.tokens import RefreshToken
-from .models import Business,CustomUser
-from .serializers import BusinessSerializer, UserSerializer
 from rest_framework.views import APIView
 from rest_framework_simplejwt.views import TokenObtainPairView
+
+# Models    
+from app.auth_app.models import Business,CustomUser,BusinessRole
+
+# Serializers
+from .serializers import BusinessSerializer, UserSerializer
 from .serializers import BusinessRoleSerializer, RolePermissionSerializer, BusinessRoleUpdateSerializer
-from .models import BusinessRole
+
+# Validators
 from django.core.exceptions import PermissionDenied, ValidationError
 
 
-# app/auth_app/views.py 
 class BusinessViewSet(viewsets.ModelViewSet):
     queryset = Business.objects.all()
     serializer_class = BusinessSerializer
@@ -21,7 +26,7 @@ class BusinessViewSet(viewsets.ModelViewSet):
         self.request.user.business = business
         
         # Crear roles para el negocio
-        from .services import BusinessRoleService
+        from ..services import BusinessRoleService
         roles = BusinessRoleService.create_default_roles(business)
         
         # Asignar rol de administrador al creador
@@ -32,13 +37,12 @@ class BusinessViewSet(viewsets.ModelViewSet):
         
         # Crear base de datos para el negocio - Asegurarse que esto se ejecute
         print(f"Creando base de datos para negocio: {business.name} ({business.id})")
-        from .services import DatabaseService
+        from ..services import DatabaseService
         success = DatabaseService.create_business_database(business)
         
         if not success:
             print(f"Advertencia: No se pudo crear la base de datos para el negocio {business.name}")
         
-
 class JoinBusinessView(APIView):
     permission_classes = [permissions.IsAuthenticated]
 
@@ -48,7 +52,7 @@ class JoinBusinessView(APIView):
             business = Business.objects.get(id=business_id)
             
             # Obtener rol predeterminado (Mesero o Visualizador)
-            from .services import BusinessRoleService
+            from ..services import BusinessRoleService
             roles = BusinessRoleService.get_roles_for_business(business)
             default_role = roles.filter(name="viewer").first() or roles.filter(is_default=True).first()
             
@@ -69,8 +73,7 @@ class JoinBusinessView(APIView):
             return Response({"error": "Negocio no encontrado."}, status=404)
         except Exception as e:
             return Response({"error": f"Error: {str(e)}"}, status=400)
-        
-        
+          
 class RegisterUserView(generics.CreateAPIView):
     queryset = CustomUser.objects.all()
     serializer_class = UserSerializer
@@ -180,7 +183,6 @@ class BusinessRoleViewSet(viewsets.ModelViewSet):
             
         instance.delete()
 
-
 class AssignRoleToUserView(APIView):
     """
     Endpoint para asignar un rol específico a un usuario dentro del mismo negocio.
@@ -240,7 +242,6 @@ class AssignRoleToUserView(APIView):
                 {"error": f"Error al asignar rol: {str(e)}"}, 
                 status=status.HTTP_500_INTERNAL_SERVER_ERROR
             )
-
 
 class RolePermissionUpdateView(APIView):
     """

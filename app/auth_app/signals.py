@@ -1,8 +1,12 @@
+# Django
 from django.db.models.signals import post_delete
 from django.dispatch import receiver
-from .models import Business
-import os
 from django.conf import settings
+
+# Models
+from app.auth_app.models import Business
+
+
 
 @receiver(post_delete, sender=Business)
 def delete_business_database(sender, instance, **kwargs):
