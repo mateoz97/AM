@@ -21,7 +21,7 @@ class BusinessSerializer(serializers.ModelSerializer):
         RoleService.create_business_roles(business)
         
         # Crear roles personalizados para el nuevo negocio
-        from .services import BusinessRoleService
+        from app.auth_app.services import BusinessRoleService
         roles = BusinessRoleService.create_default_roles(business)
         
         # Si hay un propietario, asignarle el rol de Administrador
@@ -84,7 +84,7 @@ class UserSerializer(serializers.ModelSerializer):
                     user.business_role = default_role
                 except BusinessRole.DoesNotExist:
                     # Si no existe el rol, crear roles por defecto
-                    from .services import BusinessRoleService
+                    from app.auth_app.services import BusinessRoleService
                     roles = BusinessRoleService.create_default_roles(business)
                     user.business_role = roles.get("viewer")
 

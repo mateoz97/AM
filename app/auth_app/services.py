@@ -1,5 +1,4 @@
 # Django
-from django.contrib.auth.models import Group, Permission
 from django.conf import settings
 
 # Models
@@ -7,9 +6,6 @@ from app.auth_app.models import BusinessRole, RolePermission
 
 # Management
 import os
-
-
-
 
 class RoleService:
     @staticmethod
@@ -86,7 +82,7 @@ class RoleService:
             }
         }
 
-        from app.auth_app.models import BusinessRole, RolePermission
+        
         
         for role_name, role_data in roles_data.items():
             # Crear o actualizar el rol
@@ -128,7 +124,7 @@ class DatabaseService:
         Crea una nueva base de datos SQLite para un business
         """
         if not business or not business.id:
-            print(f"Error: Business inválido o sin ID")
+            print("Error: Business inválido o sin ID")
             return False
             
         # Nombre de la nueva base de datos
@@ -144,8 +140,7 @@ class DatabaseService:
             
         # Para crear una nueva base de datos SQLite, simplemente creamos un archivo vacío
         print(f"Creando archivo para base de datos {db_name}")
-        with open(db_path, 'wb') as f:
-            pass
+        open(db_path, 'wb').close()
             
         # Añadir la nueva base de datos a la configuración en runtime
         if db_name not in settings.DATABASES:
