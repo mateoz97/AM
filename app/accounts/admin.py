@@ -1,4 +1,4 @@
-# Django admin configuration for the auth_app
+# Django admin configuration for the accounts
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
 from django.utils.translation import gettext_lazy as _
@@ -8,9 +8,9 @@ from django.utils import timezone
 from datetime import timedelta
 
 # Models
-from app.auth_app.models.business import Business, BusinessJoinRequest, BusinessInvitation
-from app.auth_app.models.user import CustomUser
-from app.auth_app.models.role import BusinessRole, RolePermission
+from app.accounts.models.business import Business, BusinessJoinRequest, BusinessInvitation
+from app.accounts.models.user import CustomUser
+from app.accounts.models.role import BusinessRole, RolePermission
 
 # Filtro personalizado para negocios por propietario
 class BusinessOwnerFilter(admin.SimpleListFilter):
@@ -40,7 +40,7 @@ class BusinessMemberInline(admin.TabularInline):
     max_num = 15  # Limitar el número de filas mostradas
     can_delete = False  # Prevenir eliminación desde inline
 
-# Añadir a BusinessAdmin en auth_app/admin.py
+# Añadir a BusinessAdmin en accounts/admin.py
 class PendingRequestsInline(admin.TabularInline):
     model = BusinessJoinRequest
     fk_name = 'business'
@@ -118,8 +118,8 @@ class BusinessAdmin(admin.ModelAdmin):
         }
         
         # Para este ejemplo, simplemente renderizamos una plantilla
-        # Deberías crear esta plantilla en app/auth_app/templates/admin/auth_app/business/report.html
-        return render(request, 'admin/auth_app/business/report.html', context)
+        # Deberías crear esta plantilla en app/accounts/templates/admin/accounts/business/report.html
+        return render(request, 'admin/accounts/business/report.html', context)
 
     def activate_businesses(self, request, queryset):
         updated = queryset.update(is_active=True)
@@ -244,7 +244,7 @@ class BusinessJoinRequestAdmin(admin.ModelAdmin):
     )
     
     def approve_requests(self, request, queryset):
-        from app.auth_app.services import BusinessRoleService
+        from app.accounts.services import BusinessRoleService
         
         updated = 0
         for join_request in queryset.filter(status='pending'):

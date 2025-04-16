@@ -8,7 +8,7 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('auth_app', '0002_businessjoinrequest'),
+        ('accounts', '0002_businessjoinrequest'),
     ]
 
     operations = [
@@ -20,9 +20,9 @@ class Migration(migrations.Migration):
                 ('expires_at', models.DateTimeField()),
                 ('used', models.BooleanField(default=False)),
                 ('created_at', models.DateTimeField(auto_now_add=True)),
-                ('business', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='invitations', to='auth_app.business')),
+                ('business', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='invitations', to='accounts.business')),
                 ('created_by', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='created_invitations', to=settings.AUTH_USER_MODEL)),
-                ('role', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, to='auth_app.businessrole')),
+                ('role', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, to='accounts.businessrole')),
             ],
             options={
                 'verbose_name': 'Invitación',

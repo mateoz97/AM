@@ -6,7 +6,7 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('auth_app', '0003_businessinvitation'),
+        ('accounts', '0003_businessinvitation'),
     ]
 
     operations = [

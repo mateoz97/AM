@@ -5,12 +5,12 @@ from rest_framework import serializers
 from django.contrib.auth import authenticate
 
 # Modesls and services
-from app.auth_app.models.business import Business, BusinessJoinRequest, BusinessInvitation
-from app.auth_app.models.user import CustomUser
-from app.auth_app.models.role import RolePermission, BusinessRole
+from app.accounts.models.business import Business, BusinessJoinRequest, BusinessInvitation
+from app.accounts.models.user import CustomUser
+from app.accounts.models.role import RolePermission, BusinessRole
 
 # Services
-from app.auth_app.services.role_service import RoleService  
+from app.accounts.services.role_service import RoleService  
 
 
 class BusinessSerializer(serializers.ModelSerializer):
@@ -25,7 +25,7 @@ class BusinessSerializer(serializers.ModelSerializer):
         RoleService.create_business_roles(business)
         
         # Crear roles personalizados para el nuevo negocio
-        from app.auth_app.services.business_service import BusinessRoleService
+        from app.accounts.services.business_service import BusinessRoleService
         roles = BusinessRoleService.create_default_roles(business)
         
         # Si hay un propietario, asignarle el rol de Administrador
@@ -88,7 +88,7 @@ class UserSerializer(serializers.ModelSerializer):
                     user.business_role = default_role
                 except BusinessRole.DoesNotExist:
                     # Si no existe el rol, crear roles por defecto
-                    from app.auth_app.services import BusinessRoleService
+                    from app.accounts.services import BusinessRoleService
                     roles = BusinessRoleService.create_default_roles(business)
                     user.business_role = roles.get("viewer")
 

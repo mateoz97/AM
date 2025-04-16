@@ -5,11 +5,11 @@ from rest_framework_simplejwt.tokens import RefreshToken
 from rest_framework_simplejwt.views import TokenObtainPairView
 
 # Models    
-from app.auth_app.models.user import CustomUser
+from app.accounts.models.user import CustomUser
 
 
 # Serializers
-from app.auth_app.api.serializers import UserSerializer
+from app.accounts.api.serializers import UserSerializer
 
 # Validators
 import logging

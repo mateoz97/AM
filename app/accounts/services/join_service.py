@@ -1,5 +1,5 @@
 # Models
-from app.auth_app.models.business import BusinessInvitation
+from app.accounts.models.business import BusinessInvitation
 
 # Services
 from .business_service import BusinessRoleService

@@ -7,7 +7,7 @@ from django.utils.translation import gettext_lazy as _
 
 class CustomUser(AbstractUser):  
     business = models.ForeignKey(
-        "auth_app.Business", 
+        "accounts.Business", 
         on_delete=models.SET_NULL, 
         related_name="members",
         null=True, 
@@ -16,7 +16,7 @@ class CustomUser(AbstractUser):
     )
 
     business_role = models.ForeignKey(
-        "auth_app.BusinessRole",
+        "accounts.BusinessRole",
         on_delete=models.SET_NULL,
         related_name="users",
         null=True,
@@ -26,7 +26,7 @@ class CustomUser(AbstractUser):
 
     user_permissions = models.ManyToManyField(
         Permission,
-        related_name="auth_app_users_permissions",
+        related_name="accounts_users_permissions",
         blank=True,
         verbose_name=_("permisos de usuario")
     )

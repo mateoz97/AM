@@ -4,10 +4,10 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 
 # Models 
-from app.auth_app.models.user import CustomUser
+from app.accounts.models.user import CustomUser
 
 # Serializers
-from app.auth_app.api.serializers import UserSerializer
+from app.accounts.api.serializers import UserSerializer
 
 # Validators
 import logging

@@ -37,7 +37,7 @@ class Migration(migrations.Migration):
                 ('date_of_birth', models.DateField(blank=True, null=True, verbose_name='Fecha de nacimiento')),
                 ('nationality', models.CharField(blank=True, max_length=50, null=True, verbose_name='Nacionalidad')),
                 ('groups', models.ManyToManyField(blank=True, help_text='The groups this user belongs to. A user will get all permissions granted to each of their groups.', related_name='user_set', related_query_name='user', to='auth.group', verbose_name='groups')),
-                ('user_permissions', models.ManyToManyField(blank=True, related_name='auth_app_users_permissions', to='auth.permission', verbose_name='permisos de usuario')),
+                ('user_permissions', models.ManyToManyField(blank=True, related_name='accounts_users_permissions', to='auth.permission', verbose_name='permisos de usuario')),
             ],
             options={
                 'verbose_name': 'Usuario',
@@ -75,7 +75,7 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='customuser',
             name='business',
-            field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='members', to='auth_app.business', verbose_name='Negocio'),
+            field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='members', to='accounts.business', verbose_name='Negocio'),
         ),
         migrations.CreateModel(
             name='BusinessRole',
@@ -87,7 +87,7 @@ class Migration(migrations.Migration):
                 ('can_modify', models.BooleanField(default=True, verbose_name='Se puede modificar')),
                 ('created_at', models.DateTimeField(auto_now_add=True, verbose_name='Fecha de creación')),
                 ('updated_at', models.DateTimeField(auto_now=True, verbose_name='Fecha de actualización')),
-                ('business', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='business_roles', to='auth_app.business', verbose_name='Negocio')),
+                ('business', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='business_roles', to='accounts.business', verbose_name='Negocio')),
             ],
             options={
                 'verbose_name': 'Rol de negocio',
@@ -99,7 +99,7 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='customuser',
             name='business_role',
-            field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='users', to='auth_app.businessrole', verbose_name='Rol de negocio'),
+            field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='users', to='accounts.businessrole', verbose_name='Rol de negocio'),
         ),
         migrations.CreateModel(
             name='RolePermission',
@@ -118,7 +118,7 @@ class Migration(migrations.Migration):
                 ('can_export_data', models.BooleanField(default=False, verbose_name='Puede exportar datos')),
                 ('created_at', models.DateTimeField(auto_now_add=True, verbose_name='Fecha de creación')),
                 ('updated_at', models.DateTimeField(auto_now=True, verbose_name='Fecha de actualización')),
-                ('business_role', models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, related_name='role_permissions', to='auth_app.businessrole', verbose_name='Rol')),
+                ('business_role', models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, related_name='role_permissions', to='accounts.businessrole', verbose_name='Rol')),
             ],
             options={
                 'verbose_name': 'Permiso de rol',

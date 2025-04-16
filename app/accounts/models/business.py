@@ -6,7 +6,7 @@ from django.utils import timezone
 class Business(models.Model):
     name = models.CharField(_("Nombre"), max_length=255, unique=True)
     owner = models.ForeignKey(
-        "auth_app.CustomUser",
+        "accounts.CustomUser",
         on_delete=models.SET_NULL,
         related_name="owned_businesses",
         null=True,
@@ -70,7 +70,7 @@ class Business(models.Model):
         # Actualizar el nuevo propietario si existe
         if self.owner:
             # Buscar el rol de administrador para este negocio
-            from app.auth_app.models import BusinessRole
+            from app.accounts.models import BusinessRole
             admin_role = BusinessRole.objects.filter(
                 business=self, 
                 name__in=['Admin', 'Administrador']
@@ -78,7 +78,7 @@ class Business(models.Model):
             
             # Si no existe el rol de administrador, crearlo
             if not admin_role:
-                from app.auth_app.services import BusinessRoleService
+                from app.accounts.services import BusinessRoleService
                 roles = BusinessRoleService.create_default_roles(self)
                 admin_role = roles.get("Admin") or roles.get("Administrador")
             
@@ -90,7 +90,7 @@ class Business(models.Model):
         
         # Código existente para crear base de datos
         if not self._state.adding:  # Esta condición es True cuando el objeto acaba de ser guardado
-            from app.auth_app.services import DatabaseService
+            from app.accounts.services import DatabaseService
             DatabaseService.create_business_database(self)
     
     
@@ -133,10 +133,9 @@ class Business(models.Model):
         self.save(update_fields=['is_active'])
         return True
 
-    
 class BusinessJoinRequest(models.Model):
-    user = models.ForeignKey('auth_app.CustomUser', on_delete=models.CASCADE, related_name='join_requests')
-    business = models.ForeignKey('auth_app.Business', on_delete=models.CASCADE, related_name='join_requests')
+    user = models.ForeignKey('accounts.CustomUser', on_delete=models.CASCADE, related_name='join_requests')
+    business = models.ForeignKey('accounts.Business', on_delete=models.CASCADE, related_name='join_requests')
     status = models.CharField(max_length=20, choices=[
         ('pending', 'Pendiente'),
         ('approved', 'Aprobada'),
@@ -150,11 +149,11 @@ class BusinessJoinRequest(models.Model):
         unique_together = ('user', 'business')
 
 class BusinessInvitation(models.Model):
-    business = models.ForeignKey('auth_app.Business', on_delete=models.CASCADE, related_name='invitations')
-    created_by = models.ForeignKey('auth_app.CustomUser', on_delete=models.CASCADE, related_name='created_invitations')
+    business = models.ForeignKey('accounts.Business', on_delete=models.CASCADE, related_name='invitations')
+    created_by = models.ForeignKey('accounts.CustomUser', on_delete=models.CASCADE, related_name='created_invitations')
     token = models.CharField(max_length=64, unique=True)
     expires_at = models.DateTimeField()
-    role = models.ForeignKey('auth_app.BusinessRole', on_delete=models.SET_NULL, null=True, blank=True)
+    role = models.ForeignKey('accounts.BusinessRole', on_delete=models.SET_NULL, null=True, blank=True)
     used = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True)
     

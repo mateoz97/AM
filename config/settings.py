@@ -39,7 +39,7 @@ INSTALLED_APPS = [
     'rest_framework_simplejwt',
     'corsheaders',
     'django_filters',
-    'app.auth_app',
+    'app.accounts',
     'app.core',
 ]
 
@@ -184,7 +184,7 @@ SIMPLE_JWT = {
 }
 
 
-AUTH_USER_MODEL = 'auth_app.CustomUser'
+AUTH_USER_MODEL = 'accounts.CustomUser'
 
 # En config/settings.py
 
@@ -227,7 +227,7 @@ LOGGING = {
             'level': 'INFO',
             'propagate': True,
         },
-        'app.auth_app': {
+        'app.accounts': {
             'handlers': ['console', 'auth_file'],
             'level': 'INFO',
             'propagate': False,

@@ -6,10 +6,10 @@ from rest_framework.routers import DefaultRouter
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 
 # Viewsas imports
-from app.auth_app.api.views.auth_views import RegisterUserView, CustomLoginView
-from app.auth_app.api.views.user_views import UserInfoView, LeaveBusinessView
-from app.auth_app.api.views.role_views import BusinessRoleViewSet, AssignRoleToUserView, RolePermissionUpdateView, UserPermissionsView
-from app.auth_app.api.views.request_views import (JoinBusinessView, JoinBusinessRequestView, 
+from app.accounts.api.views.auth_views import RegisterUserView, CustomLoginView
+from app.accounts.api.views.user_views import UserInfoView, LeaveBusinessView
+from app.accounts.api.views.role_views import BusinessRoleViewSet, AssignRoleToUserView, RolePermissionUpdateView, UserPermissionsView
+from app.accounts.api.views.request_views import (JoinBusinessView, JoinBusinessRequestView, 
                                                   BusinessJoinRequestManagementView, BusinessInvitationCreateView, 
                                                   BusinessInvitationUseView, UserBusinessInvitationsListView)
 

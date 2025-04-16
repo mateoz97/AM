@@ -1,5 +1,5 @@
 # Models
-from app.auth_app.models.role import BusinessRole, RolePermission
+from app.accounts.models.role import BusinessRole, RolePermission
 
 # Management
 import logging

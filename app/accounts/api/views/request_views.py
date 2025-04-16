@@ -5,11 +5,11 @@ from rest_framework.views import APIView
 from rest_framework import serializers
 
 # Models    
-from app.auth_app.models.business import Business, BusinessJoinRequest, BusinessInvitation
-from app.auth_app.models.role import BusinessRole
+from app.accounts.models.business import Business, BusinessJoinRequest, BusinessInvitation
+from app.accounts.models.role import BusinessRole
 
 # Serializers
-from app.auth_app.api.serializers  import BusinessJoinRequestSerializer
+from app.accounts.api.serializers  import BusinessJoinRequestSerializer
 
 # Validators
 from django.utils import timezone
@@ -27,7 +27,7 @@ class JoinBusinessView(APIView):
             business = Business.objects.get(id=business_id)
             
             # Obtener rol predeterminado (Mesero o Visualizador)
-            from app.auth_app.services.role_service import BusinessRoleService
+            from app.accounts.services.role_service import BusinessRoleService
             roles = BusinessRoleService.get_roles_for_business(business)
             default_role = roles.filter(name="viewer").first() or roles.filter(is_default=True).first()
             
@@ -107,7 +107,7 @@ class JoinBusinessRequestView(APIView):
             )
             
             # Serializar para la respuesta
-            from app.auth_app.api.serializers import BusinessJoinRequestSerializer
+            from app.accounts.api.serializers import BusinessJoinRequestSerializer
             serializer = BusinessJoinRequestSerializer(join_request)
             
             # Aquí podríamos enviar una notificación al propietario del negocio
@@ -129,7 +129,7 @@ class JoinBusinessRequestView(APIView):
             user=request.user
         ).order_by('-created_at')
         
-        from app.auth_app.services.join_service import BusinessJoinRequestSerializer
+        from app.accounts.services.join_service import BusinessJoinRequestSerializer
         serializer = BusinessJoinRequestSerializer(requests, many=True)
         
         return Response(serializer.data)
@@ -182,7 +182,7 @@ class BusinessJoinRequestManagementView(APIView):
             )
             
             # Usar el servicio para procesar la solicitud
-            from app.auth_app.services import BusinessJoinService
+            from app.accounts.services import BusinessJoinService
             success = BusinessJoinService.process_join_request(
                 request_id=request_id,
                 approve=(action == 'approve'),
@@ -218,7 +218,7 @@ class BusinessInvitationCreateView(APIView):
                 )
                 
             # Usar el servicio para crear la invitación
-            from app.auth_app.services.join_service import BusinessJoinService
+            from app.accounts.services.join_service import BusinessJoinService
             invitation = BusinessJoinService.create_invitation(
                 business=request.user.business,
                 created_by=request.user,
@@ -230,7 +230,7 @@ class BusinessInvitationCreateView(APIView):
                 return Response({"error": "Error al crear invitación"}, status=500)
             
             # Serializar la respuesta
-            from app.auth_app.api.serializers import BusinessInvitationSerializer
+            from app.accounts.api.serializers import BusinessInvitationSerializer
             serializer = BusinessInvitationSerializer(invitation)
             
             return Response({
@@ -261,7 +261,7 @@ class BusinessInvitationUseView(APIView):
             )
         
         # Usar el servicio para procesar la invitación
-        from app.auth_app.services.join_service import BusinessJoinService
+        from app.accounts.services.join_service import BusinessJoinService
         result = BusinessJoinService.use_invitation(request.user, token)
         
         if result['success']:
@@ -290,7 +290,7 @@ class UserBusinessInvitationsListView(APIView):
             expires_at__gt=timezone.now()
         )
         
-        from app.auth_app.api.serializers import BusinessInvitationSerializer
+        from app.accounts.api.serializers import BusinessInvitationSerializer
         serializer = BusinessInvitationSerializer(invitations, many=True)
         
         return Response(serializer.data)

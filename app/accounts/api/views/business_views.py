@@ -2,10 +2,10 @@
 from rest_framework import viewsets, permissions
 
 # Models    
-from app.auth_app.models.business import Business
+from app.accounts.models.business import Business
 
 # Serializers
-from app.auth_app.api.serializers import BusinessSerializer
+from app.accounts.api.serializers import BusinessSerializer
 
 # Validators
 import logging
@@ -22,7 +22,7 @@ class BusinessViewSet(viewsets.ModelViewSet):
         self.request.user.business = business
         
         # Crear roles para el negocio
-        from app.auth_app.services.role_service import BusinessRoleService
+        from app.accounts.services.role_service import BusinessRoleService
         roles = BusinessRoleService.create_default_roles(business)
         
         # Asignar rol de administrador al creador
@@ -33,7 +33,7 @@ class BusinessViewSet(viewsets.ModelViewSet):
         
         # Crear base de datos para el negocio - Asegurarse que esto se ejecute
         print(f"Creando base de datos para negocio: {business.name} ({business.id})")
-        from app.auth_app.services.business_service import DatabaseService
+        from app.accounts.services.business_service import DatabaseService
         success = DatabaseService.create_business_database(business)
         
         if not success:
