@@ -23,14 +23,19 @@ class BusinessRouter:
         # Todos los modelos de accounts van a default
         if app_label == 'accounts' and model_name in ['business', 'customuser', 'businessrole', 'rolepermission']:
             return 'default'
-            
-        # Para el resto, consultar el business desde el contexto
+        
+        # MODIFICAR ESTA PARTE - Verificar que la conexión exista antes de intentar usarla
         from config.middleware import get_current_business_id
+        from django.conf import settings
+        
         business_id = get_current_business_id()
         if business_id:
-            return f'business_{business_id}'
-            
-        # Si no hay business en el contexto, usar default
+            db_name = f'business_{business_id}'
+            # Verificar si la base de datos existe en la configuración
+            if db_name in settings.DATABASES:
+                return db_name
+        
+        # Si no hay business en el contexto o la bd no existe, usar default
         return 'default'
     
     def db_for_write(self, model, **hints):
@@ -58,7 +63,7 @@ class BusinessRouter:
             return db == 'default'
             
         # Modelos de accounts migran a default
-        if app_label == 'accounts' and model_name in ['business', 'customuser', 'businessrole', 'rolepermission']:
+        if app_label == 'business' and model_name in ['business', 'customuser', 'businessrole', 'rolepermission']:
             return db == 'default'
             
         # En etapa inicial, permitimos migrar todos los demás modelos a business_1

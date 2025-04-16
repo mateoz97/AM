@@ -20,15 +20,16 @@ class BusinessMiddleware:
         # Limpiar al inicio
         set_current_business_id(None)
         
-        # Obtener el business_id del usuario autenticado
-        if request.user.is_authenticated and hasattr(request.user, 'business'):
-            if request.user.business:
-                business_id = request.user.business.id
-                set_current_business_id(business_id)
-        
-        response = self.get_response(request)
-        
-        # Limpiar al final
-        set_current_business_id(None)
-        
-        return response
+        try:
+            # Obtener el business_id del usuario autenticado
+            if request.user.is_authenticated and hasattr(request.user, 'business'):
+                if request.user.business:
+                    business_id = request.user.business.id
+                    set_current_business_id(business_id)
+            
+            response = self.get_response(request)
+            
+            return response
+        finally:
+            # Limpiar al final (asegurarse de que siempre se ejecute)
+            set_current_business_id(None)
