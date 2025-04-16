@@ -56,6 +56,7 @@ class Business(models.Model):
         # Detectar cambio de propietario
         owner_changed = False
         old_owner = None
+        is_new = self.pk is None
         if self.pk is not None:
             try:
                 old_instance = Business.objects.get(pk=self.pk)
@@ -106,6 +107,16 @@ class Business(models.Model):
             # Si tiene otro negocio y este no tiene prioridad, agregarlo como co-propietario
             elif has_other_business:
                 self.co_owners.add(self.owner)
+            
+            if is_new:
+                try:
+                    from app.business.services.business_service import DatabaseService
+                    print(f"Intentando crear base de datos para negocio: {self.name} ({self.id})")
+                    success = DatabaseService.create_business_database(self)
+                    if not success:
+                        print(f"Advertencia: No se pudo crear la base de datos para el negocio {self.name}")
+                except Exception as e:
+                    print(f"Error al crear base de datos para negocio {self.name}: {str(e)}")
     
     def delete(self, using=None, keep_parents=False):
         """

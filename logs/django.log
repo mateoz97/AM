@@ -841,3 +841,45 @@ INFO 2025-04-16 15:43:14,601 basehttp "GET /admin/business/businessinvitation/ H
 INFO 2025-04-16 15:43:14,687 basehttp "GET /admin/jsi18n/ HTTP/1.1" 200 8691
 INFO 2025-04-16 15:43:16,373 basehttp "GET /admin/business/businessjoinrequest/ HTTP/1.1" 200 13347
 INFO 2025-04-16 15:43:16,427 basehttp "GET /admin/jsi18n/ HTTP/1.1" 200 8691
+INFO 2025-04-16 15:44:38,191 autoreload Watching for file changes with StatReloader
+WARNING 2025-04-16 15:44:40,019 log Not Found: /
+WARNING 2025-04-16 15:44:40,020 basehttp "GET / HTTP/1.1" 404 2622
+WARNING 2025-04-16 15:44:44,068 log Not Found: /api/auth/
+WARNING 2025-04-16 15:44:44,069 basehttp "GET /api/auth/ HTTP/1.1" 404 2667
+INFO 2025-04-16 15:44:53,135 basehttp "GET /admin/ HTTP/1.1" 200 13907
+INFO 2025-04-16 15:44:54,846 basehttp "GET /admin/business/business/ HTTP/1.1" 200 17699
+INFO 2025-04-16 15:44:54,937 basehttp "GET /admin/jsi18n/ HTTP/1.1" 200 8691
+INFO 2025-04-16 15:44:56,994 basehttp "GET /admin/business/business/add/ HTTP/1.1" 200 37605
+INFO 2025-04-16 15:44:57,089 basehttp "GET /admin/jsi18n/ HTTP/1.1" 200 8691
+INFO 2025-04-16 15:45:08,154 basehttp "POST /admin/business/business/add/ HTTP/1.1" 302 0
+INFO 2025-04-16 15:45:08,269 basehttp "GET /admin/business/business/ HTTP/1.1" 200 18536
+INFO 2025-04-16 15:45:08,413 basehttp "GET /admin/jsi18n/ HTTP/1.1" 200 8691
+INFO 2025-04-16 15:45:11,472 basehttp "GET /admin/roles/businessrole/ HTTP/1.1" 200 18685
+INFO 2025-04-16 15:45:11,538 basehttp "GET /admin/jsi18n/ HTTP/1.1" 200 8691
+INFO 2025-04-16 15:47:07,226 autoreload Watching for file changes with StatReloader
+INFO 2025-04-16 15:47:10,836 basehttp "GET /admin/roles/businessrole/add/ HTTP/1.1" 200 33008
+INFO 2025-04-16 15:47:10,934 basehttp "GET /admin/jsi18n/ HTTP/1.1" 200 8691
+INFO 2025-04-16 15:47:16,039 basehttp "GET /admin/business/business/add/ HTTP/1.1" 200 37802
+INFO 2025-04-16 15:47:16,112 basehttp "GET /admin/jsi18n/ HTTP/1.1" 200 8691
+INFO 2025-04-16 15:47:29,570 basehttp "POST /admin/business/business/add/ HTTP/1.1" 302 0
+INFO 2025-04-16 15:47:29,785 basehttp "GET /admin/business/business/ HTTP/1.1" 200 19125
+INFO 2025-04-16 15:47:29,929 basehttp "GET /admin/jsi18n/ HTTP/1.1" 200 8691
+INFO 2025-04-16 15:51:37,794 autoreload /home/teo/Documents/ADB/app/business/models/business.py changed, reloading.
+INFO 2025-04-16 15:51:38,788 autoreload Watching for file changes with StatReloader
+WARNING 2025-04-16 15:51:44,802 log Not Found: /
+WARNING 2025-04-16 15:51:44,803 basehttp "GET / HTTP/1.1" 404 2622
+INFO 2025-04-16 15:51:50,044 basehttp "GET /admin/login/?next=/admin HTTP/1.1" 302 0
+INFO 2025-04-16 15:51:50,142 basehttp "GET /admin/ HTTP/1.1" 200 13976
+INFO 2025-04-16 15:51:53,287 basehttp "GET /admin/business/business/ HTTP/1.1" 200 18911
+INFO 2025-04-16 15:51:53,383 basehttp "GET /admin/jsi18n/ HTTP/1.1" 200 8691
+INFO 2025-04-16 15:51:54,879 basehttp "GET /admin/business/business/add/ HTTP/1.1" 200 37975
+INFO 2025-04-16 15:51:54,966 basehttp "GET /admin/jsi18n/ HTTP/1.1" 200 8691
+INFO 2025-04-16 15:52:04,030 basehttp "POST /admin/business/business/add/ HTTP/1.1" 302 0
+INFO 2025-04-16 15:52:04,169 basehttp "GET /admin/business/business/ HTTP/1.1" 200 19732
+INFO 2025-04-16 15:52:04,286 basehttp "GET /admin/jsi18n/ HTTP/1.1" 200 8691
+INFO 2025-04-16 15:52:23,931 basehttp "POST /admin/business/business/ HTTP/1.1" 200 13840
+INFO 2025-04-16 15:52:25,349 basehttp "POST /admin/business/business/ HTTP/1.1" 302 0
+INFO 2025-04-16 15:52:25,391 basehttp "GET /admin/business/business/ HTTP/1.1" 200 13177
+INFO 2025-04-16 15:52:25,493 basehttp "GET /admin/jsi18n/ HTTP/1.1" 200 8691
+INFO 2025-04-16 15:52:30,362 basehttp "GET /admin/roles/businessrole/ HTTP/1.1" 200 12305
+INFO 2025-04-16 15:52:30,432 basehttp "GET /admin/jsi18n/ HTTP/1.1" 200 8691
