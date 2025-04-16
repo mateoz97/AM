@@ -1,56 +1,21 @@
 # API views for managing user authentication, business roles, and permissions.
-from rest_framework import permissions, status
+from rest_framework import permissions
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework import serializers
 
 # Models    
-from app.accounts.models.business import Business, BusinessJoinRequest, BusinessInvitation
-from app.accounts.models.role import BusinessRole
+from app.business.models.business import Business, BusinessJoinRequest, BusinessInvitation
+from app.roles.models.role import BusinessRole
 
 # Serializers
-from app.accounts.api.serializers  import BusinessJoinRequestSerializer
+from app.business.api.serializers  import BusinessJoinRequestSerializer
 
 # Validators
 from django.utils import timezone
 import logging
 
 logger = logging.getLogger(__name__)
-
-   
-class JoinBusinessView(APIView):
-    permission_classes = [permissions.IsAuthenticated]
-
-    def patch(self, request):
-        business_id = request.data.get("business")
-        try:
-            business = Business.objects.get(id=business_id)
-            
-            # Obtener rol predeterminado (Mesero o Visualizador)
-            from app.accounts.services.role_service import BusinessRoleService
-            roles = BusinessRoleService.get_roles_for_business(business)
-            default_role = roles.filter(name="viewer").first() or roles.filter(is_default=True).first()
-            
-            if not default_role:
-                # Si no hay roles, crearlos
-                roles_dict = BusinessRoleService.create_default_roles(business)
-                default_role = roles_dict.get("viewer")
-
-            request.user.business = business
-            request.user.business_role = default_role
-            request.user.save()
-
-            return Response({
-                "message": "Usuario unido al negocio exitosamente.", 
-                "role": default_role.name
-            }, status=200)
-        except Business.DoesNotExist:
-            return Response({"error": "Negocio no encontrado."}, status=404)
-        except Exception as e:
-            return Response({"error": f"Error: {str(e)}"}, status=400)
-          
-
-        return Response({"error": "Invalid credentials"}, status=status.HTTP_401_UNAUTHORIZED)
 
 
 class JoinBusinessRequestView(APIView):
@@ -129,7 +94,7 @@ class JoinBusinessRequestView(APIView):
             user=request.user
         ).order_by('-created_at')
         
-        from app.accounts.services.join_service import BusinessJoinRequestSerializer
+        from app.business.services.join_service import BusinessJoinRequestSerializer
         serializer = BusinessJoinRequestSerializer(requests, many=True)
         
         return Response(serializer.data)
@@ -218,7 +183,7 @@ class BusinessInvitationCreateView(APIView):
                 )
                 
             # Usar el servicio para crear la invitación
-            from app.accounts.services.join_service import BusinessJoinService
+            from app.business.services.join_service import BusinessJoinService
             invitation = BusinessJoinService.create_invitation(
                 business=request.user.business,
                 created_by=request.user,
@@ -261,7 +226,7 @@ class BusinessInvitationUseView(APIView):
             )
         
         # Usar el servicio para procesar la invitación
-        from app.accounts.services.join_service import BusinessJoinService
+        from app.business.services.join_service import BusinessJoinService
         result = BusinessJoinService.use_invitation(request.user, token)
         
         if result['success']:

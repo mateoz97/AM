@@ -52,3 +52,11 @@ class CustomLoginView(TokenObtainPairView):
                 "refresh": str(refresh),
                 "username": user.username
             })
+
+class UserInfoView(generics.RetrieveAPIView):
+    queryset = CustomUser.objects.all()
+    serializer_class = UserSerializer
+    permission_classes = [permissions.IsAuthenticated]
+
+    def get_object(self):
+        return self.request.user

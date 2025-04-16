@@ -134,3 +134,62 @@ INFO 2025-04-16 11:57:21,571 basehttp "GET /admin/accounts/businessinvitation/ H
 INFO 2025-04-16 11:57:21,636 basehttp "GET /admin/jsi18n/ HTTP/1.1" 200 8691
 INFO 2025-04-16 11:57:22,441 basehttp "GET /admin/accounts/businessjoinrequest/ HTTP/1.1" 200 11940
 INFO 2025-04-16 11:57:22,538 basehttp "GET /admin/jsi18n/ HTTP/1.1" 200 8691
+INFO 2025-04-16 13:05:59,674 autoreload Watching for file changes with StatReloader
+INFO 2025-04-16 13:47:04,297 autoreload Watching for file changes with StatReloader
+WARNING 2025-04-16 13:47:16,213 log Not Found: /
+WARNING 2025-04-16 13:47:16,214 basehttp "GET / HTTP/1.1" 404 2622
+INFO 2025-04-16 14:05:56,726 autoreload Watching for file changes with StatReloader
+WARNING 2025-04-16 14:05:58,875 log Not Found: /
+WARNING 2025-04-16 14:05:58,876 basehttp "GET / HTTP/1.1" 404 2622
+INFO 2025-04-16 14:06:06,558 basehttp "GET /admin/ HTTP/1.1" 302 0
+INFO 2025-04-16 14:06:06,639 basehttp "GET /admin/login/?next=/admin/ HTTP/1.1" 200 4249
+INFO 2025-04-16 14:06:12,151 basehttp "POST /admin/login/?next=/admin/ HTTP/1.1" 302 0
+INFO 2025-04-16 14:06:12,196 basehttp "GET /admin/ HTTP/1.1" 200 10422
+INFO 2025-04-16 14:06:37,154 basehttp "GET /admin/business/business/ HTTP/1.1" 200 13027
+INFO 2025-04-16 14:06:37,226 basehttp "GET /admin/jsi18n/ HTTP/1.1" 200 8691
+INFO 2025-04-16 14:06:38,621 basehttp "GET /admin/business/business/add/ HTTP/1.1" 200 31972
+INFO 2025-04-16 14:06:38,737 basehttp "GET /static/admin/js/prepopulate_init.js HTTP/1.1" 200 586
+INFO 2025-04-16 14:06:38,742 basehttp "GET /static/admin/js/calendar.js HTTP/1.1" 200 9141
+INFO 2025-04-16 14:06:38,743 basehttp "GET /admin/jsi18n/ HTTP/1.1" 200 8691
+INFO 2025-04-16 14:06:38,743 basehttp "GET /static/admin/css/forms.css HTTP/1.1" 200 8525
+INFO 2025-04-16 14:06:38,745 basehttp "GET /static/admin/js/inlines.js HTTP/1.1" 200 15628
+INFO 2025-04-16 14:06:38,746 basehttp "GET /static/admin/js/admin/DateTimeShortcuts.js HTTP/1.1" 200 19319
+INFO 2025-04-16 14:06:38,761 basehttp "GET /static/admin/img/icon-deletelink.svg HTTP/1.1" 304 0
+INFO 2025-04-16 14:06:38,762 basehttp "GET /static/admin/css/widgets.css HTTP/1.1" 200 11991
+INFO 2025-04-16 14:06:38,813 basehttp "GET /static/admin/js/change_form.js HTTP/1.1" 200 606
+ERROR 2025-04-16 14:06:48,381 log Internal Server Error: /admin/business/business/add/
+Traceback (most recent call last):
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.10/site-packages/django/contrib/admin/options.py", line 719, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.10/site-packages/django/utils/decorators.py", line 192, in _view_wrapper
+    result = _process_exception(request, e)
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.10/site-packages/django/utils/decorators.py", line 190, in _view_wrapper
+    response = view_func(request, *args, **kwargs)
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.10/site-packages/django/views/decorators/cache.py", line 80, in _view_wrapper
+    response = view_func(request, *args, **kwargs)
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.10/site-packages/django/contrib/admin/sites.py", line 246, in inner
+    return view(request, *args, **kwargs)
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.10/site-packages/django/contrib/admin/options.py", line 1984, in add_view
+    return self.changeform_view(request, None, form_url, extra_context)
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.10/site-packages/django/utils/decorators.py", line 48, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.10/site-packages/django/utils/decorators.py", line 192, in _view_wrapper
+    result = _process_exception(request, e)
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.10/site-packages/django/utils/decorators.py", line 190, in _view_wrapper
+    response = view_func(request, *args, **kwargs)
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.10/site-packages/django/contrib/admin/options.py", line 1843, in changeform_view
+    return self._changeform_view(request, object_id, form_url, extra_context)
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.10/site-packages/django/contrib/admin/options.py", line 1894, in _changeform_view
+    self.save_model(request, new_object, form, not add)
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.10/site-packages/django/contrib/admin/options.py", line 1314, in save_model
+    obj.save()
+  File "/home/teo/Documents/ADB/app/business/models/business.py", line 82, in save
+    from app.accounts.services import BusinessRoleService
+ImportError: cannot import name 'BusinessRoleService' from 'app.accounts.services' (/home/teo/Documents/ADB/app/accounts/services/__init__.py)
+ERROR 2025-04-16 14:06:48,386 basehttp "POST /admin/business/business/add/ HTTP/1.1" 500 143195
+INFO 2025-04-16 14:07:36,503 autoreload /home/teo/Documents/ADB/config/middleware.py changed, reloading.
+INFO 2025-04-16 14:07:37,541 autoreload Watching for file changes with StatReloader

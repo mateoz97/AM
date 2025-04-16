@@ -20,8 +20,8 @@ class BusinessRouter:
         if app_label in self.django_core_apps:
             return 'default'
         
-        # Todos los modelos de auth_app van a default
-        if app_label == 'auth_app' and model_name in ['business', 'customuser', 'businessrole', 'rolepermission']:
+        # Todos los modelos de accounts van a default
+        if app_label == 'accounts' and model_name in ['business', 'customuser', 'businessrole', 'rolepermission']:
             return 'default'
             
         # Para el resto, consultar el business desde el contexto
@@ -44,8 +44,8 @@ class BusinessRouter:
             obj2._meta.app_label in self.django_core_apps):
             return True
             
-        # Permitir relaciones entre modelos de auth_app
-        if obj1._meta.app_label == 'auth_app' and obj2._meta.app_label == 'auth_app':
+        # Permitir relaciones entre modelos de accounts
+        if obj1._meta.app_label == 'accounts' and obj2._meta.app_label == 'accounts':
             return True
             
         # Por ahora, permitir todas las relaciones durante desarrollo
@@ -57,8 +57,8 @@ class BusinessRouter:
         if app_label in self.django_core_apps:
             return db == 'default'
             
-        # Modelos de auth_app migran a default
-        if app_label == 'auth_app' and model_name in ['business', 'customuser', 'businessrole', 'rolepermission']:
+        # Modelos de accounts migran a default
+        if app_label == 'accounts' and model_name in ['business', 'customuser', 'businessrole', 'rolepermission']:
             return db == 'default'
             
         # En etapa inicial, permitimos migrar todos los demás modelos a business_1

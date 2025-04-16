@@ -1,7 +1,6 @@
 # Django
 from django.db import models
 from django.utils.translation import gettext_lazy as _
-from .business import Business
 
         
 class BusinessRole(models.Model):
@@ -10,10 +9,11 @@ class BusinessRole(models.Model):
     Cada negocio puede tener múltiples roles con diferentes permisos.
     """
     business = models.ForeignKey(
-        Business, 
+        'business.Business', 
         on_delete=models.CASCADE, 
         related_name='business_roles',
-        verbose_name=_("Negocio")
+        verbose_name=_("Negocio"),
+        swappable=True
     )
     name = models.CharField(_("Nombre del rol"), max_length=100)
     description = models.TextField(_("Descripción"), blank=True, null=True)
@@ -104,7 +104,7 @@ class RolePermission(models.Model):
     """
     
     business_role = models.OneToOneField(
-        BusinessRole, 
+        'roles.BusinessRole', 
         on_delete=models.CASCADE, 
         related_name='role_permissions',
         verbose_name=_("Rol")

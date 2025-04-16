@@ -1,5 +1,5 @@
 # Models
-from app.accounts.models.role import BusinessRole
+from app.roles.models.role import BusinessRole
 # Management
 import logging
 import os

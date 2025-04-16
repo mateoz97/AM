@@ -5,57 +5,11 @@ from rest_framework import serializers
 from django.contrib.auth import authenticate
 
 # Modesls and services
-from app.accounts.models.business import Business, BusinessJoinRequest, BusinessInvitation
+from app.business.models.business import Business
 from app.accounts.models.user import CustomUser
-from app.accounts.models.role import RolePermission, BusinessRole
-
-# Services
-from app.accounts.services.role_service import RoleService  
+from app.roles.models.role import BusinessRole
 
 
-class BusinessSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Business
-        fields = "__all__"
-
-    def create(self, validated_data):
-        business = Business.objects.create(**validated_data)
-        
-        # Mantener compatibilidad con el sistema anterior
-        RoleService.create_business_roles(business)
-        
-        # Crear roles personalizados para el nuevo negocio
-        from app.accounts.services.business_service import BusinessRoleService
-        roles = BusinessRoleService.create_default_roles(business)
-        
-        # Si hay un propietario, asignarle el rol de Administrador
-        if business.owner:
-            admin_role = roles.get("Admin")
-            if admin_role:
-                business.owner.business_role = admin_role
-                business.owner.save(update_fields=['business_role'])
-        
-        return business
-    
-    def get_queryset(self):
-        return Business.objects.filter(is_active=True)
-    
-    def delete(self, using=None, keep_parents=False):
-        """Sobrescribe el método delete para hacer un borrado lógico"""
-        self.is_active = False
-        self.save()
-        return (1, {})
-    
-    def deactivate(self):
-        """Desactiva el negocio sin eliminarlo"""
-        self.is_active = False
-        self.save()
-    
-    def reactivate(self):
-        """Reactiva un negocio previamente desactivado"""
-        self.is_active = True
-        self.save()
-    
 class UserSerializer(serializers.ModelSerializer):
     business_role = serializers.PrimaryKeyRelatedField(
         queryset=BusinessRole.objects.all(), required=False, allow_null=True
@@ -179,95 +133,3 @@ class LoginSerializer(serializers.Serializer):
             raise serializers.ValidationError("Credenciales inválidas")
         
         return {"user": user}
-
-class RolePermissionSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = RolePermission
-        exclude = ['id', 'business_role', 'created_at', 'updated_at']
-
-class BusinessRoleSerializer(serializers.ModelSerializer):
-    role_permissions = RolePermissionSerializer(read_only=True)
-    
-    class Meta:
-        model = BusinessRole
-        fields = ['id', 'name', 'description', 'is_default', 'can_modify', 'created_at', 'role_permissions']
-        read_only_fields = ['is_default', 'can_modify', 'created_at']
-
-    def create(self, validated_data):
-        business = self.context.get('business')
-        if not business:
-            raise serializers.ValidationError("Se requiere un negocio para crear un rol")
-            
-        role = BusinessRole.objects.create(
-            business=business,
-            **validated_data
-        )
-        return role
-
-class BusinessRoleUpdateSerializer(serializers.ModelSerializer):
-    role_permissions = RolePermissionSerializer()
-    
-    class Meta:
-        model = BusinessRole
-        fields = ['name', 'description', 'role_permissions']
-        
-    def validate(self, data):
-        instance = getattr(self, 'instance', None)
-        if instance and not instance.can_modify:
-            raise serializers.ValidationError("Este rol no puede ser modificado")
-        return data
-        
-    def update(self, instance, validated_data):
-        permissions_data = validated_data.pop('role_permissions', {})
-        
-        # Actualizar campos básicos del rol
-        instance.name = validated_data.get('name', instance.name)
-        instance.description = validated_data.get('description', instance.description)
-        instance.save()
-        
-        # Actualizar permisos si se proporcionaron
-        if permissions_data:
-            permissions = instance.role_permissions
-            for attr, value in permissions_data.items():
-                setattr(permissions, attr, value)
-            permissions.save()
-            
-        return instance
-  
-    
-class BusinessJoinRequestSerializer(serializers.ModelSerializer):
-    user_name = serializers.SerializerMethodField()
-    business_name = serializers.SerializerMethodField()
-    
-    class Meta:
-        model = BusinessJoinRequest
-        fields = ['id', 'user', 'user_name', 'business', 'business_name', 'status', 'message', 'created_at', 'updated_at']
-        read_only_fields = ['id', 'user', 'business', 'created_at', 'updated_at']
-        
-    def get_user_name(self, obj):
-        return obj.user.get_full_name() or obj.user.username
-        
-    def get_business_name(self, obj):
-        return obj.business.name
-    
-    
-class BusinessInvitationSerializer(serializers.ModelSerializer):
-    business_name = serializers.SerializerMethodField()
-    role_name = serializers.SerializerMethodField()
-    is_valid = serializers.SerializerMethodField()
-    
-    class Meta:
-        model = BusinessInvitation
-        fields = ['id', 'business', 'business_name', 'token', 'expires_at', 'role', 'role_name', 'used', 'created_at', 'is_valid']
-        read_only_fields = ['id', 'business', 'token', 'created_at']
-        
-    def get_business_name(self, obj):
-        return obj.business.name
-    
-    def get_role_name(self, obj):
-        if obj.role:
-            return obj.role.name
-        return None
-    
-    def get_is_valid(self, obj):
-        return obj.is_valid()

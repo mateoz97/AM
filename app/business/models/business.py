@@ -5,8 +5,9 @@ from django.utils import timezone
 
 class Business(models.Model):
     name = models.CharField(_("Nombre"), max_length=255, unique=True)
+    from django.conf import settings
     owner = models.ForeignKey(
-        "accounts.CustomUser",
+        settings.AUTH_USER_MODEL,
         on_delete=models.SET_NULL,
         related_name="owned_businesses",
         null=True,
@@ -135,7 +136,7 @@ class Business(models.Model):
 
 class BusinessJoinRequest(models.Model):
     user = models.ForeignKey('accounts.CustomUser', on_delete=models.CASCADE, related_name='join_requests')
-    business = models.ForeignKey('accounts.Business', on_delete=models.CASCADE, related_name='join_requests')
+    business = models.ForeignKey('business.Business', on_delete=models.CASCADE, related_name='join_requests')
     status = models.CharField(max_length=20, choices=[
         ('pending', 'Pendiente'),
         ('approved', 'Aprobada'),
@@ -149,11 +150,11 @@ class BusinessJoinRequest(models.Model):
         unique_together = ('user', 'business')
 
 class BusinessInvitation(models.Model):
-    business = models.ForeignKey('accounts.Business', on_delete=models.CASCADE, related_name='invitations')
+    business = models.ForeignKey('business.Business', on_delete=models.CASCADE, related_name='invitations')
     created_by = models.ForeignKey('accounts.CustomUser', on_delete=models.CASCADE, related_name='created_invitations')
     token = models.CharField(max_length=64, unique=True)
     expires_at = models.DateTimeField()
-    role = models.ForeignKey('accounts.BusinessRole', on_delete=models.SET_NULL, null=True, blank=True)
+    role = models.ForeignKey('roles.BusinessRole', on_delete=models.SET_NULL, null=True, blank=True)
     used = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True)
     

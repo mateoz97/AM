@@ -7,7 +7,7 @@ from django.utils.translation import gettext_lazy as _
 
 class CustomUser(AbstractUser):  
     business = models.ForeignKey(
-        "accounts.Business", 
+        "business.Business", 
         on_delete=models.SET_NULL, 
         related_name="members",
         null=True, 
@@ -16,7 +16,7 @@ class CustomUser(AbstractUser):
     )
 
     business_role = models.ForeignKey(
-        "accounts.BusinessRole",
+        "roles.BusinessRole",
         on_delete=models.SET_NULL,
         related_name="users",
         null=True,

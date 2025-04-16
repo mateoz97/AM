@@ -1,10 +1,10 @@
 # Models
-from app.accounts.models.business import BusinessInvitation
+from app.business.models.business import BusinessInvitation
 
 # Services
 from .business_service import BusinessRoleService
 from .join_service import BusinessJoinRequest
-from .role_service import BusinessRole
+from ...roles.services.role_service import BusinessRole
 # Management
 import logging
 
