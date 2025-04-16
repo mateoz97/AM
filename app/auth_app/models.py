@@ -2,6 +2,7 @@
 from django.contrib.auth.models import AbstractUser, Permission
 from django.db import models
 from django.utils.translation import gettext_lazy as _
+from django.utils import timezone
 
 
 class Business(models.Model):
@@ -373,3 +374,43 @@ class RolePermission(models.Model):
     
     def __str__(self):
         return f"Permisos para {self.business_role.name}"
+    
+class BusinessJoinRequest(models.Model):
+    user = models.ForeignKey('auth_app.CustomUser', on_delete=models.CASCADE, related_name='join_requests')
+    business = models.ForeignKey('auth_app.Business', on_delete=models.CASCADE, related_name='join_requests')
+    status = models.CharField(max_length=20, choices=[
+        ('pending', 'Pendiente'),
+        ('approved', 'Aprobada'),
+        ('rejected', 'Rechazada')
+    ], default='pending')
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    
+    class Meta:
+        unique_together = ('user', 'business')
+
+class BusinessInvitation(models.Model):
+    business = models.ForeignKey('auth_app.Business', on_delete=models.CASCADE, related_name='invitations')
+    created_by = models.ForeignKey('auth_app.CustomUser', on_delete=models.CASCADE, related_name='created_invitations')
+    token = models.CharField(max_length=64, unique=True)
+    expires_at = models.DateTimeField()
+    role = models.ForeignKey('auth_app.BusinessRole', on_delete=models.SET_NULL, null=True, blank=True)
+    used = models.BooleanField(default=False)
+    created_at = models.DateTimeField(auto_now_add=True)
+    
+    class Meta:
+        verbose_name = _("Invitación")
+        verbose_name_plural = _("Invitaciones")
+    
+    def is_valid(self):
+        return not self.used and self.expires_at > timezone.now()
+    
+    def save(self, *args, **kwargs):
+        if not self.token:
+            import secrets
+            self.token = secrets.token_urlsafe(32)
+        if not self.expires_at:
+            from django.utils import timezone
+            from datetime import timedelta
+            self.expires_at = timezone.now() + timedelta(days=7)
+        super().save(*args, **kwargs)

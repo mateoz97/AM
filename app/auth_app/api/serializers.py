@@ -5,7 +5,7 @@ from rest_framework import serializers
 from django.contrib.auth import authenticate
 
 # Modesls and services
-from app.auth_app.models import Business, BusinessRole, RolePermission, CustomUser
+from app.auth_app.models import Business, BusinessRole, RolePermission, CustomUser, BusinessJoinRequest, BusinessInvitation
 from app.auth_app.services import RoleService  
 
 
@@ -229,3 +229,41 @@ class BusinessRoleUpdateSerializer(serializers.ModelSerializer):
             permissions.save()
             
         return instance
+    
+
+class BusinessJoinRequestSerializer(serializers.ModelSerializer):
+    user_name = serializers.SerializerMethodField()
+    business_name = serializers.SerializerMethodField()
+    
+    class Meta:
+        model = BusinessJoinRequest
+        fields = ['id', 'user', 'user_name', 'business', 'business_name', 'status', 'created_at', 'updated_at']
+        read_only_fields = ['id', 'user', 'business', 'created_at', 'updated_at']
+        
+    def get_user_name(self, obj):
+        return obj.user.get_full_name() or obj.user.username
+        
+    def get_business_name(self, obj):
+        return obj.business.name
+    
+
+class BusinessInvitationSerializer(serializers.ModelSerializer):
+    business_name = serializers.SerializerMethodField()
+    role_name = serializers.SerializerMethodField()
+    is_valid = serializers.SerializerMethodField()
+    
+    class Meta:
+        model = BusinessInvitation
+        fields = ['id', 'business', 'business_name', 'token', 'expires_at', 'role', 'role_name', 'used', 'created_at', 'is_valid']
+        read_only_fields = ['id', 'business', 'token', 'created_at']
+        
+    def get_business_name(self, obj):
+        return obj.business.name
+    
+    def get_role_name(self, obj):
+        if obj.role:
+            return obj.role.name
+        return None
+    
+    def get_is_valid(self, obj):
+        return obj.is_valid()
