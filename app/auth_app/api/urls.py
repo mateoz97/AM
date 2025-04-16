@@ -10,8 +10,9 @@ from .views import (
     RegisterUserView, JoinBusinessView, UserInfoView, CustomLoginView,
     BusinessRoleViewSet, AssignRoleToUserView, RolePermissionUpdateView,
     UserPermissionsView, JoinBusinessRequestView,
-    # BusinessJoinRequestManagementView, BusinessInvitationCreateView,
-    # BusinessInvitationUseView
+    BusinessJoinRequestManagementView, BusinessInvitationCreateView,
+    BusinessInvitationUseView, UserBusinessInvitationsListView,
+    LeaveBusinessView
 )
 
 # Configurar el router para BusinessRoleViewSet
@@ -30,7 +31,9 @@ urlpatterns = [
     path('', include(router.urls)),
     path("permissions/", UserPermissionsView.as_view(), name="user_permissions"),
     path("join-business-request/", JoinBusinessRequestView.as_view(), name="join_business_request"),
-    # path("business-requests/", BusinessJoinRequestManagementView.as_view(), name="business_requests"),
-    # path("invitations/create/", BusinessInvitationCreateView.as_view(), name="create_invitation"),
-    # path("invitations/use/", BusinessInvitationUseView.as_view(), name="use_invitation"),
+    path("business-requests/", BusinessJoinRequestManagementView.as_view(), name="business_requests"),
+    path("invitations/create/", BusinessInvitationCreateView.as_view(), name="create_invitation"),
+    path("invitations/use/", BusinessInvitationUseView.as_view(), name="use_invitation"),
+    path("invitations/list/", UserBusinessInvitationsListView.as_view(), name="list_invitations"),
+    path("leave-business/", LeaveBusinessView.as_view(), name="leave_business"),
 ]

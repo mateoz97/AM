@@ -237,7 +237,7 @@ class BusinessJoinRequestSerializer(serializers.ModelSerializer):
     
     class Meta:
         model = BusinessJoinRequest
-        fields = ['id', 'user', 'user_name', 'business', 'business_name', 'status', 'created_at', 'updated_at']
+        fields = ['id', 'user', 'user_name', 'business', 'business_name', 'status', 'message', 'created_at', 'updated_at']
         read_only_fields = ['id', 'user', 'business', 'created_at', 'updated_at']
         
     def get_user_name(self, obj):
