@@ -102,3 +102,57 @@ class LeaveBusinessView(APIView):
         return Response({
             "message": f"Has salido exitosamente del negocio {business_name}"
         })
+    
+    # app/business/api/views/business_views.py
+class SwitchBusinessView(APIView):
+    permission_classes = [permissions.IsAuthenticated]
+    
+    def post(self, request):
+        """Permite a un usuario cambiar su negocio activo"""
+        business_id = request.data.get('business_id')
+        
+        if not business_id:
+            return Response({"error": "Se requiere ID de negocio"}, status=400)
+        
+        try:
+            # Verificar que el usuario sea propietario o co-propietario del negocio
+            business = Business.objects.get(id=business_id)
+            
+            if not business.is_owner(request.user) and not business.members.filter(id=request.user.id).exists():
+                return Response({"error": "No tienes acceso a este negocio"}, status=403)
+            
+            # Buscar el rol apropiado
+            if business.owner == request.user:
+                from app.roles.services.role_service import BusinessRoleService
+                role = BusinessRoleService.objects.filter(business=business, name="Admin").first()
+            else:
+                # Si es co-propietario pero no hay un rol específico, usar el actual
+                role = request.user.business_role
+                
+                # Si no tiene un rol en este negocio, asignarle uno apropiado
+                if not role or role.business.id != business.id:
+                    from app.roles.services.role_service import BusinessRoleService
+                    role = BusinessRoleService.objects.filter(
+                        business=business,
+                        name__in=["Co-owner", "Admin", "Viewer"]
+                    ).first()
+            
+            # Cambiar el negocio activo
+            request.user.business = business
+            if role:
+                request.user.business_role = role
+            request.user.save(update_fields=['business', 'business_role'])
+            
+            return Response({
+                "message": f"Se ha cambiado al negocio: {business.name}",
+                "business": {
+                    "id": business.id,
+                    "name": business.name
+                },
+                "role": role.name if role else None
+            })
+            
+        except Business.DoesNotExist:
+            return Response({"error": "Negocio no encontrado"}, status=404)
+        except Exception as e:
+            return Response({"error": str(e)}, status=400)

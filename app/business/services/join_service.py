@@ -172,7 +172,7 @@ class BusinessJoinService:
             role = invitation.role
             if not role:
                 # Si no se especificó un rol, asignar el rol de Visualizador
-                role = BusinessRole.objects.filter(
+                role = BusinessRoleService.objects.filter(
                     business=invitation.business,
                     name__in=['Visualizador', 'viewer']
                 ).first()

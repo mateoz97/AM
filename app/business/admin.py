@@ -68,6 +68,12 @@ class BusinessInvitationsInline(admin.TabularInline):
     max_num = 5
     can_delete = True
 
+class BusinessCoOwnersInline(admin.TabularInline):
+    model = Business.co_owners.through
+    verbose_name = _("Co-propietario")
+    verbose_name_plural = _("Co-propietarios")
+    extra = 1
+
 @admin.register(Business)
 class BusinessAdmin(admin.ModelAdmin):
     list_display = ('name', 'owner', 'is_active', 'created_at', 'updated_at', 'member_count')
@@ -75,7 +81,8 @@ class BusinessAdmin(admin.ModelAdmin):
     search_fields = ('name', 'address', 'email')
     readonly_fields = ('created_at', 'updated_at')
     # Añadir el inline a la configuración de BusinessAdmin
-    inlines = [BusinessMemberInline, PendingRequestsInline, BusinessInvitationsInline]
+    inlines = [BusinessMemberInline, PendingRequestsInline, BusinessInvitationsInline, BusinessCoOwnersInline]
+    exclude = ('co_owners',)
     
     fieldsets = (
         (_('Información básica'), {

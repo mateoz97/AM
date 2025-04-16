@@ -14,6 +14,13 @@ class Business(models.Model):
         blank=True,
         verbose_name=_("Propietario")
     )
+    is_main_business = models.BooleanField(_("Es negocio principal"), default=True)
+    co_owners = models.ManyToManyField(
+        settings.AUTH_USER_MODEL,
+        related_name="co_owned_businesses",
+        blank=True,
+        verbose_name=_("Co-propietarios")
+    )
     created_at = models.DateTimeField(_("Fecha de creación"), auto_now_add=True)
     is_active = models.BooleanField(_("Activo"), default=True)
     updated_at = models.DateTimeField(_("Última actualización"), auto_now=True)
@@ -63,10 +70,15 @@ class Business(models.Model):
         
         # Si el propietario cambió, actualizar las relaciones
         if owner_changed and old_owner:
-            # Si el antiguo propietario tenía este negocio como su negocio, eliminamos esa relación
+            # Si el antiguo propietario tenía este negocio como su negocio principal, 
+            # lo movemos a co-propietario si lo desea (o lo quitamos)
             if old_owner.business == self:
+                # Opción 1: Quitar completamente
                 old_owner.business = None
                 old_owner.save(update_fields=['business'])
+                
+                # Opción 2: Mover a co-propietario (descomenta si lo deseas)
+                # self.co_owners.add(old_owner)
         
         # Actualizar el nuevo propietario si existe
         if self.owner:
@@ -79,20 +91,21 @@ class Business(models.Model):
             
             # Si no existe el rol de administrador, crearlo
             if not admin_role:
-                from app.roles.services.role_service import RoleService
-                roles = RoleService.create_business_roles(self)
+                from app.roles.services.role_service import BusinessRoleService
+                roles = BusinessRoleService.create_business_roles(self)
                 admin_role = roles.get("Admin")
             
-            # Asignar el rol al propietario
-            if admin_role:
+            # Verificar si el usuario ya tiene un negocio asignado
+            has_other_business = self.owner.business and self.owner.business.id != self.id
+            
+            # Si no tiene otro negocio o este negocio tiene prioridad, asignar directamente
+            if not has_other_business or kwargs.get('is_primary_business', True):
                 self.owner.business = self
                 self.owner.business_role = admin_role
                 self.owner.save(update_fields=['business', 'business_role'])
-    
-        # Crear base de datos del negocio si es nuevo
-        if not self._state.adding:  # Esta condición es True cuando el objeto acaba de ser guardado
-            from app.business.services.business_service import DatabaseService
-            DatabaseService.create_business_database(self)
+            # Si tiene otro negocio y este no tiene prioridad, agregarlo como co-propietario
+            elif has_other_business:
+                self.co_owners.add(self.owner)
     
     def delete(self, using=None, keep_parents=False):
         """
@@ -174,3 +187,32 @@ class BusinessInvitation(models.Model):
             self.expires_at = timezone.now() + timedelta(days=7)
         super().save(*args, **kwargs)
 
+class BusinessBranch(models.Model):
+    """
+    Modelo para representar sucursales de un negocio principal
+    """
+    main_business = models.ForeignKey(
+        'business.Business',
+        on_delete=models.CASCADE,
+        related_name='branches'
+    )
+    name = models.CharField(_("Nombre"), max_length=255)
+    description = models.TextField(_("Descripción"), null=True, blank=True)
+    address = models.CharField(_("Dirección"), max_length=255, null=True, blank=True)
+    manager = models.ForeignKey(
+        'accounts.CustomUser',
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        related_name='managed_branches'
+    )
+    is_active = models.BooleanField(_("Activa"), default=True)
+    created_at = models.DateTimeField(_("Fecha de creación"), auto_now_add=True)
+    
+    class Meta:
+        verbose_name = _("Sucursal")
+        verbose_name_plural = _("Sucursales")
+        unique_together = ('main_business', 'name')
+        
+    def __str__(self):
+        return f"{self.main_business.name} - {self.name}"
