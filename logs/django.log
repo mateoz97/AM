@@ -883,3 +883,65 @@ INFO 2025-04-16 15:52:25,391 basehttp "GET /admin/business/business/ HTTP/1.1" 2
 INFO 2025-04-16 15:52:25,493 basehttp "GET /admin/jsi18n/ HTTP/1.1" 200 8691
 INFO 2025-04-16 15:52:30,362 basehttp "GET /admin/roles/businessrole/ HTTP/1.1" 200 12305
 INFO 2025-04-16 15:52:30,432 basehttp "GET /admin/jsi18n/ HTTP/1.1" 200 8691
+INFO 2025-04-16 16:06:11,657 autoreload Watching for file changes with StatReloader
+WARNING 2025-04-16 16:06:13,396 log Not Found: /
+WARNING 2025-04-16 16:06:13,397 basehttp "GET / HTTP/1.1" 404 2622
+INFO 2025-04-16 16:06:18,752 basehttp "GET /admin/login/?next=/admin HTTP/1.1" 302 0
+INFO 2025-04-16 16:06:18,846 basehttp "GET /admin/ HTTP/1.1" 200 13757
+INFO 2025-04-16 16:06:18,977 basehttp "GET /static/admin/css/dark_mode.css HTTP/1.1" 304 0
+INFO 2025-04-16 16:06:18,983 basehttp "GET /static/admin/css/base.css HTTP/1.1" 304 0
+INFO 2025-04-16 16:06:18,987 basehttp "GET /static/admin/css/nav_sidebar.css HTTP/1.1" 304 0
+INFO 2025-04-16 16:06:18,989 basehttp "GET /static/admin/css/dashboard.css HTTP/1.1" 304 0
+INFO 2025-04-16 16:06:18,993 basehttp "GET /static/admin/css/responsive.css HTTP/1.1" 304 0
+INFO 2025-04-16 16:06:18,994 basehttp "GET /static/admin/js/theme.js HTTP/1.1" 304 0
+INFO 2025-04-16 16:06:19,008 basehttp "GET /static/admin/js/nav_sidebar.js HTTP/1.1" 304 0
+INFO 2025-04-16 16:06:19,031 basehttp "GET /static/admin/img/icon-addlink.svg HTTP/1.1" 304 0
+INFO 2025-04-16 16:06:19,032 basehttp "GET /static/admin/img/icon-changelink.svg HTTP/1.1" 304 0
+INFO 2025-04-16 16:06:26,063 basehttp "GET /admin/accounts/customuser/ HTTP/1.1" 200 15556
+INFO 2025-04-16 16:06:26,115 basehttp "GET /static/admin/css/changelists.css HTTP/1.1" 304 0
+INFO 2025-04-16 16:06:26,165 basehttp "GET /static/admin/js/actions.js HTTP/1.1" 304 0
+INFO 2025-04-16 16:06:26,166 basehttp "GET /static/admin/js/admin/RelatedObjectLookups.js HTTP/1.1" 304 0
+INFO 2025-04-16 16:06:26,171 basehttp "GET /static/admin/js/vendor/jquery/jquery.js HTTP/1.1" 304 0
+INFO 2025-04-16 16:06:26,175 basehttp "GET /static/admin/js/core.js HTTP/1.1" 304 0
+INFO 2025-04-16 16:06:26,177 basehttp "GET /static/admin/js/jquery.init.js HTTP/1.1" 304 0
+INFO 2025-04-16 16:06:26,184 basehttp "GET /static/admin/img/search.svg HTTP/1.1" 304 0
+INFO 2025-04-16 16:06:26,177 basehttp "GET /static/admin/js/urlify.js HTTP/1.1" 304 0
+INFO 2025-04-16 16:06:26,180 basehttp "GET /static/admin/js/vendor/xregexp/xregexp.js HTTP/1.1" 304 0
+INFO 2025-04-16 16:06:26,179 basehttp "GET /static/admin/js/prepopulate.js HTTP/1.1" 304 0
+INFO 2025-04-16 16:06:26,193 basehttp "GET /static/admin/img/icon-yes.svg HTTP/1.1" 304 0
+INFO 2025-04-16 16:06:26,197 basehttp "GET /admin/jsi18n/ HTTP/1.1" 200 8691
+INFO 2025-04-16 16:06:26,252 basehttp "GET /static/admin/js/filters.js HTTP/1.1" 304 0
+INFO 2025-04-16 16:06:26,341 basehttp "GET /static/admin/img/tooltag-add.svg HTTP/1.1" 304 0
+INFO 2025-04-16 16:06:26,354 basehttp "GET /static/admin/img/sorting-icons.svg HTTP/1.1" 304 0
+INFO 2025-04-16 16:06:26,355 basehttp "GET /static/admin/img/icon-viewlink.svg HTTP/1.1" 304 0
+INFO 2025-04-16 16:06:30,014 basehttp "GET /admin/roles/businessrole/ HTTP/1.1" 200 12305
+INFO 2025-04-16 16:06:30,091 basehttp "GET /admin/jsi18n/ HTTP/1.1" 200 8691
+INFO 2025-04-16 16:06:31,808 basehttp "GET /admin/business/business/ HTTP/1.1" 200 13029
+INFO 2025-04-16 16:06:31,886 basehttp "GET /admin/jsi18n/ HTTP/1.1" 200 8691
+INFO 2025-04-16 16:06:33,118 basehttp "GET /admin/business/businessinvitation/ HTTP/1.1" 200 12711
+INFO 2025-04-16 16:06:33,187 basehttp "GET /admin/jsi18n/ HTTP/1.1" 200 8691
+INFO 2025-04-16 16:06:33,921 basehttp "GET /admin/business/businessjoinrequest/ HTTP/1.1" 200 12865
+INFO 2025-04-16 16:06:33,995 basehttp "GET /admin/jsi18n/ HTTP/1.1" 200 8691
+INFO 2025-04-16 16:06:38,647 basehttp "GET /admin/business/businessinvitation/ HTTP/1.1" 200 12711
+WARNING 2025-04-16 16:06:41,722 log Not Found: /
+WARNING 2025-04-16 16:06:41,723 basehttp "GET / HTTP/1.1" 404 2622
+WARNING 2025-04-16 16:06:53,312 log Not Found: /api/accpunts/
+WARNING 2025-04-16 16:06:53,312 basehttp "GET /api/accpunts/ HTTP/1.1" 404 2679
+WARNING 2025-04-16 16:07:09,255 log Not Found: /api/accounts/
+WARNING 2025-04-16 16:07:09,255 basehttp "GET /api/accounts/ HTTP/1.1" 404 3895
+WARNING 2025-04-16 16:07:21,012 log Not Found: /api/business/
+WARNING 2025-04-16 16:07:21,013 basehttp "GET /api/business/ HTTP/1.1" 404 4541
+WARNING 2025-04-16 16:07:33,531 log Unauthorized: /api/roles/
+WARNING 2025-04-16 16:07:33,532 basehttp "GET /api/roles/ HTTP/1.1" 401 5046
+INFO 2025-04-16 16:07:33,605 basehttp "GET /static/rest_framework/css/default.css HTTP/1.1" 304 0
+INFO 2025-04-16 16:07:33,612 basehttp "GET /static/rest_framework/js/csrf.js HTTP/1.1" 304 0
+INFO 2025-04-16 16:07:33,615 basehttp "GET /static/rest_framework/js/ajax-form.js HTTP/1.1" 304 0
+INFO 2025-04-16 16:07:33,615 basehttp "GET /static/rest_framework/css/bootstrap-tweaks.css HTTP/1.1" 304 0
+INFO 2025-04-16 16:07:33,618 basehttp "GET /static/rest_framework/css/prettify.css HTTP/1.1" 304 0
+INFO 2025-04-16 16:07:33,618 basehttp "GET /static/rest_framework/js/jquery-3.7.1.min.js HTTP/1.1" 304 0
+INFO 2025-04-16 16:07:33,619 basehttp "GET /static/rest_framework/css/bootstrap.min.css HTTP/1.1" 304 0
+INFO 2025-04-16 16:07:33,632 basehttp "GET /static/rest_framework/js/prettify-min.js HTTP/1.1" 304 0
+INFO 2025-04-16 16:07:33,633 basehttp "GET /static/rest_framework/js/default.js HTTP/1.1" 304 0
+INFO 2025-04-16 16:07:33,634 basehttp "GET /static/rest_framework/js/load-ajax-form.js HTTP/1.1" 304 0
+INFO 2025-04-16 16:07:33,634 basehttp "GET /static/rest_framework/js/bootstrap.min.js HTTP/1.1" 304 0
+INFO 2025-04-16 16:07:33,670 basehttp "GET /static/rest_framework/img/grid.png HTTP/1.1" 304 0
