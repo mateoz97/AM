@@ -39,3 +39,24 @@ INFO 2025-04-16 01:41:49,592 autoreload /home/teo/Documents/ADB/app/auth_app/api
 INFO 2025-04-16 01:41:49,854 autoreload Watching for file changes with StatReloader
 INFO 2025-04-16 01:42:09,171 autoreload /home/teo/Documents/ADB/app/auth_app/api/serializers.py changed, reloading.
 INFO 2025-04-16 01:42:09,419 autoreload Watching for file changes with StatReloader
+INFO 2025-04-16 02:16:41,538 autoreload Watching for file changes with StatReloader
+INFO 2025-04-16 02:17:00,527 autoreload Watching for file changes with StatReloader
+WARNING 2025-04-16 02:17:02,021 log Not Found: /
+WARNING 2025-04-16 02:17:02,022 basehttp "GET / HTTP/1.1" 404 2309
+INFO 2025-04-16 02:17:11,218 basehttp "GET /admin/ HTTP/1.1" 200 13105
+INFO 2025-04-16 02:17:11,247 basehttp "GET /static/admin/css/dashboard.css HTTP/1.1" 200 441
+INFO 2025-04-16 02:17:11,295 basehttp "GET /static/admin/img/icon-deletelink.svg HTTP/1.1" 200 392
+INFO 2025-04-16 02:17:11,295 basehttp "GET /static/admin/img/icon-changelink.svg HTTP/1.1" 200 380
+INFO 2025-04-16 02:17:16,236 basehttp "GET /admin/auth_app/businessjoinrequest/ HTTP/1.1" 200 14729
+INFO 2025-04-16 02:17:16,263 basehttp "GET /admin/jsi18n/ HTTP/1.1" 200 8691
+INFO 2025-04-16 02:17:18,300 basehttp "GET /admin/auth_app/businessinvitation/ HTTP/1.1" 200 14744
+INFO 2025-04-16 02:17:18,318 basehttp "GET /admin/jsi18n/ HTTP/1.1" 200 8691
+INFO 2025-04-16 02:17:18,318 basehttp "GET /static/admin/img/icon-no.svg HTTP/1.1" 304 0
+INFO 2025-04-16 02:17:19,711 basehttp "GET /admin/auth_app/businessrole/ HTTP/1.1" 200 21911
+INFO 2025-04-16 02:17:19,729 basehttp "GET /admin/jsi18n/ HTTP/1.1" 200 8691
+INFO 2025-04-16 02:17:19,730 basehttp "GET /static/admin/img/icon-yes.svg HTTP/1.1" 200 436
+INFO 2025-04-16 02:17:19,785 basehttp "GET /static/admin/img/sorting-icons.svg HTTP/1.1" 200 1097
+INFO 2025-04-16 02:17:22,641 basehttp "GET /admin/auth_app/business/ HTTP/1.1" 200 16169
+INFO 2025-04-16 02:17:22,662 basehttp "GET /admin/jsi18n/ HTTP/1.1" 200 8691
+INFO 2025-04-16 02:17:24,790 basehttp "GET /admin/auth_app/customuser/ HTTP/1.1" 200 17797
+INFO 2025-04-16 02:17:24,809 basehttp "GET /admin/jsi18n/ HTTP/1.1" 200 8691
