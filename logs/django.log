@@ -1,0 +1,41 @@
+INFO 2025-04-16 00:57:28,073 autoreload Watching for file changes with StatReloader
+WARNING 2025-04-16 00:57:45,523 log Not Found: /
+WARNING 2025-04-16 00:57:45,524 basehttp "GET / HTTP/1.1" 404 2309
+INFO 2025-04-16 00:57:51,443 basehttp "GET /admin/auth_app/businessinvitation/ HTTP/1.1" 200 14744
+INFO 2025-04-16 00:57:51,478 basehttp "GET /static/admin/css/nav_sidebar.css HTTP/1.1" 200 2810
+INFO 2025-04-16 00:57:51,480 basehttp "GET /static/admin/css/dark_mode.css HTTP/1.1" 200 2808
+INFO 2025-04-16 00:57:51,481 basehttp "GET /static/admin/css/changelists.css HTTP/1.1" 200 6878
+INFO 2025-04-16 00:57:51,484 basehttp "GET /admin/jsi18n/ HTTP/1.1" 200 8691
+INFO 2025-04-16 00:57:51,486 basehttp "GET /static/admin/css/responsive.css HTTP/1.1" 200 16632
+INFO 2025-04-16 00:57:51,486 basehttp "GET /static/admin/css/base.css HTTP/1.1" 200 22154
+INFO 2025-04-16 00:57:51,487 basehttp "GET /static/admin/js/jquery.init.js HTTP/1.1" 200 347
+INFO 2025-04-16 00:57:51,489 basehttp "GET /static/admin/js/theme.js HTTP/1.1" 200 1653
+INFO 2025-04-16 00:57:51,489 basehttp "GET /static/admin/js/admin/RelatedObjectLookups.js HTTP/1.1" 200 9777
+INFO 2025-04-16 00:57:51,491 basehttp "GET /static/admin/js/core.js HTTP/1.1" 200 6208
+INFO 2025-04-16 00:57:51,491 basehttp "GET /static/admin/js/vendor/jquery/jquery.js HTTP/1.1" 200 285314
+INFO 2025-04-16 00:57:51,528 basehttp "GET /static/admin/js/actions.js HTTP/1.1" 200 8076
+INFO 2025-04-16 00:57:51,534 basehttp "GET /static/admin/js/urlify.js HTTP/1.1" 200 7887
+INFO 2025-04-16 00:57:51,537 basehttp "GET /static/admin/js/prepopulate.js HTTP/1.1" 200 1531
+INFO 2025-04-16 00:57:51,538 basehttp "GET /static/admin/img/search.svg HTTP/1.1" 200 458
+INFO 2025-04-16 00:57:51,547 basehttp "GET /static/admin/js/vendor/xregexp/xregexp.js HTTP/1.1" 200 325171
+INFO 2025-04-16 00:57:51,583 basehttp "GET /static/admin/js/nav_sidebar.js HTTP/1.1" 200 3063
+INFO 2025-04-16 00:57:51,593 basehttp "GET /static/admin/js/filters.js HTTP/1.1" 200 978
+INFO 2025-04-16 00:57:51,606 basehttp "GET /static/admin/img/tooltag-add.svg HTTP/1.1" 200 331
+INFO 2025-04-16 00:57:51,606 basehttp "GET /static/admin/img/icon-addlink.svg HTTP/1.1" 200 331
+INFO 2025-04-16 00:57:51,606 basehttp "GET /static/admin/img/icon-viewlink.svg HTTP/1.1" 200 581
+INFO 2025-04-16 00:57:53,301 basehttp "GET /admin/auth_app/businessjoinrequest/ HTTP/1.1" 200 14729
+INFO 2025-04-16 00:57:53,328 basehttp "GET /admin/jsi18n/ HTTP/1.1" 200 8691
+INFO 2025-04-16 01:35:19,158 autoreload Watching for file changes with StatReloader
+INFO 2025-04-16 01:39:23,373 autoreload Watching for file changes with StatReloader
+INFO 2025-04-16 01:40:46,416 autoreload /home/teo/Documents/ADB/app/auth_app/api/serializers.py changed, reloading.
+INFO 2025-04-16 01:40:46,661 autoreload Watching for file changes with StatReloader
+INFO 2025-04-16 01:40:58,931 autoreload /home/teo/Documents/ADB/app/auth_app/api/serializers.py changed, reloading.
+INFO 2025-04-16 01:40:59,215 autoreload Watching for file changes with StatReloader
+INFO 2025-04-16 01:41:20,582 autoreload /home/teo/Documents/ADB/app/auth_app/api/serializers.py changed, reloading.
+INFO 2025-04-16 01:41:20,835 autoreload Watching for file changes with StatReloader
+INFO 2025-04-16 01:41:44,201 autoreload /home/teo/Documents/ADB/app/auth_app/api/serializers.py changed, reloading.
+INFO 2025-04-16 01:41:44,442 autoreload Watching for file changes with StatReloader
+INFO 2025-04-16 01:41:49,592 autoreload /home/teo/Documents/ADB/app/auth_app/api/serializers.py changed, reloading.
+INFO 2025-04-16 01:41:49,854 autoreload Watching for file changes with StatReloader
+INFO 2025-04-16 01:42:09,171 autoreload /home/teo/Documents/ADB/app/auth_app/api/serializers.py changed, reloading.
+INFO 2025-04-16 01:42:09,419 autoreload Watching for file changes with StatReloader

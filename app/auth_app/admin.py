@@ -8,8 +8,9 @@ from django.utils import timezone
 from datetime import timedelta
 
 # Models
-from app.auth_app.models import Business, CustomUser,BusinessRole, RolePermission, BusinessJoinRequest, BusinessInvitation
-
+from app.auth_app.models.business import Business, BusinessJoinRequest, BusinessInvitation
+from app.auth_app.models.user import CustomUser
+from app.auth_app.models.role import BusinessRole, RolePermission
 
 # Filtro personalizado para negocios por propietario
 class BusinessOwnerFilter(admin.SimpleListFilter):

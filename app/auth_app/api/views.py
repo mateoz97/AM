@@ -7,7 +7,9 @@ from rest_framework_simplejwt.views import TokenObtainPairView
 from rest_framework import serializers
 
 # Models    
-from app.auth_app.models import Business,CustomUser,BusinessRole, BusinessJoinRequest, BusinessInvitation
+from app.auth_app.models.business import Business, BusinessJoinRequest, BusinessInvitation
+from app.auth_app.models.user import CustomUser
+from app.auth_app.models.role import BusinessRole
 
 # Serializers
 from .serializers import (BusinessSerializer, UserSerializer, 

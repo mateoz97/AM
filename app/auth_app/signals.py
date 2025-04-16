@@ -4,7 +4,7 @@ from django.dispatch import receiver
 from django.conf import settings
 
 # Models
-from app.auth_app.models import Business
+from app.auth_app.models.business import Business
 
 
 

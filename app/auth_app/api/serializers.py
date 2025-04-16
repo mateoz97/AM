@@ -5,8 +5,12 @@ from rest_framework import serializers
 from django.contrib.auth import authenticate
 
 # Modesls and services
-from app.auth_app.models import Business, BusinessRole, RolePermission, CustomUser, BusinessJoinRequest, BusinessInvitation
-from app.auth_app.services import RoleService  
+from app.auth_app.models.business import Business, BusinessJoinRequest, BusinessInvitation
+from app.auth_app.models.user import CustomUser
+from app.auth_app.models.role import RolePermission, BusinessRole
+
+# Services
+from app.auth_app.services.role_service import RoleService  
 
 
 class BusinessSerializer(serializers.ModelSerializer):
@@ -21,7 +25,7 @@ class BusinessSerializer(serializers.ModelSerializer):
         RoleService.create_business_roles(business)
         
         # Crear roles personalizados para el nuevo negocio
-        from app.auth_app.services import BusinessRoleService
+        from app.auth_app.services.business_service import BusinessRoleService
         roles = BusinessRoleService.create_default_roles(business)
         
         # Si hay un propietario, asignarle el rol de Administrador
@@ -229,8 +233,8 @@ class BusinessRoleUpdateSerializer(serializers.ModelSerializer):
             permissions.save()
             
         return instance
+  
     
-
 class BusinessJoinRequestSerializer(serializers.ModelSerializer):
     user_name = serializers.SerializerMethodField()
     business_name = serializers.SerializerMethodField()
@@ -246,7 +250,7 @@ class BusinessJoinRequestSerializer(serializers.ModelSerializer):
     def get_business_name(self, obj):
         return obj.business.name
     
-
+    
 class BusinessInvitationSerializer(serializers.ModelSerializer):
     business_name = serializers.SerializerMethodField()
     role_name = serializers.SerializerMethodField()
