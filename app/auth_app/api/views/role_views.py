@@ -1,122 +1,22 @@
-from rest_framework import viewsets, generics, permissions, status
+# API views for managing user authentication, business roles, and permissions.
+from rest_framework import viewsets, permissions, status
 from rest_framework.response import Response
-from rest_framework_simplejwt.tokens import RefreshToken
-from .models import Business,CustomUser
-from .serializers import BusinessSerializer, UserSerializer
 from rest_framework.views import APIView
-from rest_framework_simplejwt.views import TokenObtainPairView
-from .serializers import BusinessRoleSerializer, RolePermissionSerializer, BusinessRoleUpdateSerializer
-from .models import BusinessRole
+
+# Models    
+from app.auth_app.models.user import CustomUser
+from app.auth_app.models.role import BusinessRole
+
+# Serializers
+from app.auth_app.api.serializers import (BusinessRoleSerializer, RolePermissionSerializer,BusinessRoleUpdateSerializer)
+
+# Validators
 from django.core.exceptions import PermissionDenied, ValidationError
+import logging
+
+logger = logging.getLogger(__name__)
 
 
-# app/auth_app/views.py 
-class BusinessViewSet(viewsets.ModelViewSet):
-    queryset = Business.objects.all()
-    serializer_class = BusinessSerializer
-    permission_classes = [permissions.IsAuthenticated]
-
-    def perform_create(self, serializer):
-        business = serializer.save(owner=self.request.user)
-        self.request.user.business = business
-        
-        # Crear roles para el negocio
-        from .services import BusinessRoleService
-        roles = BusinessRoleService.create_default_roles(business)
-        
-        # Asignar rol de administrador al creador
-        admin_role = roles.get("admin")
-        if admin_role:
-            self.request.user.business_role = admin_role
-            self.request.user.save(update_fields=['business', 'business_role'])
-        
-        # Crear base de datos para el negocio
-        from .services import DatabaseService
-        success = DatabaseService.create_business_database(business)
-        
-        if not success:
-            print(f"Advertencia: No se pudo crear la base de datos para el negocio {business.name}")
-        
-
-class JoinBusinessView(APIView):
-    permission_classes = [permissions.IsAuthenticated]
-
-    def patch(self, request):
-        business_id = request.data.get("business")
-        try:
-            business = Business.objects.get(id=business_id)
-            
-            # Obtener rol predeterminado (Mesero o Visualizador)
-            from .services import BusinessRoleService
-            roles = BusinessRoleService.get_roles_for_business(business)
-            default_role = roles.filter(name="viewer").first() or roles.filter(is_default=True).first()
-            
-            if not default_role:
-                # Si no hay roles, crearlos
-                roles_dict = BusinessRoleService.create_default_roles(business)
-                default_role = roles_dict.get("viewer")
-
-            request.user.business = business
-            request.user.business_role = default_role
-            request.user.save()
-
-            return Response({
-                "message": "Usuario unido al negocio exitosamente.", 
-                "role": default_role.name
-            }, status=200)
-        except Business.DoesNotExist:
-            return Response({"error": "Negocio no encontrado."}, status=404)
-        except Exception as e:
-            return Response({"error": f"Error: {str(e)}"}, status=400)
-        
-        
-class RegisterUserView(generics.CreateAPIView):
-    queryset = CustomUser.objects.all()
-    serializer_class = UserSerializer
-    permission_classes = [permissions.AllowAny]
-
-    def create(self, request, *args, **kwargs):
-        serializer = self.get_serializer(data=request.data)
-        serializer.is_valid(raise_exception=True)
-        user = serializer.save()
-        print(user)
-        
-        refresh = RefreshToken.for_user(user)
-        
-        access_token = str(refresh.access_token)
-
-        return Response({
-            "user": serializer.data,
-            "refresh": str(refresh),
-            "access": access_token,
-        }, status=status.HTTP_201_CREATED)
-
-class CustomLoginView(TokenObtainPairView):
-    
-    def post(self, request, *args, **kwargs):
-        identifier = request.data.get("username")  # Puede ser username o email
-        password = request.data.get("password")
-
-        user = CustomUser.objects.filter(email=identifier).first() or CustomUser.objects.filter(username=identifier).first()
-
-        if user and user.check_password(password):
-            refresh = RefreshToken.for_user(user)
-            return Response({
-                "access": str(refresh.access_token),
-                "refresh": str(refresh),
-                "username": user.username
-            })
-
-        return Response({"error": "Invalid credentials"}, status=status.HTTP_401_UNAUTHORIZED)
-
-class UserInfoView(generics.RetrieveAPIView):
-    queryset = CustomUser.objects.all()
-    serializer_class = UserSerializer
-    permission_classes = [permissions.IsAuthenticated]
-
-    def get_object(self):
-        return self.request.user
-    
 class BusinessRoleViewSet(viewsets.ModelViewSet):
     """
     Endpoints para gestionar roles personalizados de un negocio.
@@ -179,7 +79,6 @@ class BusinessRoleViewSet(viewsets.ModelViewSet):
             
         instance.delete()
 
-
 class AssignRoleToUserView(APIView):
     """
     Endpoint para asignar un rol específico a un usuario dentro del mismo negocio.
@@ -240,7 +139,6 @@ class AssignRoleToUserView(APIView):
                 status=status.HTTP_500_INTERNAL_SERVER_ERROR
             )
 
-
 class RolePermissionUpdateView(APIView):
     """
     Endpoint para actualizar los permisos de un rol específico.
@@ -293,7 +191,7 @@ class RolePermissionUpdateView(APIView):
                 {"error": f"Error al actualizar permisos: {str(e)}"}, 
                 status=status.HTTP_500_INTERNAL_SERVER_ERROR
             )
-
+            
 class UserPermissionsView(APIView):
     """
     Devuelve los permisos del usuario actual basados en su rol de negocio.

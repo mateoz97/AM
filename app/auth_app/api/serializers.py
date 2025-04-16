@@ -1,10 +1,16 @@
+# Django REST Framework
 from rest_framework import serializers
-from django.contrib.auth import authenticate
-from .models import Business
-from .services import RoleService  
-from .models import CustomUser
-from .models import BusinessRole, RolePermission
 
+# Django
+from django.contrib.auth import authenticate
+
+# Modesls and services
+from app.auth_app.models.business import Business, BusinessJoinRequest, BusinessInvitation
+from app.auth_app.models.user import CustomUser
+from app.auth_app.models.role import RolePermission, BusinessRole
+
+# Services
+from app.auth_app.services.role_service import RoleService  
 
 
 class BusinessSerializer(serializers.ModelSerializer):
@@ -19,7 +25,7 @@ class BusinessSerializer(serializers.ModelSerializer):
         RoleService.create_business_roles(business)
         
         # Crear roles personalizados para el nuevo negocio
-        from .services import BusinessRoleService
+        from app.auth_app.services.business_service import BusinessRoleService
         roles = BusinessRoleService.create_default_roles(business)
         
         # Si hay un propietario, asignarle el rol de Administrador
@@ -49,7 +55,6 @@ class BusinessSerializer(serializers.ModelSerializer):
         """Reactiva un negocio previamente desactivado"""
         self.is_active = True
         self.save()
-
     
 class UserSerializer(serializers.ModelSerializer):
     business_role = serializers.PrimaryKeyRelatedField(
@@ -83,7 +88,7 @@ class UserSerializer(serializers.ModelSerializer):
                     user.business_role = default_role
                 except BusinessRole.DoesNotExist:
                     # Si no existe el rol, crear roles por defecto
-                    from .services import BusinessRoleService
+                    from app.auth_app.services import BusinessRoleService
                     roles = BusinessRoleService.create_default_roles(business)
                     user.business_role = roles.get("viewer")
 
@@ -180,7 +185,6 @@ class RolePermissionSerializer(serializers.ModelSerializer):
         model = RolePermission
         exclude = ['id', 'business_role', 'created_at', 'updated_at']
 
-
 class BusinessRoleSerializer(serializers.ModelSerializer):
     role_permissions = RolePermissionSerializer(read_only=True)
     
@@ -199,7 +203,6 @@ class BusinessRoleSerializer(serializers.ModelSerializer):
             **validated_data
         )
         return role
-
 
 class BusinessRoleUpdateSerializer(serializers.ModelSerializer):
     role_permissions = RolePermissionSerializer()
@@ -230,3 +233,41 @@ class BusinessRoleUpdateSerializer(serializers.ModelSerializer):
             permissions.save()
             
         return instance
+  
+    
+class BusinessJoinRequestSerializer(serializers.ModelSerializer):
+    user_name = serializers.SerializerMethodField()
+    business_name = serializers.SerializerMethodField()
+    
+    class Meta:
+        model = BusinessJoinRequest
+        fields = ['id', 'user', 'user_name', 'business', 'business_name', 'status', 'message', 'created_at', 'updated_at']
+        read_only_fields = ['id', 'user', 'business', 'created_at', 'updated_at']
+        
+    def get_user_name(self, obj):
+        return obj.user.get_full_name() or obj.user.username
+        
+    def get_business_name(self, obj):
+        return obj.business.name
+    
+    
+class BusinessInvitationSerializer(serializers.ModelSerializer):
+    business_name = serializers.SerializerMethodField()
+    role_name = serializers.SerializerMethodField()
+    is_valid = serializers.SerializerMethodField()
+    
+    class Meta:
+        model = BusinessInvitation
+        fields = ['id', 'business', 'business_name', 'token', 'expires_at', 'role', 'role_name', 'used', 'created_at', 'is_valid']
+        read_only_fields = ['id', 'business', 'token', 'created_at']
+        
+    def get_business_name(self, obj):
+        return obj.business.name
+    
+    def get_role_name(self, obj):
+        if obj.role:
+            return obj.role.name
+        return None
+    
+    def get_is_valid(self, obj):
+        return obj.is_valid()

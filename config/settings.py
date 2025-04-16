@@ -5,6 +5,7 @@ from pathlib import Path
 from datetime import timedelta
 from django.utils.translation import gettext_lazy as _
 from dotenv import load_dotenv
+from django.core.exceptions import ImproperlyConfigured
 
 # Cargar variables de entorno
 load_dotenv()
@@ -12,11 +13,16 @@ load_dotenv()
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.getenv('SECRET_KEY', 'default-insecure-key-for-dev')
-
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv('DEBUG', 'False') == 'True'
+
+# SECURITY WARNING: keep the secret key used in production secret!
+SECRET_KEY = os.getenv('SECRET_KEY')
+if not SECRET_KEY and DEBUG is False:
+    raise ImproperlyConfigured("SECRET_KEY must be set in environment variables for production")
+elif not SECRET_KEY:
+    SECRET_KEY = 'insecure-dev-key-do-not-use-in-production'
+    print("WARNING: Using insecure development SECRET_KEY")
 
 # ALLOWED_HOSTS = ['127.0.0.1:8000']
 
@@ -34,7 +40,6 @@ INSTALLED_APPS = [
     'corsheaders',
     'django_filters',
     'app.auth_app',
-    'app.ping',
     'app.core',
 ]
 
@@ -180,3 +185,61 @@ SIMPLE_JWT = {
 
 
 AUTH_USER_MODEL = 'auth_app.CustomUser'
+
+# En config/settings.py
+
+# Configuración de logs
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'formatters': {
+        'verbose': {
+            'format': '{levelname} {asctime} {module} {message}',
+            'style': '{',
+        },
+        'simple': {
+            'format': '{levelname} {message}',
+            'style': '{',
+        },
+    },
+    'handlers': {
+        'console': {
+            'level': 'INFO',
+            'class': 'logging.StreamHandler',
+            'formatter': 'verbose',
+        },
+        'file': {
+            'level': 'INFO',
+            'class': 'logging.FileHandler',
+            'filename': BASE_DIR / 'logs/django.log',
+            'formatter': 'verbose',
+        },
+        'auth_file': {
+            'level': 'INFO',
+            'class': 'logging.FileHandler',
+            'filename': BASE_DIR / 'logs/auth.log',
+            'formatter': 'verbose',
+        },
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['console', 'file'],
+            'level': 'INFO',
+            'propagate': True,
+        },
+        'app.auth_app': {
+            'handlers': ['console', 'auth_file'],
+            'level': 'INFO',
+            'propagate': False,
+        },
+        'app.multi_tenant': {
+            'handlers': ['console', 'file'],
+            'level': 'INFO',
+            'propagate': False,
+        },
+    },
+}
+
+# Crear directorio de logs si no existe
+if not os.path.exists(BASE_DIR / 'logs'):
+    os.makedirs(BASE_DIR / 'logs')
