@@ -600,3 +600,4 @@ class LeaveBusinessView(APIView):
         return Response({
             "message": f"Has salido exitosamente del negocio {business_name}"
         })
+        
