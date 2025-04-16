@@ -60,3 +60,826 @@ INFO 2025-04-16 02:17:22,641 basehttp "GET /admin/auth_app/business/ HTTP/1.1" 2
 INFO 2025-04-16 02:17:22,662 basehttp "GET /admin/jsi18n/ HTTP/1.1" 200 8691
 INFO 2025-04-16 02:17:24,790 basehttp "GET /admin/auth_app/customuser/ HTTP/1.1" 200 17797
 INFO 2025-04-16 02:17:24,809 basehttp "GET /admin/jsi18n/ HTTP/1.1" 200 8691
+INFO 2025-04-16 02:26:40,219 autoreload Watching for file changes with StatReloader
+WARNING 2025-04-16 02:26:42,025 log Not Found: /
+WARNING 2025-04-16 02:26:42,025 basehttp "GET / HTTP/1.1" 404 2309
+WARNING 2025-04-16 02:26:56,302 log Unauthorized: /api/auth/
+WARNING 2025-04-16 02:26:56,302 basehttp "GET /api/auth/ HTTP/1.1" 401 5041
+INFO 2025-04-16 02:26:56,340 basehttp "GET /static/rest_framework/css/default.css HTTP/1.1" 200 1152
+INFO 2025-04-16 02:26:56,341 basehttp "GET /static/rest_framework/css/prettify.css HTTP/1.1" 200 817
+INFO 2025-04-16 02:26:56,341 basehttp "GET /static/rest_framework/css/bootstrap-tweaks.css HTTP/1.1" 200 3426
+INFO 2025-04-16 02:26:56,342 basehttp "GET /static/rest_framework/js/ajax-form.js HTTP/1.1" 200 3796
+INFO 2025-04-16 02:26:56,342 basehttp "GET /static/rest_framework/js/jquery-3.7.1.min.js HTTP/1.1" 200 87533
+INFO 2025-04-16 02:26:56,342 basehttp "GET /static/rest_framework/css/bootstrap.min.css HTTP/1.1" 200 121457
+INFO 2025-04-16 02:26:56,348 basehttp "GET /static/rest_framework/js/default.js HTTP/1.1" 200 1268
+INFO 2025-04-16 02:26:56,349 basehttp "GET /static/rest_framework/js/csrf.js HTTP/1.1" 200 1793
+INFO 2025-04-16 02:26:56,349 basehttp "GET /static/rest_framework/js/load-ajax-form.js HTTP/1.1" 200 59
+INFO 2025-04-16 02:26:56,350 basehttp "GET /static/rest_framework/js/prettify-min.js HTTP/1.1" 200 13632
+INFO 2025-04-16 02:26:56,350 basehttp "GET /static/rest_framework/js/bootstrap.min.js HTTP/1.1" 200 39680
+INFO 2025-04-16 02:26:56,351 basehttp "GET /static/rest_framework/img/grid.png HTTP/1.1" 200 1458
+WARNING 2025-04-16 02:27:01,502 log Not Found: /api/
+WARNING 2025-04-16 02:27:01,503 basehttp "GET /api/ HTTP/1.1" 404 2339
+WARNING 2025-04-16 02:27:11,012 log Unauthorized: /api/auth/
+WARNING 2025-04-16 02:27:11,012 basehttp "GET /api/auth/ HTTP/1.1" 401 5041
+WARNING 2025-04-16 02:27:14,257 log Not Found: /api/auth/d
+WARNING 2025-04-16 02:27:14,258 basehttp "GET /api/auth/d HTTP/1.1" 404 8716
+INFO 2025-04-16 11:50:28,328 autoreload Watching for file changes with StatReloader
+INFO 2025-04-16 11:54:34,599 autoreload Watching for file changes with StatReloader
+INFO 2025-04-16 11:55:25,212 autoreload /home/teo/Documents/ADB/config/settings.py changed, reloading.
+INFO 2025-04-16 11:55:25,936 autoreload Watching for file changes with StatReloader
+INFO 2025-04-16 11:56:05,405 autoreload Watching for file changes with StatReloader
+INFO 2025-04-16 11:56:53,389 autoreload Watching for file changes with StatReloader
+WARNING 2025-04-16 11:56:55,481 log Not Found: /
+WARNING 2025-04-16 11:56:55,482 basehttp "GET / HTTP/1.1" 404 2309
+WARNING 2025-04-16 11:56:55,592 log Not Found: /favicon.ico
+WARNING 2025-04-16 11:56:55,592 basehttp "GET /favicon.ico HTTP/1.1" 404 2360
+INFO 2025-04-16 11:57:01,832 basehttp "GET /admin/auth_app/business/ HTTP/1.1" 302 0
+INFO 2025-04-16 11:57:01,895 basehttp "GET /admin/login/?next=/admin/auth_app/business/ HTTP/1.1" 200 4285
+INFO 2025-04-16 11:57:02,009 basehttp "GET /static/admin/css/base.css HTTP/1.1" 304 0
+INFO 2025-04-16 11:57:02,017 basehttp "GET /static/admin/css/dark_mode.css HTTP/1.1" 304 0
+INFO 2025-04-16 11:57:02,019 basehttp "GET /static/admin/css/nav_sidebar.css HTTP/1.1" 304 0
+INFO 2025-04-16 11:57:02,025 basehttp "GET /static/admin/css/login.css HTTP/1.1" 304 0
+INFO 2025-04-16 11:57:02,026 basehttp "GET /static/admin/js/theme.js HTTP/1.1" 304 0
+INFO 2025-04-16 11:57:02,028 basehttp "GET /static/admin/css/responsive.css HTTP/1.1" 304 0
+INFO 2025-04-16 11:57:02,044 basehttp "GET /static/admin/js/nav_sidebar.js HTTP/1.1" 304 0
+INFO 2025-04-16 11:57:08,157 basehttp "POST /admin/login/?next=/admin/auth_app/business/ HTTP/1.1" 302 0
+WARNING 2025-04-16 11:57:08,192 log Not Found: /admin/auth_app/business/
+WARNING 2025-04-16 11:57:08,193 basehttp "GET /admin/auth_app/business/ HTTP/1.1" 404 6536
+INFO 2025-04-16 11:57:14,374 basehttp "GET /admin/ HTTP/1.1" 200 9494
+INFO 2025-04-16 11:57:14,429 basehttp "GET /static/admin/css/dashboard.css HTTP/1.1" 304 0
+INFO 2025-04-16 11:57:14,445 basehttp "GET /static/admin/img/icon-changelink.svg HTTP/1.1" 304 0
+INFO 2025-04-16 11:57:14,446 basehttp "GET /static/admin/img/icon-addlink.svg HTTP/1.1" 304 0
+INFO 2025-04-16 11:57:17,259 basehttp "GET /admin/accounts/customuser/ HTTP/1.1" 200 14603
+INFO 2025-04-16 11:57:17,317 basehttp "GET /static/admin/css/changelists.css HTTP/1.1" 304 0
+INFO 2025-04-16 11:57:17,319 basehttp "GET /static/admin/js/vendor/jquery/jquery.js HTTP/1.1" 304 0
+INFO 2025-04-16 11:57:17,324 basehttp "GET /static/admin/js/admin/RelatedObjectLookups.js HTTP/1.1" 304 0
+INFO 2025-04-16 11:57:17,327 basehttp "GET /static/admin/js/jquery.init.js HTTP/1.1" 304 0
+INFO 2025-04-16 11:57:17,330 basehttp "GET /static/admin/js/core.js HTTP/1.1" 304 0
+INFO 2025-04-16 11:57:17,332 basehttp "GET /static/admin/js/actions.js HTTP/1.1" 304 0
+INFO 2025-04-16 11:57:17,334 basehttp "GET /static/admin/js/urlify.js HTTP/1.1" 304 0
+INFO 2025-04-16 11:57:17,339 basehttp "GET /static/admin/img/search.svg HTTP/1.1" 304 0
+INFO 2025-04-16 11:57:17,340 basehttp "GET /static/admin/js/vendor/xregexp/xregexp.js HTTP/1.1" 304 0
+INFO 2025-04-16 11:57:17,340 basehttp "GET /static/admin/js/prepopulate.js HTTP/1.1" 304 0
+INFO 2025-04-16 11:57:17,352 basehttp "GET /admin/jsi18n/ HTTP/1.1" 200 8691
+INFO 2025-04-16 11:57:17,358 basehttp "GET /static/admin/img/icon-yes.svg HTTP/1.1" 304 0
+INFO 2025-04-16 11:57:17,405 basehttp "GET /static/admin/js/filters.js HTTP/1.1" 304 0
+INFO 2025-04-16 11:57:17,428 basehttp "GET /static/admin/img/tooltag-add.svg HTTP/1.1" 304 0
+INFO 2025-04-16 11:57:17,431 basehttp "GET /static/admin/img/sorting-icons.svg HTTP/1.1" 304 0
+INFO 2025-04-16 11:57:17,436 basehttp "GET /static/admin/img/icon-viewlink.svg HTTP/1.1" 304 0
+INFO 2025-04-16 11:57:19,231 basehttp "GET /admin/accounts/businessrole/ HTTP/1.1" 200 11381
+INFO 2025-04-16 11:57:19,294 basehttp "GET /admin/jsi18n/ HTTP/1.1" 200 8691
+INFO 2025-04-16 11:57:20,472 basehttp "GET /admin/accounts/business/ HTTP/1.1" 200 12104
+INFO 2025-04-16 11:57:20,545 basehttp "GET /admin/jsi18n/ HTTP/1.1" 200 8691
+INFO 2025-04-16 11:57:21,571 basehttp "GET /admin/accounts/businessinvitation/ HTTP/1.1" 200 11786
+INFO 2025-04-16 11:57:21,636 basehttp "GET /admin/jsi18n/ HTTP/1.1" 200 8691
+INFO 2025-04-16 11:57:22,441 basehttp "GET /admin/accounts/businessjoinrequest/ HTTP/1.1" 200 11940
+INFO 2025-04-16 11:57:22,538 basehttp "GET /admin/jsi18n/ HTTP/1.1" 200 8691
+INFO 2025-04-16 13:05:59,674 autoreload Watching for file changes with StatReloader
+INFO 2025-04-16 13:47:04,297 autoreload Watching for file changes with StatReloader
+WARNING 2025-04-16 13:47:16,213 log Not Found: /
+WARNING 2025-04-16 13:47:16,214 basehttp "GET / HTTP/1.1" 404 2622
+INFO 2025-04-16 14:05:56,726 autoreload Watching for file changes with StatReloader
+WARNING 2025-04-16 14:05:58,875 log Not Found: /
+WARNING 2025-04-16 14:05:58,876 basehttp "GET / HTTP/1.1" 404 2622
+INFO 2025-04-16 14:06:06,558 basehttp "GET /admin/ HTTP/1.1" 302 0
+INFO 2025-04-16 14:06:06,639 basehttp "GET /admin/login/?next=/admin/ HTTP/1.1" 200 4249
+INFO 2025-04-16 14:06:12,151 basehttp "POST /admin/login/?next=/admin/ HTTP/1.1" 302 0
+INFO 2025-04-16 14:06:12,196 basehttp "GET /admin/ HTTP/1.1" 200 10422
+INFO 2025-04-16 14:06:37,154 basehttp "GET /admin/business/business/ HTTP/1.1" 200 13027
+INFO 2025-04-16 14:06:37,226 basehttp "GET /admin/jsi18n/ HTTP/1.1" 200 8691
+INFO 2025-04-16 14:06:38,621 basehttp "GET /admin/business/business/add/ HTTP/1.1" 200 31972
+INFO 2025-04-16 14:06:38,737 basehttp "GET /static/admin/js/prepopulate_init.js HTTP/1.1" 200 586
+INFO 2025-04-16 14:06:38,742 basehttp "GET /static/admin/js/calendar.js HTTP/1.1" 200 9141
+INFO 2025-04-16 14:06:38,743 basehttp "GET /admin/jsi18n/ HTTP/1.1" 200 8691
+INFO 2025-04-16 14:06:38,743 basehttp "GET /static/admin/css/forms.css HTTP/1.1" 200 8525
+INFO 2025-04-16 14:06:38,745 basehttp "GET /static/admin/js/inlines.js HTTP/1.1" 200 15628
+INFO 2025-04-16 14:06:38,746 basehttp "GET /static/admin/js/admin/DateTimeShortcuts.js HTTP/1.1" 200 19319
+INFO 2025-04-16 14:06:38,761 basehttp "GET /static/admin/img/icon-deletelink.svg HTTP/1.1" 304 0
+INFO 2025-04-16 14:06:38,762 basehttp "GET /static/admin/css/widgets.css HTTP/1.1" 200 11991
+INFO 2025-04-16 14:06:38,813 basehttp "GET /static/admin/js/change_form.js HTTP/1.1" 200 606
+ERROR 2025-04-16 14:06:48,381 log Internal Server Error: /admin/business/business/add/
+Traceback (most recent call last):
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.10/site-packages/django/contrib/admin/options.py", line 719, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.10/site-packages/django/utils/decorators.py", line 192, in _view_wrapper
+    result = _process_exception(request, e)
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.10/site-packages/django/utils/decorators.py", line 190, in _view_wrapper
+    response = view_func(request, *args, **kwargs)
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.10/site-packages/django/views/decorators/cache.py", line 80, in _view_wrapper
+    response = view_func(request, *args, **kwargs)
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.10/site-packages/django/contrib/admin/sites.py", line 246, in inner
+    return view(request, *args, **kwargs)
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.10/site-packages/django/contrib/admin/options.py", line 1984, in add_view
+    return self.changeform_view(request, None, form_url, extra_context)
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.10/site-packages/django/utils/decorators.py", line 48, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.10/site-packages/django/utils/decorators.py", line 192, in _view_wrapper
+    result = _process_exception(request, e)
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.10/site-packages/django/utils/decorators.py", line 190, in _view_wrapper
+    response = view_func(request, *args, **kwargs)
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.10/site-packages/django/contrib/admin/options.py", line 1843, in changeform_view
+    return self._changeform_view(request, object_id, form_url, extra_context)
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.10/site-packages/django/contrib/admin/options.py", line 1894, in _changeform_view
+    self.save_model(request, new_object, form, not add)
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.10/site-packages/django/contrib/admin/options.py", line 1314, in save_model
+    obj.save()
+  File "/home/teo/Documents/ADB/app/business/models/business.py", line 82, in save
+    from app.accounts.services import BusinessRoleService
+ImportError: cannot import name 'BusinessRoleService' from 'app.accounts.services' (/home/teo/Documents/ADB/app/accounts/services/__init__.py)
+ERROR 2025-04-16 14:06:48,386 basehttp "POST /admin/business/business/add/ HTTP/1.1" 500 143195
+INFO 2025-04-16 14:07:36,503 autoreload /home/teo/Documents/ADB/config/middleware.py changed, reloading.
+INFO 2025-04-16 14:07:37,541 autoreload Watching for file changes with StatReloader
+INFO 2025-04-16 14:15:48,018 autoreload Watching for file changes with StatReloader
+WARNING 2025-04-16 14:15:50,723 log Not Found: /
+WARNING 2025-04-16 14:15:50,724 basehttp "GET / HTTP/1.1" 404 2622
+INFO 2025-04-16 14:16:02,830 basehttp "GET /admin/ HTTP/1.1" 200 10422
+INFO 2025-04-16 14:16:04,535 basehttp "GET /admin/business/business/ HTTP/1.1" 200 13027
+INFO 2025-04-16 14:16:04,627 basehttp "GET /admin/jsi18n/ HTTP/1.1" 200 8691
+INFO 2025-04-16 14:16:06,407 basehttp "GET /admin/business/business/add/ HTTP/1.1" 200 31972
+INFO 2025-04-16 14:16:06,468 basehttp "GET /admin/jsi18n/ HTTP/1.1" 200 8691
+ERROR 2025-04-16 14:16:16,417 log Internal Server Error: /admin/business/business/add/
+Traceback (most recent call last):
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.10/site-packages/django/contrib/admin/options.py", line 719, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.10/site-packages/django/utils/decorators.py", line 192, in _view_wrapper
+    result = _process_exception(request, e)
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.10/site-packages/django/utils/decorators.py", line 190, in _view_wrapper
+    response = view_func(request, *args, **kwargs)
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.10/site-packages/django/views/decorators/cache.py", line 80, in _view_wrapper
+    response = view_func(request, *args, **kwargs)
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.10/site-packages/django/contrib/admin/sites.py", line 246, in inner
+    return view(request, *args, **kwargs)
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.10/site-packages/django/contrib/admin/options.py", line 1984, in add_view
+    return self.changeform_view(request, None, form_url, extra_context)
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.10/site-packages/django/utils/decorators.py", line 48, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.10/site-packages/django/utils/decorators.py", line 192, in _view_wrapper
+    result = _process_exception(request, e)
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.10/site-packages/django/utils/decorators.py", line 190, in _view_wrapper
+    response = view_func(request, *args, **kwargs)
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.10/site-packages/django/contrib/admin/options.py", line 1843, in changeform_view
+    return self._changeform_view(request, object_id, form_url, extra_context)
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.10/site-packages/django/contrib/admin/options.py", line 1894, in _changeform_view
+    self.save_model(request, new_object, form, not add)
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.10/site-packages/django/contrib/admin/options.py", line 1314, in save_model
+    obj.save()
+  File "/home/teo/Documents/ADB/app/business/models/business.py", line 82, in save
+    from app.roles.services.role_service import BusinessRoleService
+ImportError: cannot import name 'BusinessRoleService' from 'app.roles.services.role_service' (/home/teo/Documents/ADB/app/roles/services/role_service.py)
+ERROR 2025-04-16 14:16:16,420 basehttp "POST /admin/business/business/add/ HTTP/1.1" 500 143259
+INFO 2025-04-16 14:18:49,997 autoreload /home/teo/Documents/ADB/app/roles/services/role_service.py changed, reloading.
+INFO 2025-04-16 14:18:51,083 autoreload Watching for file changes with StatReloader
+WARNING 2025-04-16 14:18:57,961 log Not Found: /
+WARNING 2025-04-16 14:18:57,962 basehttp "GET / HTTP/1.1" 404 2622
+INFO 2025-04-16 14:19:08,865 basehttp "GET /admin/ HTTP/1.1" 200 10422
+INFO 2025-04-16 14:19:10,835 basehttp "GET /admin/business/business/ HTTP/1.1" 200 13027
+INFO 2025-04-16 14:19:10,924 basehttp "GET /admin/jsi18n/ HTTP/1.1" 200 8691
+INFO 2025-04-16 14:19:14,752 basehttp "GET /admin/business/business/add/ HTTP/1.1" 200 31972
+INFO 2025-04-16 14:19:14,831 basehttp "GET /admin/jsi18n/ HTTP/1.1" 200 8691
+INFO 2025-04-16 14:19:37,109 basehttp "POST /admin/business/business/add/ HTTP/1.1" 302 0
+ERROR 2025-04-16 14:19:37,286 log Internal Server Error: /admin/business/business/
+Traceback (most recent call last):
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.10/site-packages/django/db/backends/utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.10/site-packages/django/db/backends/sqlite3/base.py", line 360, in execute
+    return super().execute(query, params)
+sqlite3.OperationalError: no such table: business_business
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.10/site-packages/django/contrib/admin/options.py", line 719, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.10/site-packages/django/utils/decorators.py", line 192, in _view_wrapper
+    result = _process_exception(request, e)
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.10/site-packages/django/utils/decorators.py", line 190, in _view_wrapper
+    response = view_func(request, *args, **kwargs)
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.10/site-packages/django/views/decorators/cache.py", line 80, in _view_wrapper
+    response = view_func(request, *args, **kwargs)
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.10/site-packages/django/contrib/admin/sites.py", line 246, in inner
+    return view(request, *args, **kwargs)
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.10/site-packages/django/utils/decorators.py", line 48, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.10/site-packages/django/utils/decorators.py", line 192, in _view_wrapper
+    result = _process_exception(request, e)
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.10/site-packages/django/utils/decorators.py", line 190, in _view_wrapper
+    response = view_func(request, *args, **kwargs)
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.10/site-packages/django/contrib/admin/options.py", line 2024, in changelist_view
+    cl = self.get_changelist_instance(request)
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.10/site-packages/django/contrib/admin/options.py", line 867, in get_changelist_instance
+    return ChangeList(
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.10/site-packages/django/contrib/admin/views/main.py", line 146, in __init__
+    self.get_results(request)
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.10/site-packages/django/contrib/admin/views/main.py", line 313, in get_results
+    result_count = paginator.count
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.10/site-packages/django/utils/functional.py", line 47, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.10/site-packages/django/core/paginator.py", line 110, in count
+    return c()
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.10/site-packages/django/db/models/query.py", line 604, in count
+    return self.query.get_count(using=self.db)
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.10/site-packages/django/db/models/sql/query.py", line 644, in get_count
+    return obj.get_aggregation(using, {"__count": Count("*")})["__count"]
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.10/site-packages/django/db/models/sql/query.py", line 626, in get_aggregation
+    result = compiler.execute_sql(SINGLE)
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.10/site-packages/django/db/models/sql/compiler.py", line 1622, in execute_sql
+    cursor.execute(sql, params)
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.10/site-packages/django/db/backends/utils.py", line 122, in execute
+    return super().execute(sql, params)
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.10/site-packages/django/db/backends/utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.10/site-packages/django/db/backends/utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.10/site-packages/django/db/backends/utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.10/site-packages/django/db/utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.10/site-packages/django/db/backends/utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.10/site-packages/django/db/backends/sqlite3/base.py", line 360, in execute
+    return super().execute(query, params)
+django.db.utils.OperationalError: no such table: business_business
+ERROR 2025-04-16 14:19:37,302 basehttp "GET /admin/business/business/ HTTP/1.1" 500 205449
+INFO 2025-04-16 14:28:14,266 autoreload Watching for file changes with StatReloader
+WARNING 2025-04-16 14:28:18,761 log Not Found: /
+WARNING 2025-04-16 14:28:18,762 basehttp "GET / HTTP/1.1" 404 2622
+INFO 2025-04-16 14:28:35,261 basehttp "GET /admin/ HTTP/1.1" 200 11045
+ERROR 2025-04-16 14:28:39,212 log Internal Server Error: /admin/business/business/
+Traceback (most recent call last):
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.10/site-packages/asgiref/local.py", line 89, in _lock_storage
+    asyncio.get_running_loop()
+RuntimeError: no running event loop
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.10/site-packages/django/utils/connection.py", line 58, in __getitem__
+    return getattr(self._connections, alias)
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.10/site-packages/asgiref/local.py", line 118, in __getattr__
+    return getattr(storage, key)
+AttributeError: '_thread._local' object has no attribute 'business_1'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.10/site-packages/django/contrib/admin/options.py", line 719, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.10/site-packages/django/utils/decorators.py", line 192, in _view_wrapper
+    result = _process_exception(request, e)
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.10/site-packages/django/utils/decorators.py", line 190, in _view_wrapper
+    response = view_func(request, *args, **kwargs)
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.10/site-packages/django/views/decorators/cache.py", line 80, in _view_wrapper
+    response = view_func(request, *args, **kwargs)
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.10/site-packages/django/contrib/admin/sites.py", line 246, in inner
+    return view(request, *args, **kwargs)
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.10/site-packages/django/utils/decorators.py", line 48, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.10/site-packages/django/utils/decorators.py", line 192, in _view_wrapper
+    result = _process_exception(request, e)
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.10/site-packages/django/utils/decorators.py", line 190, in _view_wrapper
+    response = view_func(request, *args, **kwargs)
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.10/site-packages/django/contrib/admin/options.py", line 2024, in changelist_view
+    cl = self.get_changelist_instance(request)
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.10/site-packages/django/contrib/admin/options.py", line 867, in get_changelist_instance
+    return ChangeList(
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.10/site-packages/django/contrib/admin/views/main.py", line 146, in __init__
+    self.get_results(request)
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.10/site-packages/django/contrib/admin/views/main.py", line 313, in get_results
+    result_count = paginator.count
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.10/site-packages/django/utils/functional.py", line 47, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.10/site-packages/django/core/paginator.py", line 110, in count
+    return c()
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.10/site-packages/django/db/models/query.py", line 604, in count
+    return self.query.get_count(using=self.db)
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.10/site-packages/django/db/models/sql/query.py", line 644, in get_count
+    return obj.get_aggregation(using, {"__count": Count("*")})["__count"]
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.10/site-packages/django/db/models/sql/query.py", line 625, in get_aggregation
+    compiler = outer_query.get_compiler(using, elide_empty=elide_empty)
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.10/site-packages/django/db/models/sql/query.py", line 362, in get_compiler
+    connection = connections[using]
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.10/site-packages/django/utils/connection.py", line 61, in __getitem__
+    raise self.exception_class(f"The connection '{alias}' doesn't exist.")
+django.utils.connection.ConnectionDoesNotExist: The connection 'business_1' doesn't exist.
+ERROR 2025-04-16 14:28:39,217 basehttp "GET /admin/business/business/ HTTP/1.1" 500 175722
+INFO 2025-04-16 14:28:45,032 basehttp "GET /admin/ HTTP/1.1" 200 10821
+ERROR 2025-04-16 14:28:47,215 log Internal Server Error: /admin/business/business/
+Traceback (most recent call last):
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.10/site-packages/asgiref/local.py", line 89, in _lock_storage
+    asyncio.get_running_loop()
+RuntimeError: no running event loop
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.10/site-packages/django/utils/connection.py", line 58, in __getitem__
+    return getattr(self._connections, alias)
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.10/site-packages/asgiref/local.py", line 118, in __getattr__
+    return getattr(storage, key)
+AttributeError: '_thread._local' object has no attribute 'business_1'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.10/site-packages/django/contrib/admin/options.py", line 719, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.10/site-packages/django/utils/decorators.py", line 192, in _view_wrapper
+    result = _process_exception(request, e)
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.10/site-packages/django/utils/decorators.py", line 190, in _view_wrapper
+    response = view_func(request, *args, **kwargs)
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.10/site-packages/django/views/decorators/cache.py", line 80, in _view_wrapper
+    response = view_func(request, *args, **kwargs)
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.10/site-packages/django/contrib/admin/sites.py", line 246, in inner
+    return view(request, *args, **kwargs)
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.10/site-packages/django/utils/decorators.py", line 48, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.10/site-packages/django/utils/decorators.py", line 192, in _view_wrapper
+    result = _process_exception(request, e)
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.10/site-packages/django/utils/decorators.py", line 190, in _view_wrapper
+    response = view_func(request, *args, **kwargs)
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.10/site-packages/django/contrib/admin/options.py", line 2024, in changelist_view
+    cl = self.get_changelist_instance(request)
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.10/site-packages/django/contrib/admin/options.py", line 867, in get_changelist_instance
+    return ChangeList(
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.10/site-packages/django/contrib/admin/views/main.py", line 146, in __init__
+    self.get_results(request)
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.10/site-packages/django/contrib/admin/views/main.py", line 313, in get_results
+    result_count = paginator.count
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.10/site-packages/django/utils/functional.py", line 47, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.10/site-packages/django/core/paginator.py", line 110, in count
+    return c()
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.10/site-packages/django/db/models/query.py", line 604, in count
+    return self.query.get_count(using=self.db)
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.10/site-packages/django/db/models/sql/query.py", line 644, in get_count
+    return obj.get_aggregation(using, {"__count": Count("*")})["__count"]
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.10/site-packages/django/db/models/sql/query.py", line 625, in get_aggregation
+    compiler = outer_query.get_compiler(using, elide_empty=elide_empty)
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.10/site-packages/django/db/models/sql/query.py", line 362, in get_compiler
+    connection = connections[using]
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.10/site-packages/django/utils/connection.py", line 61, in __getitem__
+    raise self.exception_class(f"The connection '{alias}' doesn't exist.")
+django.utils.connection.ConnectionDoesNotExist: The connection 'business_1' doesn't exist.
+ERROR 2025-04-16 14:28:47,217 basehttp "GET /admin/business/business/ HTTP/1.1" 500 175722
+INFO 2025-04-16 14:30:17,746 autoreload /home/teo/Documents/ADB/config/db_routers.py changed, reloading.
+INFO 2025-04-16 14:30:18,848 autoreload Watching for file changes with StatReloader
+INFO 2025-04-16 14:30:41,161 autoreload /home/teo/Documents/ADB/config/middleware.py changed, reloading.
+INFO 2025-04-16 14:30:41,879 autoreload Watching for file changes with StatReloader
+INFO 2025-04-16 14:31:55,841 autoreload Watching for file changes with StatReloader
+WARNING 2025-04-16 14:31:58,034 log Not Found: /
+WARNING 2025-04-16 14:31:58,035 basehttp "GET / HTTP/1.1" 404 2622
+INFO 2025-04-16 14:32:05,523 basehttp "GET /admin/ HTTP/1.1" 200 10821
+INFO 2025-04-16 14:32:07,446 basehttp "GET /admin/business/business/ HTTP/1.1" 200 15870
+INFO 2025-04-16 14:32:07,544 basehttp "GET /admin/jsi18n/ HTTP/1.1" 200 8691
+INFO 2025-04-16 14:32:10,129 basehttp "GET /admin/business/business/add/ HTTP/1.1" 200 32452
+INFO 2025-04-16 14:32:10,199 basehttp "GET /admin/jsi18n/ HTTP/1.1" 200 8691
+INFO 2025-04-16 14:32:19,806 basehttp "POST /admin/business/business/add/ HTTP/1.1" 302 0
+INFO 2025-04-16 14:32:19,917 basehttp "GET /admin/business/business/ HTTP/1.1" 200 16691
+INFO 2025-04-16 14:32:20,020 basehttp "GET /admin/jsi18n/ HTTP/1.1" 200 8691
+INFO 2025-04-16 14:32:24,080 basehttp "GET /admin/roles/businessrole/ HTTP/1.1" 200 19750
+INFO 2025-04-16 14:32:24,133 basehttp "GET /static/admin/img/icon-no.svg HTTP/1.1" 304 0
+INFO 2025-04-16 14:32:24,147 basehttp "GET /admin/jsi18n/ HTTP/1.1" 200 8691
+INFO 2025-04-16 14:32:29,972 basehttp "GET /admin/accounts/customuser/ HTTP/1.1" 200 16889
+INFO 2025-04-16 14:32:30,027 basehttp "GET /admin/jsi18n/ HTTP/1.1" 200 8691
+INFO 2025-04-16 14:32:33,773 basehttp "GET /admin/accounts/customuser/1/change/ HTTP/1.1" 200 30865
+INFO 2025-04-16 14:32:33,833 basehttp "GET /admin/jsi18n/ HTTP/1.1" 200 8691
+INFO 2025-04-16 14:32:33,959 basehttp "GET /static/admin/img/icon-calendar.svg HTTP/1.1" 200 1086
+INFO 2025-04-16 14:33:09,706 basehttp "GET /static/admin/img/calendar-icons.svg HTTP/1.1" 304 0
+INFO 2025-04-16 14:33:37,878 basehttp "POST /admin/accounts/customuser/1/change/ HTTP/1.1" 302 0
+INFO 2025-04-16 14:33:37,970 basehttp "GET /admin/accounts/customuser/ HTTP/1.1" 200 17147
+INFO 2025-04-16 14:33:38,079 basehttp "GET /admin/jsi18n/ HTTP/1.1" 200 8691
+INFO 2025-04-16 14:33:44,184 basehttp "GET /admin/business/businessinvitation/ HTTP/1.1" 200 13046
+INFO 2025-04-16 14:33:44,248 basehttp "GET /admin/jsi18n/ HTTP/1.1" 200 8691
+INFO 2025-04-16 14:33:46,363 basehttp "GET /admin/business/businessjoinrequest/ HTTP/1.1" 200 13200
+INFO 2025-04-16 14:33:46,421 basehttp "GET /admin/jsi18n/ HTTP/1.1" 200 8691
+INFO 2025-04-16 14:33:48,963 basehttp "GET /admin/roles/businessrole/ HTTP/1.1" 200 19752
+INFO 2025-04-16 14:33:49,021 basehttp "GET /admin/jsi18n/ HTTP/1.1" 200 8691
+INFO 2025-04-16 15:12:08,196 autoreload Watching for file changes with StatReloader
+INFO 2025-04-16 15:13:10,952 autoreload /home/teo/Documents/ADB/app/business/models/business.py changed, reloading.
+INFO 2025-04-16 15:13:12,175 autoreload Watching for file changes with StatReloader
+WARNING 2025-04-16 15:13:14,831 log Not Found: /
+WARNING 2025-04-16 15:13:14,832 basehttp "GET / HTTP/1.1" 404 2622
+INFO 2025-04-16 15:13:19,394 basehttp "GET /admin/ HTTP/1.1" 200 11576
+INFO 2025-04-16 15:13:25,402 basehttp "GET /admin/business/business/ HTTP/1.1" 200 16495
+INFO 2025-04-16 15:13:25,471 basehttp "GET /admin/jsi18n/ HTTP/1.1" 200 8691
+INFO 2025-04-16 15:13:28,358 basehttp "GET /admin/business/business/add/ HTTP/1.1" 200 32861
+INFO 2025-04-16 15:13:28,435 basehttp "GET /admin/jsi18n/ HTTP/1.1" 200 8691
+ERROR 2025-04-16 15:13:33,866 log Internal Server Error: /admin/business/business/add/
+Traceback (most recent call last):
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.10/site-packages/django/db/backends/utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.10/site-packages/django/db/backends/sqlite3/base.py", line 360, in execute
+    return super().execute(query, params)
+sqlite3.IntegrityError: UNIQUE constraint failed: roles_rolepermission.business_role_id
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.10/site-packages/django/contrib/admin/options.py", line 719, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.10/site-packages/django/utils/decorators.py", line 192, in _view_wrapper
+    result = _process_exception(request, e)
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.10/site-packages/django/utils/decorators.py", line 190, in _view_wrapper
+    response = view_func(request, *args, **kwargs)
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.10/site-packages/django/views/decorators/cache.py", line 80, in _view_wrapper
+    response = view_func(request, *args, **kwargs)
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.10/site-packages/django/contrib/admin/sites.py", line 246, in inner
+    return view(request, *args, **kwargs)
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.10/site-packages/django/contrib/admin/options.py", line 1984, in add_view
+    return self.changeform_view(request, None, form_url, extra_context)
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.10/site-packages/django/utils/decorators.py", line 48, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.10/site-packages/django/utils/decorators.py", line 192, in _view_wrapper
+    result = _process_exception(request, e)
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.10/site-packages/django/utils/decorators.py", line 190, in _view_wrapper
+    response = view_func(request, *args, **kwargs)
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.10/site-packages/django/contrib/admin/options.py", line 1843, in changeform_view
+    return self._changeform_view(request, object_id, form_url, extra_context)
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.10/site-packages/django/contrib/admin/options.py", line 1894, in _changeform_view
+    self.save_model(request, new_object, form, not add)
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.10/site-packages/django/contrib/admin/options.py", line 1314, in save_model
+    obj.save()
+  File "/home/teo/Documents/ADB/app/business/models/business.py", line 83, in save
+    roles = RoleService.create_business_roles(self)
+  File "/home/teo/Documents/ADB/app/roles/services/role_service.py", line 260, in create_business_roles
+    RolePermission.objects.create(
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.10/site-packages/django/db/models/manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.10/site-packages/django/db/models/query.py", line 663, in create
+    obj.save(force_insert=True, using=self.db)
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.10/site-packages/django/db/models/base.py", line 902, in save
+    self.save_base(
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.10/site-packages/django/db/models/base.py", line 1008, in save_base
+    updated = self._save_table(
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.10/site-packages/django/db/models/base.py", line 1169, in _save_table
+    results = self._do_insert(
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.10/site-packages/django/db/models/base.py", line 1210, in _do_insert
+    return manager._insert(
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.10/site-packages/django/db/models/manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.10/site-packages/django/db/models/query.py", line 1854, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.10/site-packages/django/db/models/sql/compiler.py", line 1881, in execute_sql
+    cursor.execute(sql, params)
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.10/site-packages/django/db/backends/utils.py", line 122, in execute
+    return super().execute(sql, params)
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.10/site-packages/django/db/backends/utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.10/site-packages/django/db/backends/utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.10/site-packages/django/db/backends/utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.10/site-packages/django/db/utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.10/site-packages/django/db/backends/utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.10/site-packages/django/db/backends/sqlite3/base.py", line 360, in execute
+    return super().execute(query, params)
+django.db.utils.IntegrityError: UNIQUE constraint failed: roles_rolepermission.business_role_id
+ERROR 2025-04-16 15:13:33,872 basehttp "POST /admin/business/business/add/ HTTP/1.1" 500 251319
+INFO 2025-04-16 15:15:45,352 autoreload /home/teo/Documents/ADB/app/roles/services/role_service.py changed, reloading.
+INFO 2025-04-16 15:15:46,166 autoreload Watching for file changes with StatReloader
+WARNING 2025-04-16 15:15:57,897 log Not Found: /
+WARNING 2025-04-16 15:15:57,898 basehttp "GET / HTTP/1.1" 404 2622
+INFO 2025-04-16 15:16:01,495 basehttp "GET /admin/business/business/add/ HTTP/1.1" 200 32861
+ERROR 2025-04-16 15:16:03,894 log Internal Server Error: /admin/business/business/add/
+Traceback (most recent call last):
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.10/site-packages/django/db/backends/utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.10/site-packages/django/db/backends/sqlite3/base.py", line 360, in execute
+    return super().execute(query, params)
+sqlite3.IntegrityError: UNIQUE constraint failed: roles_rolepermission.business_role_id
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.10/site-packages/django/contrib/admin/options.py", line 719, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.10/site-packages/django/utils/decorators.py", line 192, in _view_wrapper
+    result = _process_exception(request, e)
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.10/site-packages/django/utils/decorators.py", line 190, in _view_wrapper
+    response = view_func(request, *args, **kwargs)
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.10/site-packages/django/views/decorators/cache.py", line 80, in _view_wrapper
+    response = view_func(request, *args, **kwargs)
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.10/site-packages/django/contrib/admin/sites.py", line 246, in inner
+    return view(request, *args, **kwargs)
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.10/site-packages/django/contrib/admin/options.py", line 1984, in add_view
+    return self.changeform_view(request, None, form_url, extra_context)
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.10/site-packages/django/utils/decorators.py", line 48, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.10/site-packages/django/utils/decorators.py", line 192, in _view_wrapper
+    result = _process_exception(request, e)
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.10/site-packages/django/utils/decorators.py", line 190, in _view_wrapper
+    response = view_func(request, *args, **kwargs)
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.10/site-packages/django/contrib/admin/options.py", line 1843, in changeform_view
+    return self._changeform_view(request, object_id, form_url, extra_context)
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.10/site-packages/django/contrib/admin/options.py", line 1894, in _changeform_view
+    self.save_model(request, new_object, form, not add)
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.10/site-packages/django/contrib/admin/options.py", line 1314, in save_model
+    obj.save()
+  File "/home/teo/Documents/ADB/app/business/models/business.py", line 83, in save
+    roles = RoleService.create_business_roles(self)
+  File "/home/teo/Documents/ADB/app/roles/services/role_service.py", line 248, in create_business_roles
+    RolePermission.objects.create(
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.10/site-packages/django/db/models/manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.10/site-packages/django/db/models/query.py", line 663, in create
+    obj.save(force_insert=True, using=self.db)
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.10/site-packages/django/db/models/base.py", line 902, in save
+    self.save_base(
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.10/site-packages/django/db/models/base.py", line 1008, in save_base
+    updated = self._save_table(
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.10/site-packages/django/db/models/base.py", line 1169, in _save_table
+    results = self._do_insert(
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.10/site-packages/django/db/models/base.py", line 1210, in _do_insert
+    return manager._insert(
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.10/site-packages/django/db/models/manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.10/site-packages/django/db/models/query.py", line 1854, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.10/site-packages/django/db/models/sql/compiler.py", line 1881, in execute_sql
+    cursor.execute(sql, params)
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.10/site-packages/django/db/backends/utils.py", line 122, in execute
+    return super().execute(sql, params)
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.10/site-packages/django/db/backends/utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.10/site-packages/django/db/backends/utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.10/site-packages/django/db/backends/utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.10/site-packages/django/db/utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.10/site-packages/django/db/backends/utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.10/site-packages/django/db/backends/sqlite3/base.py", line 360, in execute
+    return super().execute(query, params)
+django.db.utils.IntegrityError: UNIQUE constraint failed: roles_rolepermission.business_role_id
+ERROR 2025-04-16 15:16:03,905 basehttp "POST /admin/business/business/add/ HTTP/1.1" 500 251319
+INFO 2025-04-16 15:16:13,933 basehttp "GET /admin/business/businessjoinrequest/ HTTP/1.1" 200 13200
+INFO 2025-04-16 15:16:15,917 basehttp "GET /admin/business/business/ HTTP/1.1" 200 16495
+INFO 2025-04-16 15:16:15,965 basehttp "GET /admin/jsi18n/ HTTP/1.1" 200 8691
+INFO 2025-04-16 15:16:18,422 basehttp "GET /admin/business/business/add/ HTTP/1.1" 200 32861
+INFO 2025-04-16 15:16:18,491 basehttp "GET /admin/jsi18n/ HTTP/1.1" 200 8691
+INFO 2025-04-16 15:16:23,492 basehttp "POST /admin/business/business/add/ HTTP/1.1" 302 0
+INFO 2025-04-16 15:16:23,579 basehttp "GET /admin/business/business/ HTTP/1.1" 200 17286
+INFO 2025-04-16 15:16:23,691 basehttp "GET /admin/jsi18n/ HTTP/1.1" 200 8691
+INFO 2025-04-16 15:16:29,135 basehttp "GET /admin/business/business/add/ HTTP/1.1" 200 32861
+INFO 2025-04-16 15:16:29,198 basehttp "GET /admin/jsi18n/ HTTP/1.1" 200 8691
+INFO 2025-04-16 15:16:40,923 basehttp "GET /admin/accounts/customuser/1/change/?_to_field=id HTTP/1.1" 200 31110
+INFO 2025-04-16 15:16:40,983 basehttp "GET /admin/jsi18n/ HTTP/1.1" 200 8691
+INFO 2025-04-16 15:16:46,759 basehttp "GET /admin/business/business/add/ HTTP/1.1" 200 32861
+ERROR 2025-04-16 15:16:51,175 log Internal Server Error: /admin/business/business/add/
+Traceback (most recent call last):
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.10/site-packages/django/db/backends/utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.10/site-packages/django/db/backends/sqlite3/base.py", line 360, in execute
+    return super().execute(query, params)
+sqlite3.IntegrityError: UNIQUE constraint failed: roles_rolepermission.business_role_id
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.10/site-packages/django/contrib/admin/options.py", line 719, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.10/site-packages/django/utils/decorators.py", line 192, in _view_wrapper
+    result = _process_exception(request, e)
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.10/site-packages/django/utils/decorators.py", line 190, in _view_wrapper
+    response = view_func(request, *args, **kwargs)
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.10/site-packages/django/views/decorators/cache.py", line 80, in _view_wrapper
+    response = view_func(request, *args, **kwargs)
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.10/site-packages/django/contrib/admin/sites.py", line 246, in inner
+    return view(request, *args, **kwargs)
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.10/site-packages/django/contrib/admin/options.py", line 1984, in add_view
+    return self.changeform_view(request, None, form_url, extra_context)
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.10/site-packages/django/utils/decorators.py", line 48, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.10/site-packages/django/utils/decorators.py", line 192, in _view_wrapper
+    result = _process_exception(request, e)
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.10/site-packages/django/utils/decorators.py", line 190, in _view_wrapper
+    response = view_func(request, *args, **kwargs)
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.10/site-packages/django/contrib/admin/options.py", line 1843, in changeform_view
+    return self._changeform_view(request, object_id, form_url, extra_context)
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.10/site-packages/django/contrib/admin/options.py", line 1894, in _changeform_view
+    self.save_model(request, new_object, form, not add)
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.10/site-packages/django/contrib/admin/options.py", line 1314, in save_model
+    obj.save()
+  File "/home/teo/Documents/ADB/app/business/models/business.py", line 83, in save
+    roles = RoleService.create_business_roles(self)
+  File "/home/teo/Documents/ADB/app/roles/services/role_service.py", line 248, in create_business_roles
+    RolePermission.objects.create(
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.10/site-packages/django/db/models/manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.10/site-packages/django/db/models/query.py", line 663, in create
+    obj.save(force_insert=True, using=self.db)
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.10/site-packages/django/db/models/base.py", line 902, in save
+    self.save_base(
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.10/site-packages/django/db/models/base.py", line 1008, in save_base
+    updated = self._save_table(
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.10/site-packages/django/db/models/base.py", line 1169, in _save_table
+    results = self._do_insert(
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.10/site-packages/django/db/models/base.py", line 1210, in _do_insert
+    return manager._insert(
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.10/site-packages/django/db/models/manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.10/site-packages/django/db/models/query.py", line 1854, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.10/site-packages/django/db/models/sql/compiler.py", line 1881, in execute_sql
+    cursor.execute(sql, params)
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.10/site-packages/django/db/backends/utils.py", line 122, in execute
+    return super().execute(sql, params)
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.10/site-packages/django/db/backends/utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.10/site-packages/django/db/backends/utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.10/site-packages/django/db/backends/utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.10/site-packages/django/db/utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.10/site-packages/django/db/backends/utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.10/site-packages/django/db/backends/sqlite3/base.py", line 360, in execute
+    return super().execute(query, params)
+django.db.utils.IntegrityError: UNIQUE constraint failed: roles_rolepermission.business_role_id
+ERROR 2025-04-16 15:16:51,177 basehttp "POST /admin/business/business/add/ HTTP/1.1" 500 252341
+INFO 2025-04-16 15:18:20,325 autoreload /home/teo/Documents/ADB/app/roles/services/role_service.py changed, reloading.
+INFO 2025-04-16 15:18:21,277 autoreload Watching for file changes with StatReloader
+INFO 2025-04-16 15:19:25,257 autoreload /home/teo/Documents/ADB/app/business/api/serializers.py changed, reloading.
+INFO 2025-04-16 15:19:25,974 autoreload Watching for file changes with StatReloader
+INFO 2025-04-16 15:19:58,363 autoreload /home/teo/Documents/ADB/app/business/api/serializers.py changed, reloading.
+INFO 2025-04-16 15:19:59,335 autoreload Watching for file changes with StatReloader
+INFO 2025-04-16 15:20:07,201 autoreload /home/teo/Documents/ADB/app/business/api/serializers.py changed, reloading.
+INFO 2025-04-16 15:20:07,989 autoreload Watching for file changes with StatReloader
+INFO 2025-04-16 15:20:52,851 autoreload /home/teo/Documents/ADB/app/business/api/views/business_views.py changed, reloading.
+INFO 2025-04-16 15:20:53,742 autoreload Watching for file changes with StatReloader
+WARNING 2025-04-16 15:22:20,404 log Not Found: /
+WARNING 2025-04-16 15:22:20,406 basehttp "GET / HTTP/1.1" 404 2622
+INFO 2025-04-16 15:22:31,867 basehttp "GET /admin/ HTTP/1.1" 200 11935
+INFO 2025-04-16 15:22:34,981 basehttp "GET /admin/roles/businessrole/ HTTP/1.1" 200 19824
+INFO 2025-04-16 15:22:35,054 basehttp "GET /admin/jsi18n/ HTTP/1.1" 200 8691
+INFO 2025-04-16 15:22:41,795 basehttp "GET /admin/business/business/add/ HTTP/1.1" 200 32861
+INFO 2025-04-16 15:22:41,866 basehttp "GET /admin/jsi18n/ HTTP/1.1" 200 8691
+INFO 2025-04-16 15:22:48,464 basehttp "POST /admin/business/business/add/ HTTP/1.1" 200 33114
+INFO 2025-04-16 15:22:48,527 basehttp "GET /admin/jsi18n/ HTTP/1.1" 200 8691
+INFO 2025-04-16 15:23:00,843 basehttp "POST /admin/business/business/add/ HTTP/1.1" 302 0
+INFO 2025-04-16 15:23:00,950 basehttp "GET /admin/business/business/ HTTP/1.1" 200 17873
+INFO 2025-04-16 15:23:01,064 basehttp "GET /admin/jsi18n/ HTTP/1.1" 200 8691
+INFO 2025-04-16 15:23:03,632 basehttp "GET /admin/roles/businessrole/ HTTP/1.1" 200 19899
+INFO 2025-04-16 15:23:03,683 basehttp "GET /admin/jsi18n/ HTTP/1.1" 200 8691
+INFO 2025-04-16 15:23:16,582 basehttp "GET /admin/business/business/ HTTP/1.1" 200 17657
+INFO 2025-04-16 15:23:16,654 basehttp "GET /admin/jsi18n/ HTTP/1.1" 200 8691
+INFO 2025-04-16 15:23:23,039 basehttp "GET /admin/business/business/3/change/ HTTP/1.1" 200 33194
+INFO 2025-04-16 15:23:23,110 basehttp "GET /admin/jsi18n/ HTTP/1.1" 200 8691
+ERROR 2025-04-16 15:23:26,694 log Internal Server Error: /admin/business/business/3/change/
+Traceback (most recent call last):
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.10/site-packages/django/contrib/admin/options.py", line 719, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.10/site-packages/django/utils/decorators.py", line 192, in _view_wrapper
+    result = _process_exception(request, e)
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.10/site-packages/django/utils/decorators.py", line 190, in _view_wrapper
+    response = view_func(request, *args, **kwargs)
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.10/site-packages/django/views/decorators/cache.py", line 80, in _view_wrapper
+    response = view_func(request, *args, **kwargs)
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.10/site-packages/django/contrib/admin/sites.py", line 246, in inner
+    return view(request, *args, **kwargs)
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.10/site-packages/django/contrib/admin/options.py", line 1987, in change_view
+    return self.changeform_view(request, object_id, form_url, extra_context)
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.10/site-packages/django/utils/decorators.py", line 48, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.10/site-packages/django/utils/decorators.py", line 192, in _view_wrapper
+    result = _process_exception(request, e)
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.10/site-packages/django/utils/decorators.py", line 190, in _view_wrapper
+    response = view_func(request, *args, **kwargs)
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.10/site-packages/django/contrib/admin/options.py", line 1843, in changeform_view
+    return self._changeform_view(request, object_id, form_url, extra_context)
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.10/site-packages/django/contrib/admin/options.py", line 1894, in _changeform_view
+    self.save_model(request, new_object, form, not add)
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.10/site-packages/django/contrib/admin/options.py", line 1314, in save_model
+    obj.save()
+  File "/home/teo/Documents/ADB/app/business/models/business.py", line 82, in save
+    from app.roles.services.role_service import RoleService
+ImportError: cannot import name 'RoleService' from 'app.roles.services.role_service' (/home/teo/Documents/ADB/app/roles/services/role_service.py)
+ERROR 2025-04-16 15:23:26,697 basehttp "POST /admin/business/business/3/change/ HTTP/1.1" 500 144032
+INFO 2025-04-16 15:41:53,049 autoreload Watching for file changes with StatReloader
+WARNING 2025-04-16 15:41:54,941 log Not Found: /
+WARNING 2025-04-16 15:41:54,942 basehttp "GET / HTTP/1.1" 404 2622
+INFO 2025-04-16 15:41:59,900 basehttp "GET /admin/ HTTP/1.1" 200 12297
+INFO 2025-04-16 15:42:02,253 basehttp "GET /admin/roles/businessrole/ HTTP/1.1" 200 19899
+INFO 2025-04-16 15:42:02,357 basehttp "GET /admin/jsi18n/ HTTP/1.1" 200 8691
+INFO 2025-04-16 15:42:08,675 basehttp "POST /admin/roles/businessrole/ HTTP/1.1" 200 12843
+INFO 2025-04-16 15:42:08,729 basehttp "GET /static/admin/js/cancel.js HTTP/1.1" 200 884
+INFO 2025-04-16 15:42:09,930 basehttp "POST /admin/roles/businessrole/ HTTP/1.1" 302 0
+INFO 2025-04-16 15:42:09,980 basehttp "GET /admin/roles/businessrole/ HTTP/1.1" 200 12941
+INFO 2025-04-16 15:42:10,092 basehttp "GET /admin/jsi18n/ HTTP/1.1" 200 8691
+INFO 2025-04-16 15:42:15,400 basehttp "GET /admin/business/ HTTP/1.1" 200 6990
+INFO 2025-04-16 15:42:17,192 basehttp "GET /admin/ HTTP/1.1" 200 13828
+INFO 2025-04-16 15:42:18,701 basehttp "GET /admin/business/business/ HTTP/1.1" 200 17645
+INFO 2025-04-16 15:42:18,770 basehttp "GET /admin/jsi18n/ HTTP/1.1" 200 8691
+INFO 2025-04-16 15:42:21,332 basehttp "GET /admin/business/business/3/change/ HTTP/1.1" 200 37598
+INFO 2025-04-16 15:42:21,405 basehttp "GET /admin/jsi18n/ HTTP/1.1" 200 8691
+INFO 2025-04-16 15:42:21,536 basehttp "GET /static/admin/img/inline-delete.svg HTTP/1.1" 304 0
+INFO 2025-04-16 15:42:30,954 basehttp "POST /admin/business/business/3/change/ HTTP/1.1" 302 0
+INFO 2025-04-16 15:42:31,055 basehttp "GET /admin/business/business/ HTTP/1.1" 200 17872
+INFO 2025-04-16 15:42:31,174 basehttp "GET /admin/jsi18n/ HTTP/1.1" 200 8691
+INFO 2025-04-16 15:42:34,969 basehttp "GET /admin/business/business/4/change/ HTTP/1.1" 200 37771
+INFO 2025-04-16 15:42:35,057 basehttp "GET /admin/jsi18n/ HTTP/1.1" 200 8691
+INFO 2025-04-16 15:42:38,928 basehttp "POST /admin/business/business/4/change/ HTTP/1.1" 302 0
+INFO 2025-04-16 15:42:39,033 basehttp "GET /admin/business/business/ HTTP/1.1" 200 17913
+INFO 2025-04-16 15:42:39,172 basehttp "GET /admin/jsi18n/ HTTP/1.1" 200 8691
+INFO 2025-04-16 15:42:44,673 basehttp "GET /admin/business/business/ HTTP/1.1" 200 17699
+INFO 2025-04-16 15:42:44,735 basehttp "GET /admin/jsi18n/ HTTP/1.1" 200 8691
+INFO 2025-04-16 15:42:46,844 basehttp "GET /admin/accounts/customuser/ HTTP/1.1" 200 16653
+INFO 2025-04-16 15:42:46,911 basehttp "GET /admin/jsi18n/ HTTP/1.1" 200 8691
+INFO 2025-04-16 15:42:48,828 basehttp "GET /admin/accounts/customuser/1/change/ HTTP/1.1" 200 33385
+INFO 2025-04-16 15:42:48,904 basehttp "GET /admin/jsi18n/ HTTP/1.1" 200 8691
+INFO 2025-04-16 15:42:59,319 basehttp "GET /admin/authtoken/tokenproxy/ HTTP/1.1" 200 11318
+INFO 2025-04-16 15:43:01,440 basehttp "GET /admin/authtoken/tokenproxy/add/ HTTP/1.1" 200 12864
+INFO 2025-04-16 15:43:01,509 basehttp "GET /admin/jsi18n/ HTTP/1.1" 200 8691
+INFO 2025-04-16 15:43:04,517 basehttp "POST /admin/authtoken/tokenproxy/add/ HTTP/1.1" 302 0
+INFO 2025-04-16 15:43:04,564 basehttp "GET /admin/authtoken/tokenproxy/ HTTP/1.1" 200 12613
+INFO 2025-04-16 15:43:06,362 basehttp "GET /admin/authtoken/tokenproxy/1/change/ HTTP/1.1" 200 13181
+INFO 2025-04-16 15:43:06,446 basehttp "GET /admin/jsi18n/ HTTP/1.1" 200 8691
+INFO 2025-04-16 15:43:07,916 basehttp "GET /admin/authtoken/tokenproxy/1/delete/ HTTP/1.1" 200 11006
+INFO 2025-04-16 15:43:13,288 basehttp "POST /admin/authtoken/tokenproxy/1/delete/ HTTP/1.1" 302 0
+INFO 2025-04-16 15:43:13,336 basehttp "GET /admin/authtoken/tokenproxy/ HTTP/1.1" 200 11504
+INFO 2025-04-16 15:43:14,601 basehttp "GET /admin/business/businessinvitation/ HTTP/1.1" 200 13193
+INFO 2025-04-16 15:43:14,687 basehttp "GET /admin/jsi18n/ HTTP/1.1" 200 8691
+INFO 2025-04-16 15:43:16,373 basehttp "GET /admin/business/businessjoinrequest/ HTTP/1.1" 200 13347
+INFO 2025-04-16 15:43:16,427 basehttp "GET /admin/jsi18n/ HTTP/1.1" 200 8691
+INFO 2025-04-16 15:44:38,191 autoreload Watching for file changes with StatReloader
+WARNING 2025-04-16 15:44:40,019 log Not Found: /
+WARNING 2025-04-16 15:44:40,020 basehttp "GET / HTTP/1.1" 404 2622
+WARNING 2025-04-16 15:44:44,068 log Not Found: /api/auth/
+WARNING 2025-04-16 15:44:44,069 basehttp "GET /api/auth/ HTTP/1.1" 404 2667
+INFO 2025-04-16 15:44:53,135 basehttp "GET /admin/ HTTP/1.1" 200 13907
+INFO 2025-04-16 15:44:54,846 basehttp "GET /admin/business/business/ HTTP/1.1" 200 17699
+INFO 2025-04-16 15:44:54,937 basehttp "GET /admin/jsi18n/ HTTP/1.1" 200 8691
+INFO 2025-04-16 15:44:56,994 basehttp "GET /admin/business/business/add/ HTTP/1.1" 200 37605
+INFO 2025-04-16 15:44:57,089 basehttp "GET /admin/jsi18n/ HTTP/1.1" 200 8691
+INFO 2025-04-16 15:45:08,154 basehttp "POST /admin/business/business/add/ HTTP/1.1" 302 0
+INFO 2025-04-16 15:45:08,269 basehttp "GET /admin/business/business/ HTTP/1.1" 200 18536
+INFO 2025-04-16 15:45:08,413 basehttp "GET /admin/jsi18n/ HTTP/1.1" 200 8691
+INFO 2025-04-16 15:45:11,472 basehttp "GET /admin/roles/businessrole/ HTTP/1.1" 200 18685
+INFO 2025-04-16 15:45:11,538 basehttp "GET /admin/jsi18n/ HTTP/1.1" 200 8691
+INFO 2025-04-16 15:47:07,226 autoreload Watching for file changes with StatReloader
+INFO 2025-04-16 15:47:10,836 basehttp "GET /admin/roles/businessrole/add/ HTTP/1.1" 200 33008
+INFO 2025-04-16 15:47:10,934 basehttp "GET /admin/jsi18n/ HTTP/1.1" 200 8691
+INFO 2025-04-16 15:47:16,039 basehttp "GET /admin/business/business/add/ HTTP/1.1" 200 37802
+INFO 2025-04-16 15:47:16,112 basehttp "GET /admin/jsi18n/ HTTP/1.1" 200 8691
+INFO 2025-04-16 15:47:29,570 basehttp "POST /admin/business/business/add/ HTTP/1.1" 302 0
+INFO 2025-04-16 15:47:29,785 basehttp "GET /admin/business/business/ HTTP/1.1" 200 19125
+INFO 2025-04-16 15:47:29,929 basehttp "GET /admin/jsi18n/ HTTP/1.1" 200 8691
+INFO 2025-04-16 15:51:37,794 autoreload /home/teo/Documents/ADB/app/business/models/business.py changed, reloading.
+INFO 2025-04-16 15:51:38,788 autoreload Watching for file changes with StatReloader
+WARNING 2025-04-16 15:51:44,802 log Not Found: /
+WARNING 2025-04-16 15:51:44,803 basehttp "GET / HTTP/1.1" 404 2622
+INFO 2025-04-16 15:51:50,044 basehttp "GET /admin/login/?next=/admin HTTP/1.1" 302 0
+INFO 2025-04-16 15:51:50,142 basehttp "GET /admin/ HTTP/1.1" 200 13976
+INFO 2025-04-16 15:51:53,287 basehttp "GET /admin/business/business/ HTTP/1.1" 200 18911
+INFO 2025-04-16 15:51:53,383 basehttp "GET /admin/jsi18n/ HTTP/1.1" 200 8691
+INFO 2025-04-16 15:51:54,879 basehttp "GET /admin/business/business/add/ HTTP/1.1" 200 37975
+INFO 2025-04-16 15:51:54,966 basehttp "GET /admin/jsi18n/ HTTP/1.1" 200 8691
+INFO 2025-04-16 15:52:04,030 basehttp "POST /admin/business/business/add/ HTTP/1.1" 302 0
+INFO 2025-04-16 15:52:04,169 basehttp "GET /admin/business/business/ HTTP/1.1" 200 19732
+INFO 2025-04-16 15:52:04,286 basehttp "GET /admin/jsi18n/ HTTP/1.1" 200 8691
+INFO 2025-04-16 15:52:23,931 basehttp "POST /admin/business/business/ HTTP/1.1" 200 13840
+INFO 2025-04-16 15:52:25,349 basehttp "POST /admin/business/business/ HTTP/1.1" 302 0
+INFO 2025-04-16 15:52:25,391 basehttp "GET /admin/business/business/ HTTP/1.1" 200 13177
+INFO 2025-04-16 15:52:25,493 basehttp "GET /admin/jsi18n/ HTTP/1.1" 200 8691
+INFO 2025-04-16 15:52:30,362 basehttp "GET /admin/roles/businessrole/ HTTP/1.1" 200 12305
+INFO 2025-04-16 15:52:30,432 basehttp "GET /admin/jsi18n/ HTTP/1.1" 200 8691

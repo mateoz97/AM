@@ -39,7 +39,9 @@ INSTALLED_APPS = [
     'rest_framework_simplejwt',
     'corsheaders',
     'django_filters',
-    'app.auth_app',
+    'app.accounts',
+    'app.roles',
+    'app.business',
     'app.core',
 ]
 
@@ -97,18 +99,6 @@ DATABASES = {
         'HOST': '',
         'PORT': '',
     },
-    'business_1': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db_business_1.sqlite3',
-        'ATOMIC_REQUESTS': False,  # mismo valor que default
-        'AUTOCOMMIT': True,
-        'OPTIONS': {},
-        'TIME_ZONE': None,
-        'USER': '',
-        'PASSWORD': '',
-        'HOST': '',
-        'PORT': '',
-    }
 }
 # Router para dirigir consultas a la base de datos correcta
 DATABASE_ROUTERS = ['config.db_routers.BusinessRouter']
@@ -184,7 +174,7 @@ SIMPLE_JWT = {
 }
 
 
-AUTH_USER_MODEL = 'auth_app.CustomUser'
+AUTH_USER_MODEL = 'accounts.CustomUser'
 
 # En config/settings.py
 
@@ -227,7 +217,7 @@ LOGGING = {
             'level': 'INFO',
             'propagate': True,
         },
-        'app.auth_app': {
+        'app.accounts': {
             'handlers': ['console', 'auth_file'],
             'level': 'INFO',
             'propagate': False,

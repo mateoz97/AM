@@ -1,6 +1,6 @@
 from django.core.management.base import BaseCommand
-from app.auth_app.models import CustomUser, Business, BusinessRole
-from app.auth_app.services import BusinessRoleService
+from app.accounts.models import CustomUser, Business, BusinessRole
+from app.accounts.services import BusinessRoleService
 
 class Command(BaseCommand):
     help = 'Migra usuarios existentes al nuevo sistema de roles de negocio'

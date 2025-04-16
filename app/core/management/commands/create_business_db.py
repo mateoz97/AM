@@ -1,6 +1,6 @@
 from django.core.management.base import BaseCommand
-from app.auth_app.models import Business
-from app.auth_app.services import DatabaseService
+from app.accounts.models import Business
+from app.accounts.services import DatabaseService
 
 class Command(BaseCommand):
     help = 'Crea base de datos para un business existente'
