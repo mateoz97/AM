@@ -1,6 +1,11 @@
+# Django imports
 from django.urls import path, include
+
+# Django REST Framework imports
 from rest_framework.routers import DefaultRouter
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
+
+# Viewsas imports
 from .views import (
     RegisterUserView, JoinBusinessView, UserInfoView, CustomLoginView,
     BusinessRoleViewSet, AssignRoleToUserView, RolePermissionUpdateView,
