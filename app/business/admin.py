@@ -1,4 +1,4 @@
-# Django admin configuration for the accounts
+# Django admin configuration for the Business models
 from django.contrib import admin
 from django.utils.translation import gettext_lazy as _
 from django.urls import path
@@ -11,7 +11,6 @@ from app.business.models.business import Business, BusinessJoinRequest, Business
 from app.accounts.models.user import CustomUser
 from app.roles.models.role import BusinessRole
 
-# Register your models here.
 # Filtro personalizado para negocios por propietario
 class BusinessOwnerFilter(admin.SimpleListFilter):
     title = _('Propietario')
@@ -29,7 +28,7 @@ class BusinessOwnerFilter(admin.SimpleListFilter):
         if self.value() == 'no_owner':
             return queryset.filter(owner__isnull=True)
 
-# # Inline para ver miembros de un negocio
+# Inline para ver miembros de un negocio
 class BusinessMemberInline(admin.TabularInline):
     model = CustomUser
     fk_name = 'business'
@@ -40,7 +39,7 @@ class BusinessMemberInline(admin.TabularInline):
     max_num = 15  # Limitar el número de filas mostradas
     can_delete = False  # Prevenir eliminación desde inline
 
-# Añadir a BusinessAdmin en accounts/admin.py
+# Añadir a BusinessAdmin
 class PendingRequestsInline(admin.TabularInline):
     model = BusinessJoinRequest
     fk_name = 'business'
@@ -76,11 +75,27 @@ class BusinessCoOwnersInline(admin.TabularInline):
 
 @admin.register(Business)
 class BusinessAdmin(admin.ModelAdmin):
+    # Para solucionar el problema de "no such table", forzar que use
+    # siempre la base de datos 'default'
+    using = 'default'
+    
+    def get_queryset(self, request):
+        # Siempre usar la base de datos default para consultas en el admin
+        return super().get_queryset(request).using('default')
+    
+    def save_model(self, request, obj, form, change):
+        # Guardar siempre en la base de datos default
+        obj.save(using=self.using)
+    
+    def delete_model(self, request, obj):
+        # Eliminar siempre desde la base de datos default
+        obj.delete(using=self.using)
+    
+    # Resto del código original
     list_display = ('name', 'owner', 'is_active', 'created_at', 'updated_at', 'member_count')
     list_filter = ('is_active', 'created_at', BusinessOwnerFilter)
     search_fields = ('name', 'address', 'email')
     readonly_fields = ('created_at', 'updated_at')
-    # Añadir el inline a la configuración de BusinessAdmin
     inlines = [BusinessMemberInline, PendingRequestsInline, BusinessInvitationsInline, BusinessCoOwnersInline]
     exclude = ('co_owners',)
     
@@ -99,7 +114,7 @@ class BusinessAdmin(admin.ModelAdmin):
             'classes': ('collapse',)
         }),
     )
-    actions = ['activate_businesses', 'deactivate_businesses']
+    actions = ['activate_businesses', 'deactivate_businesses', 'create_database_for_businesses']
 
     def get_urls(self):
         urls = super().get_urls()
@@ -138,6 +153,42 @@ class BusinessAdmin(admin.ModelAdmin):
         self.message_user(request, _('%(count)d negocios han sido desactivados.') % {'count': updated})
     deactivate_businesses.short_description = _('Desactivar negocios seleccionados')
     
+    def create_database_for_businesses(self, request, queryset):
+        """Acción personalizada para crear bases de datos para negocios seleccionados"""
+        from app.business.services.business_service import DatabaseService
+        
+        success_count = 0
+        error_count = 0
+        for business in queryset:
+            try:
+                db_created = DatabaseService.create_business_database(business)
+                if db_created:
+                    success_count += 1
+                else:
+                    error_count += 1
+            except Exception as e:
+                self.message_user(
+                    request, 
+                    f"Error al crear base de datos para {business.name}: {str(e)}", 
+                    level='ERROR'
+                )
+                error_count += 1
+        
+        if success_count > 0:
+            self.message_user(
+                request, 
+                f"Se crearon correctamente {success_count} bases de datos", 
+                level='SUCCESS'
+            )
+        
+        if error_count > 0:
+            self.message_user(
+                request, 
+                f"Ocurrieron errores en {error_count} bases de datos", 
+                level='WARNING'
+            )
+    create_database_for_businesses.short_description = _('Crear base de datos para negocios seleccionados')
+    
     def member_count(self, obj):
         return obj.members.count()
     member_count.short_description = _('Miembros')
@@ -165,6 +216,18 @@ class UserOwnedBusinessInline(admin.TabularInline):
 
 @admin.register(BusinessJoinRequest)
 class BusinessJoinRequestAdmin(admin.ModelAdmin):
+    # Forzar base de datos default
+    using = 'default'
+    
+    def get_queryset(self, request):
+        return super().get_queryset(request).using('default')
+    
+    def save_model(self, request, obj, form, change):
+        obj.save(using=self.using)
+    
+    def delete_model(self, request, obj):
+        obj.delete(using=self.using)
+        
     list_display = ('user', 'business', 'status', 'created_at', 'updated_at')
     list_filter = ('status', 'created_at', 'business')
     search_fields = ('user__username', 'user__email', 'business__name', 'message')
@@ -182,7 +245,7 @@ class BusinessJoinRequestAdmin(admin.ModelAdmin):
     )
     
     def approve_requests(self, request, queryset):
-        from app.accounts.services import BusinessRoleService
+        from app.roles.services.role_service import BusinessRoleService
         
         updated = 0
         for join_request in queryset.filter(status='pending'):
@@ -194,8 +257,8 @@ class BusinessJoinRequestAdmin(admin.ModelAdmin):
             
             # Si no existe, crear roles predeterminados
             if not viewer_role:
-                roles = BusinessRoleService.create_default_roles(join_request.business)
-                viewer_role = roles.get('viewer')
+                roles = BusinessRoleService.create_business_roles(join_request.business)
+                viewer_role = roles.get('Viewer')
                 
             # Asignar usuario al negocio con rol de visualizador
             user = join_request.user
@@ -218,6 +281,18 @@ class BusinessJoinRequestAdmin(admin.ModelAdmin):
 
 @admin.register(BusinessInvitation)
 class BusinessInvitationAdmin(admin.ModelAdmin):
+    # Forzar base de datos default
+    using = 'default'
+    
+    def get_queryset(self, request):
+        return super().get_queryset(request).using('default')
+    
+    def save_model(self, request, obj, form, change):
+        obj.save(using=self.using)
+    
+    def delete_model(self, request, obj):
+        obj.delete(using=self.using)
+        
     list_display = ('business', 'created_by', 'token', 'expires_at', 'used', 'created_at')
     list_filter = ('business', 'used', 'created_at')
     search_fields = ('business__name', 'created_by__username', 'token')
@@ -245,11 +320,10 @@ class BusinessInvitationAdmin(admin.ModelAdmin):
             invitation.token = secrets.token_urlsafe(32)
             invitation.expires_at = timezone.now() + timedelta(days=7)
             invitation.used = False
-            invitation.save()
+            invitation.save(using=self.using)
             updated += 1
             
         self.message_user(request, _('%(count)d invitaciones han sido renovadas.') % {'count': updated})
     generate_new_token.short_description = _('Generar nuevos tokens')
     
     actions = ['generate_new_token']
-    

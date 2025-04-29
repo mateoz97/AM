@@ -53,11 +53,13 @@ class Business(models.Model):
         if self.name:
             self.name = self.name.replace(" ", "_")
         
+        # Detectar si es un nuevo negocio
+        is_new = self.pk is None
+        
         # Detectar cambio de propietario
         owner_changed = False
         old_owner = None
-        is_new = self.pk is None
-        if self.pk is not None:
+        if not is_new:
             try:
                 old_instance = Business.objects.get(pk=self.pk)
                 if old_instance.owner != self.owner:
@@ -87,14 +89,14 @@ class Business(models.Model):
             from app.roles.models.role import BusinessRole
             admin_role = BusinessRole.objects.filter(
                 business=self, 
-                name="Admin"
+                name__in=["Admin", "Administrador"]
             ).first()
             
             # Si no existe el rol de administrador, crearlo
             if not admin_role:
                 from app.roles.services.role_service import BusinessRoleService
                 roles = BusinessRoleService.create_business_roles(self)
-                admin_role = roles.get("Admin")
+                admin_role = roles.get("Admin") or roles.get("Administrador")
             
             # Verificar si el usuario ya tiene un negocio asignado
             has_other_business = self.owner.business and self.owner.business.id != self.id
@@ -107,16 +109,17 @@ class Business(models.Model):
             # Si tiene otro negocio y este no tiene prioridad, agregarlo como co-propietario
             elif has_other_business:
                 self.co_owners.add(self.owner)
-            
-            if is_new:
-                try:
-                    from app.business.services.business_service import DatabaseService
-                    print(f"Intentando crear base de datos para negocio: {self.name} ({self.id})")
-                    success = DatabaseService.create_business_database(self)
-                    if not success:
-                        print(f"Advertencia: No se pudo crear la base de datos para el negocio {self.name}")
-                except Exception as e:
-                    print(f"Error al crear base de datos para negocio {self.name}: {str(e)}")
+        
+        # Si es un negocio nuevo, crear su base de datos
+        if is_new:
+            try:
+                from app.business.services.business_service import DatabaseService
+                print(f"Creando base de datos para negocio: {self.name} (ID: {self.id})")
+                success = DatabaseService.create_business_database(self)
+                if not success:
+                    print(f"⚠️ Advertencia: No se pudo crear la base de datos para el negocio {self.name}")
+            except Exception as e:
+                print(f"❌ Error al crear base de datos para negocio {self.name}: {str(e)}")
     
     def delete(self, using=None, keep_parents=False):
         """

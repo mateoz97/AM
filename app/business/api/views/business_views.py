@@ -3,7 +3,6 @@ from rest_framework import viewsets, permissions, status
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
-# Models 
 # Models    
 from app.business.models.business import Business
 
@@ -21,12 +20,15 @@ class BusinessViewSet(viewsets.ModelViewSet):
     permission_classes = [permissions.IsAuthenticated]
 
     def perform_create(self, serializer):
+        # Guardar el negocio con el usuario actual como propietario
         business = serializer.save(owner=self.request.user)
+        
+        # Actualizar el usuario para asignarle el negocio creado
         self.request.user.business = business
         
         # Crear roles para el negocio
         from app.roles.services.role_service import BusinessRoleService
-        roles = BusinessRoleService.create_default_roles(business)
+        roles = BusinessRoleService.create_business_roles(business)
         
         # Asignar rol de administrador al creador
         admin_role = roles.get("Admin") or roles.get("Administrador")
@@ -35,12 +37,12 @@ class BusinessViewSet(viewsets.ModelViewSet):
             self.request.user.save(update_fields=['business', 'business_role'])
         
         # Crear base de datos para el negocio - Asegurarse que esto se ejecute
-        print(f"Creando base de datos para negocio: {business.name} ({business.id})")
         from app.business.services.business_service import DatabaseService
+        print(f"Creando base de datos para negocio: {business.name} (ID: {business.id})")
         success = DatabaseService.create_business_database(business)
         
         if not success:
-            print(f"Advertencia: No se pudo crear la base de datos para el negocio {business.name}")
+            logger.warning(f"⚠️ No se pudo crear la base de datos para el negocio {business.name}")
             
 class JoinBusinessView(APIView):
     permission_classes = [permissions.IsAuthenticated]
@@ -54,7 +56,7 @@ class JoinBusinessView(APIView):
             from app.roles.models.role import BusinessRole
             default_role = BusinessRole.objects.filter(
                 business=business,
-                name="Viewer",
+                name__in=["Viewer", "Visualizador"],
                 is_default=True
             ).first()
             
@@ -62,7 +64,7 @@ class JoinBusinessView(APIView):
                 # Si no hay roles, crearlos
                 from app.roles.services.role_service import BusinessRoleService
                 roles_dict = BusinessRoleService.create_business_roles(business)
-                default_role = roles_dict.get("Viewer")
+                default_role = roles_dict.get("Viewer") or roles_dict.get("Visualizador")
 
             request.user.business = business
             request.user.business_role = default_role
@@ -103,7 +105,6 @@ class LeaveBusinessView(APIView):
             "message": f"Has salido exitosamente del negocio {business_name}"
         })
     
-    # app/business/api/views/business_views.py
 class SwitchBusinessView(APIView):
     permission_classes = [permissions.IsAuthenticated]
     
@@ -118,30 +119,60 @@ class SwitchBusinessView(APIView):
             # Verificar que el usuario sea propietario o co-propietario del negocio
             business = Business.objects.get(id=business_id)
             
-            if not business.is_owner(request.user) and not business.members.filter(id=request.user.id).exists():
+            is_owner = business.owner == request.user
+            is_co_owner = request.user in business.co_owners.all()
+            is_member = business.members.filter(id=request.user.id).exists()
+            
+            if not (is_owner or is_co_owner or is_member):
                 return Response({"error": "No tienes acceso a este negocio"}, status=403)
             
             # Buscar el rol apropiado
-            if business.owner == request.user:
-                from app.roles.services.role_service import BusinessRoleService
-                role = BusinessRoleService.objects.filter(business=business, name="Admin").first()
+            from app.roles.models.role import BusinessRole
+            
+            if is_owner:
+                # Si es propietario, asignar el rol Admin
+                role = BusinessRole.objects.filter(business=business, name__in=["Admin", "Administrador"]).first()
+            elif is_co_owner:
+                # Si es co-propietario, asignar el rol Gerente o similar
+                role = BusinessRole.objects.filter(business=business, name__in=["Gerente", "Manager"]).first()
             else:
-                # Si es co-propietario pero no hay un rol específico, usar el actual
+                # Si es miembro regular, mantener su rol actual o asignar uno básico
                 role = request.user.business_role
                 
                 # Si no tiene un rol en este negocio, asignarle uno apropiado
                 if not role or role.business.id != business.id:
-                    from app.roles.services.role_service import BusinessRoleService
-                    role = BusinessRoleService.objects.filter(
+                    role = BusinessRole.objects.filter(
                         business=business,
-                        name__in=["Co-owner", "Admin", "Viewer"]
+                        name__in=["Viewer", "Visualizador"],
+                        is_default=True
                     ).first()
+            
+            # Si no se encuentra un rol, crear roles por defecto
+            if not role:
+                from app.roles.services.role_service import BusinessRoleService
+                roles = BusinessRoleService.create_business_roles(business)
+                if is_owner:
+                    role = roles.get("Admin")
+                elif is_co_owner:
+                    role = roles.get("Gerente")
+                else:
+                    role = roles.get("Viewer")
             
             # Cambiar el negocio activo
             request.user.business = business
-            if role:
-                request.user.business_role = role
+            request.user.business_role = role
             request.user.save(update_fields=['business', 'business_role'])
+            
+            # Configurar la base de datos para el negocio si no existe
+            from config.middleware import set_current_business_id
+            set_current_business_id(business.id)
+            
+            # Verificar si la base de datos existe y crearla si no
+            from django.conf import settings
+            db_name = f'business_{business.id}'
+            if db_name not in settings.DATABASES:
+                from app.business.services.business_service import DatabaseService
+                DatabaseService.create_business_database(business)
             
             return Response({
                 "message": f"Se ha cambiado al negocio: {business.name}",

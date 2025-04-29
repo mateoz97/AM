@@ -100,6 +100,33 @@ DATABASES = {
         'PORT': '',
     },
 }
+
+# Cargar bases de datos de negocios existentes
+try:
+    import os
+    for file in os.listdir(BASE_DIR):
+        if file.startswith('db_business_') and file.endswith('.sqlite3'):
+            # Extraer el ID del negocio del nombre del archivo
+            business_id = file[12:-8]  # Quitar 'db_business_' del principio y '.sqlite3' del final
+            if business_id.isdigit():
+                db_name = f'business_{business_id}'
+                if db_name not in DATABASES:
+                    DATABASES[db_name] = {
+                        'ENGINE': 'django.db.backends.sqlite3',
+                        'NAME': BASE_DIR / file,
+                        'ATOMIC_REQUESTS': False,
+                        'AUTOCOMMIT': True,
+                        'OPTIONS': {},
+                        'TIME_ZONE': None,
+                        'USER': '',
+                        'PASSWORD': '',
+                        'HOST': '',
+                        'PORT': '',
+                    }
+                    print(f"Configurada base de datos {db_name} desde archivo existente")
+except Exception as e:
+    print(f"Error al cargar bases de datos existentes: {str(e)}")
+
 # Router para dirigir consultas a la base de datos correcta
 DATABASE_ROUTERS = ['config.db_routers.BusinessRouter']
 
