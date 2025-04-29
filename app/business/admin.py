@@ -193,12 +193,6 @@ class BusinessAdmin(admin.ModelAdmin):
         return obj.members.count()
     member_count.short_description = _('Miembros')
     
-    def delete_model(self, request, obj):
-        """Sobrescribe el método de eliminación para el admin"""
-        print(f"Eliminando negocio {obj.name} desde el admin")
-        # Este método llamará automáticamente al método delete() del modelo,
-        # que a su vez activará la señal pre_delete
-        obj.delete()
 
 # Inline para ver negocios donde el usuario es propietario
 class UserOwnedBusinessInline(admin.TabularInline):
