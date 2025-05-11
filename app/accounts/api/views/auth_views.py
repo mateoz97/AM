@@ -7,7 +7,6 @@ from rest_framework_simplejwt.views import TokenObtainPairView
 # Models    
 from app.accounts.models.user import CustomUser
 
-
 # Serializers
 from app.accounts.api.serializers import UserSerializer
 
@@ -47,11 +46,21 @@ class CustomLoginView(TokenObtainPairView):
 
         if user and user.check_password(password):
             refresh = RefreshToken.for_user(user)
+            
+            # CAMBIO: Serializar el usuario completo en lugar de solo el username
+            serializer = UserSerializer(user)
+            
             return Response({
                 "access": str(refresh.access_token),
                 "refresh": str(refresh),
-                "username": user.username
+                "user": serializer.data  # CAMBIO: Devolver datos completos del usuario
             })
+        
+        # Si las credenciales no son válidas, devolver un error
+        return Response(
+            {"detail": "Credenciales inválidas"},
+            status=status.HTTP_401_UNAUTHORIZED
+        )
 
 class UserInfoView(generics.RetrieveAPIView):
     queryset = CustomUser.objects.all()
