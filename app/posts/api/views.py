@@ -1,8 +1,8 @@
 # app/posts/api/views.py
-from rest_framework import viewsets, permissions, status
+from rest_framework import viewsets, permissions, status, parsers
 from rest_framework.decorators import action
 from rest_framework.response import Response
-from django.db.models import F
+from django.db.models import F, Q
 
 from app.posts.models import Post, PostLike, PostComment
 from app.posts.api.serializers import PostSerializer, CommentSerializer
@@ -10,12 +10,28 @@ from app.posts.api.serializers import PostSerializer, CommentSerializer
 class PostViewSet(viewsets.ModelViewSet):
     serializer_class = PostSerializer
     permission_classes = [permissions.IsAuthenticated]
+    parser_classes = [parsers.MultiPartParser, parsers.FormParser, parsers.JSONParser]
     
     def get_queryset(self):
         # Retorna posts del feed según la lógica de negocio
         user = self.request.user
-        # Por ahora, retornamos todos los posts. Puedes filtrar por negocios relacionados
-        return Post.objects.all().order_by('-created_at')
+        
+        # Los usuarios ven:
+        # 1. Posts de su propio negocio
+        # 2. Posts públicos si no tienen negocio
+        # 3. Sus propios posts
+        if user.business:
+            # Si tiene negocio, mostrar posts de su negocio y propios
+            queryset = Post.objects.filter(
+                Q(business=user.business) | Q(author=user)
+            ).distinct()
+        else:
+            # Si no tiene negocio, mostrar posts públicos y propios
+            queryset = Post.objects.filter(
+                Q(business__isnull=True) | Q(author=user)
+            ).distinct()
+            
+        return queryset.order_by('-created_at')
     
     def get_serializer_context(self):
         context = super().get_serializer_context()
@@ -23,7 +39,17 @@ class PostViewSet(viewsets.ModelViewSet):
         return context
     
     def perform_create(self, serializer):
-        serializer.save(author=self.request.user, business=self.request.user.business)
+        # Guardar autor y negocio automáticamente
+        serializer.save(
+            author=self.request.user,
+            business=self.request.user.business
+        )
+    
+    def perform_destroy(self, instance):
+        # Solo el autor puede eliminar la publicación
+        if instance.author != self.request.user:
+            raise permissions.PermissionDenied("No tienes permiso para eliminar esta publicación")
+        instance.delete()
     
     @action(detail=False, methods=['get'])
     def feed(self, request):
@@ -62,7 +88,7 @@ class PostViewSet(viewsets.ModelViewSet):
     def comment(self, request, pk=None):
         """Add a comment to a post"""
         post = self.get_object()
-        serializer = CommentSerializer(data=request.data)
+        serializer = CommentSerializer(data=request.data, context={'request': request})
         
         if serializer.is_valid():
             # Crear el comentario

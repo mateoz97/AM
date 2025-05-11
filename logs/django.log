@@ -5824,3 +5824,48 @@ INFO 2025-05-11 16:22:18,815 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 528
 INFO 2025-05-11 16:22:18,821 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 528
 INFO 2025-05-11 16:22:41,682 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 528
 INFO 2025-05-11 16:22:41,691 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 528
+INFO 2025-05-11 16:36:45,725 autoreload Watching for file changes with StatReloader
+INFO 2025-05-11 16:36:49,629 basehttp "OPTIONS /api/accounts/register/ HTTP/1.1" 200 0
+INFO 2025-05-11 16:36:49,992 basehttp "POST /api/accounts/register/ HTTP/1.1" 201 615
+INFO 2025-05-11 16:36:50,079 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 530
+INFO 2025-05-11 16:36:50,131 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 530
+INFO 2025-05-11 16:37:10,919 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 530
+INFO 2025-05-11 16:37:10,929 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 530
+INFO 2025-05-11 16:37:36,138 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 530
+INFO 2025-05-11 16:37:36,145 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 530
+INFO 2025-05-11 16:37:51,898 basehttp "POST /api/posts/2/like/ HTTP/1.1" 200 30
+INFO 2025-05-11 16:37:53,749 basehttp "POST /api/posts/1/like/ HTTP/1.1" 200 30
+INFO 2025-05-11 16:38:20,057 basehttp "OPTIONS /api/accounts/login/ HTTP/1.1" 200 0
+INFO 2025-05-11 16:38:20,299 basehttp "POST /api/accounts/login/ HTTP/1.1" 200 1120
+INFO 2025-05-11 16:38:20,372 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 528
+INFO 2025-05-11 16:38:20,433 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 528
+INFO 2025-05-11 16:38:52,076 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 528
+INFO 2025-05-11 16:38:52,088 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 528
+INFO 2025-05-11 16:39:36,531 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 528
+INFO 2025-05-11 16:40:09,079 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 528
+INFO 2025-05-11 16:40:09,089 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 528
+INFO 2025-05-11 16:40:31,653 autoreload /home/teo/Documents/ADB/app/posts/models.py changed, reloading.
+INFO 2025-05-11 16:40:32,035 autoreload Watching for file changes with StatReloader
+INFO 2025-05-11 16:40:44,400 autoreload /home/teo/Documents/ADB/app/posts/api/serializers.py changed, reloading.
+INFO 2025-05-11 16:40:44,772 autoreload Watching for file changes with StatReloader
+INFO 2025-05-11 16:41:00,124 autoreload /home/teo/Documents/ADB/app/posts/api/views.py changed, reloading.
+INFO 2025-05-11 16:41:00,412 autoreload Watching for file changes with StatReloader
+INFO 2025-05-11 16:41:13,018 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 925
+INFO 2025-05-11 16:41:13,034 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 925
+INFO 2025-05-11 16:41:13,242 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 925
+INFO 2025-05-11 16:41:13,254 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 925
+INFO 2025-05-11 16:42:13,072 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 925
+INFO 2025-05-11 16:42:13,092 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 925
+INFO 2025-05-11 16:42:13,992 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 925
+INFO 2025-05-11 16:42:14,006 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 925
+INFO 2025-05-11 16:42:15,046 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 925
+INFO 2025-05-11 16:42:15,061 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 925
+INFO 2025-05-11 16:45:32,728 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 925
+INFO 2025-05-11 16:45:32,744 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 925
+INFO 2025-05-11 16:45:32,867 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 925
+INFO 2025-05-11 16:45:32,884 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 925
+INFO 2025-05-11 16:47:37,207 basehttp "POST /api/posts/ HTTP/1.1" 201 269
+INFO 2025-05-11 16:48:25,797 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 1195
+INFO 2025-05-11 16:48:25,811 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 1195
+INFO 2025-05-11 16:48:54,886 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 1195
+INFO 2025-05-11 16:48:54,905 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 1195
