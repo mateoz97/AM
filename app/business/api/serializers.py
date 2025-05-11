@@ -78,3 +78,5 @@ class BusinessInvitationSerializer(serializers.ModelSerializer):
         if obj.created_by:
             return obj.created_by.get_full_name() or obj.created_by.username
         return None
+    
+    

@@ -2,6 +2,7 @@
 from rest_framework import viewsets, permissions, status
 from rest_framework.response import Response
 from rest_framework.views import APIView
+from rest_framework.decorators import action
 
 # Models    
 from app.business.models.business import Business
@@ -43,6 +44,37 @@ class BusinessViewSet(viewsets.ModelViewSet):
         
         if not success:
             logger.warning(f"⚠️ No se pudo crear la base de datos para el negocio {business.name}")
+    
+    @action(detail=False, methods=['get'], url_path='user-businesses')
+    def user_businesses(self, request):
+        """
+        Obtiene todos los negocios donde el usuario es owner o empleado
+        """
+        user = request.user
+        businesses_data = []
+        
+        # Negocios propios
+        owned_businesses = Business.objects.filter(owner=user)
+        for business in owned_businesses:
+            businesses_data.append({
+                'id': business.id,
+                'name': business.name,
+                'description': business.description or 'Sede Principal',
+                'isOwner': True,
+                'role': 'Owner'
+            })
+        
+        # Negocios donde es empleado
+        if user.business and user.business not in owned_businesses:
+            businesses_data.append({
+                'id': user.business.id,
+                'name': user.business.name,
+                'description': user.business.description or 'Empleado',
+                'isOwner': False,
+                'role': user.business_role.name if user.business_role else 'Empleado'
+            })
+        
+        return Response(businesses_data)
             
 class JoinBusinessView(APIView):
     permission_classes = [permissions.IsAuthenticated]
