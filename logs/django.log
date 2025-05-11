@@ -4586,3 +4586,1218 @@ WARNING 2025-05-11 13:18:45,812 log Unauthorized: /api/posts/feed/
 WARNING 2025-05-11 13:18:45,813 basehttp "GET /api/posts/feed/ HTTP/1.1" 401 65
 WARNING 2025-05-11 13:18:45,817 log Not Found: /api/business/user-businesses/
 WARNING 2025-05-11 13:18:45,817 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 4742
+INFO 2025-05-11 14:36:57,147 autoreload Watching for file changes with StatReloader
+INFO 2025-05-11 14:37:00,256 basehttp "OPTIONS /api/accounts/login/ HTTP/1.1" 200 0
+INFO 2025-05-11 14:37:00,494 basehttp "POST /api/accounts/login/ HTTP/1.1" 200 613
+WARNING 2025-05-11 14:37:00,552 log Unauthorized: /api/posts/feed/
+WARNING 2025-05-11 14:37:00,555 log Not Found: /api/business/user-businesses/
+WARNING 2025-05-11 14:37:00,555 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 4742
+WARNING 2025-05-11 14:37:00,556 basehttp "GET /api/posts/feed/ HTTP/1.1" 401 65
+WARNING 2025-05-11 14:37:00,558 log Unauthorized: /api/posts/feed/
+WARNING 2025-05-11 14:37:00,558 basehttp "GET /api/posts/feed/ HTTP/1.1" 401 65
+WARNING 2025-05-11 14:37:00,603 log Not Found: /api/business/user-businesses/
+WARNING 2025-05-11 14:37:00,805 log Not Found: /api/business/user-businesses/
+WARNING 2025-05-11 14:37:00,807 log Unauthorized: /api/posts/feed/
+WARNING 2025-05-11 14:37:00,807 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 4742
+WARNING 2025-05-11 14:37:00,807 basehttp "GET /api/posts/feed/ HTTP/1.1" 401 65
+WARNING 2025-05-11 14:37:00,809 log Unauthorized: /api/posts/feed/
+WARNING 2025-05-11 14:37:00,810 basehttp "GET /api/posts/feed/ HTTP/1.1" 401 65
+WARNING 2025-05-11 14:37:00,813 log Not Found: /api/business/user-businesses/
+WARNING 2025-05-11 14:37:00,813 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 4742
+WARNING 2025-05-11 14:37:01,059 log Not Found: /api/business/user-businesses/
+WARNING 2025-05-11 14:37:01,060 log Unauthorized: /api/posts/feed/
+WARNING 2025-05-11 14:37:01,060 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 4742
+WARNING 2025-05-11 14:37:01,060 basehttp "GET /api/posts/feed/ HTTP/1.1" 401 65
+WARNING 2025-05-11 14:37:01,062 log Unauthorized: /api/posts/feed/
+WARNING 2025-05-11 14:37:01,065 log Not Found: /api/business/user-businesses/
+WARNING 2025-05-11 14:37:01,065 basehttp "GET /api/posts/feed/ HTTP/1.1" 401 65
+WARNING 2025-05-11 14:37:01,066 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 4742
+WARNING 2025-05-11 14:37:01,282 log Unauthorized: /api/posts/feed/
+WARNING 2025-05-11 14:37:01,284 log Not Found: /api/business/user-businesses/
+WARNING 2025-05-11 14:37:01,284 basehttp "GET /api/posts/feed/ HTTP/1.1" 401 65
+WARNING 2025-05-11 14:37:01,285 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 4742
+WARNING 2025-05-11 14:37:01,287 log Unauthorized: /api/posts/feed/
+WARNING 2025-05-11 14:37:01,290 log Not Found: /api/business/user-businesses/
+WARNING 2025-05-11 14:37:01,290 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 4742
+WARNING 2025-05-11 14:37:01,290 basehttp "GET /api/posts/feed/ HTTP/1.1" 401 65
+WARNING 2025-05-11 14:37:01,513 log Unauthorized: /api/posts/feed/
+WARNING 2025-05-11 14:37:01,515 log Not Found: /api/business/user-businesses/
+WARNING 2025-05-11 14:37:01,515 basehttp "GET /api/posts/feed/ HTTP/1.1" 401 65
+WARNING 2025-05-11 14:37:01,515 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 4742
+WARNING 2025-05-11 14:37:01,519 log Unauthorized: /api/posts/feed/
+WARNING 2025-05-11 14:37:01,521 log Not Found: /api/business/user-businesses/
+WARNING 2025-05-11 14:37:01,522 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 4742
+WARNING 2025-05-11 14:37:01,522 basehttp "GET /api/posts/feed/ HTTP/1.1" 401 65
+WARNING 2025-05-11 14:37:01,725 log Unauthorized: /api/posts/feed/
+WARNING 2025-05-11 14:37:01,730 log Not Found: /api/business/user-businesses/
+WARNING 2025-05-11 14:37:01,730 basehttp "GET /api/posts/feed/ HTTP/1.1" 401 65
+WARNING 2025-05-11 14:37:01,731 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 4742
+WARNING 2025-05-11 14:37:01,734 log Unauthorized: /api/posts/feed/
+WARNING 2025-05-11 14:37:01,736 log Not Found: /api/business/user-businesses/
+WARNING 2025-05-11 14:37:01,737 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 4742
+WARNING 2025-05-11 14:37:01,738 basehttp "GET /api/posts/feed/ HTTP/1.1" 401 65
+WARNING 2025-05-11 14:37:01,945 log Not Found: /api/business/user-businesses/
+WARNING 2025-05-11 14:37:01,946 log Unauthorized: /api/posts/feed/
+WARNING 2025-05-11 14:37:01,946 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 4742
+WARNING 2025-05-11 14:37:01,946 basehttp "GET /api/posts/feed/ HTTP/1.1" 401 65
+WARNING 2025-05-11 14:37:01,948 log Unauthorized: /api/posts/feed/
+WARNING 2025-05-11 14:37:01,952 log Not Found: /api/business/user-businesses/
+WARNING 2025-05-11 14:37:01,953 basehttp "GET /api/posts/feed/ HTTP/1.1" 401 65
+WARNING 2025-05-11 14:37:01,953 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 4742
+WARNING 2025-05-11 14:37:02,164 log Unauthorized: /api/posts/feed/
+WARNING 2025-05-11 14:37:02,166 log Not Found: /api/business/user-businesses/
+WARNING 2025-05-11 14:37:02,167 basehttp "GET /api/posts/feed/ HTTP/1.1" 401 65
+WARNING 2025-05-11 14:37:02,167 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 4742
+WARNING 2025-05-11 14:37:02,169 log Unauthorized: /api/posts/feed/
+WARNING 2025-05-11 14:37:02,174 log Not Found: /api/business/user-businesses/
+WARNING 2025-05-11 14:37:02,175 basehttp "GET /api/posts/feed/ HTTP/1.1" 401 65
+WARNING 2025-05-11 14:37:02,175 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 4742
+WARNING 2025-05-11 14:37:02,376 log Unauthorized: /api/posts/feed/
+WARNING 2025-05-11 14:37:02,379 log Not Found: /api/business/user-businesses/
+WARNING 2025-05-11 14:37:02,379 basehttp "GET /api/posts/feed/ HTTP/1.1" 401 65
+WARNING 2025-05-11 14:37:02,380 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 4742
+WARNING 2025-05-11 14:37:02,381 log Unauthorized: /api/posts/feed/
+WARNING 2025-05-11 14:37:02,384 log Not Found: /api/business/user-businesses/
+WARNING 2025-05-11 14:37:02,385 basehttp "GET /api/posts/feed/ HTTP/1.1" 401 65
+WARNING 2025-05-11 14:37:02,385 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 4742
+WARNING 2025-05-11 14:37:02,611 log Unauthorized: /api/posts/feed/
+WARNING 2025-05-11 14:37:02,613 log Not Found: /api/business/user-businesses/
+WARNING 2025-05-11 14:37:02,613 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 4742
+WARNING 2025-05-11 14:37:02,613 basehttp "GET /api/posts/feed/ HTTP/1.1" 401 65
+WARNING 2025-05-11 14:37:02,616 log Unauthorized: /api/posts/feed/
+WARNING 2025-05-11 14:37:02,622 log Not Found: /api/business/user-businesses/
+WARNING 2025-05-11 14:37:02,622 basehttp "GET /api/posts/feed/ HTTP/1.1" 401 65
+WARNING 2025-05-11 14:37:02,622 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 4742
+WARNING 2025-05-11 14:37:02,837 log Unauthorized: /api/posts/feed/
+WARNING 2025-05-11 14:37:02,839 log Not Found: /api/business/user-businesses/
+WARNING 2025-05-11 14:37:02,840 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 4742
+WARNING 2025-05-11 14:37:02,840 basehttp "GET /api/posts/feed/ HTTP/1.1" 401 65
+WARNING 2025-05-11 14:37:02,842 log Unauthorized: /api/posts/feed/
+WARNING 2025-05-11 14:37:02,845 log Not Found: /api/business/user-businesses/
+WARNING 2025-05-11 14:37:02,846 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 4742
+WARNING 2025-05-11 14:37:02,846 basehttp "GET /api/posts/feed/ HTTP/1.1" 401 65
+WARNING 2025-05-11 14:37:03,063 log Unauthorized: /api/posts/feed/
+WARNING 2025-05-11 14:37:03,063 basehttp "GET /api/posts/feed/ HTTP/1.1" 401 65
+WARNING 2025-05-11 14:37:03,066 log Unauthorized: /api/posts/feed/
+WARNING 2025-05-11 14:37:03,069 log Not Found: /api/business/user-businesses/
+WARNING 2025-05-11 14:37:03,069 basehttp "GET /api/posts/feed/ HTTP/1.1" 401 65
+WARNING 2025-05-11 14:37:03,070 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 4742
+WARNING 2025-05-11 14:37:03,075 log Not Found: /api/business/user-businesses/
+WARNING 2025-05-11 14:37:03,075 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 4742
+WARNING 2025-05-11 14:37:03,370 log Not Found: /api/business/user-businesses/
+WARNING 2025-05-11 14:37:03,371 log Unauthorized: /api/posts/feed/
+WARNING 2025-05-11 14:37:03,371 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 4742
+WARNING 2025-05-11 14:37:03,371 basehttp "GET /api/posts/feed/ HTTP/1.1" 401 65
+WARNING 2025-05-11 14:37:03,374 log Unauthorized: /api/posts/feed/
+WARNING 2025-05-11 14:37:03,376 log Not Found: /api/business/user-businesses/
+WARNING 2025-05-11 14:37:03,377 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 4742
+WARNING 2025-05-11 14:37:03,377 basehttp "GET /api/posts/feed/ HTTP/1.1" 401 65
+WARNING 2025-05-11 14:37:03,627 log Not Found: /api/business/user-businesses/
+WARNING 2025-05-11 14:37:03,628 log Unauthorized: /api/posts/feed/
+WARNING 2025-05-11 14:37:03,629 basehttp "GET /api/posts/feed/ HTTP/1.1" 401 65
+WARNING 2025-05-11 14:37:03,629 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 4742
+WARNING 2025-05-11 14:37:03,631 log Unauthorized: /api/posts/feed/
+WARNING 2025-05-11 14:37:03,631 basehttp "GET /api/posts/feed/ HTTP/1.1" 401 65
+WARNING 2025-05-11 14:37:03,634 log Not Found: /api/business/user-businesses/
+WARNING 2025-05-11 14:37:03,634 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 4742
+WARNING 2025-05-11 14:37:03,848 log Unauthorized: /api/posts/feed/
+WARNING 2025-05-11 14:37:03,851 log Not Found: /api/business/user-businesses/
+WARNING 2025-05-11 14:37:03,851 basehttp "GET /api/posts/feed/ HTTP/1.1" 401 65
+WARNING 2025-05-11 14:37:03,852 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 4742
+WARNING 2025-05-11 14:37:03,854 log Unauthorized: /api/posts/feed/
+WARNING 2025-05-11 14:37:03,858 log Not Found: /api/business/user-businesses/
+WARNING 2025-05-11 14:37:03,859 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 4742
+WARNING 2025-05-11 14:37:03,859 basehttp "GET /api/posts/feed/ HTTP/1.1" 401 65
+WARNING 2025-05-11 14:37:04,077 log Not Found: /api/business/user-businesses/
+WARNING 2025-05-11 14:37:04,078 log Unauthorized: /api/posts/feed/
+WARNING 2025-05-11 14:37:04,078 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 4742
+WARNING 2025-05-11 14:37:04,079 basehttp "GET /api/posts/feed/ HTTP/1.1" 401 65
+WARNING 2025-05-11 14:37:04,081 log Unauthorized: /api/posts/feed/
+WARNING 2025-05-11 14:37:04,082 basehttp "GET /api/posts/feed/ HTTP/1.1" 401 65
+WARNING 2025-05-11 14:37:04,086 log Not Found: /api/business/user-businesses/
+WARNING 2025-05-11 14:37:04,087 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 4742
+WARNING 2025-05-11 14:37:04,316 log Unauthorized: /api/posts/feed/
+WARNING 2025-05-11 14:37:04,320 log Not Found: /api/business/user-businesses/
+WARNING 2025-05-11 14:37:04,321 basehttp "GET /api/posts/feed/ HTTP/1.1" 401 65
+WARNING 2025-05-11 14:37:04,321 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 4742
+WARNING 2025-05-11 14:37:04,324 log Unauthorized: /api/posts/feed/
+WARNING 2025-05-11 14:37:04,327 log Not Found: /api/business/user-businesses/
+WARNING 2025-05-11 14:37:04,327 basehttp "GET /api/posts/feed/ HTTP/1.1" 401 65
+WARNING 2025-05-11 14:37:04,327 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 4742
+WARNING 2025-05-11 14:37:04,545 log Unauthorized: /api/posts/feed/
+WARNING 2025-05-11 14:37:04,548 log Not Found: /api/business/user-businesses/
+WARNING 2025-05-11 14:37:04,549 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 4742
+WARNING 2025-05-11 14:37:04,549 basehttp "GET /api/posts/feed/ HTTP/1.1" 401 65
+WARNING 2025-05-11 14:37:04,552 log Unauthorized: /api/posts/feed/
+WARNING 2025-05-11 14:37:04,556 log Not Found: /api/business/user-businesses/
+WARNING 2025-05-11 14:37:04,556 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 4742
+WARNING 2025-05-11 14:37:04,557 basehttp "GET /api/posts/feed/ HTTP/1.1" 401 65
+WARNING 2025-05-11 14:37:04,768 log Unauthorized: /api/posts/feed/
+WARNING 2025-05-11 14:37:04,769 basehttp "GET /api/posts/feed/ HTTP/1.1" 401 65
+WARNING 2025-05-11 14:37:04,771 log Not Found: /api/business/user-businesses/
+WARNING 2025-05-11 14:37:04,772 log Unauthorized: /api/posts/feed/
+WARNING 2025-05-11 14:37:04,772 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 4742
+WARNING 2025-05-11 14:37:04,772 basehttp "GET /api/posts/feed/ HTTP/1.1" 401 65
+WARNING 2025-05-11 14:37:04,776 log Not Found: /api/business/user-businesses/
+WARNING 2025-05-11 14:37:04,777 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 4742
+WARNING 2025-05-11 14:37:04,993 log Unauthorized: /api/posts/feed/
+WARNING 2025-05-11 14:37:04,996 log Not Found: /api/business/user-businesses/
+WARNING 2025-05-11 14:37:04,996 basehttp "GET /api/posts/feed/ HTTP/1.1" 401 65
+WARNING 2025-05-11 14:37:04,996 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 4742
+WARNING 2025-05-11 14:37:04,998 log Unauthorized: /api/posts/feed/
+WARNING 2025-05-11 14:37:05,001 log Not Found: /api/business/user-businesses/
+WARNING 2025-05-11 14:37:05,001 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 4742
+WARNING 2025-05-11 14:37:05,001 basehttp "GET /api/posts/feed/ HTTP/1.1" 401 65
+WARNING 2025-05-11 14:37:05,261 log Unauthorized: /api/posts/feed/
+WARNING 2025-05-11 14:37:05,264 log Not Found: /api/business/user-businesses/
+WARNING 2025-05-11 14:37:05,264 basehttp "GET /api/posts/feed/ HTTP/1.1" 401 65
+WARNING 2025-05-11 14:37:05,265 log Unauthorized: /api/posts/feed/
+WARNING 2025-05-11 14:37:05,266 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 4742
+WARNING 2025-05-11 14:37:05,267 basehttp "GET /api/posts/feed/ HTTP/1.1" 401 65
+WARNING 2025-05-11 14:37:05,274 log Not Found: /api/business/user-businesses/
+WARNING 2025-05-11 14:37:05,275 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 4742
+WARNING 2025-05-11 14:37:05,503 log Unauthorized: /api/posts/feed/
+WARNING 2025-05-11 14:37:05,506 log Not Found: /api/business/user-businesses/
+WARNING 2025-05-11 14:37:05,506 basehttp "GET /api/posts/feed/ HTTP/1.1" 401 65
+WARNING 2025-05-11 14:37:05,507 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 4742
+WARNING 2025-05-11 14:37:05,509 log Unauthorized: /api/posts/feed/
+WARNING 2025-05-11 14:37:05,514 log Not Found: /api/business/user-businesses/
+WARNING 2025-05-11 14:37:05,515 basehttp "GET /api/posts/feed/ HTTP/1.1" 401 65
+WARNING 2025-05-11 14:37:05,515 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 4742
+WARNING 2025-05-11 14:37:05,718 log Unauthorized: /api/posts/feed/
+WARNING 2025-05-11 14:37:05,718 basehttp "GET /api/posts/feed/ HTTP/1.1" 401 65
+WARNING 2025-05-11 14:37:05,720 log Not Found: /api/business/user-businesses/
+WARNING 2025-05-11 14:37:05,721 log Unauthorized: /api/posts/feed/
+WARNING 2025-05-11 14:37:05,721 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 4742
+WARNING 2025-05-11 14:37:05,722 basehttp "GET /api/posts/feed/ HTTP/1.1" 401 65
+WARNING 2025-05-11 14:37:05,729 log Not Found: /api/business/user-businesses/
+WARNING 2025-05-11 14:37:05,730 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 4742
+WARNING 2025-05-11 14:37:05,959 log Unauthorized: /api/posts/feed/
+WARNING 2025-05-11 14:37:05,960 basehttp "GET /api/posts/feed/ HTTP/1.1" 401 65
+WARNING 2025-05-11 14:37:05,962 log Not Found: /api/business/user-businesses/
+WARNING 2025-05-11 14:37:05,963 log Unauthorized: /api/posts/feed/
+WARNING 2025-05-11 14:37:05,963 basehttp "GET /api/posts/feed/ HTTP/1.1" 401 65
+WARNING 2025-05-11 14:37:05,963 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 4742
+WARNING 2025-05-11 14:37:05,967 log Not Found: /api/business/user-businesses/
+WARNING 2025-05-11 14:37:05,967 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 4742
+WARNING 2025-05-11 14:37:06,195 log Not Found: /api/business/user-businesses/
+WARNING 2025-05-11 14:37:06,196 log Unauthorized: /api/posts/feed/
+WARNING 2025-05-11 14:37:06,196 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 4742
+WARNING 2025-05-11 14:37:06,197 basehttp "GET /api/posts/feed/ HTTP/1.1" 401 65
+WARNING 2025-05-11 14:37:06,199 log Unauthorized: /api/posts/feed/
+WARNING 2025-05-11 14:37:06,202 log Not Found: /api/business/user-businesses/
+WARNING 2025-05-11 14:37:06,202 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 4742
+WARNING 2025-05-11 14:37:06,203 basehttp "GET /api/posts/feed/ HTTP/1.1" 401 65
+WARNING 2025-05-11 14:37:06,417 log Unauthorized: /api/posts/feed/
+WARNING 2025-05-11 14:37:06,417 basehttp "GET /api/posts/feed/ HTTP/1.1" 401 65
+WARNING 2025-05-11 14:37:06,420 log Not Found: /api/business/user-businesses/
+WARNING 2025-05-11 14:37:06,421 log Unauthorized: /api/posts/feed/
+WARNING 2025-05-11 14:37:06,421 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 4742
+WARNING 2025-05-11 14:37:06,421 basehttp "GET /api/posts/feed/ HTTP/1.1" 401 65
+WARNING 2025-05-11 14:37:06,429 log Not Found: /api/business/user-businesses/
+WARNING 2025-05-11 14:37:06,429 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 4742
+WARNING 2025-05-11 14:37:06,645 log Unauthorized: /api/posts/feed/
+WARNING 2025-05-11 14:37:06,647 log Not Found: /api/business/user-businesses/
+WARNING 2025-05-11 14:37:06,647 basehttp "GET /api/posts/feed/ HTTP/1.1" 401 65
+WARNING 2025-05-11 14:37:06,647 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 4742
+WARNING 2025-05-11 14:37:06,649 log Unauthorized: /api/posts/feed/
+WARNING 2025-05-11 14:37:06,651 log Not Found: /api/business/user-businesses/
+WARNING 2025-05-11 14:37:06,652 basehttp "GET /api/posts/feed/ HTTP/1.1" 401 65
+WARNING 2025-05-11 14:37:06,652 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 4742
+WARNING 2025-05-11 14:37:06,885 log Unauthorized: /api/posts/feed/
+WARNING 2025-05-11 14:37:06,888 log Not Found: /api/business/user-businesses/
+WARNING 2025-05-11 14:37:06,888 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 4742
+WARNING 2025-05-11 14:37:06,888 basehttp "GET /api/posts/feed/ HTTP/1.1" 401 65
+WARNING 2025-05-11 14:37:06,890 log Unauthorized: /api/posts/feed/
+WARNING 2025-05-11 14:37:06,891 basehttp "GET /api/posts/feed/ HTTP/1.1" 401 65
+WARNING 2025-05-11 14:37:06,894 log Not Found: /api/business/user-businesses/
+WARNING 2025-05-11 14:37:06,894 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 4742
+WARNING 2025-05-11 14:37:07,129 log Unauthorized: /api/posts/feed/
+WARNING 2025-05-11 14:37:07,131 log Not Found: /api/business/user-businesses/
+WARNING 2025-05-11 14:37:07,131 basehttp "GET /api/posts/feed/ HTTP/1.1" 401 65
+WARNING 2025-05-11 14:37:07,132 log Unauthorized: /api/posts/feed/
+WARNING 2025-05-11 14:37:07,133 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 4742
+WARNING 2025-05-11 14:37:07,133 basehttp "GET /api/posts/feed/ HTTP/1.1" 401 65
+WARNING 2025-05-11 14:37:07,138 log Not Found: /api/business/user-businesses/
+WARNING 2025-05-11 14:37:07,138 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 4742
+WARNING 2025-05-11 14:37:07,364 log Unauthorized: /api/posts/feed/
+WARNING 2025-05-11 14:37:07,368 log Not Found: /api/business/user-businesses/
+WARNING 2025-05-11 14:37:07,368 basehttp "GET /api/posts/feed/ HTTP/1.1" 401 65
+WARNING 2025-05-11 14:37:07,368 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 4742
+WARNING 2025-05-11 14:37:07,370 log Unauthorized: /api/posts/feed/
+WARNING 2025-05-11 14:37:07,374 log Not Found: /api/business/user-businesses/
+WARNING 2025-05-11 14:37:07,374 basehttp "GET /api/posts/feed/ HTTP/1.1" 401 65
+WARNING 2025-05-11 14:37:07,374 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 4742
+WARNING 2025-05-11 14:37:07,582 log Unauthorized: /api/posts/feed/
+WARNING 2025-05-11 14:37:07,585 log Not Found: /api/business/user-businesses/
+WARNING 2025-05-11 14:37:07,585 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 4742
+WARNING 2025-05-11 14:37:07,585 basehttp "GET /api/posts/feed/ HTTP/1.1" 401 65
+WARNING 2025-05-11 14:37:07,588 log Unauthorized: /api/posts/feed/
+WARNING 2025-05-11 14:37:07,593 basehttp "GET /api/posts/feed/ HTTP/1.1" 401 65
+WARNING 2025-05-11 14:37:07,592 log Not Found: /api/business/user-businesses/
+WARNING 2025-05-11 14:37:07,594 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 4742
+WARNING 2025-05-11 14:37:07,815 log Unauthorized: /api/posts/feed/
+WARNING 2025-05-11 14:37:07,818 log Not Found: /api/business/user-businesses/
+WARNING 2025-05-11 14:37:07,818 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 4742
+WARNING 2025-05-11 14:37:07,819 basehttp "GET /api/posts/feed/ HTTP/1.1" 401 65
+WARNING 2025-05-11 14:37:07,821 log Unauthorized: /api/posts/feed/
+WARNING 2025-05-11 14:37:07,826 log Not Found: /api/business/user-businesses/
+WARNING 2025-05-11 14:37:07,826 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 4742
+WARNING 2025-05-11 14:37:07,827 basehttp "GET /api/posts/feed/ HTTP/1.1" 401 65
+WARNING 2025-05-11 14:37:08,050 log Unauthorized: /api/posts/feed/
+WARNING 2025-05-11 14:37:08,050 basehttp "GET /api/posts/feed/ HTTP/1.1" 401 65
+WARNING 2025-05-11 14:37:08,052 log Unauthorized: /api/posts/feed/
+WARNING 2025-05-11 14:37:08,053 log Not Found: /api/business/user-businesses/
+WARNING 2025-05-11 14:37:08,054 basehttp "GET /api/posts/feed/ HTTP/1.1" 401 65
+WARNING 2025-05-11 14:37:08,054 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 4742
+WARNING 2025-05-11 14:37:08,057 log Not Found: /api/business/user-businesses/
+WARNING 2025-05-11 14:37:08,058 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 4742
+WARNING 2025-05-11 14:37:08,269 log Unauthorized: /api/posts/feed/
+WARNING 2025-05-11 14:37:08,271 log Not Found: /api/business/user-businesses/
+WARNING 2025-05-11 14:37:08,272 basehttp "GET /api/posts/feed/ HTTP/1.1" 401 65
+WARNING 2025-05-11 14:37:08,272 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 4742
+WARNING 2025-05-11 14:37:08,275 log Unauthorized: /api/posts/feed/
+WARNING 2025-05-11 14:37:08,279 log Not Found: /api/business/user-businesses/
+WARNING 2025-05-11 14:37:08,281 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 4742
+WARNING 2025-05-11 14:37:08,279 basehttp "GET /api/posts/feed/ HTTP/1.1" 401 65
+WARNING 2025-05-11 14:37:08,506 log Unauthorized: /api/posts/feed/
+WARNING 2025-05-11 14:37:08,509 log Not Found: /api/business/user-businesses/
+WARNING 2025-05-11 14:37:08,509 basehttp "GET /api/posts/feed/ HTTP/1.1" 401 65
+WARNING 2025-05-11 14:37:08,509 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 4742
+WARNING 2025-05-11 14:37:08,511 log Unauthorized: /api/posts/feed/
+WARNING 2025-05-11 14:37:08,515 log Not Found: /api/business/user-businesses/
+WARNING 2025-05-11 14:37:08,518 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 4742
+WARNING 2025-05-11 14:37:08,519 basehttp "GET /api/posts/feed/ HTTP/1.1" 401 65
+WARNING 2025-05-11 14:37:08,728 log Unauthorized: /api/posts/feed/
+WARNING 2025-05-11 14:37:08,732 log Not Found: /api/business/user-businesses/
+WARNING 2025-05-11 14:37:08,732 basehttp "GET /api/posts/feed/ HTTP/1.1" 401 65
+WARNING 2025-05-11 14:37:08,733 log Unauthorized: /api/posts/feed/
+WARNING 2025-05-11 14:37:08,734 basehttp "GET /api/posts/feed/ HTTP/1.1" 401 65
+WARNING 2025-05-11 14:37:08,735 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 4742
+WARNING 2025-05-11 14:37:08,741 log Not Found: /api/business/user-businesses/
+WARNING 2025-05-11 14:37:08,741 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 4742
+WARNING 2025-05-11 14:37:09,036 log Unauthorized: /api/posts/feed/
+WARNING 2025-05-11 14:37:09,038 log Not Found: /api/business/user-businesses/
+WARNING 2025-05-11 14:37:09,038 basehttp "GET /api/posts/feed/ HTTP/1.1" 401 65
+WARNING 2025-05-11 14:37:09,039 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 4742
+WARNING 2025-05-11 14:37:09,042 log Unauthorized: /api/posts/feed/
+WARNING 2025-05-11 14:37:09,047 log Not Found: /api/business/user-businesses/
+WARNING 2025-05-11 14:37:09,047 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 4742
+WARNING 2025-05-11 14:37:09,048 basehttp "GET /api/posts/feed/ HTTP/1.1" 401 65
+WARNING 2025-05-11 14:37:09,296 log Unauthorized: /api/posts/feed/
+WARNING 2025-05-11 14:37:09,300 log Not Found: /api/business/user-businesses/
+WARNING 2025-05-11 14:37:09,300 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 4742
+WARNING 2025-05-11 14:37:09,300 basehttp "GET /api/posts/feed/ HTTP/1.1" 401 65
+WARNING 2025-05-11 14:37:09,303 log Unauthorized: /api/posts/feed/
+WARNING 2025-05-11 14:37:09,307 log Not Found: /api/business/user-businesses/
+WARNING 2025-05-11 14:37:09,308 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 4742
+WARNING 2025-05-11 14:37:09,308 basehttp "GET /api/posts/feed/ HTTP/1.1" 401 65
+WARNING 2025-05-11 14:37:09,511 log Unauthorized: /api/posts/feed/
+WARNING 2025-05-11 14:37:09,512 basehttp "GET /api/posts/feed/ HTTP/1.1" 401 65
+WARNING 2025-05-11 14:37:09,514 log Not Found: /api/business/user-businesses/
+WARNING 2025-05-11 14:37:09,515 log Unauthorized: /api/posts/feed/
+WARNING 2025-05-11 14:37:09,515 basehttp "GET /api/posts/feed/ HTTP/1.1" 401 65
+WARNING 2025-05-11 14:37:09,515 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 4742
+WARNING 2025-05-11 14:37:09,520 log Not Found: /api/business/user-businesses/
+WARNING 2025-05-11 14:37:09,521 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 4742
+WARNING 2025-05-11 14:37:09,736 log Unauthorized: /api/posts/feed/
+WARNING 2025-05-11 14:37:09,739 log Not Found: /api/business/user-businesses/
+WARNING 2025-05-11 14:37:09,740 log Unauthorized: /api/posts/feed/
+WARNING 2025-05-11 14:37:09,740 basehttp "GET /api/posts/feed/ HTTP/1.1" 401 65
+WARNING 2025-05-11 14:37:09,740 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 4742
+WARNING 2025-05-11 14:37:09,741 basehttp "GET /api/posts/feed/ HTTP/1.1" 401 65
+WARNING 2025-05-11 14:37:09,746 log Not Found: /api/business/user-businesses/
+WARNING 2025-05-11 14:37:09,747 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 4742
+WARNING 2025-05-11 14:37:09,982 log Unauthorized: /api/posts/feed/
+WARNING 2025-05-11 14:37:09,986 log Not Found: /api/business/user-businesses/
+WARNING 2025-05-11 14:37:09,986 basehttp "GET /api/posts/feed/ HTTP/1.1" 401 65
+WARNING 2025-05-11 14:37:09,987 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 4742
+WARNING 2025-05-11 14:37:09,991 log Unauthorized: /api/posts/feed/
+WARNING 2025-05-11 14:37:09,991 basehttp "GET /api/posts/feed/ HTTP/1.1" 401 65
+WARNING 2025-05-11 14:37:10,000 log Not Found: /api/business/user-businesses/
+WARNING 2025-05-11 14:37:10,001 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 4742
+WARNING 2025-05-11 14:37:10,198 log Unauthorized: /api/posts/feed/
+WARNING 2025-05-11 14:37:10,200 log Not Found: /api/business/user-businesses/
+WARNING 2025-05-11 14:37:10,200 basehttp "GET /api/posts/feed/ HTTP/1.1" 401 65
+WARNING 2025-05-11 14:37:10,200 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 4742
+WARNING 2025-05-11 14:37:10,203 log Unauthorized: /api/posts/feed/
+WARNING 2025-05-11 14:37:10,206 log Not Found: /api/business/user-businesses/
+WARNING 2025-05-11 14:37:10,207 basehttp "GET /api/posts/feed/ HTTP/1.1" 401 65
+WARNING 2025-05-11 14:37:10,207 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 4742
+WARNING 2025-05-11 14:37:10,415 log Unauthorized: /api/posts/feed/
+WARNING 2025-05-11 14:37:10,417 log Not Found: /api/business/user-businesses/
+WARNING 2025-05-11 14:37:10,417 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 4742
+WARNING 2025-05-11 14:37:10,417 basehttp "GET /api/posts/feed/ HTTP/1.1" 401 65
+WARNING 2025-05-11 14:37:10,419 log Unauthorized: /api/posts/feed/
+WARNING 2025-05-11 14:37:10,420 basehttp "GET /api/posts/feed/ HTTP/1.1" 401 65
+WARNING 2025-05-11 14:37:10,425 log Not Found: /api/business/user-businesses/
+WARNING 2025-05-11 14:37:10,426 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 4742
+WARNING 2025-05-11 14:37:10,634 log Unauthorized: /api/posts/feed/
+WARNING 2025-05-11 14:37:10,635 basehttp "GET /api/posts/feed/ HTTP/1.1" 401 65
+WARNING 2025-05-11 14:37:10,637 log Not Found: /api/business/user-businesses/
+WARNING 2025-05-11 14:37:10,638 log Unauthorized: /api/posts/feed/
+WARNING 2025-05-11 14:37:10,639 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 4742
+WARNING 2025-05-11 14:37:10,639 basehttp "GET /api/posts/feed/ HTTP/1.1" 401 65
+WARNING 2025-05-11 14:37:10,646 log Not Found: /api/business/user-businesses/
+WARNING 2025-05-11 14:37:10,647 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 4742
+WARNING 2025-05-11 14:37:10,863 log Unauthorized: /api/posts/feed/
+WARNING 2025-05-11 14:37:10,865 log Not Found: /api/business/user-businesses/
+WARNING 2025-05-11 14:37:10,865 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 4742
+WARNING 2025-05-11 14:37:10,866 basehttp "GET /api/posts/feed/ HTTP/1.1" 401 65
+WARNING 2025-05-11 14:37:10,868 log Unauthorized: /api/posts/feed/
+WARNING 2025-05-11 14:37:10,872 log Not Found: /api/business/user-businesses/
+WARNING 2025-05-11 14:37:10,873 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 4742
+WARNING 2025-05-11 14:37:10,874 basehttp "GET /api/posts/feed/ HTTP/1.1" 401 65
+WARNING 2025-05-11 14:37:11,086 log Unauthorized: /api/posts/feed/
+WARNING 2025-05-11 14:37:11,087 basehttp "GET /api/posts/feed/ HTTP/1.1" 401 65
+WARNING 2025-05-11 14:37:11,090 log Not Found: /api/business/user-businesses/
+WARNING 2025-05-11 14:37:11,091 log Unauthorized: /api/posts/feed/
+WARNING 2025-05-11 14:37:11,092 basehttp "GET /api/posts/feed/ HTTP/1.1" 401 65
+WARNING 2025-05-11 14:37:11,092 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 4742
+WARNING 2025-05-11 14:37:11,099 log Not Found: /api/business/user-businesses/
+WARNING 2025-05-11 14:37:11,099 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 4742
+WARNING 2025-05-11 14:37:11,327 log Unauthorized: /api/posts/feed/
+WARNING 2025-05-11 14:37:11,329 log Not Found: /api/business/user-businesses/
+WARNING 2025-05-11 14:37:11,329 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 4742
+WARNING 2025-05-11 14:37:11,329 basehttp "GET /api/posts/feed/ HTTP/1.1" 401 65
+WARNING 2025-05-11 14:37:11,331 log Unauthorized: /api/posts/feed/
+WARNING 2025-05-11 14:37:11,334 log Not Found: /api/business/user-businesses/
+WARNING 2025-05-11 14:37:11,334 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 4742
+WARNING 2025-05-11 14:37:11,334 basehttp "GET /api/posts/feed/ HTTP/1.1" 401 65
+WARNING 2025-05-11 14:37:11,561 log Unauthorized: /api/posts/feed/
+WARNING 2025-05-11 14:37:11,564 log Not Found: /api/business/user-businesses/
+WARNING 2025-05-11 14:37:11,564 basehttp "GET /api/posts/feed/ HTTP/1.1" 401 65
+WARNING 2025-05-11 14:37:11,565 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 4742
+WARNING 2025-05-11 14:37:11,566 log Unauthorized: /api/posts/feed/
+WARNING 2025-05-11 14:37:11,571 log Not Found: /api/business/user-businesses/
+WARNING 2025-05-11 14:37:11,572 basehttp "GET /api/posts/feed/ HTTP/1.1" 401 65
+WARNING 2025-05-11 14:37:11,573 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 4742
+WARNING 2025-05-11 14:37:11,785 log Unauthorized: /api/posts/feed/
+WARNING 2025-05-11 14:37:11,789 log Not Found: /api/business/user-businesses/
+WARNING 2025-05-11 14:37:11,790 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 4742
+WARNING 2025-05-11 14:37:11,790 basehttp "GET /api/posts/feed/ HTTP/1.1" 401 65
+WARNING 2025-05-11 14:37:11,793 log Unauthorized: /api/posts/feed/
+WARNING 2025-05-11 14:37:11,802 log Not Found: /api/business/user-businesses/
+WARNING 2025-05-11 14:37:11,802 basehttp "GET /api/posts/feed/ HTTP/1.1" 401 65
+WARNING 2025-05-11 14:37:11,804 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 4742
+WARNING 2025-05-11 14:37:12,012 log Unauthorized: /api/posts/feed/
+WARNING 2025-05-11 14:37:12,014 log Not Found: /api/business/user-businesses/
+WARNING 2025-05-11 14:37:12,014 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 4742
+WARNING 2025-05-11 14:37:12,014 basehttp "GET /api/posts/feed/ HTTP/1.1" 401 65
+WARNING 2025-05-11 14:37:12,017 log Unauthorized: /api/posts/feed/
+WARNING 2025-05-11 14:37:12,020 log Not Found: /api/business/user-businesses/
+WARNING 2025-05-11 14:37:12,021 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 4742
+WARNING 2025-05-11 14:37:12,022 basehttp "GET /api/posts/feed/ HTTP/1.1" 401 65
+WARNING 2025-05-11 14:37:12,235 log Unauthorized: /api/posts/feed/
+WARNING 2025-05-11 14:37:12,239 log Not Found: /api/business/user-businesses/
+WARNING 2025-05-11 14:37:12,239 basehttp "GET /api/posts/feed/ HTTP/1.1" 401 65
+WARNING 2025-05-11 14:37:12,239 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 4742
+WARNING 2025-05-11 14:37:12,242 log Unauthorized: /api/posts/feed/
+WARNING 2025-05-11 14:37:12,247 log Not Found: /api/business/user-businesses/
+WARNING 2025-05-11 14:37:12,247 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 4742
+WARNING 2025-05-11 14:37:12,247 basehttp "GET /api/posts/feed/ HTTP/1.1" 401 65
+WARNING 2025-05-11 14:37:12,485 log Unauthorized: /api/posts/feed/
+WARNING 2025-05-11 14:37:12,488 log Not Found: /api/business/user-businesses/
+WARNING 2025-05-11 14:37:12,488 basehttp "GET /api/posts/feed/ HTTP/1.1" 401 65
+WARNING 2025-05-11 14:37:12,488 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 4742
+WARNING 2025-05-11 14:37:12,491 log Unauthorized: /api/posts/feed/
+WARNING 2025-05-11 14:37:12,496 log Not Found: /api/business/user-businesses/
+WARNING 2025-05-11 14:37:12,496 basehttp "GET /api/posts/feed/ HTTP/1.1" 401 65
+WARNING 2025-05-11 14:37:12,496 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 4742
+WARNING 2025-05-11 14:37:12,795 log Unauthorized: /api/posts/feed/
+WARNING 2025-05-11 14:37:12,800 log Not Found: /api/business/user-businesses/
+WARNING 2025-05-11 14:37:12,800 basehttp "GET /api/posts/feed/ HTTP/1.1" 401 65
+WARNING 2025-05-11 14:37:12,801 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 4742
+WARNING 2025-05-11 14:37:12,804 log Unauthorized: /api/posts/feed/
+WARNING 2025-05-11 14:37:12,804 basehttp "GET /api/posts/feed/ HTTP/1.1" 401 65
+WARNING 2025-05-11 14:37:12,809 log Not Found: /api/business/user-businesses/
+WARNING 2025-05-11 14:37:12,809 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 4742
+WARNING 2025-05-11 14:37:13,075 log Unauthorized: /api/posts/feed/
+WARNING 2025-05-11 14:37:13,077 log Not Found: /api/business/user-businesses/
+WARNING 2025-05-11 14:37:13,078 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 4742
+WARNING 2025-05-11 14:37:13,078 basehttp "GET /api/posts/feed/ HTTP/1.1" 401 65
+WARNING 2025-05-11 14:37:13,080 log Unauthorized: /api/posts/feed/
+WARNING 2025-05-11 14:37:13,083 log Not Found: /api/business/user-businesses/
+WARNING 2025-05-11 14:37:13,084 basehttp "GET /api/posts/feed/ HTTP/1.1" 401 65
+WARNING 2025-05-11 14:37:13,084 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 4742
+WARNING 2025-05-11 14:37:13,305 log Not Found: /api/business/user-businesses/
+WARNING 2025-05-11 14:37:13,306 log Unauthorized: /api/posts/feed/
+WARNING 2025-05-11 14:37:13,306 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 4742
+WARNING 2025-05-11 14:37:13,307 basehttp "GET /api/posts/feed/ HTTP/1.1" 401 65
+WARNING 2025-05-11 14:37:13,310 log Unauthorized: /api/posts/feed/
+WARNING 2025-05-11 14:37:13,314 log Not Found: /api/business/user-businesses/
+WARNING 2025-05-11 14:37:13,315 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 4742
+WARNING 2025-05-11 14:37:13,315 basehttp "GET /api/posts/feed/ HTTP/1.1" 401 65
+WARNING 2025-05-11 14:37:13,514 log Unauthorized: /api/posts/feed/
+WARNING 2025-05-11 14:37:13,516 log Not Found: /api/business/user-businesses/
+WARNING 2025-05-11 14:37:13,517 basehttp "GET /api/posts/feed/ HTTP/1.1" 401 65
+WARNING 2025-05-11 14:37:13,517 log Unauthorized: /api/posts/feed/
+WARNING 2025-05-11 14:37:13,518 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 4742
+WARNING 2025-05-11 14:37:13,521 log Not Found: /api/business/user-businesses/
+WARNING 2025-05-11 14:37:13,521 basehttp "GET /api/posts/feed/ HTTP/1.1" 401 65
+WARNING 2025-05-11 14:37:13,522 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 4742
+WARNING 2025-05-11 14:37:13,767 log Not Found: /api/business/user-businesses/
+WARNING 2025-05-11 14:37:13,768 log Unauthorized: /api/posts/feed/
+WARNING 2025-05-11 14:37:13,768 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 4742
+WARNING 2025-05-11 14:37:13,768 basehttp "GET /api/posts/feed/ HTTP/1.1" 401 65
+WARNING 2025-05-11 14:37:13,772 log Unauthorized: /api/posts/feed/
+WARNING 2025-05-11 14:37:13,775 log Not Found: /api/business/user-businesses/
+WARNING 2025-05-11 14:37:13,775 basehttp "GET /api/posts/feed/ HTTP/1.1" 401 65
+WARNING 2025-05-11 14:37:13,776 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 4742
+WARNING 2025-05-11 14:37:14,014 log Unauthorized: /api/posts/feed/
+WARNING 2025-05-11 14:37:14,018 log Not Found: /api/business/user-businesses/
+WARNING 2025-05-11 14:37:14,018 basehttp "GET /api/posts/feed/ HTTP/1.1" 401 65
+WARNING 2025-05-11 14:37:14,018 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 4742
+WARNING 2025-05-11 14:37:14,020 log Unauthorized: /api/posts/feed/
+WARNING 2025-05-11 14:37:14,021 basehttp "GET /api/posts/feed/ HTTP/1.1" 401 65
+WARNING 2025-05-11 14:37:14,025 log Not Found: /api/business/user-businesses/
+WARNING 2025-05-11 14:37:14,026 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 4742
+WARNING 2025-05-11 14:37:14,270 log Unauthorized: /api/posts/feed/
+WARNING 2025-05-11 14:37:14,274 log Not Found: /api/business/user-businesses/
+WARNING 2025-05-11 14:37:14,275 basehttp "GET /api/posts/feed/ HTTP/1.1" 401 65
+WARNING 2025-05-11 14:37:14,275 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 4742
+WARNING 2025-05-11 14:37:14,278 log Unauthorized: /api/posts/feed/
+WARNING 2025-05-11 14:37:14,278 basehttp "GET /api/posts/feed/ HTTP/1.1" 401 65
+WARNING 2025-05-11 14:37:14,285 log Not Found: /api/business/user-businesses/
+WARNING 2025-05-11 14:37:14,286 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 4742
+WARNING 2025-05-11 14:37:14,509 log Unauthorized: /api/posts/feed/
+WARNING 2025-05-11 14:37:14,512 log Not Found: /api/business/user-businesses/
+WARNING 2025-05-11 14:37:14,512 basehttp "GET /api/posts/feed/ HTTP/1.1" 401 65
+WARNING 2025-05-11 14:37:14,512 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 4742
+WARNING 2025-05-11 14:37:14,515 log Unauthorized: /api/posts/feed/
+WARNING 2025-05-11 14:37:14,519 log Not Found: /api/business/user-businesses/
+WARNING 2025-05-11 14:37:14,519 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 4742
+WARNING 2025-05-11 14:37:14,519 basehttp "GET /api/posts/feed/ HTTP/1.1" 401 65
+WARNING 2025-05-11 14:37:14,754 log Unauthorized: /api/posts/feed/
+WARNING 2025-05-11 14:37:14,757 log Not Found: /api/business/user-businesses/
+WARNING 2025-05-11 14:37:14,758 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 4742
+WARNING 2025-05-11 14:37:14,758 basehttp "GET /api/posts/feed/ HTTP/1.1" 401 65
+WARNING 2025-05-11 14:37:14,761 log Unauthorized: /api/posts/feed/
+WARNING 2025-05-11 14:37:14,764 log Not Found: /api/business/user-businesses/
+WARNING 2025-05-11 14:37:14,765 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 4742
+WARNING 2025-05-11 14:37:14,765 basehttp "GET /api/posts/feed/ HTTP/1.1" 401 65
+WARNING 2025-05-11 14:37:15,004 log Unauthorized: /api/posts/feed/
+WARNING 2025-05-11 14:37:15,007 log Not Found: /api/business/user-businesses/
+WARNING 2025-05-11 14:37:15,008 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 4742
+WARNING 2025-05-11 14:37:15,008 basehttp "GET /api/posts/feed/ HTTP/1.1" 401 65
+WARNING 2025-05-11 14:37:15,010 log Unauthorized: /api/posts/feed/
+WARNING 2025-05-11 14:37:15,013 basehttp "GET /api/posts/feed/ HTTP/1.1" 401 65
+WARNING 2025-05-11 14:37:15,013 log Not Found: /api/business/user-businesses/
+WARNING 2025-05-11 14:37:15,014 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 4742
+WARNING 2025-05-11 14:37:15,229 log Unauthorized: /api/posts/feed/
+WARNING 2025-05-11 14:37:15,230 basehttp "GET /api/posts/feed/ HTTP/1.1" 401 65
+WARNING 2025-05-11 14:37:15,232 log Not Found: /api/business/user-businesses/
+WARNING 2025-05-11 14:37:15,233 log Unauthorized: /api/posts/feed/
+WARNING 2025-05-11 14:37:15,233 basehttp "GET /api/posts/feed/ HTTP/1.1" 401 65
+WARNING 2025-05-11 14:37:15,234 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 4742
+WARNING 2025-05-11 14:37:15,240 log Not Found: /api/business/user-businesses/
+WARNING 2025-05-11 14:37:15,240 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 4742
+WARNING 2025-05-11 14:37:15,488 log Unauthorized: /api/posts/feed/
+WARNING 2025-05-11 14:37:15,492 log Not Found: /api/business/user-businesses/
+WARNING 2025-05-11 14:37:15,493 basehttp "GET /api/posts/feed/ HTTP/1.1" 401 65
+WARNING 2025-05-11 14:37:15,493 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 4742
+WARNING 2025-05-11 14:37:15,496 log Unauthorized: /api/posts/feed/
+WARNING 2025-05-11 14:37:15,500 log Not Found: /api/business/user-businesses/
+WARNING 2025-05-11 14:37:15,500 basehttp "GET /api/posts/feed/ HTTP/1.1" 401 65
+WARNING 2025-05-11 14:37:15,501 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 4742
+WARNING 2025-05-11 14:37:15,725 log Unauthorized: /api/posts/feed/
+WARNING 2025-05-11 14:37:15,728 log Not Found: /api/business/user-businesses/
+WARNING 2025-05-11 14:37:15,728 basehttp "GET /api/posts/feed/ HTTP/1.1" 401 65
+WARNING 2025-05-11 14:37:15,728 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 4742
+WARNING 2025-05-11 14:37:15,731 log Unauthorized: /api/posts/feed/
+WARNING 2025-05-11 14:37:15,741 log Not Found: /api/business/user-businesses/
+WARNING 2025-05-11 14:37:15,741 basehttp "GET /api/posts/feed/ HTTP/1.1" 401 65
+WARNING 2025-05-11 14:37:15,742 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 4742
+WARNING 2025-05-11 14:37:15,969 log Unauthorized: /api/posts/feed/
+WARNING 2025-05-11 14:37:15,974 log Not Found: /api/business/user-businesses/
+WARNING 2025-05-11 14:37:15,974 basehttp "GET /api/posts/feed/ HTTP/1.1" 401 65
+WARNING 2025-05-11 14:37:15,975 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 4742
+WARNING 2025-05-11 14:37:15,978 log Unauthorized: /api/posts/feed/
+WARNING 2025-05-11 14:37:15,979 basehttp "GET /api/posts/feed/ HTTP/1.1" 401 65
+WARNING 2025-05-11 14:37:15,985 log Not Found: /api/business/user-businesses/
+WARNING 2025-05-11 14:37:15,986 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 4742
+WARNING 2025-05-11 14:37:16,196 log Unauthorized: /api/posts/feed/
+WARNING 2025-05-11 14:37:16,198 log Not Found: /api/business/user-businesses/
+WARNING 2025-05-11 14:37:16,199 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 4742
+WARNING 2025-05-11 14:37:16,199 basehttp "GET /api/posts/feed/ HTTP/1.1" 401 65
+WARNING 2025-05-11 14:37:16,201 log Unauthorized: /api/posts/feed/
+WARNING 2025-05-11 14:37:16,204 log Not Found: /api/business/user-businesses/
+WARNING 2025-05-11 14:37:16,205 basehttp "GET /api/posts/feed/ HTTP/1.1" 401 65
+WARNING 2025-05-11 14:37:16,205 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 4742
+WARNING 2025-05-11 14:37:16,431 log Unauthorized: /api/posts/feed/
+WARNING 2025-05-11 14:37:16,435 log Not Found: /api/business/user-businesses/
+WARNING 2025-05-11 14:37:16,435 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 4742
+WARNING 2025-05-11 14:37:16,436 basehttp "GET /api/posts/feed/ HTTP/1.1" 401 65
+WARNING 2025-05-11 14:37:16,438 log Unauthorized: /api/posts/feed/
+WARNING 2025-05-11 14:37:16,439 basehttp "GET /api/posts/feed/ HTTP/1.1" 401 65
+WARNING 2025-05-11 14:37:16,445 log Not Found: /api/business/user-businesses/
+WARNING 2025-05-11 14:37:16,445 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 4742
+WARNING 2025-05-11 14:37:16,737 log Not Found: /api/business/user-businesses/
+WARNING 2025-05-11 14:37:16,738 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 4742
+WARNING 2025-05-11 14:37:16,740 log Unauthorized: /api/posts/feed/
+WARNING 2025-05-11 14:37:16,745 log Not Found: /api/business/user-businesses/
+WARNING 2025-05-11 14:37:16,745 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 4742
+WARNING 2025-05-11 14:37:16,745 basehttp "GET /api/posts/feed/ HTTP/1.1" 401 65
+WARNING 2025-05-11 14:37:16,748 log Unauthorized: /api/posts/feed/
+WARNING 2025-05-11 14:37:16,748 basehttp "GET /api/posts/feed/ HTTP/1.1" 401 65
+WARNING 2025-05-11 14:37:17,026 log Unauthorized: /api/posts/feed/
+WARNING 2025-05-11 14:37:17,029 log Not Found: /api/business/user-businesses/
+WARNING 2025-05-11 14:37:17,030 basehttp "GET /api/posts/feed/ HTTP/1.1" 401 65
+WARNING 2025-05-11 14:37:17,030 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 4742
+WARNING 2025-05-11 14:37:17,033 log Unauthorized: /api/posts/feed/
+WARNING 2025-05-11 14:37:17,037 log Not Found: /api/business/user-businesses/
+WARNING 2025-05-11 14:37:17,039 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 4742
+WARNING 2025-05-11 14:37:17,038 basehttp "GET /api/posts/feed/ HTTP/1.1" 401 65
+WARNING 2025-05-11 14:37:17,284 log Unauthorized: /api/posts/feed/
+WARNING 2025-05-11 14:37:17,289 log Not Found: /api/business/user-businesses/
+WARNING 2025-05-11 14:37:17,289 basehttp "GET /api/posts/feed/ HTTP/1.1" 401 65
+WARNING 2025-05-11 14:37:17,289 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 4742
+WARNING 2025-05-11 14:37:17,292 log Unauthorized: /api/posts/feed/
+WARNING 2025-05-11 14:37:17,293 basehttp "GET /api/posts/feed/ HTTP/1.1" 401 65
+WARNING 2025-05-11 14:37:17,303 log Not Found: /api/business/user-businesses/
+WARNING 2025-05-11 14:37:17,303 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 4742
+WARNING 2025-05-11 14:37:17,543 log Unauthorized: /api/posts/feed/
+WARNING 2025-05-11 14:37:17,544 log Not Found: /api/business/user-businesses/
+WARNING 2025-05-11 14:37:17,545 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 4742
+WARNING 2025-05-11 14:37:17,545 basehttp "GET /api/posts/feed/ HTTP/1.1" 401 65
+WARNING 2025-05-11 14:37:17,547 log Unauthorized: /api/posts/feed/
+WARNING 2025-05-11 14:37:17,548 basehttp "GET /api/posts/feed/ HTTP/1.1" 401 65
+WARNING 2025-05-11 14:37:17,552 log Not Found: /api/business/user-businesses/
+WARNING 2025-05-11 14:37:17,552 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 4742
+WARNING 2025-05-11 14:37:17,797 log Not Found: /api/business/user-businesses/
+WARNING 2025-05-11 14:37:17,798 log Unauthorized: /api/posts/feed/
+WARNING 2025-05-11 14:37:17,798 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 4742
+WARNING 2025-05-11 14:37:17,799 basehttp "GET /api/posts/feed/ HTTP/1.1" 401 65
+WARNING 2025-05-11 14:37:17,801 log Unauthorized: /api/posts/feed/
+WARNING 2025-05-11 14:37:17,807 log Not Found: /api/business/user-businesses/
+WARNING 2025-05-11 14:37:17,807 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 4742
+WARNING 2025-05-11 14:37:17,807 basehttp "GET /api/posts/feed/ HTTP/1.1" 401 65
+WARNING 2025-05-11 14:37:18,034 log Unauthorized: /api/posts/feed/
+WARNING 2025-05-11 14:37:18,038 log Not Found: /api/business/user-businesses/
+WARNING 2025-05-11 14:37:18,038 basehttp "GET /api/posts/feed/ HTTP/1.1" 401 65
+WARNING 2025-05-11 14:37:18,038 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 4742
+WARNING 2025-05-11 14:37:18,041 log Unauthorized: /api/posts/feed/
+WARNING 2025-05-11 14:37:18,041 basehttp "GET /api/posts/feed/ HTTP/1.1" 401 65
+WARNING 2025-05-11 14:37:18,047 log Not Found: /api/business/user-businesses/
+WARNING 2025-05-11 14:37:18,048 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 4742
+WARNING 2025-05-11 14:37:18,268 log Unauthorized: /api/posts/feed/
+WARNING 2025-05-11 14:37:18,271 log Not Found: /api/business/user-businesses/
+WARNING 2025-05-11 14:37:18,272 log Unauthorized: /api/posts/feed/
+WARNING 2025-05-11 14:37:18,272 basehttp "GET /api/posts/feed/ HTTP/1.1" 401 65
+WARNING 2025-05-11 14:37:18,273 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 4742
+WARNING 2025-05-11 14:37:18,273 basehttp "GET /api/posts/feed/ HTTP/1.1" 401 65
+WARNING 2025-05-11 14:37:18,280 log Not Found: /api/business/user-businesses/
+WARNING 2025-05-11 14:37:18,281 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 4742
+WARNING 2025-05-11 14:37:18,528 log Not Found: /api/business/user-businesses/
+WARNING 2025-05-11 14:37:18,529 log Unauthorized: /api/posts/feed/
+WARNING 2025-05-11 14:37:18,530 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 4742
+WARNING 2025-05-11 14:37:18,530 basehttp "GET /api/posts/feed/ HTTP/1.1" 401 65
+WARNING 2025-05-11 14:37:18,533 log Unauthorized: /api/posts/feed/
+WARNING 2025-05-11 14:37:18,539 log Not Found: /api/business/user-businesses/
+WARNING 2025-05-11 14:37:18,540 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 4742
+WARNING 2025-05-11 14:37:18,540 basehttp "GET /api/posts/feed/ HTTP/1.1" 401 65
+WARNING 2025-05-11 14:37:18,764 log Unauthorized: /api/posts/feed/
+WARNING 2025-05-11 14:37:18,765 log Not Found: /api/business/user-businesses/
+WARNING 2025-05-11 14:37:18,766 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 4742
+WARNING 2025-05-11 14:37:18,766 basehttp "GET /api/posts/feed/ HTTP/1.1" 401 65
+WARNING 2025-05-11 14:37:18,768 log Unauthorized: /api/posts/feed/
+WARNING 2025-05-11 14:37:18,772 log Not Found: /api/business/user-businesses/
+WARNING 2025-05-11 14:37:18,773 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 4742
+WARNING 2025-05-11 14:37:18,773 basehttp "GET /api/posts/feed/ HTTP/1.1" 401 65
+WARNING 2025-05-11 14:37:19,019 log Unauthorized: /api/posts/feed/
+WARNING 2025-05-11 14:37:19,024 log Not Found: /api/business/user-businesses/
+WARNING 2025-05-11 14:37:19,024 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 4742
+WARNING 2025-05-11 14:37:19,024 basehttp "GET /api/posts/feed/ HTTP/1.1" 401 65
+WARNING 2025-05-11 14:37:19,027 log Unauthorized: /api/posts/feed/
+WARNING 2025-05-11 14:37:19,033 basehttp "GET /api/posts/feed/ HTTP/1.1" 401 65
+WARNING 2025-05-11 14:37:19,033 log Not Found: /api/business/user-businesses/
+WARNING 2025-05-11 14:37:19,034 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 4742
+WARNING 2025-05-11 14:37:19,273 log Not Found: /api/business/user-businesses/
+WARNING 2025-05-11 14:37:19,275 log Unauthorized: /api/posts/feed/
+WARNING 2025-05-11 14:37:19,275 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 4742
+WARNING 2025-05-11 14:37:19,275 basehttp "GET /api/posts/feed/ HTTP/1.1" 401 65
+WARNING 2025-05-11 14:37:19,277 log Unauthorized: /api/posts/feed/
+WARNING 2025-05-11 14:37:19,283 log Not Found: /api/business/user-businesses/
+WARNING 2025-05-11 14:37:19,283 basehttp "GET /api/posts/feed/ HTTP/1.1" 401 65
+WARNING 2025-05-11 14:37:19,284 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 4742
+WARNING 2025-05-11 14:37:19,526 log Unauthorized: /api/posts/feed/
+WARNING 2025-05-11 14:37:19,527 basehttp "GET /api/posts/feed/ HTTP/1.1" 401 65
+WARNING 2025-05-11 14:37:19,529 log Unauthorized: /api/posts/feed/
+WARNING 2025-05-11 14:37:19,532 log Not Found: /api/business/user-businesses/
+WARNING 2025-05-11 14:37:19,532 basehttp "GET /api/posts/feed/ HTTP/1.1" 401 65
+WARNING 2025-05-11 14:37:19,533 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 4742
+WARNING 2025-05-11 14:37:19,539 log Not Found: /api/business/user-businesses/
+WARNING 2025-05-11 14:37:19,540 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 4742
+WARNING 2025-05-11 14:37:19,773 log Unauthorized: /api/posts/feed/
+WARNING 2025-05-11 14:37:19,775 log Not Found: /api/business/user-businesses/
+WARNING 2025-05-11 14:37:19,775 basehttp "GET /api/posts/feed/ HTTP/1.1" 401 65
+WARNING 2025-05-11 14:37:19,775 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 4742
+WARNING 2025-05-11 14:37:19,777 log Unauthorized: /api/posts/feed/
+WARNING 2025-05-11 14:37:19,780 log Not Found: /api/business/user-businesses/
+WARNING 2025-05-11 14:37:19,780 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 4742
+WARNING 2025-05-11 14:37:19,780 basehttp "GET /api/posts/feed/ HTTP/1.1" 401 65
+WARNING 2025-05-11 14:37:20,001 log Unauthorized: /api/posts/feed/
+WARNING 2025-05-11 14:37:20,004 log Not Found: /api/business/user-businesses/
+WARNING 2025-05-11 14:37:20,004 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 4742
+WARNING 2025-05-11 14:37:20,004 basehttp "GET /api/posts/feed/ HTTP/1.1" 401 65
+WARNING 2025-05-11 14:37:20,007 log Unauthorized: /api/posts/feed/
+WARNING 2025-05-11 14:37:20,011 log Not Found: /api/business/user-businesses/
+WARNING 2025-05-11 14:37:20,012 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 4742
+WARNING 2025-05-11 14:37:20,012 basehttp "GET /api/posts/feed/ HTTP/1.1" 401 65
+WARNING 2025-05-11 14:37:20,242 log Unauthorized: /api/posts/feed/
+WARNING 2025-05-11 14:37:20,244 log Not Found: /api/business/user-businesses/
+WARNING 2025-05-11 14:37:20,244 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 4742
+WARNING 2025-05-11 14:37:20,244 basehttp "GET /api/posts/feed/ HTTP/1.1" 401 65
+WARNING 2025-05-11 14:37:20,246 log Unauthorized: /api/posts/feed/
+WARNING 2025-05-11 14:37:20,249 log Not Found: /api/business/user-businesses/
+WARNING 2025-05-11 14:37:20,249 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 4742
+WARNING 2025-05-11 14:37:20,249 basehttp "GET /api/posts/feed/ HTTP/1.1" 401 65
+WARNING 2025-05-11 14:37:20,492 log Unauthorized: /api/posts/feed/
+WARNING 2025-05-11 14:37:20,495 log Not Found: /api/business/user-businesses/
+WARNING 2025-05-11 14:37:20,496 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 4742
+WARNING 2025-05-11 14:37:20,496 basehttp "GET /api/posts/feed/ HTTP/1.1" 401 65
+WARNING 2025-05-11 14:37:20,499 log Unauthorized: /api/posts/feed/
+WARNING 2025-05-11 14:37:20,503 log Not Found: /api/business/user-businesses/
+WARNING 2025-05-11 14:37:20,504 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 4742
+WARNING 2025-05-11 14:37:20,504 basehttp "GET /api/posts/feed/ HTTP/1.1" 401 65
+WARNING 2025-05-11 14:37:20,816 log Unauthorized: /api/posts/feed/
+WARNING 2025-05-11 14:37:20,820 log Not Found: /api/business/user-businesses/
+WARNING 2025-05-11 14:37:20,820 basehttp "GET /api/posts/feed/ HTTP/1.1" 401 65
+WARNING 2025-05-11 14:37:20,820 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 4742
+WARNING 2025-05-11 14:37:20,823 log Unauthorized: /api/posts/feed/
+WARNING 2025-05-11 14:37:20,828 log Not Found: /api/business/user-businesses/
+WARNING 2025-05-11 14:37:20,828 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 4742
+WARNING 2025-05-11 14:37:20,828 basehttp "GET /api/posts/feed/ HTTP/1.1" 401 65
+WARNING 2025-05-11 14:37:21,117 log Not Found: /api/business/user-businesses/
+WARNING 2025-05-11 14:37:21,118 log Unauthorized: /api/posts/feed/
+WARNING 2025-05-11 14:37:21,118 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 4742
+WARNING 2025-05-11 14:37:21,119 basehttp "GET /api/posts/feed/ HTTP/1.1" 401 65
+WARNING 2025-05-11 14:37:21,121 log Unauthorized: /api/posts/feed/
+WARNING 2025-05-11 14:37:21,124 log Not Found: /api/business/user-businesses/
+WARNING 2025-05-11 14:37:21,125 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 4742
+WARNING 2025-05-11 14:37:21,125 basehttp "GET /api/posts/feed/ HTTP/1.1" 401 65
+WARNING 2025-05-11 14:37:21,374 log Not Found: /api/business/user-businesses/
+WARNING 2025-05-11 14:37:21,375 log Unauthorized: /api/posts/feed/
+WARNING 2025-05-11 14:37:21,378 log Not Found: /api/business/user-businesses/
+WARNING 2025-05-11 14:37:21,378 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 4742
+WARNING 2025-05-11 14:37:21,379 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 4742
+WARNING 2025-05-11 14:37:21,379 basehttp "GET /api/posts/feed/ HTTP/1.1" 401 65
+WARNING 2025-05-11 14:37:21,381 log Unauthorized: /api/posts/feed/
+WARNING 2025-05-11 14:37:21,381 basehttp "GET /api/posts/feed/ HTTP/1.1" 401 65
+WARNING 2025-05-11 14:37:21,595 log Not Found: /api/business/user-businesses/
+WARNING 2025-05-11 14:37:21,596 log Unauthorized: /api/posts/feed/
+WARNING 2025-05-11 14:37:21,596 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 4742
+WARNING 2025-05-11 14:37:21,597 basehttp "GET /api/posts/feed/ HTTP/1.1" 401 65
+WARNING 2025-05-11 14:37:21,599 log Unauthorized: /api/posts/feed/
+WARNING 2025-05-11 14:37:21,602 log Not Found: /api/business/user-businesses/
+WARNING 2025-05-11 14:37:21,603 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 4742
+WARNING 2025-05-11 14:37:21,603 basehttp "GET /api/posts/feed/ HTTP/1.1" 401 65
+WARNING 2025-05-11 14:37:21,824 log Unauthorized: /api/posts/feed/
+WARNING 2025-05-11 14:37:21,827 log Not Found: /api/business/user-businesses/
+WARNING 2025-05-11 14:37:21,827 basehttp "GET /api/posts/feed/ HTTP/1.1" 401 65
+WARNING 2025-05-11 14:37:21,827 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 4742
+WARNING 2025-05-11 14:37:21,829 log Unauthorized: /api/posts/feed/
+WARNING 2025-05-11 14:37:21,831 log Not Found: /api/business/user-businesses/
+WARNING 2025-05-11 14:37:21,832 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 4742
+WARNING 2025-05-11 14:37:21,832 basehttp "GET /api/posts/feed/ HTTP/1.1" 401 65
+WARNING 2025-05-11 14:37:22,059 log Unauthorized: /api/posts/feed/
+WARNING 2025-05-11 14:37:22,063 log Not Found: /api/business/user-businesses/
+WARNING 2025-05-11 14:37:22,063 basehttp "GET /api/posts/feed/ HTTP/1.1" 401 65
+WARNING 2025-05-11 14:37:22,064 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 4742
+WARNING 2025-05-11 14:37:22,066 log Unauthorized: /api/posts/feed/
+WARNING 2025-05-11 14:37:22,070 log Not Found: /api/business/user-businesses/
+WARNING 2025-05-11 14:37:22,070 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 4742
+WARNING 2025-05-11 14:37:22,070 basehttp "GET /api/posts/feed/ HTTP/1.1" 401 65
+WARNING 2025-05-11 14:37:22,295 log Unauthorized: /api/posts/feed/
+WARNING 2025-05-11 14:37:22,295 basehttp "GET /api/posts/feed/ HTTP/1.1" 401 65
+WARNING 2025-05-11 14:37:22,297 log Unauthorized: /api/posts/feed/
+WARNING 2025-05-11 14:37:22,300 log Not Found: /api/business/user-businesses/
+WARNING 2025-05-11 14:37:22,301 basehttp "GET /api/posts/feed/ HTTP/1.1" 401 65
+WARNING 2025-05-11 14:37:22,301 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 4742
+WARNING 2025-05-11 14:37:22,306 log Not Found: /api/business/user-businesses/
+WARNING 2025-05-11 14:37:22,307 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 4742
+WARNING 2025-05-11 14:37:22,564 log Unauthorized: /api/posts/feed/
+WARNING 2025-05-11 14:37:22,567 log Not Found: /api/business/user-businesses/
+WARNING 2025-05-11 14:37:22,567 basehttp "GET /api/posts/feed/ HTTP/1.1" 401 65
+WARNING 2025-05-11 14:37:22,567 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 4742
+WARNING 2025-05-11 14:37:22,570 log Unauthorized: /api/posts/feed/
+WARNING 2025-05-11 14:37:22,573 log Not Found: /api/business/user-businesses/
+WARNING 2025-05-11 14:37:22,576 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 4742
+WARNING 2025-05-11 14:37:22,574 basehttp "GET /api/posts/feed/ HTTP/1.1" 401 65
+WARNING 2025-05-11 14:37:22,810 log Unauthorized: /api/posts/feed/
+WARNING 2025-05-11 14:37:22,813 log Not Found: /api/business/user-businesses/
+WARNING 2025-05-11 14:37:22,813 basehttp "GET /api/posts/feed/ HTTP/1.1" 401 65
+WARNING 2025-05-11 14:37:22,813 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 4742
+WARNING 2025-05-11 14:37:22,815 log Unauthorized: /api/posts/feed/
+WARNING 2025-05-11 14:37:22,818 log Not Found: /api/business/user-businesses/
+WARNING 2025-05-11 14:37:22,819 basehttp "GET /api/posts/feed/ HTTP/1.1" 401 65
+WARNING 2025-05-11 14:37:22,819 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 4742
+WARNING 2025-05-11 14:37:23,043 log Unauthorized: /api/posts/feed/
+WARNING 2025-05-11 14:37:23,047 log Not Found: /api/business/user-businesses/
+WARNING 2025-05-11 14:37:23,047 basehttp "GET /api/posts/feed/ HTTP/1.1" 401 65
+WARNING 2025-05-11 14:37:23,047 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 4742
+WARNING 2025-05-11 14:37:23,050 log Unauthorized: /api/posts/feed/
+WARNING 2025-05-11 14:37:23,054 log Not Found: /api/business/user-businesses/
+WARNING 2025-05-11 14:37:23,055 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 4742
+WARNING 2025-05-11 14:37:23,055 basehttp "GET /api/posts/feed/ HTTP/1.1" 401 65
+WARNING 2025-05-11 14:37:23,298 log Unauthorized: /api/posts/feed/
+WARNING 2025-05-11 14:37:23,301 log Not Found: /api/business/user-businesses/
+WARNING 2025-05-11 14:37:23,302 basehttp "GET /api/posts/feed/ HTTP/1.1" 401 65
+WARNING 2025-05-11 14:37:23,302 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 4742
+WARNING 2025-05-11 14:37:23,304 log Unauthorized: /api/posts/feed/
+WARNING 2025-05-11 14:37:23,309 log Not Found: /api/business/user-businesses/
+WARNING 2025-05-11 14:37:23,310 basehttp "GET /api/posts/feed/ HTTP/1.1" 401 65
+WARNING 2025-05-11 14:37:23,310 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 4742
+WARNING 2025-05-11 14:37:23,542 log Unauthorized: /api/posts/feed/
+WARNING 2025-05-11 14:37:23,545 log Not Found: /api/business/user-businesses/
+WARNING 2025-05-11 14:37:23,545 basehttp "GET /api/posts/feed/ HTTP/1.1" 401 65
+WARNING 2025-05-11 14:37:23,545 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 4742
+WARNING 2025-05-11 14:37:23,547 log Unauthorized: /api/posts/feed/
+WARNING 2025-05-11 14:37:23,552 log Not Found: /api/business/user-businesses/
+WARNING 2025-05-11 14:37:23,552 basehttp "GET /api/posts/feed/ HTTP/1.1" 401 65
+WARNING 2025-05-11 14:37:23,554 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 4742
+WARNING 2025-05-11 14:37:23,779 log Unauthorized: /api/posts/feed/
+WARNING 2025-05-11 14:37:23,782 log Not Found: /api/business/user-businesses/
+WARNING 2025-05-11 14:37:23,782 basehttp "GET /api/posts/feed/ HTTP/1.1" 401 65
+WARNING 2025-05-11 14:37:23,782 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 4742
+WARNING 2025-05-11 14:37:23,785 log Unauthorized: /api/posts/feed/
+WARNING 2025-05-11 14:37:23,789 log Not Found: /api/business/user-businesses/
+WARNING 2025-05-11 14:37:23,790 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 4742
+WARNING 2025-05-11 14:37:23,790 basehttp "GET /api/posts/feed/ HTTP/1.1" 401 65
+WARNING 2025-05-11 14:37:24,024 log Unauthorized: /api/posts/feed/
+WARNING 2025-05-11 14:37:24,024 basehttp "GET /api/posts/feed/ HTTP/1.1" 401 65
+WARNING 2025-05-11 14:37:24,027 log Not Found: /api/business/user-businesses/
+WARNING 2025-05-11 14:37:24,028 log Unauthorized: /api/posts/feed/
+WARNING 2025-05-11 14:37:24,029 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 4742
+WARNING 2025-05-11 14:37:24,029 basehttp "GET /api/posts/feed/ HTTP/1.1" 401 65
+WARNING 2025-05-11 14:37:24,033 log Not Found: /api/business/user-businesses/
+WARNING 2025-05-11 14:37:24,033 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 4742
+WARNING 2025-05-11 14:37:24,298 log Unauthorized: /api/posts/feed/
+WARNING 2025-05-11 14:37:24,303 log Not Found: /api/business/user-businesses/
+WARNING 2025-05-11 14:37:24,303 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 4742
+WARNING 2025-05-11 14:37:24,303 basehttp "GET /api/posts/feed/ HTTP/1.1" 401 65
+WARNING 2025-05-11 14:37:24,305 log Unauthorized: /api/posts/feed/
+WARNING 2025-05-11 14:37:24,306 basehttp "GET /api/posts/feed/ HTTP/1.1" 401 65
+WARNING 2025-05-11 14:37:24,309 log Not Found: /api/business/user-businesses/
+WARNING 2025-05-11 14:37:24,310 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 4742
+WARNING 2025-05-11 14:37:24,544 log Unauthorized: /api/posts/feed/
+WARNING 2025-05-11 14:37:24,545 basehttp "GET /api/posts/feed/ HTTP/1.1" 401 65
+WARNING 2025-05-11 14:37:24,548 log Not Found: /api/business/user-businesses/
+WARNING 2025-05-11 14:37:24,549 log Unauthorized: /api/posts/feed/
+WARNING 2025-05-11 14:37:24,550 basehttp "GET /api/posts/feed/ HTTP/1.1" 401 65
+WARNING 2025-05-11 14:37:24,550 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 4742
+WARNING 2025-05-11 14:37:24,556 log Not Found: /api/business/user-businesses/
+WARNING 2025-05-11 14:37:24,556 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 4742
+WARNING 2025-05-11 14:37:24,889 log Unauthorized: /api/posts/feed/
+WARNING 2025-05-11 14:37:24,892 log Not Found: /api/business/user-businesses/
+WARNING 2025-05-11 14:37:24,892 basehttp "GET /api/posts/feed/ HTTP/1.1" 401 65
+WARNING 2025-05-11 14:37:24,893 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 4742
+WARNING 2025-05-11 14:37:24,896 log Unauthorized: /api/posts/feed/
+WARNING 2025-05-11 14:37:24,902 log Not Found: /api/business/user-businesses/
+WARNING 2025-05-11 14:37:24,902 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 4742
+WARNING 2025-05-11 14:37:24,903 basehttp "GET /api/posts/feed/ HTTP/1.1" 401 65
+WARNING 2025-05-11 14:37:25,174 log Unauthorized: /api/posts/feed/
+WARNING 2025-05-11 14:37:25,176 log Not Found: /api/business/user-businesses/
+WARNING 2025-05-11 14:37:25,177 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 4742
+WARNING 2025-05-11 14:37:25,177 basehttp "GET /api/posts/feed/ HTTP/1.1" 401 65
+WARNING 2025-05-11 14:37:25,179 log Unauthorized: /api/posts/feed/
+WARNING 2025-05-11 14:37:25,180 basehttp "GET /api/posts/feed/ HTTP/1.1" 401 65
+WARNING 2025-05-11 14:37:25,187 log Not Found: /api/business/user-businesses/
+WARNING 2025-05-11 14:37:25,188 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 4742
+WARNING 2025-05-11 14:37:25,429 log Not Found: /api/business/user-businesses/
+WARNING 2025-05-11 14:37:25,430 log Unauthorized: /api/posts/feed/
+WARNING 2025-05-11 14:37:25,430 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 4742
+WARNING 2025-05-11 14:37:25,430 basehttp "GET /api/posts/feed/ HTTP/1.1" 401 65
+WARNING 2025-05-11 14:37:25,432 log Unauthorized: /api/posts/feed/
+WARNING 2025-05-11 14:37:25,436 log Not Found: /api/business/user-businesses/
+WARNING 2025-05-11 14:37:25,436 basehttp "GET /api/posts/feed/ HTTP/1.1" 401 65
+WARNING 2025-05-11 14:37:25,436 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 4742
+WARNING 2025-05-11 14:37:25,661 log Unauthorized: /api/posts/feed/
+WARNING 2025-05-11 14:37:25,665 log Not Found: /api/business/user-businesses/
+WARNING 2025-05-11 14:37:25,665 basehttp "GET /api/posts/feed/ HTTP/1.1" 401 65
+WARNING 2025-05-11 14:37:25,665 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 4742
+WARNING 2025-05-11 14:37:25,669 log Unauthorized: /api/posts/feed/
+WARNING 2025-05-11 14:37:25,676 log Not Found: /api/business/user-businesses/
+WARNING 2025-05-11 14:37:25,677 basehttp "GET /api/posts/feed/ HTTP/1.1" 401 65
+WARNING 2025-05-11 14:37:25,678 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 4742
+WARNING 2025-05-11 14:37:25,919 log Unauthorized: /api/posts/feed/
+WARNING 2025-05-11 14:37:25,922 log Not Found: /api/business/user-businesses/
+WARNING 2025-05-11 14:37:25,923 basehttp "GET /api/posts/feed/ HTTP/1.1" 401 65
+WARNING 2025-05-11 14:37:25,923 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 4742
+WARNING 2025-05-11 14:37:25,925 log Unauthorized: /api/posts/feed/
+WARNING 2025-05-11 14:37:25,930 log Not Found: /api/business/user-businesses/
+WARNING 2025-05-11 14:37:25,930 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 4742
+WARNING 2025-05-11 14:37:25,931 basehttp "GET /api/posts/feed/ HTTP/1.1" 401 65
+WARNING 2025-05-11 14:37:26,172 log Unauthorized: /api/posts/feed/
+WARNING 2025-05-11 14:37:26,174 log Not Found: /api/business/user-businesses/
+WARNING 2025-05-11 14:37:26,174 basehttp "GET /api/posts/feed/ HTTP/1.1" 401 65
+WARNING 2025-05-11 14:37:26,174 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 4742
+WARNING 2025-05-11 14:37:26,177 log Unauthorized: /api/posts/feed/
+WARNING 2025-05-11 14:37:26,181 log Not Found: /api/business/user-businesses/
+WARNING 2025-05-11 14:37:26,181 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 4742
+WARNING 2025-05-11 14:37:26,182 basehttp "GET /api/posts/feed/ HTTP/1.1" 401 65
+WARNING 2025-05-11 14:37:26,431 log Not Found: /api/business/user-businesses/
+WARNING 2025-05-11 14:37:26,432 log Unauthorized: /api/posts/feed/
+WARNING 2025-05-11 14:37:26,433 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 4742
+WARNING 2025-05-11 14:37:26,433 basehttp "GET /api/posts/feed/ HTTP/1.1" 401 65
+WARNING 2025-05-11 14:37:26,435 log Unauthorized: /api/posts/feed/
+WARNING 2025-05-11 14:37:26,435 basehttp "GET /api/posts/feed/ HTTP/1.1" 401 65
+WARNING 2025-05-11 14:37:26,441 log Not Found: /api/business/user-businesses/
+WARNING 2025-05-11 14:37:26,442 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 4742
+WARNING 2025-05-11 14:37:26,683 log Unauthorized: /api/posts/feed/
+WARNING 2025-05-11 14:37:26,685 log Not Found: /api/business/user-businesses/
+WARNING 2025-05-11 14:37:26,685 basehttp "GET /api/posts/feed/ HTTP/1.1" 401 65
+WARNING 2025-05-11 14:37:26,685 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 4742
+WARNING 2025-05-11 14:37:26,688 log Unauthorized: /api/posts/feed/
+WARNING 2025-05-11 14:37:26,692 log Not Found: /api/business/user-businesses/
+WARNING 2025-05-11 14:37:26,692 basehttp "GET /api/posts/feed/ HTTP/1.1" 401 65
+WARNING 2025-05-11 14:37:26,695 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 4742
+WARNING 2025-05-11 14:37:26,934 log Unauthorized: /api/posts/feed/
+WARNING 2025-05-11 14:37:26,934 basehttp "GET /api/posts/feed/ HTTP/1.1" 401 65
+WARNING 2025-05-11 14:37:26,936 log Not Found: /api/business/user-businesses/
+WARNING 2025-05-11 14:37:26,937 log Unauthorized: /api/posts/feed/
+WARNING 2025-05-11 14:37:26,938 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 4742
+WARNING 2025-05-11 14:37:26,938 basehttp "GET /api/posts/feed/ HTTP/1.1" 401 65
+WARNING 2025-05-11 14:37:26,943 log Not Found: /api/business/user-businesses/
+WARNING 2025-05-11 14:37:26,943 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 4742
+WARNING 2025-05-11 14:37:27,181 log Not Found: /api/business/user-businesses/
+WARNING 2025-05-11 14:37:27,182 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 4742
+WARNING 2025-05-11 14:37:27,183 log Unauthorized: /api/posts/feed/
+WARNING 2025-05-11 14:37:27,187 log Not Found: /api/business/user-businesses/
+WARNING 2025-05-11 14:37:27,187 basehttp "GET /api/posts/feed/ HTTP/1.1" 401 65
+WARNING 2025-05-11 14:37:27,187 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 4742
+WARNING 2025-05-11 14:37:27,189 log Unauthorized: /api/posts/feed/
+WARNING 2025-05-11 14:37:27,189 basehttp "GET /api/posts/feed/ HTTP/1.1" 401 65
+WARNING 2025-05-11 14:37:27,431 log Unauthorized: /api/posts/feed/
+WARNING 2025-05-11 14:37:27,434 log Not Found: /api/business/user-businesses/
+WARNING 2025-05-11 14:37:27,434 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 4742
+WARNING 2025-05-11 14:37:27,434 basehttp "GET /api/posts/feed/ HTTP/1.1" 401 65
+WARNING 2025-05-11 14:37:27,436 log Unauthorized: /api/posts/feed/
+WARNING 2025-05-11 14:37:27,440 log Not Found: /api/business/user-businesses/
+WARNING 2025-05-11 14:37:27,440 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 4742
+WARNING 2025-05-11 14:37:27,443 basehttp "GET /api/posts/feed/ HTTP/1.1" 401 65
+WARNING 2025-05-11 14:37:27,706 log Unauthorized: /api/posts/feed/
+WARNING 2025-05-11 14:37:27,711 log Not Found: /api/business/user-businesses/
+WARNING 2025-05-11 14:37:27,712 basehttp "GET /api/posts/feed/ HTTP/1.1" 401 65
+WARNING 2025-05-11 14:37:27,712 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 4742
+WARNING 2025-05-11 14:37:27,715 log Unauthorized: /api/posts/feed/
+WARNING 2025-05-11 14:37:27,719 log Not Found: /api/business/user-businesses/
+WARNING 2025-05-11 14:37:27,719 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 4742
+WARNING 2025-05-11 14:37:27,719 basehttp "GET /api/posts/feed/ HTTP/1.1" 401 65
+INFO 2025-05-11 14:53:00,934 autoreload Watching for file changes with StatReloader
+INFO 2025-05-11 14:53:04,982 basehttp "POST /api/accounts/login/ HTTP/1.1" 200 613
+INFO 2025-05-11 14:53:04,998 basehttp "OPTIONS /api/business/user-businesses/ HTTP/1.1" 200 0
+INFO 2025-05-11 14:53:05,003 basehttp "OPTIONS /api/posts/feed/ HTTP/1.1" 200 0
+INFO 2025-05-11 14:53:05,004 basehttp "OPTIONS /api/posts/feed/ HTTP/1.1" 200 0
+INFO 2025-05-11 14:53:05,004 basehttp "OPTIONS /api/business/user-businesses/ HTTP/1.1" 200 0
+WARNING 2025-05-11 14:53:05,016 log Not Found: /api/business/user-businesses/
+WARNING 2025-05-11 14:53:05,017 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 4742
+INFO 2025-05-11 14:53:05,018 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 2
+WARNING 2025-05-11 14:53:05,065 log Not Found: /api/business/user-businesses/
+WARNING 2025-05-11 14:53:05,065 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 4742
+INFO 2025-05-11 14:53:05,067 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 2
+WARNING 2025-05-11 14:54:43,520 log Not Found: /api/business/user-businesses/
+WARNING 2025-05-11 14:54:43,522 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 4742
+WARNING 2025-05-11 14:54:43,529 log Not Found: /api/business/user-businesses/
+WARNING 2025-05-11 14:54:43,530 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 4742
+INFO 2025-05-11 14:54:43,533 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 2
+INFO 2025-05-11 14:54:43,546 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 2
+WARNING 2025-05-11 14:54:50,999 log Not Found: /api/business/user-businesses/
+WARNING 2025-05-11 14:54:51,000 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 4742
+WARNING 2025-05-11 14:54:51,003 log Not Found: /api/business/user-businesses/
+INFO 2025-05-11 14:54:51,003 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 2
+WARNING 2025-05-11 14:54:51,004 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 4742
+INFO 2025-05-11 14:54:51,008 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 2
+WARNING 2025-05-11 14:54:56,071 log Not Found: /api/business/user-businesses/
+WARNING 2025-05-11 14:54:56,071 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 4742
+INFO 2025-05-11 14:54:56,073 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 2
+WARNING 2025-05-11 14:54:56,076 log Not Found: /api/business/user-businesses/
+WARNING 2025-05-11 14:54:56,076 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 4742
+INFO 2025-05-11 14:54:56,080 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 2
+WARNING 2025-05-11 15:08:16,306 log Not Found: /
+WARNING 2025-05-11 15:08:16,306 basehttp "GET / HTTP/1.1" 404 2775
+WARNING 2025-05-11 15:08:16,359 log Not Found: /favicon.ico
+WARNING 2025-05-11 15:08:16,359 basehttp "GET /favicon.ico HTTP/1.1" 404 2826
+INFO 2025-05-11 15:08:23,604 basehttp "GET /admin/roles/businessrole/add/ HTTP/1.1" 200 32812
+INFO 2025-05-11 15:08:23,629 basehttp "GET /static/admin/js/jquery.init.js HTTP/1.1" 304 0
+INFO 2025-05-11 15:08:23,631 basehttp "GET /static/admin/js/vendor/jquery/jquery.js HTTP/1.1" 304 0
+INFO 2025-05-11 15:08:23,632 basehttp "GET /static/admin/js/admin/RelatedObjectLookups.js HTTP/1.1" 304 0
+INFO 2025-05-11 15:08:23,632 basehttp "GET /static/admin/js/core.js HTTP/1.1" 304 0
+INFO 2025-05-11 15:08:23,632 basehttp "GET /static/admin/js/inlines.js HTTP/1.1" 304 0
+INFO 2025-05-11 15:08:23,637 basehttp "GET /static/admin/css/forms.css HTTP/1.1" 304 0
+INFO 2025-05-11 15:08:23,638 basehttp "GET /static/admin/js/actions.js HTTP/1.1" 304 0
+INFO 2025-05-11 15:08:23,638 basehttp "GET /static/admin/js/urlify.js HTTP/1.1" 304 0
+INFO 2025-05-11 15:08:23,638 basehttp "GET /static/admin/js/prepopulate.js HTTP/1.1" 304 0
+INFO 2025-05-11 15:08:23,640 basehttp "GET /static/admin/js/vendor/xregexp/xregexp.js HTTP/1.1" 304 0
+INFO 2025-05-11 15:08:23,642 basehttp "GET /admin/jsi18n/ HTTP/1.1" 200 8691
+INFO 2025-05-11 15:08:23,676 basehttp "GET /static/admin/css/widgets.css HTTP/1.1" 304 0
+INFO 2025-05-11 15:08:23,687 basehttp "GET /static/admin/js/prepopulate_init.js HTTP/1.1" 304 0
+INFO 2025-05-11 15:08:23,750 basehttp "GET /static/admin/img/icon-viewlink.svg HTTP/1.1" 304 0
+INFO 2025-05-11 15:08:23,750 basehttp "GET /static/admin/js/change_form.js HTTP/1.1" 304 0
+INFO 2025-05-11 15:08:23,805 basehttp "GET /static/admin/img/inline-delete.svg HTTP/1.1" 304 0
+INFO 2025-05-11 15:08:28,147 basehttp "GET /admin/ HTTP/1.1" 200 13920
+INFO 2025-05-11 15:08:30,670 basehttp "GET /admin/accounts/customuser/ HTTP/1.1" 200 17843
+INFO 2025-05-11 15:08:30,705 basehttp "GET /static/admin/img/search.svg HTTP/1.1" 200 458
+INFO 2025-05-11 15:08:30,707 basehttp "GET /static/admin/css/changelists.css HTTP/1.1" 200 6878
+INFO 2025-05-11 15:08:30,708 basehttp "GET /static/admin/img/icon-yes.svg HTTP/1.1" 200 436
+INFO 2025-05-11 15:08:30,709 basehttp "GET /admin/jsi18n/ HTTP/1.1" 200 8691
+INFO 2025-05-11 15:08:30,713 basehttp "GET /static/admin/js/filters.js HTTP/1.1" 200 978
+INFO 2025-05-11 15:08:30,765 basehttp "GET /static/admin/img/tooltag-add.svg HTTP/1.1" 200 331
+INFO 2025-05-11 15:08:30,769 basehttp "GET /static/admin/img/sorting-icons.svg HTTP/1.1" 200 1097
+INFO 2025-05-11 15:08:37,117 basehttp "GET /admin/authtoken/ HTTP/1.1" 200 5675
+INFO 2025-05-11 15:08:39,046 basehttp "GET /admin/accounts/customuser/ HTTP/1.1" 200 17843
+INFO 2025-05-11 15:08:41,332 basehttp "GET /admin/roles/businessrole/ HTTP/1.1" 200 17536
+INFO 2025-05-11 15:08:41,349 basehttp "GET /static/admin/img/icon-no.svg HTTP/1.1" 200 560
+INFO 2025-05-11 15:08:41,352 basehttp "GET /admin/jsi18n/ HTTP/1.1" 200 8691
+INFO 2025-05-11 15:08:53,037 basehttp "GET /admin/business/business/ HTTP/1.1" 200 15949
+INFO 2025-05-11 15:08:53,070 basehttp "GET /admin/jsi18n/ HTTP/1.1" 200 8691
+ERROR 2025-05-11 15:08:55,582 log Internal Server Error: /admin/business/business/12/change/
+Traceback (most recent call last):
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/backends/utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/backends/sqlite3/base.py", line 360, in execute
+    return super().execute(query, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sqlite3.OperationalError: no such table: business_business_co_owners
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/contrib/admin/options.py", line 719, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/utils/decorators.py", line 192, in _view_wrapper
+    result = _process_exception(request, e)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/utils/decorators.py", line 190, in _view_wrapper
+    response = view_func(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/views/decorators/cache.py", line 80, in _view_wrapper
+    response = view_func(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/contrib/admin/sites.py", line 246, in inner
+    return view(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/contrib/admin/options.py", line 1987, in change_view
+    return self.changeform_view(request, object_id, form_url, extra_context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/utils/decorators.py", line 48, in _wrapper
+    return bound_method(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/utils/decorators.py", line 192, in _view_wrapper
+    result = _process_exception(request, e)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/utils/decorators.py", line 190, in _view_wrapper
+    response = view_func(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/contrib/admin/options.py", line 1840, in changeform_view
+    return self._changeform_view(request, object_id, form_url, extra_context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/contrib/admin/options.py", line 1942, in _changeform_view
+    media += inline_formset.media
+             ^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/contrib/admin/helpers.py", line 465, in media
+    media = self.opts.media + self.formset.media
+                              ^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/forms/formsets.py", line 521, in media
+    if self.forms:
+       ^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/utils/functional.py", line 47, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+                                         ^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/forms/formsets.py", line 207, in forms
+    for i in range(self.total_form_count())
+                   ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/forms/formsets.py", line 182, in total_form_count
+    initial_forms = self.initial_form_count()
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/forms/models.py", line 1123, in initial_form_count
+    return super().initial_form_count()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/forms/models.py", line 697, in initial_form_count
+    return len(self.get_queryset())
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/models/query.py", line 366, in __len__
+    self._fetch_all()
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/models/query.py", line 1935, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/models/query.py", line 91, in __iter__
+    results = compiler.execute_sql(
+              ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/models/sql/compiler.py", line 1622, in execute_sql
+    cursor.execute(sql, params)
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/backends/utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/backends/utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/backends/utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/backends/utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/backends/utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/backends/sqlite3/base.py", line 360, in execute
+    return super().execute(query, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+django.db.utils.OperationalError: no such table: business_business_co_owners
+ERROR 2025-05-11 15:08:55,585 basehttp "GET /admin/business/business/12/change/ HTTP/1.1" 500 225071
+INFO 2025-05-11 15:08:59,199 basehttp "GET /admin/business/business/ HTTP/1.1" 200 15949
+INFO 2025-05-11 15:10:37,237 autoreload Watching for file changes with StatReloader
+WARNING 2025-05-11 15:10:39,256 log Not Found: /
+WARNING 2025-05-11 15:10:39,257 basehttp "GET / HTTP/1.1" 404 2775
+INFO 2025-05-11 15:10:53,130 basehttp "GET /admin/ HTTP/1.1" 302 0
+INFO 2025-05-11 15:10:53,147 basehttp "GET /admin/login/?next=/admin/ HTTP/1.1" 200 4249
+INFO 2025-05-11 15:10:59,365 basehttp "POST /admin/login/?next=/admin/ HTTP/1.1" 302 0
+INFO 2025-05-11 15:10:59,387 basehttp "GET /admin/ HTTP/1.1" 200 10422
+INFO 2025-05-11 15:11:02,066 basehttp "GET /admin/roles/businessrole/ HTTP/1.1" 200 12303
+INFO 2025-05-11 15:11:02,091 basehttp "GET /admin/jsi18n/ HTTP/1.1" 200 8691
+INFO 2025-05-11 15:11:16,910 basehttp "GET /admin/roles/businessrole/add/ HTTP/1.1" 200 32765
+INFO 2025-05-11 15:11:16,927 basehttp "GET /admin/jsi18n/ HTTP/1.1" 200 8691
+INFO 2025-05-11 15:11:19,736 basehttp "GET /admin/business/business/ HTTP/1.1" 200 13027
+INFO 2025-05-11 15:11:19,761 basehttp "GET /admin/jsi18n/ HTTP/1.1" 200 8691
+INFO 2025-05-11 15:11:21,285 basehttp "GET /admin/business/business/add/ HTTP/1.1" 200 37228
+INFO 2025-05-11 15:11:21,316 basehttp "GET /static/admin/js/admin/DateTimeShortcuts.js HTTP/1.1" 200 19319
+INFO 2025-05-11 15:11:21,317 basehttp "GET /static/admin/js/calendar.js HTTP/1.1" 200 9141
+INFO 2025-05-11 15:11:21,318 basehttp "GET /admin/jsi18n/ HTTP/1.1" 200 8691
+INFO 2025-05-11 15:11:52,052 basehttp "POST /admin/business/business/add/ HTTP/1.1" 302 0
+INFO 2025-05-11 15:11:52,075 basehttp "GET /admin/business/business/ HTTP/1.1" 200 16191
+INFO 2025-05-11 15:11:52,139 basehttp "GET /admin/jsi18n/ HTTP/1.1" 200 8691
+INFO 2025-05-11 15:11:55,483 basehttp "GET /admin/roles/businessrole/ HTTP/1.1" 200 17629
+INFO 2025-05-11 15:11:55,507 basehttp "GET /admin/jsi18n/ HTTP/1.1" 200 8691
+INFO 2025-05-11 15:12:05,515 basehttp "GET /admin/business/businessinvitation/ HTTP/1.1" 200 12709
+INFO 2025-05-11 15:12:05,536 basehttp "GET /admin/jsi18n/ HTTP/1.1" 200 8691
+INFO 2025-05-11 15:12:08,329 basehttp "GET /admin/business/business/ HTTP/1.1" 200 15967
+INFO 2025-05-11 15:12:08,354 basehttp "GET /admin/jsi18n/ HTTP/1.1" 200 8691
+INFO 2025-05-11 15:31:07,251 autoreload Watching for file changes with StatReloader
+ERROR 2025-05-11 15:32:12,336 log Internal Server Error: /api/accounts/login/
+Traceback (most recent call last):
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/views/decorators/csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/rest_framework/views.py", line 515, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/rest_framework/views.py", line 475, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/rest_framework/views.py", line 486, in raise_uncaught_exception
+    raise exc
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/rest_framework/views.py", line 512, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/Documents/ADB/app/accounts/api/views/auth_views.py", line 55, in post
+    "user": user_serializer.data
+            ^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/rest_framework/serializers.py", line 573, in data
+    ret = super().data
+          ^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/rest_framework/serializers.py", line 251, in data
+    self._data = self.to_representation(self.instance)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/Documents/ADB/app/accounts/api/serializers.py", line 150, in to_representation
+    data = super().to_representation(instance)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/rest_framework/serializers.py", line 525, in to_representation
+    for field in fields:
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/rest_framework/serializers.py", line 386, in _readable_fields
+    for field in self.fields.values():
+                 ^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/utils/functional.py", line 47, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+                                         ^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/rest_framework/serializers.py", line 374, in fields
+    for key, value in self.get_fields().items():
+                      ^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/rest_framework/serializers.py", line 1081, in get_fields
+    field_names = self.get_field_names(declared_fields, info)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/rest_framework/serializers.py", line 1177, in get_field_names
+    assert field_name in fields, (
+           ^^^^^^^^^^^^^^^^^^^^
+AssertionError: The field 'business_info' was declared on serializer UserSerializer, but has not been included in the 'fields' option.
+ERROR 2025-05-11 15:32:12,338 basehttp "POST /api/accounts/login/ HTTP/1.1" 500 155729
+INFO 2025-05-11 15:32:26,917 autoreload Watching for file changes with StatReloader
+ERROR 2025-05-11 15:32:29,726 log Internal Server Error: /api/accounts/login/
+Traceback (most recent call last):
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/views/decorators/csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/rest_framework/views.py", line 515, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/rest_framework/views.py", line 475, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/rest_framework/views.py", line 486, in raise_uncaught_exception
+    raise exc
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/rest_framework/views.py", line 512, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/Documents/ADB/app/accounts/api/views/auth_views.py", line 55, in post
+    "user": user_serializer.data
+            ^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/rest_framework/serializers.py", line 573, in data
+    ret = super().data
+          ^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/rest_framework/serializers.py", line 251, in data
+    self._data = self.to_representation(self.instance)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/Documents/ADB/app/accounts/api/serializers.py", line 150, in to_representation
+    data = super().to_representation(instance)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/rest_framework/serializers.py", line 525, in to_representation
+    for field in fields:
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/rest_framework/serializers.py", line 386, in _readable_fields
+    for field in self.fields.values():
+                 ^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/utils/functional.py", line 47, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+                                         ^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/rest_framework/serializers.py", line 374, in fields
+    for key, value in self.get_fields().items():
+                      ^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/rest_framework/serializers.py", line 1081, in get_fields
+    field_names = self.get_field_names(declared_fields, info)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/rest_framework/serializers.py", line 1177, in get_field_names
+    assert field_name in fields, (
+           ^^^^^^^^^^^^^^^^^^^^
+AssertionError: The field 'business_info' was declared on serializer UserSerializer, but has not been included in the 'fields' option.
+ERROR 2025-05-11 15:32:29,728 basehttp "POST /api/accounts/login/ HTTP/1.1" 500 155729
+INFO 2025-05-11 15:35:50,549 autoreload /home/teo/Documents/ADB/app/accounts/api/serializers.py changed, reloading.
+INFO 2025-05-11 15:35:50,855 autoreload Watching for file changes with StatReloader
+INFO 2025-05-11 15:36:02,089 basehttp "POST /api/accounts/login/ HTTP/1.1" 200 1120
+INFO 2025-05-11 15:36:31,577 basehttp "POST /api/accounts/login/ HTTP/1.1" 200 1120
+INFO 2025-05-11 15:37:53,474 autoreload /home/teo/Documents/ADB/app/accounts/api/serializers.py changed, reloading.
+INFO 2025-05-11 15:37:53,783 autoreload Watching for file changes with StatReloader
+INFO 2025-05-11 15:38:06,787 basehttp "POST /api/accounts/login/ HTTP/1.1" 200 1120

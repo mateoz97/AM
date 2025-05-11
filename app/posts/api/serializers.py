@@ -15,11 +15,23 @@ class PostSerializer(serializers.ModelSerializer):
         read_only_fields = ['id', 'created_at']
     
     def get_author(self, obj):
-        return {
+        author_data = {
             'id': obj.author.id,
             'name': obj.author.get_full_name() or obj.author.username,
-            'username': obj.author.username
+            'username': obj.author.username,
+            'business': None,
+            'role': None
         }
+        
+        # Incluir información del negocio
+        if obj.author.business:
+            author_data['business'] = obj.author.business.name
+        
+        # Incluir información del rol
+        if obj.author.business_role:
+            author_data['role'] = obj.author.business_role.name
+            
+        return author_data
     
     def get_is_liked(self, obj):
         request = self.context.get('request')
@@ -40,8 +52,20 @@ class CommentSerializer(serializers.ModelSerializer):
         read_only_fields = ['id', 'created_at']
     
     def get_author(self, obj):
-        return {
+        author_data = {
             'id': obj.author.id,
             'name': obj.author.get_full_name() or obj.author.username,
-            'username': obj.author.username
+            'username': obj.author.username,
+            'business': None,
+            'role': None
         }
+        
+        # Incluir información del negocio
+        if obj.author.business:
+            author_data['business'] = obj.author.business.name
+        
+        # Incluir información del rol
+        if obj.author.business_role:
+            author_data['role'] = obj.author.business_role.name
+            
+        return author_data

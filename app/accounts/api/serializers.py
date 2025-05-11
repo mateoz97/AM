@@ -18,10 +18,48 @@ class UserSerializer(serializers.ModelSerializer):
         queryset=Business.objects.all(), required=False, allow_null=True
     )
 
+    business_info = serializers.SerializerMethodField()
+    role_info = serializers.SerializerMethodField()
+    
     class Meta:
         model = CustomUser
-        fields = ["id", "username", "password", "email", "business_role", "business", "first_name", "last_name"]
+        fields = ["id", "username", "password", "email", "business_role", "business", "first_name", "last_name","business_info", "role_info"]
         extra_kwargs = {"password": {"write_only": True}}
+        read_only_fields = ["business_info", "role_info"]  
+        
+    def get_business_info(self, obj):
+        """Devuelve información detallada del negocio del usuario"""
+        if obj.business:
+            return {
+                'id': obj.business.id,
+                'name': obj.business.name,
+                'description': obj.business.description,
+                'is_active': obj.business.is_active,
+                'owner_id': obj.business.owner.id if obj.business.owner else None,
+                'is_owner': obj.business.owner == obj if obj.business.owner else False
+            }
+        return None
+    
+    def get_role_info(self, obj):
+        """Devuelve información detallada del rol del usuario"""
+        if obj.business_role:
+            # Incluir los permisos del rol
+            permissions = {}
+            if hasattr(obj.business_role, 'role_permissions'):
+                role_perms = obj.business_role.role_permissions
+                for field in role_perms._meta.get_fields():
+                    if field.name.startswith('can_'):
+                        permissions[field.name] = getattr(role_perms, field.name)
+            
+            return {
+                'id': obj.business_role.id,
+                'name': obj.business_role.name,
+                'description': obj.business_role.description,
+                'is_default': obj.business_role.is_default,
+                'can_modify': obj.business_role.can_modify,
+                'permissions': permissions
+            }
+        return None
 
     def create(self, validated_data):
         role_id = validated_data.pop("business_role", None)
@@ -107,28 +145,39 @@ class UserSerializer(serializers.ModelSerializer):
         """Reactiva un negocio previamente desactivado"""
         self.is_active = True
         self.save()
+    
+    def to_representation(self, instance):
+        """Sobrescribir para incluir información adicional"""
+        data = super().to_representation(instance)
+        
+        # Remover campos que no queremos mostrar en la respuesta
+        data.pop('business', None)
+        data.pop('business_role', None)
+        
+        return data
 
 class LoginSerializer(serializers.Serializer):
-    email = serializers.EmailField(required=False)
-    username = serializers.CharField(required=False)
-    password = serializers.CharField(write_only=True)
+    identifier = serializers.CharField(required=True)  # Puede ser username o email
+    password = serializers.CharField(write_only=True, required=True)
 
     def validate(self, data):
-        email = data.get("email")
-        username = data.get("username")
+        identifier = data.get("identifier")
         password = data.get("password")
         
-        if not username and not email:
-            raise serializers.ValidationError("Se requiere username o email")
+        if not identifier or not password:
+            raise serializers.ValidationError("Se requiere username/email y contraseña")
         
-        if email and not username:
-            try:
-                user = CustomUser.objects.get(email=email)
-                username = user.username  # Obtener el username para autenticación
-            except CustomUser.DoesNotExist:
-                raise serializers.ValidationError("Usuario no encontrado")
+        # Buscar usuario por email o username
+        user = CustomUser.objects.filter(email=identifier).first()
+        if not user:
+            user = CustomUser.objects.filter(username=identifier).first()
         
-        user = authenticate(username=username, password=password)
+        if not user:
+            raise serializers.ValidationError("Usuario no encontrado")
+        
+        # Autenticar con username (Django requiere username para authenticate)
+        user = authenticate(username=user.username, password=password)
+        
         if not user:
             raise serializers.ValidationError("Credenciales inválidas")
         

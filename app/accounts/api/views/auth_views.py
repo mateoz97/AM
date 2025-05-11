@@ -8,7 +8,7 @@ from rest_framework_simplejwt.views import TokenObtainPairView
 from app.accounts.models.user import CustomUser
 
 # Serializers
-from app.accounts.api.serializers import UserSerializer
+from app.accounts.api.serializers import UserSerializer, LoginSerializer
 
 # Validators
 import logging
@@ -24,43 +24,36 @@ class RegisterUserView(generics.CreateAPIView):
         serializer = self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
         user = serializer.save()
-        print(user)
         
+        # Generar tokens
         refresh = RefreshToken.for_user(user)
         
-        access_token = str(refresh.access_token)
-
         return Response({
             "user": serializer.data,
             "refresh": str(refresh),
-            "access": access_token,
+            "access": str(refresh.access_token),
         }, status=status.HTTP_201_CREATED)
 
 class CustomLoginView(TokenObtainPairView):
+    serializer_class = LoginSerializer
     
     def post(self, request, *args, **kwargs):
-        identifier = request.data.get("username")  # Puede ser username o email
-        password = request.data.get("password")
-
-        user = CustomUser.objects.filter(email=identifier).first() or CustomUser.objects.filter(username=identifier).first()
-
-        if user and user.check_password(password):
-            refresh = RefreshToken.for_user(user)
-            
-            # CAMBIO: Serializar el usuario completo en lugar de solo el username
-            serializer = UserSerializer(user)
-            
-            return Response({
-                "access": str(refresh.access_token),
-                "refresh": str(refresh),
-                "user": serializer.data  # CAMBIO: Devolver datos completos del usuario
-            })
+        serializer = self.get_serializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
         
-        # Si las credenciales no son válidas, devolver un error
-        return Response(
-            {"detail": "Credenciales inválidas"},
-            status=status.HTTP_401_UNAUTHORIZED
-        )
+        user = serializer.validated_data['user']
+        
+        # Generar tokens
+        refresh = RefreshToken.for_user(user)
+        
+        # Serializar el usuario completo con información de negocio y rol
+        user_serializer = UserSerializer(user)
+        
+        return Response({
+            "access": str(refresh.access_token),
+            "refresh": str(refresh),
+            "user": user_serializer.data
+        })
 
 class UserInfoView(generics.RetrieveAPIView):
     queryset = CustomUser.objects.all()
