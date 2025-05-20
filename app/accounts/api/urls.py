@@ -5,7 +5,7 @@ from django.urls import path
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 
 # Viewsas imports
-from app.accounts.api.views.auth_views import RegisterUserView, CustomLoginView, UserInfoView
+from app.accounts.api.views.auth_views import RegisterUserView, CustomLoginView, UserInfoView,UserProfileView
 
 
 
@@ -19,5 +19,6 @@ urlpatterns = [
     
     # User management endpoints
     path("user-info/", UserInfoView.as_view(), name="user_info"),
+    path("user-profile/", UserProfileView.as_view(), name="user_profile"),
 
 ]

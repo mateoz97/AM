@@ -8,7 +8,7 @@ from rest_framework_simplejwt.views import TokenObtainPairView
 from app.accounts.models.user import CustomUser
 
 # Serializers
-from app.accounts.api.serializers import UserSerializer, LoginSerializer
+from app.accounts.api.serializers import UserSerializer, LoginSerializer, UserProfileSerializer
 
 # Validators
 import logging
@@ -58,6 +58,13 @@ class CustomLoginView(TokenObtainPairView):
 class UserInfoView(generics.RetrieveAPIView):
     queryset = CustomUser.objects.all()
     serializer_class = UserSerializer
+    permission_classes = [permissions.IsAuthenticated]
+
+    def get_object(self):
+        return self.request.user
+    
+class UserProfileView(generics.UpdateAPIView):
+    serializer_class = UserProfileSerializer
     permission_classes = [permissions.IsAuthenticated]
 
     def get_object(self):

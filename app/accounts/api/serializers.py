@@ -182,3 +182,15 @@ class LoginSerializer(serializers.Serializer):
             raise serializers.ValidationError("Credenciales inválidas")
         
         return {"user": user}
+
+class UserProfileSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = CustomUser
+        fields = ["first_name", "last_name", "email", "phone", "address"]
+        
+    def validate_email(self, value):
+        # Check if the email is already used by another user
+        user = self.context['request'].user
+        if CustomUser.objects.filter(email=value).exclude(id=user.id).exists():
+            raise serializers.ValidationError("Este correo electrónico ya está en uso.")
+        return value
