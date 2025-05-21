@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'app.business',
     'app.core',
     'app.posts',
+    'app.product',
 ]
 
 CORS_ALLOWED_ORIGINS = [
