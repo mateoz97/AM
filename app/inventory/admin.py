@@ -1,7 +1,7 @@
 # app/inventory/admin.py
 from django.contrib import admin
 from django.utils.translation import gettext_lazy as _
-from app.product.models import Product, ProductCategory, StockMovement
+from app.inventory.models import Product, ProductCategory, StockMovement
 
 class StockMovementInline(admin.TabularInline):
     model = StockMovement

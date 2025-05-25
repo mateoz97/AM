@@ -2,7 +2,7 @@
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter
 
-from app.product.api.views import (
+from app.inventory.api.views import (
     ProductViewSet,
     ProductCategoryViewSet,
     StockMovementViewSet

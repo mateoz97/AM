@@ -1,6 +1,6 @@
 # app/inventory/api/serializers.py
 from rest_framework import serializers
-from app.product.models import Product, ProductCategory, StockMovement
+from app.inventory.models import Product, ProductCategory, StockMovement
 
 class ProductSerializer(serializers.ModelSerializer):
     """Serializer para el modelo Product"""

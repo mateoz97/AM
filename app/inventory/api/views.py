@@ -4,8 +4,8 @@ from rest_framework.decorators import action
 from rest_framework.response import Response
 from django_filters.rest_framework import DjangoFilterBackend
 
-from app.product.models import Product, ProductCategory, StockMovement
-from app.product.api.serializers import (
+from app.inventory.models import Product, ProductCategory, StockMovement
+from app.inventory.api.serializers import (
     ProductSerializer, 
     ProductCategorySerializer,
     StockMovementSerializer

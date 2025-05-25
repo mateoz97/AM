@@ -11713,3 +11713,26 @@ WARNING 2025-05-20 22:40:40,515 log Not Found: /api/business/1/
 WARNING 2025-05-20 22:40:40,516 basehttp "GET /api/business/1/ HTTP/1.1" 404 5213
 WARNING 2025-05-20 22:41:24,724 log Forbidden (Origin checking failed - http://localhost:8080 does not match any trusted origins.): /api/business/1/
 WARNING 2025-05-20 22:41:24,724 basehttp "PATCH /api/business/1/ HTTP/1.1" 403 2565
+INFO 2025-05-20 22:54:29,454 autoreload Watching for file changes with StatReloader
+INFO 2025-05-20 22:54:38,520 basehttp "GET /api/accounts/user-info/ HTTP/1.1" 200 648
+INFO 2025-05-20 22:54:38,525 basehttp "GET /api/accounts/user-info/ HTTP/1.1" 200 648
+INFO 2025-05-20 22:54:38,646 basehttp "GET /api/product/products/ HTTP/1.1" 200 1444
+INFO 2025-05-20 22:54:38,657 basehttp "GET /api/product/products/ HTTP/1.1" 200 1444
+WARNING 2025-05-20 22:55:25,763 log Not Found: /api/business/user-businesses/
+WARNING 2025-05-20 22:55:25,763 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 5269
+WARNING 2025-05-20 22:55:25,769 log Not Found: /api/business/user-businesses/
+WARNING 2025-05-20 22:55:25,770 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 5269
+WARNING 2025-05-20 22:55:25,776 log Not Found: /api/business/user-businesses/
+WARNING 2025-05-20 22:55:25,776 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 5269
+INFO 2025-05-20 22:55:25,800 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 2306
+WARNING 2025-05-20 22:55:25,822 log Not Found: /api/business/user-businesses/
+WARNING 2025-05-20 22:55:25,827 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 5269
+INFO 2025-05-20 22:55:25,830 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 2306
+INFO 2025-05-20 22:55:25,901 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 2306
+INFO 2025-05-20 22:55:25,967 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 2306
+INFO 2025-05-20 22:55:31,256 basehttp "GET /api/product/products/ HTTP/1.1" 200 1444
+INFO 2025-05-20 22:55:31,270 basehttp "GET /api/product/products/ HTTP/1.1" 200 1444
+INFO 2025-05-20 22:55:35,007 basehttp "GET /api/product/products/ HTTP/1.1" 200 1444
+INFO 2025-05-20 22:55:35,017 basehttp "GET /api/product/products/ HTTP/1.1" 200 1444
+INFO 2025-05-25 16:44:54,714 autoreload Watching for file changes with StatReloader
+INFO 2025-05-25 16:45:10,604 autoreload Watching for file changes with StatReloader
