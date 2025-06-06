@@ -5,6 +5,7 @@ from rest_framework.views import APIView
 from rest_framework.decorators import action
 
 # Models    
+from django.db import models
 from app.business.models.business import Business
 
 # Serializers
@@ -16,9 +17,25 @@ import logging
 logger = logging.getLogger(__name__)
 
 class BusinessViewSet(viewsets.ModelViewSet):
-    queryset = Business.objects.all()
     serializer_class = BusinessSerializer
     permission_classes = [permissions.IsAuthenticated]
+    
+    def get_queryset(self):
+        """Filtra negocios según el contexto"""
+        user = self.request.user
+        
+        # Si es superusuario, puede ver todos
+        if user.is_superuser:
+            return Business.objects.all()
+        
+        # Para usuarios normales, ver negocios donde tienen algún rol
+        user_businesses = Business.objects.filter(
+            models.Q(owner=user) | 
+            models.Q(co_owners=user) | 
+            models.Q(members=user)
+        ).distinct()
+        
+        return user_businesses
 
     def perform_create(self, serializer):
         # Guardar el negocio con el usuario actual como propietario
@@ -72,6 +89,21 @@ class BusinessViewSet(viewsets.ModelViewSet):
                 'description': user.business.description or 'Empleado',
                 'isOwner': False,
                 'role': user.business_role.name if user.business_role else 'Empleado'
+            })
+        
+        # Negocios donde es co-propietario
+        co_owned_businesses = user.co_owned_businesses.exclude(
+            id__in=[b.id for b in owned_businesses] + 
+            ([user.business.id] if user.business else [])
+        )
+        
+        for business in co_owned_businesses:
+            businesses_data.append({
+                'id': business.id,
+                'name': business.name,
+                'description': business.description or 'Co-propietario',
+                'isOwner': False,
+                'role': 'Co-Owner'
             })
         
         return Response(businesses_data)

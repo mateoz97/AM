@@ -246,3 +246,387 @@ INFO 2025-05-25 17:08:20,237 basehttp "GET /static/rest_framework/js/csrf.js HTT
 INFO 2025-05-25 17:08:20,237 basehttp "GET /static/rest_framework/js/load-ajax-form.js HTTP/1.1" 200 59
 INFO 2025-05-25 17:08:20,237 basehttp "GET /static/rest_framework/js/prettify-min.js HTTP/1.1" 200 13632
 INFO 2025-05-25 17:08:20,286 basehttp "GET /static/rest_framework/img/grid.png HTTP/1.1" 200 1458
+INFO 2025-06-06 01:50:22,809 autoreload Watching for file changes with StatReloader
+INFO 2025-06-06 01:50:39,884 basehttp "POST /api/accounts/login/ HTTP/1.1" 200 1128
+WARNING 2025-06-06 01:50:39,973 log Not Found: /api/business/user-businesses/
+WARNING 2025-06-06 01:50:39,973 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 5271
+WARNING 2025-06-06 01:50:39,981 log Not Found: /api/business/user-businesses/
+WARNING 2025-06-06 01:50:39,981 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 5271
+INFO 2025-06-06 01:50:39,982 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 2
+INFO 2025-06-06 01:50:39,989 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 2
+WARNING 2025-06-06 01:50:40,028 log Not Found: /api/business/user-businesses/
+WARNING 2025-06-06 01:50:40,028 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 5271
+INFO 2025-06-06 01:50:40,038 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 2
+WARNING 2025-06-06 01:50:40,042 log Not Found: /api/business/user-businesses/
+WARNING 2025-06-06 01:50:40,043 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 5271
+INFO 2025-06-06 01:50:40,085 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 2
+ERROR 2025-06-06 01:51:00,055 log Internal Server Error: /api/inventory/products/
+Traceback (most recent call last):
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/backends/utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/backends/sqlite3/base.py", line 360, in execute
+    return super().execute(query, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sqlite3.OperationalError: no such table: inventory_product
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/views/decorators/csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/rest_framework/viewsets.py", line 125, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/rest_framework/views.py", line 515, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/rest_framework/views.py", line 475, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/rest_framework/views.py", line 486, in raise_uncaught_exception
+    raise exc
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/rest_framework/views.py", line 512, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/rest_framework/mixins.py", line 40, in list
+    page = self.paginate_queryset(queryset)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/rest_framework/generics.py", line 175, in paginate_queryset
+    return self.paginator.paginate_queryset(queryset, self.request, view=self)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/rest_framework/pagination.py", line 211, in paginate_queryset
+    self.page = paginator.page(page_number)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/core/paginator.py", line 89, in page
+    number = self.validate_number(number)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/core/paginator.py", line 70, in validate_number
+    if number > self.num_pages:
+                ^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/utils/functional.py", line 47, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+                                         ^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/core/paginator.py", line 116, in num_pages
+    if self.count == 0 and not self.allow_empty_first_page:
+       ^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/utils/functional.py", line 47, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+                                         ^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/core/paginator.py", line 110, in count
+    return c()
+           ^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/models/query.py", line 604, in count
+    return self.query.get_count(using=self.db)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/models/sql/query.py", line 644, in get_count
+    return obj.get_aggregation(using, {"__count": Count("*")})["__count"]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/models/sql/query.py", line 626, in get_aggregation
+    result = compiler.execute_sql(SINGLE)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/models/sql/compiler.py", line 1622, in execute_sql
+    cursor.execute(sql, params)
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/backends/utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/backends/utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/backends/utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/backends/utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/backends/utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/backends/sqlite3/base.py", line 360, in execute
+    return super().execute(query, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+django.db.utils.OperationalError: no such table: inventory_product
+ERROR 2025-06-06 01:51:00,058 basehttp "GET /api/inventory/products/ HTTP/1.1" 500 203768
+ERROR 2025-06-06 01:51:00,100 log Internal Server Error: /api/inventory/products/
+Traceback (most recent call last):
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/backends/utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/backends/sqlite3/base.py", line 360, in execute
+    return super().execute(query, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sqlite3.OperationalError: no such table: inventory_product
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/views/decorators/csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/rest_framework/viewsets.py", line 125, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/rest_framework/views.py", line 515, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/rest_framework/views.py", line 475, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/rest_framework/views.py", line 486, in raise_uncaught_exception
+    raise exc
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/rest_framework/views.py", line 512, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/rest_framework/mixins.py", line 40, in list
+    page = self.paginate_queryset(queryset)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/rest_framework/generics.py", line 175, in paginate_queryset
+    return self.paginator.paginate_queryset(queryset, self.request, view=self)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/rest_framework/pagination.py", line 211, in paginate_queryset
+    self.page = paginator.page(page_number)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/core/paginator.py", line 89, in page
+    number = self.validate_number(number)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/core/paginator.py", line 70, in validate_number
+    if number > self.num_pages:
+                ^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/utils/functional.py", line 47, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+                                         ^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/core/paginator.py", line 116, in num_pages
+    if self.count == 0 and not self.allow_empty_first_page:
+       ^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/utils/functional.py", line 47, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+                                         ^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/core/paginator.py", line 110, in count
+    return c()
+           ^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/models/query.py", line 604, in count
+    return self.query.get_count(using=self.db)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/models/sql/query.py", line 644, in get_count
+    return obj.get_aggregation(using, {"__count": Count("*")})["__count"]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/models/sql/query.py", line 626, in get_aggregation
+    result = compiler.execute_sql(SINGLE)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/models/sql/compiler.py", line 1622, in execute_sql
+    cursor.execute(sql, params)
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/backends/utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/backends/utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/backends/utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/backends/utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/backends/utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/backends/sqlite3/base.py", line 360, in execute
+    return super().execute(query, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+django.db.utils.OperationalError: no such table: inventory_product
+ERROR 2025-06-06 01:51:00,103 basehttp "GET /api/inventory/products/ HTTP/1.1" 500 203768
+ERROR 2025-06-06 01:51:13,296 log Internal Server Error: /api/inventory/products/
+Traceback (most recent call last):
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/backends/utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/backends/sqlite3/base.py", line 360, in execute
+    return super().execute(query, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sqlite3.OperationalError: no such table: inventory_product
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/views/decorators/csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/rest_framework/viewsets.py", line 125, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/rest_framework/views.py", line 515, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/rest_framework/views.py", line 475, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/rest_framework/views.py", line 486, in raise_uncaught_exception
+    raise exc
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/rest_framework/views.py", line 512, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/rest_framework/mixins.py", line 19, in create
+    self.perform_create(serializer)
+  File "/home/teo/Documents/ADB/app/inventory/api/views.py", line 43, in perform_create
+    serializer.save(business=self.request.user.business)
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/rest_framework/serializers.py", line 210, in save
+    self.instance = self.create(validated_data)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/Documents/ADB/app/inventory/api/serializers.py", line 53, in create
+    return super().create(validated_data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/rest_framework/serializers.py", line 991, in create
+    instance = ModelClass._default_manager.create(**validated_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/models/manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/models/query.py", line 663, in create
+    obj.save(force_insert=True, using=self.db)
+  File "/home/teo/Documents/ADB/app/inventory/models.py", line 45, in save
+    super().save(*args, **kwargs)
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/models/base.py", line 902, in save
+    self.save_base(
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/models/base.py", line 1008, in save_base
+    updated = self._save_table(
+              ^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/models/base.py", line 1169, in _save_table
+    results = self._do_insert(
+              ^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/models/base.py", line 1210, in _do_insert
+    return manager._insert(
+           ^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/models/manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/models/query.py", line 1854, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/models/sql/compiler.py", line 1881, in execute_sql
+    cursor.execute(sql, params)
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/backends/utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/backends/utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/backends/utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/backends/utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/backends/utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/backends/sqlite3/base.py", line 360, in execute
+    return super().execute(query, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+django.db.utils.OperationalError: no such table: inventory_product
+ERROR 2025-06-06 01:51:13,299 basehttp "POST /api/inventory/products/ HTTP/1.1" 500 236866
+WARNING 2025-06-06 01:51:16,904 log Not Found: /api/business/user-businesses/
+WARNING 2025-06-06 01:51:16,904 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 5271
+WARNING 2025-06-06 01:51:16,910 log Not Found: /api/business/user-businesses/
+INFO 2025-06-06 01:51:16,911 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 2
+WARNING 2025-06-06 01:51:16,911 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 5271
+WARNING 2025-06-06 01:51:16,918 log Not Found: /api/business/user-businesses/
+WARNING 2025-06-06 01:51:16,918 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 5271
+INFO 2025-06-06 01:51:16,921 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 2
+WARNING 2025-06-06 01:51:16,965 log Not Found: /api/business/user-businesses/
+WARNING 2025-06-06 01:51:16,967 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 5271
+INFO 2025-06-06 01:51:16,969 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 2
+INFO 2025-06-06 01:51:17,016 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 2
+INFO 2025-06-06 01:51:26,074 basehttp "POST /api/posts/ HTTP/1.1" 201 263
+INFO 2025-06-06 01:51:26,089 basehttp "POST /api/posts/ HTTP/1.1" 201 263
+INFO 2025-06-06 01:51:29,400 basehttp "OPTIONS /api/posts/2/like/ HTTP/1.1" 200 0
+INFO 2025-06-06 01:51:29,426 basehttp "POST /api/posts/2/like/ HTTP/1.1" 200 30
+INFO 2025-06-06 01:51:38,532 basehttp "OPTIONS /api/posts/2/comment/ HTTP/1.1" 200 0
+INFO 2025-06-06 01:51:38,555 basehttp "POST /api/posts/2/comment/ HTTP/1.1" 201 176
+INFO 2025-06-06 01:53:08,171 basehttp "GET /api/accounts/user-info/ HTTP/1.1" 200 637
+INFO 2025-06-06 01:53:08,176 basehttp "GET /api/accounts/user-info/ HTTP/1.1" 200 637
+WARNING 2025-06-06 01:53:08,284 log Not Found: /api/business/user-businesses/
+WARNING 2025-06-06 01:53:08,284 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 5271
+WARNING 2025-06-06 01:53:08,291 log Not Found: /api/business/user-businesses/
+WARNING 2025-06-06 01:53:08,292 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 5271
+INFO 2025-06-06 01:53:08,300 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 704
+INFO 2025-06-06 01:53:08,317 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 704
+WARNING 2025-06-06 01:53:08,337 log Not Found: /api/business/user-businesses/
+WARNING 2025-06-06 01:53:08,337 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 5271
+WARNING 2025-06-06 01:53:08,342 log Not Found: /api/business/user-businesses/
+WARNING 2025-06-06 01:53:08,342 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 5271
+INFO 2025-06-06 01:53:08,382 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 704
+INFO 2025-06-06 01:53:08,437 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 704
+WARNING 2025-06-06 01:53:08,472 log Not Found: /api/business/user-businesses/
+WARNING 2025-06-06 01:53:08,474 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 5271
+INFO 2025-06-06 01:53:08,497 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 704
+WARNING 2025-06-06 01:53:27,743 log Bad Request: /api/accounts/login/
+WARNING 2025-06-06 01:53:27,744 basehttp "POST /api/accounts/login/ HTTP/1.1" 400 48
+INFO 2025-06-06 01:53:38,094 autoreload Watching for file changes with StatReloader
+INFO 2025-06-06 01:53:54,440 basehttp "POST /api/accounts/login/ HTTP/1.1" 200 1128
+WARNING 2025-06-06 01:53:54,556 log Not Found: /api/business/user-businesses/
+WARNING 2025-06-06 01:53:54,559 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 5271
+WARNING 2025-06-06 01:53:54,569 log Not Found: /api/business/user-businesses/
+WARNING 2025-06-06 01:53:54,570 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 5271
+WARNING 2025-06-06 01:53:54,578 log Not Found: /api/business/user-businesses/
+INFO 2025-06-06 01:53:54,583 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 704
+WARNING 2025-06-06 01:53:54,584 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 5271
+INFO 2025-06-06 01:53:54,600 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 704
+WARNING 2025-06-06 01:53:54,626 log Not Found: /api/business/user-businesses/
+WARNING 2025-06-06 01:53:54,627 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 5271
+INFO 2025-06-06 01:53:54,660 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 704
+INFO 2025-06-06 01:53:54,718 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 704
+INFO 2025-06-06 01:55:41,973 basehttp "OPTIONS /api/accounts/user-profile/ HTTP/1.1" 200 0
+INFO 2025-06-06 01:55:42,018 basehttp "PATCH /api/accounts/user-profile/ HTTP/1.1" 200 119
+INFO 2025-06-06 01:55:42,068 basehttp "GET /api/accounts/user-info/ HTTP/1.1" 200 656
+INFO 2025-06-06 01:55:57,806 basehttp "GET /admin/business/business/ HTTP/1.1" 302 0
+INFO 2025-06-06 01:55:57,820 basehttp "GET /admin/login/?next=/admin/business/business/ HTTP/1.1" 200 4285
+INFO 2025-06-06 01:56:02,624 basehttp "POST /admin/login/?next=/admin/business/business/ HTTP/1.1" 302 0
+INFO 2025-06-06 01:56:02,655 basehttp "GET /admin/business/business/ HTTP/1.1" 200 17763
+INFO 2025-06-06 01:56:02,715 basehttp "GET /admin/jsi18n/ HTTP/1.1" 200 8691
+INFO 2025-06-06 01:56:12,786 basehttp "GET /admin/accounts/customuser/ HTTP/1.1" 200 18367
+INFO 2025-06-06 01:56:12,821 basehttp "GET /admin/jsi18n/ HTTP/1.1" 200 8691
+INFO 2025-06-06 01:56:15,027 basehttp "GET /admin/accounts/customuser/1/change/ HTTP/1.1" 200 31280
+INFO 2025-06-06 01:56:15,046 basehttp "GET /admin/jsi18n/ HTTP/1.1" 200 8691
+INFO 2025-06-06 01:56:15,115 basehttp "GET /static/admin/img/icon-calendar.svg HTTP/1.1" 304 0
+INFO 2025-06-06 01:56:45,212 basehttp "GET /static/admin/img/calendar-icons.svg HTTP/1.1" 304 0
+INFO 2025-06-06 01:57:05,337 basehttp "POST /admin/accounts/customuser/1/change/ HTTP/1.1" 302 0
+INFO 2025-06-06 01:57:05,360 basehttp "GET /admin/accounts/customuser/ HTTP/1.1" 200 18613
+INFO 2025-06-06 01:57:05,422 basehttp "GET /admin/jsi18n/ HTTP/1.1" 200 8691
+INFO 2025-06-06 01:57:23,016 basehttp "GET /admin/accounts/customuser/1/change/ HTTP/1.1" 200 31299
+INFO 2025-06-06 01:57:23,035 basehttp "GET /admin/jsi18n/ HTTP/1.1" 200 8691
+INFO 2025-06-06 02:00:37,164 basehttp "GET /api/accounts/user-info/ HTTP/1.1" 200 656
+INFO 2025-06-06 02:00:37,170 basehttp "GET /api/accounts/user-info/ HTTP/1.1" 200 656
+WARNING 2025-06-06 02:00:37,273 log Not Found: /api/business/user-businesses/
+WARNING 2025-06-06 02:00:37,273 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 5271
+WARNING 2025-06-06 02:00:37,281 log Not Found: /api/business/user-businesses/
+WARNING 2025-06-06 02:00:37,284 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 5271
+WARNING 2025-06-06 02:00:37,292 log Not Found: /api/business/user-businesses/
+WARNING 2025-06-06 02:00:37,295 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 5271
+INFO 2025-06-06 02:00:37,300 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 755
+INFO 2025-06-06 02:00:37,316 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 755
+WARNING 2025-06-06 02:00:37,346 log Not Found: /api/business/user-businesses/
+WARNING 2025-06-06 02:00:37,346 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 5271
+INFO 2025-06-06 02:00:37,376 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 755
+INFO 2025-06-06 02:00:37,437 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 755
+WARNING 2025-06-06 02:00:37,458 log Not Found: /api/business/user-businesses/
+WARNING 2025-06-06 02:00:37,458 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 5271
+INFO 2025-06-06 02:00:37,498 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 755

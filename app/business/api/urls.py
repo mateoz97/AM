@@ -1,9 +1,10 @@
-
 # Django imports
-from django.urls import path
+from django.urls import path, include
 
-# Viewsas imports
+# Django REST Framework imports
+from rest_framework.routers import DefaultRouter
 
+# Views imports
 from app.business.api.views.request_views import (
     JoinBusinessRequestView,
     BusinessJoinRequestManagementView,
@@ -11,13 +12,26 @@ from app.business.api.views.request_views import (
     BusinessInvitationUseView,
     UserBusinessInvitationsListView,
 )
-from app.business.api.views.business_views import LeaveBusinessView, JoinBusinessView
+from app.business.api.views.business_views import (
+    LeaveBusinessView, 
+    JoinBusinessView,
+    BusinessViewSet,  # Agregar esta importación
+    SwitchBusinessView
+)
 
+# Configurar el router para BusinessViewSet
+router = DefaultRouter()
+router.register(r'', BusinessViewSet, basename='business')  # Registrar el ViewSet
 
 urlpatterns = [
+    # Business ViewSet endpoints (incluye user-businesses)
+    path('', include(router.urls)),
+    
     # Business and role management endpoints
     path("join-business/", JoinBusinessView.as_view(), name="join_business"),
-    path("leave-business/", LeaveBusinessView.as_view(), name="leave_business"),\
+    path("leave-business/", LeaveBusinessView.as_view(), name="leave_business"),
+    path("switch-business/", SwitchBusinessView.as_view(), name="switch_business"),
+    
     # Join requests and invitations endpoints
     path("join-business-request/", JoinBusinessRequestView.as_view(), name="join_business_request"),
     path("business-requests/", BusinessJoinRequestManagementView.as_view(), name="business_requests"),
