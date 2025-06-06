@@ -630,3 +630,976 @@ INFO 2025-06-06 02:00:37,437 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 755
 WARNING 2025-06-06 02:00:37,458 log Not Found: /api/business/user-businesses/
 WARNING 2025-06-06 02:00:37,458 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 404 5271
 INFO 2025-06-06 02:00:37,498 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 755
+INFO 2025-06-06 02:14:09,262 autoreload Watching for file changes with StatReloader
+INFO 2025-06-06 02:16:30,606 basehttp "GET /api/accounts/user-info/ HTTP/1.1" 200 656
+INFO 2025-06-06 02:16:30,612 basehttp "GET /api/accounts/user-info/ HTTP/1.1" 200 656
+INFO 2025-06-06 02:16:30,722 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 118
+INFO 2025-06-06 02:16:30,735 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 755
+INFO 2025-06-06 02:16:30,736 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 118
+INFO 2025-06-06 02:16:30,748 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 755
+INFO 2025-06-06 02:16:30,785 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 118
+INFO 2025-06-06 02:16:30,806 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 755
+INFO 2025-06-06 02:16:30,832 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 118
+INFO 2025-06-06 02:16:30,862 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 755
+INFO 2025-06-06 02:16:30,881 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 118
+INFO 2025-06-06 02:16:30,914 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 755
+INFO 2025-06-06 02:16:41,264 basehttp "GET /api/accounts/user-info/ HTTP/1.1" 200 656
+INFO 2025-06-06 02:16:41,274 basehttp "GET /api/accounts/user-info/ HTTP/1.1" 200 656
+INFO 2025-06-06 02:16:41,380 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 118
+INFO 2025-06-06 02:16:41,388 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 755
+INFO 2025-06-06 02:16:41,391 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 118
+INFO 2025-06-06 02:16:41,401 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 755
+INFO 2025-06-06 02:16:41,446 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 118
+INFO 2025-06-06 02:16:41,459 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 755
+INFO 2025-06-06 02:16:41,494 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 118
+INFO 2025-06-06 02:16:41,515 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 755
+INFO 2025-06-06 02:16:41,550 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 118
+INFO 2025-06-06 02:16:41,570 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 755
+INFO 2025-06-06 02:16:48,223 basehttp "OPTIONS /api/business/switch-business/ HTTP/1.1" 200 0
+WARNING 2025-06-06 02:16:48,231 log Method Not Allowed: /api/business/switch-business/
+WARNING 2025-06-06 02:16:48,232 basehttp "POST /api/business/switch-business/ HTTP/1.1" 405 43
+INFO 2025-06-06 02:16:48,327 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 118
+INFO 2025-06-06 02:16:48,332 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 755
+INFO 2025-06-06 02:16:48,348 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 755
+INFO 2025-06-06 02:16:48,375 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 118
+INFO 2025-06-06 02:16:48,402 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 755
+INFO 2025-06-06 02:16:48,425 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 118
+INFO 2025-06-06 02:16:48,455 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 755
+INFO 2025-06-06 02:16:48,471 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 118
+WARNING 2025-06-06 02:16:55,441 log Method Not Allowed: /api/business/switch-business/
+WARNING 2025-06-06 02:16:55,441 basehttp "POST /api/business/switch-business/ HTTP/1.1" 405 43
+INFO 2025-06-06 02:16:55,490 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 118
+INFO 2025-06-06 02:16:55,496 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 755
+INFO 2025-06-06 02:16:55,514 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 755
+INFO 2025-06-06 02:16:55,538 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 118
+INFO 2025-06-06 02:16:55,570 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 755
+INFO 2025-06-06 02:16:55,586 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 118
+INFO 2025-06-06 02:16:55,629 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 755
+INFO 2025-06-06 02:16:55,633 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 118
+WARNING 2025-06-06 02:16:56,737 log Method Not Allowed: /api/business/switch-business/
+WARNING 2025-06-06 02:16:56,738 basehttp "POST /api/business/switch-business/ HTTP/1.1" 405 43
+INFO 2025-06-06 02:16:56,785 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 118
+INFO 2025-06-06 02:16:56,796 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 755
+INFO 2025-06-06 02:16:56,808 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 755
+INFO 2025-06-06 02:16:56,835 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 118
+INFO 2025-06-06 02:16:56,862 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 755
+INFO 2025-06-06 02:16:56,886 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 118
+INFO 2025-06-06 02:16:56,919 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 755
+INFO 2025-06-06 02:16:56,934 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 118
+INFO 2025-06-06 02:17:16,734 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 118
+INFO 2025-06-06 02:17:16,744 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 755
+INFO 2025-06-06 02:17:16,744 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 118
+INFO 2025-06-06 02:17:16,761 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 755
+INFO 2025-06-06 02:17:16,792 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 118
+INFO 2025-06-06 02:17:16,822 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 755
+INFO 2025-06-06 02:17:16,838 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 118
+INFO 2025-06-06 02:17:16,876 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 755
+INFO 2025-06-06 02:17:33,634 basehttp "GET /admin/accounts/customuser/ HTTP/1.1" 200 18367
+INFO 2025-06-06 02:17:33,654 basehttp "GET /admin/jsi18n/ HTTP/1.1" 200 8691
+INFO 2025-06-06 02:17:36,481 basehttp "GET /admin/accounts/customuser/add/ HTTP/1.1" 200 22497
+INFO 2025-06-06 02:17:36,507 basehttp "GET /static/admin/css/unusable_password_field.css HTTP/1.1" 200 663
+INFO 2025-06-06 02:17:36,509 basehttp "GET /admin/jsi18n/ HTTP/1.1" 200 8691
+INFO 2025-06-06 02:17:36,517 basehttp "GET /static/admin/js/unusable_password_field.js HTTP/1.1" 200 1480
+INFO 2025-06-06 02:18:11,368 basehttp "POST /admin/accounts/customuser/add/ HTTP/1.1" 302 0
+INFO 2025-06-06 02:18:11,396 basehttp "GET /admin/accounts/customuser/2/change/ HTTP/1.1" 200 30168
+INFO 2025-06-06 02:18:11,459 basehttp "GET /admin/jsi18n/ HTTP/1.1" 200 8691
+INFO 2025-06-06 02:18:16,483 basehttp "GET /admin/accounts/customuser/ HTTP/1.1" 200 19036
+INFO 2025-06-06 02:18:16,509 basehttp "GET /admin/jsi18n/ HTTP/1.1" 200 8691
+INFO 2025-06-06 02:18:18,491 basehttp "GET /admin/accounts/customuser/2/change/ HTTP/1.1" 200 29884
+INFO 2025-06-06 02:18:18,508 basehttp "GET /admin/jsi18n/ HTTP/1.1" 200 8691
+INFO 2025-06-06 02:18:26,737 basehttp "POST /admin/accounts/customuser/2/change/ HTTP/1.1" 302 0
+INFO 2025-06-06 02:18:26,762 basehttp "GET /admin/accounts/customuser/ HTTP/1.1" 200 19701
+INFO 2025-06-06 02:18:26,827 basehttp "GET /admin/jsi18n/ HTTP/1.1" 200 8691
+INFO 2025-06-06 02:18:29,279 basehttp "GET /admin/business/business/ HTTP/1.1" 200 18362
+INFO 2025-06-06 02:18:29,302 basehttp "GET /admin/jsi18n/ HTTP/1.1" 200 8691
+ERROR 2025-06-06 02:18:31,416 log Internal Server Error: /admin/business/business/2/change/
+Traceback (most recent call last):
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/backends/utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/backends/sqlite3/base.py", line 360, in execute
+    return super().execute(query, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sqlite3.OperationalError: no such table: business_business_co_owners
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/contrib/admin/options.py", line 719, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/utils/decorators.py", line 192, in _view_wrapper
+    result = _process_exception(request, e)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/utils/decorators.py", line 190, in _view_wrapper
+    response = view_func(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/views/decorators/cache.py", line 80, in _view_wrapper
+    response = view_func(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/contrib/admin/sites.py", line 246, in inner
+    return view(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/contrib/admin/options.py", line 1987, in change_view
+    return self.changeform_view(request, object_id, form_url, extra_context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/utils/decorators.py", line 48, in _wrapper
+    return bound_method(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/utils/decorators.py", line 192, in _view_wrapper
+    result = _process_exception(request, e)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/utils/decorators.py", line 190, in _view_wrapper
+    response = view_func(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/contrib/admin/options.py", line 1840, in changeform_view
+    return self._changeform_view(request, object_id, form_url, extra_context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/contrib/admin/options.py", line 1942, in _changeform_view
+    media += inline_formset.media
+             ^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/contrib/admin/helpers.py", line 465, in media
+    media = self.opts.media + self.formset.media
+                              ^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/forms/formsets.py", line 521, in media
+    if self.forms:
+       ^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/utils/functional.py", line 47, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+                                         ^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/forms/formsets.py", line 207, in forms
+    for i in range(self.total_form_count())
+                   ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/forms/formsets.py", line 182, in total_form_count
+    initial_forms = self.initial_form_count()
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/forms/models.py", line 1123, in initial_form_count
+    return super().initial_form_count()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/forms/models.py", line 697, in initial_form_count
+    return len(self.get_queryset())
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/models/query.py", line 366, in __len__
+    self._fetch_all()
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/models/query.py", line 1935, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/models/query.py", line 91, in __iter__
+    results = compiler.execute_sql(
+              ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/models/sql/compiler.py", line 1622, in execute_sql
+    cursor.execute(sql, params)
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/backends/utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/backends/utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/backends/utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/backends/utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/backends/utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/backends/sqlite3/base.py", line 360, in execute
+    return super().execute(query, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+django.db.utils.OperationalError: no such table: business_business_co_owners
+ERROR 2025-06-06 02:18:31,418 basehttp "GET /admin/business/business/2/change/ HTTP/1.1" 500 226713
+ERROR 2025-06-06 02:18:33,187 log Internal Server Error: /admin/business/business/2/change/
+Traceback (most recent call last):
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/backends/utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/backends/sqlite3/base.py", line 360, in execute
+    return super().execute(query, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sqlite3.OperationalError: no such table: business_business_co_owners
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/contrib/admin/options.py", line 719, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/utils/decorators.py", line 192, in _view_wrapper
+    result = _process_exception(request, e)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/utils/decorators.py", line 190, in _view_wrapper
+    response = view_func(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/views/decorators/cache.py", line 80, in _view_wrapper
+    response = view_func(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/contrib/admin/sites.py", line 246, in inner
+    return view(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/contrib/admin/options.py", line 1987, in change_view
+    return self.changeform_view(request, object_id, form_url, extra_context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/utils/decorators.py", line 48, in _wrapper
+    return bound_method(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/utils/decorators.py", line 192, in _view_wrapper
+    result = _process_exception(request, e)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/utils/decorators.py", line 190, in _view_wrapper
+    response = view_func(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/contrib/admin/options.py", line 1840, in changeform_view
+    return self._changeform_view(request, object_id, form_url, extra_context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/contrib/admin/options.py", line 1942, in _changeform_view
+    media += inline_formset.media
+             ^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/contrib/admin/helpers.py", line 465, in media
+    media = self.opts.media + self.formset.media
+                              ^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/forms/formsets.py", line 521, in media
+    if self.forms:
+       ^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/utils/functional.py", line 47, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+                                         ^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/forms/formsets.py", line 207, in forms
+    for i in range(self.total_form_count())
+                   ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/forms/formsets.py", line 182, in total_form_count
+    initial_forms = self.initial_form_count()
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/forms/models.py", line 1123, in initial_form_count
+    return super().initial_form_count()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/forms/models.py", line 697, in initial_form_count
+    return len(self.get_queryset())
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/models/query.py", line 366, in __len__
+    self._fetch_all()
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/models/query.py", line 1935, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/models/query.py", line 91, in __iter__
+    results = compiler.execute_sql(
+              ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/models/sql/compiler.py", line 1622, in execute_sql
+    cursor.execute(sql, params)
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/backends/utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/backends/utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/backends/utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/backends/utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/backends/utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/backends/sqlite3/base.py", line 360, in execute
+    return super().execute(query, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+django.db.utils.OperationalError: no such table: business_business_co_owners
+ERROR 2025-06-06 02:18:33,188 basehttp "GET /admin/business/business/2/change/ HTTP/1.1" 500 226850
+ERROR 2025-06-06 02:18:34,036 log Internal Server Error: /admin/business/business/2/change/
+Traceback (most recent call last):
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/backends/utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/backends/sqlite3/base.py", line 360, in execute
+    return super().execute(query, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sqlite3.OperationalError: no such table: business_business_co_owners
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/contrib/admin/options.py", line 719, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/utils/decorators.py", line 192, in _view_wrapper
+    result = _process_exception(request, e)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/utils/decorators.py", line 190, in _view_wrapper
+    response = view_func(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/views/decorators/cache.py", line 80, in _view_wrapper
+    response = view_func(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/contrib/admin/sites.py", line 246, in inner
+    return view(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/contrib/admin/options.py", line 1987, in change_view
+    return self.changeform_view(request, object_id, form_url, extra_context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/utils/decorators.py", line 48, in _wrapper
+    return bound_method(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/utils/decorators.py", line 192, in _view_wrapper
+    result = _process_exception(request, e)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/utils/decorators.py", line 190, in _view_wrapper
+    response = view_func(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/contrib/admin/options.py", line 1840, in changeform_view
+    return self._changeform_view(request, object_id, form_url, extra_context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/contrib/admin/options.py", line 1942, in _changeform_view
+    media += inline_formset.media
+             ^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/contrib/admin/helpers.py", line 465, in media
+    media = self.opts.media + self.formset.media
+                              ^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/forms/formsets.py", line 521, in media
+    if self.forms:
+       ^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/utils/functional.py", line 47, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+                                         ^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/forms/formsets.py", line 207, in forms
+    for i in range(self.total_form_count())
+                   ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/forms/formsets.py", line 182, in total_form_count
+    initial_forms = self.initial_form_count()
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/forms/models.py", line 1123, in initial_form_count
+    return super().initial_form_count()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/forms/models.py", line 697, in initial_form_count
+    return len(self.get_queryset())
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/models/query.py", line 366, in __len__
+    self._fetch_all()
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/models/query.py", line 1935, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/models/query.py", line 91, in __iter__
+    results = compiler.execute_sql(
+              ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/models/sql/compiler.py", line 1622, in execute_sql
+    cursor.execute(sql, params)
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/backends/utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/backends/utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/backends/utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/backends/utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/backends/utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/backends/sqlite3/base.py", line 360, in execute
+    return super().execute(query, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+django.db.utils.OperationalError: no such table: business_business_co_owners
+ERROR 2025-06-06 02:18:34,038 basehttp "GET /admin/business/business/2/change/ HTTP/1.1" 500 226850
+INFO 2025-06-06 02:18:34,772 basehttp "GET /admin/business/business/ HTTP/1.1" 200 18362
+ERROR 2025-06-06 02:18:37,867 log Internal Server Error: /admin/business/business/1/change/
+Traceback (most recent call last):
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/backends/utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/backends/sqlite3/base.py", line 360, in execute
+    return super().execute(query, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sqlite3.OperationalError: no such table: business_business_co_owners
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/contrib/admin/options.py", line 719, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/utils/decorators.py", line 192, in _view_wrapper
+    result = _process_exception(request, e)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/utils/decorators.py", line 190, in _view_wrapper
+    response = view_func(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/views/decorators/cache.py", line 80, in _view_wrapper
+    response = view_func(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/contrib/admin/sites.py", line 246, in inner
+    return view(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/contrib/admin/options.py", line 1987, in change_view
+    return self.changeform_view(request, object_id, form_url, extra_context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/utils/decorators.py", line 48, in _wrapper
+    return bound_method(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/utils/decorators.py", line 192, in _view_wrapper
+    result = _process_exception(request, e)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/utils/decorators.py", line 190, in _view_wrapper
+    response = view_func(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/contrib/admin/options.py", line 1840, in changeform_view
+    return self._changeform_view(request, object_id, form_url, extra_context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/contrib/admin/options.py", line 1942, in _changeform_view
+    media += inline_formset.media
+             ^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/contrib/admin/helpers.py", line 465, in media
+    media = self.opts.media + self.formset.media
+                              ^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/forms/formsets.py", line 521, in media
+    if self.forms:
+       ^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/utils/functional.py", line 47, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+                                         ^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/forms/formsets.py", line 207, in forms
+    for i in range(self.total_form_count())
+                   ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/forms/formsets.py", line 182, in total_form_count
+    initial_forms = self.initial_form_count()
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/forms/models.py", line 1123, in initial_form_count
+    return super().initial_form_count()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/forms/models.py", line 697, in initial_form_count
+    return len(self.get_queryset())
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/models/query.py", line 366, in __len__
+    self._fetch_all()
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/models/query.py", line 1935, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/models/query.py", line 91, in __iter__
+    results = compiler.execute_sql(
+              ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/models/sql/compiler.py", line 1622, in execute_sql
+    cursor.execute(sql, params)
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/backends/utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/backends/utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/backends/utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/backends/utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/backends/utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/backends/sqlite3/base.py", line 360, in execute
+    return super().execute(query, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+django.db.utils.OperationalError: no such table: business_business_co_owners
+ERROR 2025-06-06 02:18:37,868 basehttp "GET /admin/business/business/1/change/ HTTP/1.1" 500 226724
+INFO 2025-06-06 02:18:51,962 basehttp "GET /admin/business/business/ HTTP/1.1" 200 18362
+INFO 2025-06-06 02:18:58,879 basehttp "GET /api/accounts/user-info/ HTTP/1.1" 200 656
+INFO 2025-06-06 02:18:58,885 basehttp "GET /api/accounts/user-info/ HTTP/1.1" 200 656
+INFO 2025-06-06 02:18:58,950 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 118
+INFO 2025-06-06 02:18:58,956 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 755
+INFO 2025-06-06 02:18:58,977 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 755
+INFO 2025-06-06 02:18:59,000 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 118
+INFO 2025-06-06 02:18:59,032 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 755
+INFO 2025-06-06 02:18:59,052 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 118
+INFO 2025-06-06 02:18:59,088 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 755
+INFO 2025-06-06 02:18:59,100 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 118
+INFO 2025-06-06 02:18:59,153 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 755
+INFO 2025-06-06 02:18:59,156 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 118
+ERROR 2025-06-06 02:19:09,380 log Internal Server Error: /admin/business/business/2/change/
+Traceback (most recent call last):
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/backends/utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/backends/sqlite3/base.py", line 360, in execute
+    return super().execute(query, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sqlite3.OperationalError: no such table: business_business_co_owners
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/contrib/admin/options.py", line 719, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/utils/decorators.py", line 192, in _view_wrapper
+    result = _process_exception(request, e)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/utils/decorators.py", line 190, in _view_wrapper
+    response = view_func(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/views/decorators/cache.py", line 80, in _view_wrapper
+    response = view_func(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/contrib/admin/sites.py", line 246, in inner
+    return view(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/contrib/admin/options.py", line 1987, in change_view
+    return self.changeform_view(request, object_id, form_url, extra_context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/utils/decorators.py", line 48, in _wrapper
+    return bound_method(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/utils/decorators.py", line 192, in _view_wrapper
+    result = _process_exception(request, e)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/utils/decorators.py", line 190, in _view_wrapper
+    response = view_func(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/contrib/admin/options.py", line 1840, in changeform_view
+    return self._changeform_view(request, object_id, form_url, extra_context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/contrib/admin/options.py", line 1942, in _changeform_view
+    media += inline_formset.media
+             ^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/contrib/admin/helpers.py", line 465, in media
+    media = self.opts.media + self.formset.media
+                              ^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/forms/formsets.py", line 521, in media
+    if self.forms:
+       ^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/utils/functional.py", line 47, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+                                         ^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/forms/formsets.py", line 207, in forms
+    for i in range(self.total_form_count())
+                   ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/forms/formsets.py", line 182, in total_form_count
+    initial_forms = self.initial_form_count()
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/forms/models.py", line 1123, in initial_form_count
+    return super().initial_form_count()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/forms/models.py", line 697, in initial_form_count
+    return len(self.get_queryset())
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/models/query.py", line 366, in __len__
+    self._fetch_all()
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/models/query.py", line 1935, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/models/query.py", line 91, in __iter__
+    results = compiler.execute_sql(
+              ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/models/sql/compiler.py", line 1622, in execute_sql
+    cursor.execute(sql, params)
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/backends/utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/backends/utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/backends/utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/backends/utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/backends/utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/backends/sqlite3/base.py", line 360, in execute
+    return super().execute(query, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+django.db.utils.OperationalError: no such table: business_business_co_owners
+ERROR 2025-06-06 02:19:09,381 basehttp "GET /admin/business/business/2/change/ HTTP/1.1" 500 226713
+INFO 2025-06-06 02:20:50,610 autoreload Watching for file changes with StatReloader
+ERROR 2025-06-06 02:20:57,277 log Internal Server Error: /admin/business/business/2/change/
+Traceback (most recent call last):
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/backends/utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/backends/sqlite3/base.py", line 360, in execute
+    return super().execute(query, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sqlite3.OperationalError: no such table: business_business_co_owners
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/contrib/admin/options.py", line 719, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/utils/decorators.py", line 192, in _view_wrapper
+    result = _process_exception(request, e)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/utils/decorators.py", line 190, in _view_wrapper
+    response = view_func(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/views/decorators/cache.py", line 80, in _view_wrapper
+    response = view_func(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/contrib/admin/sites.py", line 246, in inner
+    return view(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/contrib/admin/options.py", line 1987, in change_view
+    return self.changeform_view(request, object_id, form_url, extra_context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/utils/decorators.py", line 48, in _wrapper
+    return bound_method(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/utils/decorators.py", line 192, in _view_wrapper
+    result = _process_exception(request, e)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/utils/decorators.py", line 190, in _view_wrapper
+    response = view_func(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/contrib/admin/options.py", line 1840, in changeform_view
+    return self._changeform_view(request, object_id, form_url, extra_context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/contrib/admin/options.py", line 1942, in _changeform_view
+    media += inline_formset.media
+             ^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/contrib/admin/helpers.py", line 465, in media
+    media = self.opts.media + self.formset.media
+                              ^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/forms/formsets.py", line 521, in media
+    if self.forms:
+       ^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/utils/functional.py", line 47, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+                                         ^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/forms/formsets.py", line 207, in forms
+    for i in range(self.total_form_count())
+                   ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/forms/formsets.py", line 182, in total_form_count
+    initial_forms = self.initial_form_count()
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/forms/models.py", line 1123, in initial_form_count
+    return super().initial_form_count()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/forms/models.py", line 697, in initial_form_count
+    return len(self.get_queryset())
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/models/query.py", line 366, in __len__
+    self._fetch_all()
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/models/query.py", line 1935, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/models/query.py", line 91, in __iter__
+    results = compiler.execute_sql(
+              ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/models/sql/compiler.py", line 1622, in execute_sql
+    cursor.execute(sql, params)
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/backends/utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/backends/utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/backends/utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/backends/utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/backends/utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/backends/sqlite3/base.py", line 360, in execute
+    return super().execute(query, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+django.db.utils.OperationalError: no such table: business_business_co_owners
+ERROR 2025-06-06 02:20:57,280 basehttp "GET /admin/business/business/2/change/ HTTP/1.1" 500 226850
+INFO 2025-06-06 02:20:58,896 basehttp "GET /admin/business/business/ HTTP/1.1" 200 18362
+ERROR 2025-06-06 02:21:00,301 log Internal Server Error: /admin/business/business/2/change/
+Traceback (most recent call last):
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/backends/utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/backends/sqlite3/base.py", line 360, in execute
+    return super().execute(query, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sqlite3.OperationalError: no such table: business_business_co_owners
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/contrib/admin/options.py", line 719, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/utils/decorators.py", line 192, in _view_wrapper
+    result = _process_exception(request, e)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/utils/decorators.py", line 190, in _view_wrapper
+    response = view_func(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/views/decorators/cache.py", line 80, in _view_wrapper
+    response = view_func(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/contrib/admin/sites.py", line 246, in inner
+    return view(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/contrib/admin/options.py", line 1987, in change_view
+    return self.changeform_view(request, object_id, form_url, extra_context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/utils/decorators.py", line 48, in _wrapper
+    return bound_method(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/utils/decorators.py", line 192, in _view_wrapper
+    result = _process_exception(request, e)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/utils/decorators.py", line 190, in _view_wrapper
+    response = view_func(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/contrib/admin/options.py", line 1840, in changeform_view
+    return self._changeform_view(request, object_id, form_url, extra_context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/contrib/admin/options.py", line 1942, in _changeform_view
+    media += inline_formset.media
+             ^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/contrib/admin/helpers.py", line 465, in media
+    media = self.opts.media + self.formset.media
+                              ^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/forms/formsets.py", line 521, in media
+    if self.forms:
+       ^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/utils/functional.py", line 47, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+                                         ^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/forms/formsets.py", line 207, in forms
+    for i in range(self.total_form_count())
+                   ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/forms/formsets.py", line 182, in total_form_count
+    initial_forms = self.initial_form_count()
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/forms/models.py", line 1123, in initial_form_count
+    return super().initial_form_count()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/forms/models.py", line 697, in initial_form_count
+    return len(self.get_queryset())
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/models/query.py", line 366, in __len__
+    self._fetch_all()
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/models/query.py", line 1935, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/models/query.py", line 91, in __iter__
+    results = compiler.execute_sql(
+              ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/models/sql/compiler.py", line 1622, in execute_sql
+    cursor.execute(sql, params)
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/backends/utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/backends/utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/backends/utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/backends/utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/backends/utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/backends/sqlite3/base.py", line 360, in execute
+    return super().execute(query, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+django.db.utils.OperationalError: no such table: business_business_co_owners
+ERROR 2025-06-06 02:21:00,302 basehttp "GET /admin/business/business/2/change/ HTTP/1.1" 500 226713
+INFO 2025-06-06 02:21:03,630 basehttp "GET /admin/business/business/ HTTP/1.1" 200 18362
+INFO 2025-06-06 02:22:21,087 basehttp "GET /admin/business/businessinvitation/ HTTP/1.1" 200 14820
+INFO 2025-06-06 02:22:21,110 basehttp "GET /admin/jsi18n/ HTTP/1.1" 200 8691
+INFO 2025-06-06 02:22:24,289 basehttp "GET /admin/business/business/ HTTP/1.1" 200 18362
+INFO 2025-06-06 02:22:24,314 basehttp "GET /admin/jsi18n/ HTTP/1.1" 200 8691
+ERROR 2025-06-06 02:22:45,383 log Internal Server Error: /admin/business/business/1/change/
+Traceback (most recent call last):
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/backends/utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/backends/sqlite3/base.py", line 360, in execute
+    return super().execute(query, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sqlite3.OperationalError: no such table: business_business_co_owners
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/contrib/admin/options.py", line 719, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/utils/decorators.py", line 192, in _view_wrapper
+    result = _process_exception(request, e)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/utils/decorators.py", line 190, in _view_wrapper
+    response = view_func(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/views/decorators/cache.py", line 80, in _view_wrapper
+    response = view_func(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/contrib/admin/sites.py", line 246, in inner
+    return view(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/contrib/admin/options.py", line 1987, in change_view
+    return self.changeform_view(request, object_id, form_url, extra_context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/utils/decorators.py", line 48, in _wrapper
+    return bound_method(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/utils/decorators.py", line 192, in _view_wrapper
+    result = _process_exception(request, e)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/utils/decorators.py", line 190, in _view_wrapper
+    response = view_func(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/contrib/admin/options.py", line 1840, in changeform_view
+    return self._changeform_view(request, object_id, form_url, extra_context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/contrib/admin/options.py", line 1942, in _changeform_view
+    media += inline_formset.media
+             ^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/contrib/admin/helpers.py", line 465, in media
+    media = self.opts.media + self.formset.media
+                              ^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/forms/formsets.py", line 521, in media
+    if self.forms:
+       ^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/utils/functional.py", line 47, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+                                         ^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/forms/formsets.py", line 207, in forms
+    for i in range(self.total_form_count())
+                   ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/forms/formsets.py", line 182, in total_form_count
+    initial_forms = self.initial_form_count()
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/forms/models.py", line 1123, in initial_form_count
+    return super().initial_form_count()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/forms/models.py", line 697, in initial_form_count
+    return len(self.get_queryset())
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/models/query.py", line 366, in __len__
+    self._fetch_all()
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/models/query.py", line 1935, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/models/query.py", line 91, in __iter__
+    results = compiler.execute_sql(
+              ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/models/sql/compiler.py", line 1622, in execute_sql
+    cursor.execute(sql, params)
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/backends/utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/backends/utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/backends/utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/backends/utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/backends/utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/backends/sqlite3/base.py", line 360, in execute
+    return super().execute(query, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+django.db.utils.OperationalError: no such table: business_business_co_owners
+ERROR 2025-06-06 02:22:45,385 basehttp "GET /admin/business/business/1/change/ HTTP/1.1" 500 226724
+WARNING 2025-06-06 02:23:08,376 log Method Not Allowed: /api/business/switch-business/
+WARNING 2025-06-06 02:23:08,376 basehttp "POST /api/business/switch-business/ HTTP/1.1" 405 43
+INFO 2025-06-06 02:23:08,429 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 118
+INFO 2025-06-06 02:23:08,433 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 755
+INFO 2025-06-06 02:23:08,447 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 755
+INFO 2025-06-06 02:23:08,475 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 118
+INFO 2025-06-06 02:23:08,511 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 755
+INFO 2025-06-06 02:23:08,524 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 118
+INFO 2025-06-06 02:23:08,563 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 755
+INFO 2025-06-06 02:23:08,573 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 118
+WARNING 2025-06-06 02:23:09,330 log Method Not Allowed: /api/business/switch-business/
+WARNING 2025-06-06 02:23:09,330 basehttp "POST /api/business/switch-business/ HTTP/1.1" 405 43
+INFO 2025-06-06 02:23:09,387 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 118
+INFO 2025-06-06 02:23:09,404 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 118
+INFO 2025-06-06 02:23:09,404 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 755
+INFO 2025-06-06 02:23:09,419 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 755
+INFO 2025-06-06 02:23:09,452 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 118
+INFO 2025-06-06 02:23:09,472 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 755
+INFO 2025-06-06 02:23:09,500 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 118
+INFO 2025-06-06 02:23:09,533 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 755
+INFO 2025-06-06 02:23:33,360 basehttp "POST /api/posts/ HTTP/1.1" 201 293
+INFO 2025-06-06 02:23:33,379 basehttp "POST /api/posts/ HTTP/1.1" 201 293
+INFO 2025-06-06 02:23:35,741 basehttp "OPTIONS /api/posts/4/like/ HTTP/1.1" 200 0
+INFO 2025-06-06 02:23:35,757 basehttp "POST /api/posts/4/like/ HTTP/1.1" 200 30
+INFO 2025-06-06 02:23:50,630 basehttp "OPTIONS /api/posts/4/comment/ HTTP/1.1" 200 0
+INFO 2025-06-06 02:23:50,651 basehttp "POST /api/posts/4/comment/ HTTP/1.1" 201 184
+INFO 2025-06-06 02:23:58,556 basehttp "GET /api/accounts/user-info/ HTTP/1.1" 200 656
+INFO 2025-06-06 02:23:58,562 basehttp "GET /api/accounts/user-info/ HTTP/1.1" 200 656
+INFO 2025-06-06 02:23:58,637 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 118
+INFO 2025-06-06 02:23:58,648 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 1526
+INFO 2025-06-06 02:23:58,680 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 1526
+INFO 2025-06-06 02:23:58,682 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 118
+INFO 2025-06-06 02:23:58,738 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 118
+INFO 2025-06-06 02:23:58,752 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 1526
+INFO 2025-06-06 02:23:58,786 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 118
+INFO 2025-06-06 02:23:58,816 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 1526
+INFO 2025-06-06 02:23:58,834 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 118
+INFO 2025-06-06 02:23:58,881 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 1526
