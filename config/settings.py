@@ -6,6 +6,7 @@ from datetime import timedelta
 from django.utils.translation import gettext_lazy as _
 from dotenv import load_dotenv
 from django.core.exceptions import ImproperlyConfigured
+from rest_framework.pagination import PageNumberPagination
 
 # Cargar variables de entorno
 load_dotenv()
@@ -192,6 +193,11 @@ REST_FRAMEWORK = {
     'PAGE_SIZE': 20
     
 }
+
+class ProductPagination(PageNumberPagination):
+    page_size = 50
+    page_size_query_param = 'page_size'
+    max_page_size = 100
 
 
 SIMPLE_JWT = {

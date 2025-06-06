@@ -34,6 +34,21 @@ class Product(models.Model):
         verbose_name = _("Producto")
         verbose_name_plural = _("Productos")
         ordering = ['-created_at']
+        indexes = [
+            models.Index(fields=['business', 'is_active']),
+            models.Index(fields=['business', 'category']),
+            models.Index(fields=['created_at']),
+        ]
+        constraints = [
+            models.CheckConstraint(
+                check=models.Q(price__gt=0), 
+                name='positive_price'
+            ),
+            models.CheckConstraint(
+                check=models.Q(stock__gte=0), 
+                name='non_negative_stock'
+            ),
+        ]
         
     def __str__(self):
         return f"{self.name} - {self.business.name}"
@@ -43,6 +58,8 @@ class Product(models.Model):
         if self.stock < 0:
             self.stock = 0
         super().save(*args, **kwargs)
+    
+    
 
 class ProductCategory(models.Model):
     """Modelo para categorías de productos"""

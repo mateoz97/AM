@@ -22,10 +22,10 @@ class ProductViewSet(viewsets.ModelViewSet):
     search_fields = ['name', 'description', 'category']
     ordering_fields = ['name', 'price', 'stock', 'created_at']
     ordering = ['name']
-    
+
     def get_queryset(self):
         """
-        Filtra productos por el negocio del usuario.
+        Filtra productos por el negocio del usuario con optimizaciones.
         """
         user = self.request.user
         
@@ -33,8 +33,10 @@ class ProductViewSet(viewsets.ModelViewSet):
         if not user.business:
             return Product.objects.none()
             
-        # Filtrar por el negocio del usuario
-        return Product.objects.filter(business=user.business)
+        # Filtrar por el negocio del usuario con optimizaciones
+        return Product.objects.filter(
+            business=user.business
+        ).select_related('business', 'created_by').prefetch_related('stock_movements')
     
     def perform_create(self, serializer):
         """

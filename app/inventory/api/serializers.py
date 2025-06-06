@@ -53,15 +53,18 @@ class ProductSerializer(serializers.ModelSerializer):
         return super().create(validated_data)
         
     def validate(self, data):
-        """
-        Validar que el stock no sea negativo y que precio sea positivo
-        """
+        """Validaciones generales"""
+        # Validar que el stock no sea negativo y que precio sea positivo
         if 'stock' in data and data['stock'] < 0:
             data['stock'] = 0
-            
+
         if 'price' in data and data['price'] <= 0:
             raise serializers.ValidationError("El precio debe ser mayor que cero")
-            
+
+        # Validar que el nombre no esté vacío
+        if 'name' in data and not data['name'].strip():
+            raise serializers.ValidationError("El nombre del producto no puede estar vacío")
+
         return data
         
     def to_representation(self, instance):
@@ -80,6 +83,22 @@ class ProductSerializer(serializers.ModelSerializer):
             data['stock_movements_count'] = instance.stock_movements.count()
             
         return data
+    
+    def validate_stock(self, value):
+        """Validar que el stock no sea negativo"""
+        if value < 0:
+            raise serializers.ValidationError(
+                "El stock no puede ser negativo"
+            )
+        return value
+
+    def validate_price(self, value):
+        """Validar que el precio sea positivo"""
+        if value <= 0:
+            raise serializers.ValidationError(
+                "El precio debe ser mayor que cero"
+            )
+        return value
 
 class ProductCategorySerializer(serializers.ModelSerializer):
     """Serializer para el modelo ProductCategory"""
