@@ -1,8 +1,7 @@
-# Django
+# app/roles/models/role.py
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 
-        
 class BusinessRole(models.Model):
     """
     Modelo para roles específicos de cada negocio.
@@ -12,8 +11,7 @@ class BusinessRole(models.Model):
         'business.Business', 
         on_delete=models.CASCADE, 
         related_name='business_roles',
-        verbose_name=_("Negocio"),
-        swappable=True
+        verbose_name=_("Negocio")
     )
     name = models.CharField(_("Nombre del rol"), max_length=100)
     description = models.TextField(_("Descripción"), blank=True, null=True)
@@ -36,7 +34,7 @@ class BusinessRole(models.Model):
         creating = self.pk is None
         
         # Si es un rol de administrador, asegurarse que no sea modificable
-        if self.name.lower() == 'administrador' or self.name.lower() == 'admin':
+        if self.name.lower() in ['administrador', 'admin']:
             self.is_default = True
             self.can_modify = False
             
@@ -97,7 +95,6 @@ class BusinessRole(models.Model):
             
         return permissions
 
-
 class RolePermission(models.Model):
     """
     Permisos específicos para cada rol de negocio.
@@ -142,4 +139,3 @@ class RolePermission(models.Model):
     
     def __str__(self):
         return f"Permisos para {self.business_role.name}"
-    

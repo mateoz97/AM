@@ -1,11 +1,11 @@
-# Django
+# app/business/models/business.py
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 from django.utils import timezone
+from django.conf import settings
 
 class Business(models.Model):
     name = models.CharField(_("Nombre"), max_length=255, unique=True)
-    from django.conf import settings
     owner = models.ForeignKey(
         settings.AUTH_USER_MODEL,
         on_delete=models.SET_NULL,
@@ -15,6 +15,7 @@ class Business(models.Model):
         verbose_name=_("Propietario")
     )
     is_main_business = models.BooleanField(_("Es negocio principal"), default=True)
+    # ✅ Campo co_owners corregido
     co_owners = models.ManyToManyField(
         settings.AUTH_USER_MODEL,
         related_name="co_owned_businesses",
@@ -56,59 +57,8 @@ class Business(models.Model):
         # Detectar si es un nuevo negocio
         is_new = self.pk is None
         
-        # Detectar cambio de propietario
-        owner_changed = False
-        old_owner = None
-        if not is_new:
-            try:
-                old_instance = Business.objects.get(pk=self.pk)
-                if old_instance.owner != self.owner:
-                    owner_changed = True
-                    old_owner = old_instance.owner
-            except Business.DoesNotExist:
-                pass
-        
         # Guardar primero el negocio
         super().save(*args, **kwargs)
-        
-        # Si el propietario cambió, actualizar las relaciones
-        if owner_changed and old_owner:
-            # Si el antiguo propietario tenía este negocio como su negocio principal, 
-            # lo movemos a co-propietario si lo desea (o lo quitamos)
-            if old_owner.business == self:
-                # Opción 1: Quitar completamente
-                old_owner.business = None
-                old_owner.save(update_fields=['business'])
-                
-                # Opción 2: Mover a co-propietario (descomenta si lo deseas)
-                # self.co_owners.add(old_owner)
-        
-        # Actualizar el nuevo propietario si existe
-        if self.owner:
-            # Buscar el rol de administrador para este negocio
-            from app.roles.models.role import BusinessRole
-            admin_role = BusinessRole.objects.filter(
-                business=self, 
-                name__in=["Admin", "Administrador"]
-            ).first()
-            
-            # Si no existe el rol de administrador, crearlo
-            if not admin_role:
-                from app.roles.services.role_service import BusinessRoleService
-                roles = BusinessRoleService.create_business_roles(self)
-                admin_role = roles.get("Admin") or roles.get("Administrador")
-            
-            # Verificar si el usuario ya tiene un negocio asignado
-            has_other_business = self.owner.business and self.owner.business.id != self.id
-            
-            # Si no tiene otro negocio o este negocio tiene prioridad, asignar directamente
-            if not has_other_business or kwargs.get('is_primary_business', True):
-                self.owner.business = self
-                self.owner.business_role = admin_role
-                self.owner.save(update_fields=['business', 'business_role'])
-            # Si tiene otro negocio y este no tiene prioridad, agregarlo como co-propietario
-            elif has_other_business:
-                self.co_owners.add(self.owner)
         
         # Si es un negocio nuevo, crear su base de datos
         if is_new:
@@ -120,55 +70,24 @@ class Business(models.Model):
                     print(f"⚠️ Advertencia: No se pudo crear la base de datos para el negocio {self.name}")
             except Exception as e:
                 print(f"❌ Error al crear base de datos para negocio {self.name}: {str(e)}")
-    
-    def delete(self, using=None, keep_parents=False):
-        """
-        Sobrescribe el método delete para eliminar la base de datos asociada al negocio
-        """
-        # Nombre de la base de datos asociada
-        db_name = f"business_{self.name}"
-        db_path = None
-        
-        # Verificar si la base de datos existe en la configuración
-        from django.conf import settings
-        if db_name in settings.DATABASES:
-            db_path = settings.DATABASES[db_name]['NAME']
-            # Eliminar la base de datos de la configuración
-            del settings.DATABASES[db_name]
-            print(f"Eliminada configuración de base de datos {db_name}")
-        
-        # Llamar al método delete original
-        result = super().delete(using=using, keep_parents=keep_parents)
-        
-        # Eliminar físicamente el archivo de la base de datos
-        if db_path:
-            import os
-            if os.path.exists(db_path):
-                try:
-                    os.remove(db_path)
-                    print(f"Eliminado archivo de base de datos {db_path}")
-                except Exception as e:
-                    print(f"Error al eliminar archivo de base de datos {db_path}: {str(e)}")
-        
-        return result
-    
-    def soft_delete(self):
-        """
-        Realiza una eliminación lógica del negocio sin eliminar la base de datos
-        """
-        self.is_active = False
-        self.save(update_fields=['is_active'])
-        return True
 
 class BusinessJoinRequest(models.Model):
-    user = models.ForeignKey('accounts.CustomUser', on_delete=models.CASCADE, related_name='join_requests')
-    business = models.ForeignKey('business.Business', on_delete=models.CASCADE, related_name='join_requests')
+    user = models.ForeignKey(
+        settings.AUTH_USER_MODEL, 
+        on_delete=models.CASCADE, 
+        related_name='join_requests'
+    )
+    business = models.ForeignKey(
+        Business, 
+        on_delete=models.CASCADE, 
+        related_name='join_requests'
+    )
     status = models.CharField(max_length=20, choices=[
         ('pending', 'Pendiente'),
         ('approved', 'Aprobada'),
         ('rejected', 'Rechazada')
     ], default='pending')
-    message = models.TextField(_("Mensaje"), blank=True, null=True)  # Añadir este campo
+    message = models.TextField(_("Mensaje"), blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     
@@ -176,11 +95,24 @@ class BusinessJoinRequest(models.Model):
         unique_together = ('user', 'business')
 
 class BusinessInvitation(models.Model):
-    business = models.ForeignKey('business.Business', on_delete=models.CASCADE, related_name='invitations')
-    created_by = models.ForeignKey('accounts.CustomUser', on_delete=models.CASCADE, related_name='created_invitations')
+    business = models.ForeignKey(
+        Business, 
+        on_delete=models.CASCADE, 
+        related_name='invitations'
+    )
+    created_by = models.ForeignKey(
+        settings.AUTH_USER_MODEL, 
+        on_delete=models.CASCADE, 
+        related_name='created_invitations'
+    )
     token = models.CharField(max_length=64, unique=True)
     expires_at = models.DateTimeField()
-    role = models.ForeignKey('roles.BusinessRole', on_delete=models.SET_NULL, null=True, blank=True)
+    role = models.ForeignKey(
+        'roles.BusinessRole', 
+        on_delete=models.SET_NULL, 
+        null=True, 
+        blank=True
+    )
     used = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True)
     
@@ -196,7 +128,6 @@ class BusinessInvitation(models.Model):
             import secrets
             self.token = secrets.token_urlsafe(32)
         if not self.expires_at:
-            from django.utils import timezone
             from datetime import timedelta
             self.expires_at = timezone.now() + timedelta(days=7)
         super().save(*args, **kwargs)
@@ -206,7 +137,7 @@ class BusinessBranch(models.Model):
     Modelo para representar sucursales de un negocio principal
     """
     main_business = models.ForeignKey(
-        'business.Business',
+        Business,
         on_delete=models.CASCADE,
         related_name='branches'
     )
@@ -214,7 +145,7 @@ class BusinessBranch(models.Model):
     description = models.TextField(_("Descripción"), null=True, blank=True)
     address = models.CharField(_("Dirección"), max_length=255, null=True, blank=True)
     manager = models.ForeignKey(
-        'accounts.CustomUser',
+        settings.AUTH_USER_MODEL,
         on_delete=models.SET_NULL,
         null=True,
         blank=True,

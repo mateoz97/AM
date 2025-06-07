@@ -174,12 +174,16 @@ class SwitchBusinessView(APIView):
     
     def post(self, request):
         """Permite a un usuario cambiar su negocio activo"""
-        business_id = request.data.get('business_id')
-        
-        if not business_id:
-            return Response({"error": "Se requiere ID de negocio"}, status=400)
-        
         try:
+            business_id = request.data.get('business_id')
+            
+            # Debug: Imprimir datos recibidos
+            print(f"Datos recibidos: {request.data}")
+            print(f"Business ID: {business_id}")
+            
+            if not business_id:
+                return Response({"error": "Se requiere business_id"}, status=status.HTTP_400_BAD_REQUEST)
+            
             # Verificar que el usuario sea propietario o co-propietario del negocio
             business = Business.objects.get(id=business_id)
             
@@ -188,7 +192,7 @@ class SwitchBusinessView(APIView):
             is_member = business.members.filter(id=request.user.id).exists()
             
             if not (is_owner or is_co_owner or is_member):
-                return Response({"error": "No tienes acceso a este negocio"}, status=403)
+                return Response({"error": "No tienes acceso a este negocio"}, status=status.HTTP_403_FORBIDDEN)
             
             # Buscar el rol apropiado
             from app.roles.models.role import BusinessRole
@@ -238,16 +242,33 @@ class SwitchBusinessView(APIView):
                 from app.business.services.business_service import DatabaseService
                 DatabaseService.create_business_database(business)
             
+            # Formatear nombre del negocio para la respuesta
+            formatted_name = business.name.replace("_", " ").title()
+            
             return Response({
-                "message": f"Se ha cambiado al negocio: {business.name}",
+                "message": f"Se ha cambiado al negocio: {formatted_name}",
                 "business": {
                     "id": business.id,
-                    "name": business.name
+                    "name": formatted_name,
+                    "original_name": business.name
                 },
                 "role": role.name if role else None
             })
             
         except Business.DoesNotExist:
-            return Response({"error": "Negocio no encontrado"}, status=404)
+            return Response({"error": "Negocio no encontrado"}, status=status.HTTP_404_NOT_FOUND)
         except Exception as e:
-            return Response({"error": str(e)}, status=400)
+            # Debug: Imprimir error completo
+            import traceback
+            print(f"Error en SwitchBusinessView: {str(e)}")
+            print(f"Traceback: {traceback.format_exc()}")
+            return Response({"error": str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+    
+    # AGREGAR: Método OPTIONS para CORS
+    def options(self, request, *args, **kwargs):
+        """
+        Maneja las peticiones OPTIONS para CORS
+        """
+        response = Response()
+        response['Allow'] = 'POST, OPTIONS'
+        return response
