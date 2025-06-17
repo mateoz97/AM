@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'app.core',
     'app.posts',
     'app.inventory',
+    'app.settings',
 ]
 
 CORS_ALLOWED_ORIGINS = [
