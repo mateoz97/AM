@@ -1,9 +1,8 @@
 # app/settings/api/views.py
-from rest_framework import viewsets, permissions, status
+from rest_framework import viewsets, permissions, status, serializers
 from rest_framework.decorators import action
 from rest_framework.response import Response
-from django.shortcuts import get_object_or_404
-from django.db import transaction
+from django.http import Http404
 
 from app.settings.models import UserSettings, BusinessSettings, NotificationTemplate
 from app.settings.api.serializers import (

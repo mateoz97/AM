@@ -1,6 +1,7 @@
 # app/settings/services.py
 from django.db import transaction
 from django.contrib.auth import get_user_model
+from django.utils import timezone
 from app.settings.models import UserSettings, BusinessSettings, NotificationTemplate
 
 User = get_user_model()
@@ -18,8 +19,7 @@ class SettingsService:
         """
         with transaction.atomic():
             # Guardar configuraciones importantes antes del reset
-            user = user_settings.user
-            
+
             # Aplicar valores por defecto
             user_settings.theme = 'light'
             user_settings.language = 'es'

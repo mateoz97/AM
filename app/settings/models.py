@@ -1,7 +1,7 @@
 # app/settings/models.py
 from django.db import models
 from django.contrib.auth import get_user_model
-from app.business.models import Business
+from app.business.models.business import Business
 
 User = get_user_model()
 
