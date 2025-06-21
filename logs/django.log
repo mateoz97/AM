@@ -3466,3 +3466,1144 @@ INFO 2025-06-14 10:04:35,792 basehttp "GET /api/business/user-businesses/ HTTP/1
 INFO 2025-06-14 10:04:35,810 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 1554
 INFO 2025-06-14 10:04:35,849 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 206
 INFO 2025-06-14 10:04:35,878 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 1554
+INFO 2025-06-14 10:14:32,670 autoreload Watching for file changes with StatReloader
+INFO 2025-06-14 10:14:36,856 basehttp "POST /api/accounts/login/ HTTP/1.1" 200 1126
+INFO 2025-06-14 10:14:37,035 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 206
+INFO 2025-06-14 10:14:37,054 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 206
+INFO 2025-06-14 10:14:37,076 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 206
+INFO 2025-06-14 10:14:37,077 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 1554
+INFO 2025-06-14 10:14:37,113 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 1554
+INFO 2025-06-14 10:14:37,135 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 206
+INFO 2025-06-14 10:14:37,201 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 1554
+INFO 2025-06-14 10:14:37,274 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 1554
+INFO 2025-06-14 10:14:39,616 basehttp "POST /api/business/switch-business/ HTTP/1.1" 200 150
+INFO 2025-06-14 10:14:39,635 basehttp "GET /api/accounts/user-info/ HTTP/1.1" 200 620
+INFO 2025-06-14 10:14:39,731 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 1479
+INFO 2025-06-14 10:14:39,810 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 206
+INFO 2025-06-14 10:14:39,839 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 1479
+INFO 2025-06-14 10:14:39,873 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 206
+INFO 2025-06-14 10:14:39,878 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 1479
+INFO 2025-06-14 10:14:39,930 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 206
+INFO 2025-06-14 10:14:39,959 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 1479
+INFO 2025-06-14 10:14:39,974 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 206
+INFO 2025-06-14 10:14:40,025 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 1479
+INFO 2025-06-14 10:14:41,624 basehttp "POST /api/business/switch-business/ HTTP/1.1" 200 195
+INFO 2025-06-14 10:14:41,655 basehttp "GET /api/accounts/user-info/ HTTP/1.1" 200 635
+INFO 2025-06-14 10:14:41,742 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 1554
+INFO 2025-06-14 10:14:41,831 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 206
+INFO 2025-06-14 10:14:41,868 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 1554
+INFO 2025-06-14 10:14:41,909 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 206
+INFO 2025-06-14 10:14:41,932 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 1554
+INFO 2025-06-14 10:14:41,963 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 206
+INFO 2025-06-14 10:14:42,001 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 1554
+INFO 2025-06-14 10:14:42,013 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 206
+INFO 2025-06-14 10:14:42,073 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 1554
+INFO 2025-06-14 10:14:48,862 basehttp "POST /api/posts/ HTTP/1.1" 201 300
+INFO 2025-06-14 10:14:48,902 basehttp "POST /api/posts/ HTTP/1.1" 201 300
+INFO 2025-06-14 10:14:56,289 basehttp "OPTIONS /api/posts/6/comment/ HTTP/1.1" 200 0
+INFO 2025-06-14 10:14:56,334 basehttp "POST /api/posts/6/comment/ HTTP/1.1" 201 204
+INFO 2025-06-14 10:15:54,988 basehttp "GET /api/accounts/user-info/ HTTP/1.1" 200 635
+INFO 2025-06-14 10:15:55,000 basehttp "GET /api/accounts/user-info/ HTTP/1.1" 200 635
+INFO 2025-06-14 10:15:55,177 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 206
+INFO 2025-06-14 10:15:55,204 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 206
+INFO 2025-06-14 10:15:55,233 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 206
+INFO 2025-06-14 10:15:55,248 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 2360
+INFO 2025-06-14 10:15:55,288 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 2360
+INFO 2025-06-14 10:15:55,294 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 206
+INFO 2025-06-14 10:15:55,374 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 2360
+INFO 2025-06-14 10:15:55,448 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 2360
+INFO 2025-06-14 10:15:55,546 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 206
+INFO 2025-06-14 10:15:55,589 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 2360
+INFO 2025-06-14 10:19:06,431 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 206
+INFO 2025-06-14 10:19:06,461 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 2360
+INFO 2025-06-14 10:20:40,492 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 206
+INFO 2025-06-14 10:20:40,522 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 2360
+INFO 2025-06-14 10:20:48,836 basehttp "GET /api/accounts/user-info/ HTTP/1.1" 200 635
+INFO 2025-06-14 10:20:48,856 basehttp "GET /api/accounts/user-info/ HTTP/1.1" 200 635
+INFO 2025-06-14 10:20:49,037 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 206
+INFO 2025-06-14 10:20:49,053 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 206
+INFO 2025-06-14 10:20:49,071 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 2360
+INFO 2025-06-14 10:20:49,119 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 206
+INFO 2025-06-14 10:20:49,132 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 2360
+INFO 2025-06-14 10:20:49,168 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 206
+INFO 2025-06-14 10:20:49,210 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 2360
+INFO 2025-06-14 10:20:49,293 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 2360
+INFO 2025-06-14 10:20:49,415 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 206
+INFO 2025-06-14 10:20:49,468 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 2360
+INFO 2025-06-14 10:20:54,724 basehttp "POST /api/posts/6/comment/ HTTP/1.1" 201 197
+INFO 2025-06-14 10:21:05,740 basehttp "POST /api/posts/ HTTP/1.1" 201 295
+INFO 2025-06-14 10:21:05,781 basehttp "POST /api/posts/ HTTP/1.1" 201 295
+INFO 2025-06-14 10:21:13,516 basehttp "GET /api/accounts/user-info/ HTTP/1.1" 200 635
+INFO 2025-06-14 10:21:13,529 basehttp "GET /api/accounts/user-info/ HTTP/1.1" 200 635
+INFO 2025-06-14 10:21:13,768 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 206
+INFO 2025-06-14 10:21:13,808 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 206
+INFO 2025-06-14 10:21:13,864 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 206
+INFO 2025-06-14 10:21:13,867 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 3150
+INFO 2025-06-14 10:21:13,923 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 206
+INFO 2025-06-14 10:21:13,928 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 3150
+INFO 2025-06-14 10:21:14,018 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 3150
+INFO 2025-06-14 10:21:14,099 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 3150
+INFO 2025-06-14 10:21:14,257 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 206
+INFO 2025-06-14 10:21:14,297 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 3150
+INFO 2025-06-14 10:22:38,837 basehttp "POST /api/business/switch-business/ HTTP/1.1" 200 150
+INFO 2025-06-14 10:22:38,876 basehttp "GET /api/accounts/user-info/ HTTP/1.1" 200 620
+INFO 2025-06-14 10:22:39,011 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 2985
+INFO 2025-06-14 10:22:39,015 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 206
+INFO 2025-06-14 10:22:39,029 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 206
+INFO 2025-06-14 10:22:39,101 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 206
+INFO 2025-06-14 10:22:39,143 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 2985
+INFO 2025-06-14 10:22:39,152 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 206
+INFO 2025-06-14 10:22:39,235 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 2985
+INFO 2025-06-14 10:22:39,327 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 2985
+INFO 2025-06-14 10:22:39,411 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 2985
+INFO 2025-06-14 10:22:40,466 basehttp "POST /api/business/switch-business/ HTTP/1.1" 200 195
+INFO 2025-06-14 10:22:40,492 basehttp "GET /api/accounts/user-info/ HTTP/1.1" 200 635
+INFO 2025-06-14 10:22:40,610 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 3150
+INFO 2025-06-14 10:22:40,611 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 206
+INFO 2025-06-14 10:22:40,621 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 206
+INFO 2025-06-14 10:22:40,697 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 206
+INFO 2025-06-14 10:22:40,732 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 3150
+INFO 2025-06-14 10:22:40,749 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 206
+INFO 2025-06-14 10:22:40,822 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 3150
+INFO 2025-06-14 10:22:40,944 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 3150
+INFO 2025-06-14 10:22:41,033 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 3150
+INFO 2025-06-14 10:22:53,212 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 206
+INFO 2025-06-14 10:22:53,254 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 206
+INFO 2025-06-14 10:22:53,292 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 206
+INFO 2025-06-14 10:22:53,297 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 3150
+INFO 2025-06-14 10:22:53,368 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 206
+INFO 2025-06-14 10:22:53,379 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 3150
+INFO 2025-06-14 10:22:53,471 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 3150
+INFO 2025-06-14 10:22:53,554 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 3150
+INFO 2025-06-14 10:22:54,988 basehttp "POST /api/business/switch-business/ HTTP/1.1" 200 150
+INFO 2025-06-14 10:22:55,007 basehttp "GET /api/accounts/user-info/ HTTP/1.1" 200 620
+INFO 2025-06-14 10:22:55,106 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 2985
+INFO 2025-06-14 10:22:55,110 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 206
+INFO 2025-06-14 10:22:55,120 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 206
+INFO 2025-06-14 10:22:55,199 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 206
+INFO 2025-06-14 10:22:55,239 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 2985
+INFO 2025-06-14 10:22:55,252 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 206
+INFO 2025-06-14 10:22:55,351 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 2985
+INFO 2025-06-14 10:22:55,439 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 2985
+INFO 2025-06-14 10:22:55,530 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 2985
+INFO 2025-06-14 10:22:56,088 basehttp "POST /api/business/switch-business/ HTTP/1.1" 200 195
+INFO 2025-06-14 10:22:56,112 basehttp "GET /api/accounts/user-info/ HTTP/1.1" 200 635
+INFO 2025-06-14 10:22:56,247 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 3150
+INFO 2025-06-14 10:22:56,251 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 206
+INFO 2025-06-14 10:22:56,261 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 206
+INFO 2025-06-14 10:22:56,337 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 206
+INFO 2025-06-14 10:22:56,362 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 3150
+INFO 2025-06-14 10:22:56,399 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 206
+INFO 2025-06-14 10:22:56,458 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 3150
+INFO 2025-06-14 10:22:56,552 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 3150
+INFO 2025-06-14 10:22:56,653 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 3150
+INFO 2025-06-14 10:26:51,505 basehttp "GET /api/accounts/user-info/ HTTP/1.1" 200 635
+INFO 2025-06-14 10:26:51,522 basehttp "GET /api/accounts/user-info/ HTTP/1.1" 200 635
+INFO 2025-06-14 10:26:51,706 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 206
+INFO 2025-06-14 10:26:51,725 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 206
+INFO 2025-06-14 10:26:51,760 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 3150
+INFO 2025-06-14 10:26:51,789 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 206
+INFO 2025-06-14 10:26:51,837 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 3150
+INFO 2025-06-14 10:26:51,920 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 3150
+INFO 2025-06-14 10:27:02,976 basehttp "GET /api/accounts/user-info/ HTTP/1.1" 200 635
+INFO 2025-06-14 10:27:02,987 basehttp "GET /api/accounts/user-info/ HTTP/1.1" 200 635
+INFO 2025-06-14 10:27:03,168 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 206
+INFO 2025-06-14 10:27:03,168 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 3150
+INFO 2025-06-14 10:27:03,189 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 206
+INFO 2025-06-14 10:27:03,239 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 3150
+INFO 2025-06-14 10:27:08,046 basehttp "POST /api/business/switch-business/ HTTP/1.1" 200 150
+INFO 2025-06-14 10:27:08,096 basehttp "GET /api/accounts/user-info/ HTTP/1.1" 200 620
+INFO 2025-06-14 10:27:08,156 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 2985
+INFO 2025-06-14 10:27:08,224 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 206
+INFO 2025-06-14 10:27:08,301 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 2985
+INFO 2025-06-14 10:27:08,304 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 206
+INFO 2025-06-14 10:27:08,353 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 2985
+INFO 2025-06-14 10:27:45,312 basehttp "POST /api/posts/ HTTP/1.1" 201 286
+INFO 2025-06-14 10:27:45,340 basehttp "POST /api/posts/ HTTP/1.1" 201 287
+INFO 2025-06-14 10:27:52,929 basehttp "GET /api/accounts/user-info/ HTTP/1.1" 200 620
+INFO 2025-06-14 10:27:52,946 basehttp "GET /api/accounts/user-info/ HTTP/1.1" 200 620
+INFO 2025-06-14 10:27:53,116 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 206
+INFO 2025-06-14 10:27:53,147 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 206
+INFO 2025-06-14 10:27:53,206 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 3560
+INFO 2025-06-14 10:27:53,269 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 3560
+INFO 2025-06-14 10:31:59,765 basehttp "GET /api/accounts/user-info/ HTTP/1.1" 200 620
+INFO 2025-06-14 10:31:59,775 basehttp "GET /api/accounts/user-info/ HTTP/1.1" 200 620
+INFO 2025-06-14 10:31:59,897 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 206
+INFO 2025-06-14 10:31:59,931 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 206
+INFO 2025-06-14 10:31:59,986 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 3560
+INFO 2025-06-14 10:31:59,991 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 206
+INFO 2025-06-14 10:32:00,055 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 3560
+INFO 2025-06-14 10:32:00,159 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 3560
+INFO 2025-06-14 10:32:14,277 basehttp "POST /api/posts/ HTTP/1.1" 201 281
+INFO 2025-06-14 10:32:14,297 basehttp "POST /api/posts/ HTTP/1.1" 201 281
+INFO 2025-06-14 10:32:18,962 basehttp "GET /api/accounts/user-info/ HTTP/1.1" 200 620
+INFO 2025-06-14 10:32:18,977 basehttp "GET /api/accounts/user-info/ HTTP/1.1" 200 620
+INFO 2025-06-14 10:32:19,072 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 206
+INFO 2025-06-14 10:32:19,144 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 206
+INFO 2025-06-14 10:32:19,148 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 4124
+INFO 2025-06-14 10:32:19,205 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 206
+INFO 2025-06-14 10:32:19,240 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 4124
+INFO 2025-06-14 10:32:19,304 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 4124
+INFO 2025-06-14 10:34:11,130 basehttp "GET /api/accounts/user-info/ HTTP/1.1" 200 620
+INFO 2025-06-14 10:34:11,141 basehttp "GET /api/accounts/user-info/ HTTP/1.1" 200 620
+INFO 2025-06-14 10:34:11,245 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 206
+INFO 2025-06-14 10:34:11,271 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 206
+INFO 2025-06-14 10:34:11,331 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 206
+INFO 2025-06-14 10:34:11,332 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 4124
+INFO 2025-06-14 10:34:11,411 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 4124
+INFO 2025-06-14 10:34:11,504 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 4124
+INFO 2025-06-14 10:34:11,895 basehttp "GET /api/accounts/user-info/ HTTP/1.1" 200 620
+INFO 2025-06-14 10:34:11,905 basehttp "GET /api/accounts/user-info/ HTTP/1.1" 200 620
+INFO 2025-06-14 10:34:12,024 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 206
+INFO 2025-06-14 10:34:12,051 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 206
+INFO 2025-06-14 10:34:12,099 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 4124
+INFO 2025-06-14 10:34:12,117 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 206
+INFO 2025-06-14 10:34:12,178 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 4124
+INFO 2025-06-14 10:34:12,237 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 4124
+INFO 2025-06-14 10:34:36,488 basehttp "GET /api/accounts/user-info/ HTTP/1.1" 200 620
+INFO 2025-06-14 10:34:36,500 basehttp "GET /api/accounts/user-info/ HTTP/1.1" 200 620
+INFO 2025-06-14 10:34:36,575 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 206
+INFO 2025-06-14 10:34:36,635 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 206
+INFO 2025-06-14 10:34:36,651 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 4124
+INFO 2025-06-14 10:34:36,695 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 206
+INFO 2025-06-14 10:34:36,748 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 4124
+INFO 2025-06-14 10:34:36,813 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 4124
+INFO 2025-06-14 10:36:04,061 basehttp "GET /api/accounts/user-info/ HTTP/1.1" 200 620
+INFO 2025-06-14 10:36:04,077 basehttp "GET /api/accounts/user-info/ HTTP/1.1" 200 620
+INFO 2025-06-14 10:36:04,239 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 206
+INFO 2025-06-14 10:36:04,255 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 206
+INFO 2025-06-14 10:36:04,319 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 206
+INFO 2025-06-14 10:36:04,320 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 4124
+INFO 2025-06-14 10:36:04,393 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 4124
+INFO 2025-06-14 10:36:04,456 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 4124
+INFO 2025-06-14 10:38:15,187 basehttp "POST /api/business/switch-business/ HTTP/1.1" 200 195
+INFO 2025-06-14 10:38:15,205 basehttp "GET /api/accounts/user-info/ HTTP/1.1" 200 635
+INFO 2025-06-14 10:38:15,314 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 206
+INFO 2025-06-14 10:38:15,329 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 4349
+INFO 2025-06-14 10:38:15,332 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 206
+INFO 2025-06-14 10:38:15,453 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 4349
+INFO 2025-06-14 10:38:15,525 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 4349
+INFO 2025-06-14 10:38:16,580 basehttp "POST /api/business/switch-business/ HTTP/1.1" 200 150
+INFO 2025-06-14 10:38:16,593 basehttp "GET /api/accounts/user-info/ HTTP/1.1" 200 620
+INFO 2025-06-14 10:38:16,704 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 206
+INFO 2025-06-14 10:38:16,719 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 206
+INFO 2025-06-14 10:38:16,730 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 4124
+INFO 2025-06-14 10:38:16,847 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 4124
+INFO 2025-06-14 10:38:16,908 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 4124
+INFO 2025-06-14 10:38:19,962 basehttp "POST /api/business/switch-business/ HTTP/1.1" 200 195
+INFO 2025-06-14 10:38:19,976 basehttp "GET /api/accounts/user-info/ HTTP/1.1" 200 635
+INFO 2025-06-14 10:38:20,104 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 206
+INFO 2025-06-14 10:38:20,119 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 206
+INFO 2025-06-14 10:38:20,131 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 4349
+INFO 2025-06-14 10:38:20,232 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 4349
+INFO 2025-06-14 10:38:20,299 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 4349
+INFO 2025-06-14 10:38:21,198 basehttp "POST /api/business/switch-business/ HTTP/1.1" 200 150
+INFO 2025-06-14 10:38:21,212 basehttp "GET /api/accounts/user-info/ HTTP/1.1" 200 620
+INFO 2025-06-14 10:38:21,323 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 206
+INFO 2025-06-14 10:38:21,340 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 4124
+INFO 2025-06-14 10:38:21,343 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 206
+INFO 2025-06-14 10:38:21,448 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 4124
+INFO 2025-06-14 10:38:21,520 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 4124
+INFO 2025-06-14 10:38:57,129 basehttp "GET /api/accounts/user-info/ HTTP/1.1" 200 620
+INFO 2025-06-14 10:38:57,140 basehttp "GET /api/accounts/user-info/ HTTP/1.1" 200 620
+INFO 2025-06-14 10:38:57,237 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 206
+INFO 2025-06-14 10:38:57,302 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 206
+INFO 2025-06-14 10:38:57,326 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 4124
+INFO 2025-06-14 10:38:57,372 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 206
+INFO 2025-06-14 10:38:57,421 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 4124
+INFO 2025-06-14 10:38:57,485 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 4124
+INFO 2025-06-14 10:39:18,130 basehttp "GET /api/accounts/user-info/ HTTP/1.1" 200 620
+INFO 2025-06-14 10:39:18,147 basehttp "GET /api/accounts/user-info/ HTTP/1.1" 200 620
+INFO 2025-06-14 10:39:18,267 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 206
+INFO 2025-06-14 10:39:18,292 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 206
+INFO 2025-06-14 10:39:18,333 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 4124
+INFO 2025-06-14 10:39:18,352 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 206
+INFO 2025-06-14 10:39:18,414 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 4124
+INFO 2025-06-14 10:39:18,527 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 4124
+INFO 2025-06-15 10:55:49,243 autoreload Watching for file changes with StatReloader
+INFO 2025-06-15 10:56:13,030 basehttp "OPTIONS /api/accounts/user-info/ HTTP/1.1" 200 0
+INFO 2025-06-15 10:56:13,043 basehttp "OPTIONS /api/accounts/user-info/ HTTP/1.1" 200 0
+WARNING 2025-06-15 10:56:13,061 log Unauthorized: /api/accounts/user-info/
+WARNING 2025-06-15 10:56:13,062 basehttp "GET /api/accounts/user-info/ HTTP/1.1" 401 184
+WARNING 2025-06-15 10:56:13,108 log Unauthorized: /api/accounts/user-info/
+WARNING 2025-06-15 10:56:13,109 basehttp "GET /api/accounts/user-info/ HTTP/1.1" 401 184
+INFO 2025-06-15 10:56:21,582 basehttp "OPTIONS /api/accounts/login/ HTTP/1.1" 200 0
+INFO 2025-06-15 10:56:22,260 basehttp "POST /api/accounts/login/ HTTP/1.1" 200 1111
+INFO 2025-06-15 10:56:22,473 basehttp "OPTIONS /api/business/user-businesses/ HTTP/1.1" 200 0
+INFO 2025-06-15 10:56:22,476 basehttp "OPTIONS /api/posts/feed/ HTTP/1.1" 200 0
+INFO 2025-06-15 10:56:22,479 basehttp "OPTIONS /api/business/user-businesses/ HTTP/1.1" 200 0
+INFO 2025-06-15 10:56:22,480 basehttp "OPTIONS /api/posts/feed/ HTTP/1.1" 200 0
+INFO 2025-06-15 10:56:22,509 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 206
+INFO 2025-06-15 10:56:22,589 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 206
+INFO 2025-06-15 10:56:22,634 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 4124
+INFO 2025-06-15 10:56:22,792 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 4124
+INFO 2025-06-15 10:56:27,998 basehttp "OPTIONS /api/business/switch-business/ HTTP/1.1" 200 0
+INFO 2025-06-15 10:56:28,019 basehttp "POST /api/business/switch-business/ HTTP/1.1" 200 195
+INFO 2025-06-15 10:56:28,086 basehttp "GET /api/accounts/user-info/ HTTP/1.1" 200 635
+INFO 2025-06-15 10:56:28,260 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 4349
+INFO 2025-06-15 10:56:28,261 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 206
+INFO 2025-06-15 10:56:28,273 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 206
+INFO 2025-06-15 10:56:28,419 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 4349
+INFO 2025-06-15 10:56:28,526 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 4349
+INFO 2025-06-15 10:56:29,826 basehttp "POST /api/business/switch-business/ HTTP/1.1" 200 150
+INFO 2025-06-15 10:56:29,846 basehttp "GET /api/accounts/user-info/ HTTP/1.1" 200 620
+INFO 2025-06-15 10:56:29,969 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 206
+INFO 2025-06-15 10:56:30,012 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 206
+INFO 2025-06-15 10:56:30,036 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 4124
+INFO 2025-06-15 10:56:30,182 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 4124
+INFO 2025-06-15 10:56:30,319 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 4124
+INFO 2025-06-15 10:56:45,261 basehttp "POST /api/business/switch-business/ HTTP/1.1" 200 195
+INFO 2025-06-15 10:56:45,285 basehttp "GET /api/accounts/user-info/ HTTP/1.1" 200 635
+INFO 2025-06-15 10:56:45,429 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 206
+INFO 2025-06-15 10:56:45,459 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 206
+INFO 2025-06-15 10:56:45,479 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 4349
+INFO 2025-06-15 10:56:45,626 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 4349
+INFO 2025-06-15 10:56:45,774 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 4349
+INFO 2025-06-15 10:56:46,378 basehttp "POST /api/business/switch-business/ HTTP/1.1" 200 150
+INFO 2025-06-15 10:56:46,401 basehttp "GET /api/accounts/user-info/ HTTP/1.1" 200 620
+INFO 2025-06-15 10:56:46,541 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 206
+INFO 2025-06-15 10:56:46,590 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 206
+INFO 2025-06-15 10:56:46,603 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 4124
+INFO 2025-06-15 10:56:46,752 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 4124
+INFO 2025-06-15 10:56:46,886 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 4124
+INFO 2025-06-15 10:57:04,620 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 206
+INFO 2025-06-15 10:57:04,661 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 206
+INFO 2025-06-15 10:57:04,741 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 4124
+INFO 2025-06-15 10:57:04,854 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 4124
+INFO 2025-06-15 10:57:31,486 basehttp "OPTIONS /api/posts/ HTTP/1.1" 200 0
+INFO 2025-06-15 10:57:31,510 basehttp "POST /api/posts/ HTTP/1.1" 201 311
+INFO 2025-06-15 10:57:31,582 basehttp "POST /api/posts/ HTTP/1.1" 201 311
+INFO 2025-06-15 10:57:49,233 basehttp "POST /api/business/switch-business/ HTTP/1.1" 200 195
+INFO 2025-06-15 10:57:49,259 basehttp "GET /api/accounts/user-info/ HTTP/1.1" 200 635
+INFO 2025-06-15 10:57:49,408 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 206
+INFO 2025-06-15 10:57:49,449 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 206
+INFO 2025-06-15 10:57:49,463 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 5003
+INFO 2025-06-15 10:57:49,630 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 5003
+INFO 2025-06-15 10:57:49,794 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 5003
+INFO 2025-06-15 10:59:38,789 basehttp "POST /api/business/switch-business/ HTTP/1.1" 200 150
+INFO 2025-06-15 10:59:38,816 basehttp "GET /api/accounts/user-info/ HTTP/1.1" 200 620
+INFO 2025-06-15 10:59:38,999 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 206
+INFO 2025-06-15 10:59:39,021 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 4748
+INFO 2025-06-15 10:59:39,027 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 206
+INFO 2025-06-15 10:59:39,181 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 4748
+INFO 2025-06-15 10:59:39,316 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 4748
+INFO 2025-06-15 11:00:40,324 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 206
+INFO 2025-06-15 11:00:40,360 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 206
+INFO 2025-06-15 11:00:40,468 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 4748
+INFO 2025-06-15 11:00:40,627 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 4748
+INFO 2025-06-15 11:00:51,531 basehttp "POST /api/business/switch-business/ HTTP/1.1" 200 195
+INFO 2025-06-15 11:00:51,563 basehttp "GET /api/accounts/user-info/ HTTP/1.1" 200 635
+INFO 2025-06-15 11:00:51,749 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 5003
+INFO 2025-06-15 11:00:51,788 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 206
+INFO 2025-06-15 11:00:51,826 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 206
+INFO 2025-06-15 11:00:51,964 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 5003
+INFO 2025-06-15 11:00:52,169 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 5003
+INFO 2025-06-15 11:01:22,273 basehttp "POST /api/accounts/login/ HTTP/1.1" 200 1126
+INFO 2025-06-15 11:01:22,465 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 206
+INFO 2025-06-15 11:01:22,495 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 206
+INFO 2025-06-15 11:01:22,588 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 5003
+INFO 2025-06-15 11:01:22,710 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 5003
+INFO 2025-06-15 11:07:27,581 basehttp "GET /api/accounts/user-info/ HTTP/1.1" 200 635
+INFO 2025-06-15 11:07:27,598 basehttp "GET /api/accounts/user-info/ HTTP/1.1" 200 635
+INFO 2025-06-15 11:07:27,815 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 206
+INFO 2025-06-15 11:07:27,859 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 206
+INFO 2025-06-15 11:07:27,939 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 206
+INFO 2025-06-15 11:07:27,996 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 5003
+INFO 2025-06-15 11:07:28,124 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 5003
+INFO 2025-06-15 11:07:28,281 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 5003
+INFO 2025-06-15 11:07:36,914 basehttp "POST /api/posts/ HTTP/1.1" 201 296
+INFO 2025-06-15 11:07:36,947 basehttp "POST /api/posts/ HTTP/1.1" 201 296
+INFO 2025-06-15 11:07:41,180 basehttp "GET /api/accounts/user-info/ HTTP/1.1" 200 635
+INFO 2025-06-15 11:07:41,194 basehttp "GET /api/accounts/user-info/ HTTP/1.1" 200 635
+INFO 2025-06-15 11:07:41,334 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 206
+INFO 2025-06-15 11:07:41,376 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 206
+INFO 2025-06-15 11:07:41,462 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 206
+INFO 2025-06-15 11:07:41,525 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 5597
+INFO 2025-06-15 11:07:41,676 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 5597
+INFO 2025-06-15 11:07:41,860 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 5597
+INFO 2025-06-15 11:09:10,861 basehttp "GET /api/accounts/user-info/ HTTP/1.1" 200 635
+INFO 2025-06-15 11:09:10,878 basehttp "GET /api/accounts/user-info/ HTTP/1.1" 200 635
+INFO 2025-06-15 11:09:11,028 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 206
+INFO 2025-06-15 11:09:11,060 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 206
+INFO 2025-06-15 11:09:11,147 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 206
+INFO 2025-06-15 11:09:11,232 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 5597
+INFO 2025-06-15 11:09:11,386 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 5597
+INFO 2025-06-15 11:09:11,559 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 5597
+INFO 2025-06-15 11:09:17,831 basehttp "POST /api/posts/ HTTP/1.1" 201 295
+INFO 2025-06-15 11:09:17,870 basehttp "POST /api/posts/ HTTP/1.1" 201 295
+INFO 2025-06-15 11:09:23,469 basehttp "GET /api/accounts/user-info/ HTTP/1.1" 200 635
+INFO 2025-06-15 11:09:23,488 basehttp "GET /api/accounts/user-info/ HTTP/1.1" 200 635
+INFO 2025-06-15 11:09:23,639 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 206
+INFO 2025-06-15 11:09:23,699 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 206
+INFO 2025-06-15 11:09:23,772 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 206
+INFO 2025-06-15 11:09:23,828 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 6189
+INFO 2025-06-15 11:09:24,026 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 6189
+INFO 2025-06-15 11:09:24,200 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 6189
+INFO 2025-06-15 11:12:28,611 basehttp "GET /api/accounts/user-info/ HTTP/1.1" 200 635
+INFO 2025-06-15 11:12:28,628 basehttp "GET /api/accounts/user-info/ HTTP/1.1" 200 635
+INFO 2025-06-15 11:12:28,770 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 206
+INFO 2025-06-15 11:12:28,810 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 206
+INFO 2025-06-15 11:12:28,880 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 206
+INFO 2025-06-15 11:12:28,977 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 6189
+INFO 2025-06-15 11:12:29,139 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 6189
+INFO 2025-06-15 11:12:29,315 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 6189
+INFO 2025-06-15 11:12:35,033 basehttp "POST /api/posts/ HTTP/1.1" 201 296
+INFO 2025-06-15 11:12:38,205 basehttp "GET /api/accounts/user-info/ HTTP/1.1" 200 635
+INFO 2025-06-15 11:12:38,220 basehttp "GET /api/accounts/user-info/ HTTP/1.1" 200 635
+INFO 2025-06-15 11:12:38,391 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 206
+INFO 2025-06-15 11:12:38,428 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 206
+INFO 2025-06-15 11:12:38,503 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 206
+INFO 2025-06-15 11:12:38,596 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 6486
+INFO 2025-06-15 11:12:38,795 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 6486
+INFO 2025-06-15 11:12:38,973 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 6486
+INFO 2025-06-15 11:13:54,263 basehttp "POST /api/business/switch-business/ HTTP/1.1" 200 150
+INFO 2025-06-15 11:13:54,304 basehttp "GET /api/accounts/user-info/ HTTP/1.1" 200 620
+INFO 2025-06-15 11:13:54,473 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 206
+INFO 2025-06-15 11:13:54,496 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 206
+INFO 2025-06-15 11:13:54,558 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 6156
+INFO 2025-06-15 11:13:54,757 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 6156
+INFO 2025-06-15 11:13:54,946 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 6156
+INFO 2025-06-15 11:13:55,698 basehttp "POST /api/business/switch-business/ HTTP/1.1" 200 195
+INFO 2025-06-15 11:13:55,726 basehttp "GET /api/accounts/user-info/ HTTP/1.1" 200 635
+INFO 2025-06-15 11:13:55,879 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 206
+INFO 2025-06-15 11:13:55,920 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 206
+INFO 2025-06-15 11:13:56,008 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 6486
+INFO 2025-06-15 11:13:56,208 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 6486
+INFO 2025-06-15 11:13:56,340 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 6486
+INFO 2025-06-15 11:14:35,818 basehttp "POST /api/business/switch-business/ HTTP/1.1" 200 150
+INFO 2025-06-15 11:14:35,844 basehttp "GET /api/accounts/user-info/ HTTP/1.1" 200 620
+INFO 2025-06-15 11:14:36,008 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 206
+INFO 2025-06-15 11:14:36,046 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 206
+INFO 2025-06-15 11:14:36,124 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 6156
+INFO 2025-06-15 11:14:36,313 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 6156
+INFO 2025-06-15 11:14:36,465 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 6156
+INFO 2025-06-15 11:14:46,724 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 206
+INFO 2025-06-15 11:14:46,775 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 206
+INFO 2025-06-15 11:14:46,883 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 6156
+INFO 2025-06-15 11:14:47,046 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 6156
+INFO 2025-06-15 11:15:13,655 basehttp "GET /api/accounts/user-info/ HTTP/1.1" 200 620
+INFO 2025-06-15 11:15:13,671 basehttp "GET /api/accounts/user-info/ HTTP/1.1" 200 620
+INFO 2025-06-15 11:15:37,707 basehttp "OPTIONS /api/accounts/user-profile/ HTTP/1.1" 200 0
+INFO 2025-06-15 11:15:37,812 basehttp "PATCH /api/accounts/user-profile/ HTTP/1.1" 200 119
+INFO 2025-06-15 11:15:37,891 basehttp "GET /api/accounts/user-info/ HTTP/1.1" 200 620
+INFO 2025-06-15 11:15:53,188 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 206
+INFO 2025-06-15 11:15:53,221 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 206
+INFO 2025-06-15 11:15:53,351 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 6156
+INFO 2025-06-15 11:15:53,540 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 6156
+INFO 2025-06-15 11:19:41,078 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 206
+INFO 2025-06-15 11:19:41,123 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 206
+INFO 2025-06-15 11:19:41,233 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 6156
+INFO 2025-06-15 11:19:41,441 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 6156
+INFO 2025-06-15 11:38:14,117 basehttp "GET /api/accounts/user-info/ HTTP/1.1" 200 620
+INFO 2025-06-15 11:38:14,134 basehttp "GET /api/accounts/user-info/ HTTP/1.1" 200 620
+INFO 2025-06-15 11:38:14,414 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 206
+INFO 2025-06-15 11:38:14,448 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 206
+INFO 2025-06-15 11:38:14,565 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 206
+INFO 2025-06-15 11:38:14,609 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 6156
+INFO 2025-06-15 11:38:14,790 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 6156
+INFO 2025-06-15 11:38:15,004 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 6156
+INFO 2025-06-15 11:41:47,359 basehttp "POST /api/accounts/login/ HTTP/1.1" 200 1111
+INFO 2025-06-15 11:41:47,499 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 206
+INFO 2025-06-15 11:41:47,538 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 206
+INFO 2025-06-15 11:41:47,674 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 6156
+INFO 2025-06-15 11:41:47,818 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 6156
+INFO 2025-06-15 11:41:54,245 basehttp "POST /api/business/switch-business/ HTTP/1.1" 200 195
+INFO 2025-06-15 11:41:54,277 basehttp "GET /api/accounts/user-info/ HTTP/1.1" 200 635
+INFO 2025-06-15 11:41:54,420 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 206
+INFO 2025-06-15 11:41:54,449 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 206
+INFO 2025-06-15 11:41:54,515 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 6486
+INFO 2025-06-15 11:41:54,742 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 6486
+INFO 2025-06-15 11:41:54,891 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 6486
+INFO 2025-06-15 11:45:12,542 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 206
+INFO 2025-06-15 11:45:12,566 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 206
+INFO 2025-06-15 11:45:12,747 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 6486
+INFO 2025-06-15 11:45:12,922 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 6486
+INFO 2025-06-15 11:45:13,893 basehttp "POST /api/business/switch-business/ HTTP/1.1" 200 150
+INFO 2025-06-15 11:45:13,917 basehttp "GET /api/accounts/user-info/ HTTP/1.1" 200 620
+INFO 2025-06-15 11:45:14,082 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 206
+INFO 2025-06-15 11:45:14,124 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 206
+INFO 2025-06-15 11:45:14,168 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 6156
+INFO 2025-06-15 11:45:14,339 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 6156
+INFO 2025-06-15 11:45:14,489 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 6156
+INFO 2025-06-15 11:45:15,200 basehttp "POST /api/business/switch-business/ HTTP/1.1" 200 195
+INFO 2025-06-15 11:45:15,226 basehttp "GET /api/accounts/user-info/ HTTP/1.1" 200 635
+INFO 2025-06-15 11:45:15,340 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 206
+INFO 2025-06-15 11:45:15,365 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 206
+INFO 2025-06-15 11:45:15,475 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 6486
+INFO 2025-06-15 11:45:15,668 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 6486
+INFO 2025-06-15 11:45:15,813 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 6486
+INFO 2025-06-15 11:45:17,075 basehttp "POST /api/business/switch-business/ HTTP/1.1" 200 150
+INFO 2025-06-15 11:45:17,100 basehttp "GET /api/accounts/user-info/ HTTP/1.1" 200 620
+INFO 2025-06-15 11:45:17,240 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 206
+INFO 2025-06-15 11:45:17,278 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 206
+INFO 2025-06-15 11:45:17,341 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 6156
+INFO 2025-06-15 11:45:17,510 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 6156
+INFO 2025-06-15 11:45:17,645 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 6156
+INFO 2025-06-15 11:45:19,902 basehttp "POST /api/business/switch-business/ HTTP/1.1" 200 195
+INFO 2025-06-15 11:45:19,934 basehttp "GET /api/accounts/user-info/ HTTP/1.1" 200 635
+INFO 2025-06-15 11:45:20,063 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 206
+INFO 2025-06-15 11:45:20,096 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 206
+INFO 2025-06-15 11:45:20,208 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 6486
+INFO 2025-06-15 11:45:20,393 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 6486
+INFO 2025-06-15 11:45:20,545 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 6486
+INFO 2025-06-15 11:45:25,458 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 206
+INFO 2025-06-15 11:45:25,491 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 206
+INFO 2025-06-15 11:45:25,669 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 6486
+INFO 2025-06-15 11:45:25,838 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 6486
+INFO 2025-06-15 11:57:21,276 basehttp "GET /api/accounts/user-info/ HTTP/1.1" 200 635
+INFO 2025-06-15 11:57:21,380 basehttp "GET /api/accounts/user-info/ HTTP/1.1" 200 635
+INFO 2025-06-15 11:57:21,484 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 206
+INFO 2025-06-15 11:57:21,520 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 206
+INFO 2025-06-15 11:57:21,603 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 206
+INFO 2025-06-15 11:57:21,693 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 6486
+INFO 2025-06-15 11:57:21,889 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 6486
+INFO 2025-06-15 11:57:22,068 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 6486
+INFO 2025-06-15 11:57:25,664 basehttp "POST /api/business/switch-business/ HTTP/1.1" 200 150
+INFO 2025-06-15 11:57:25,687 basehttp "GET /api/accounts/user-info/ HTTP/1.1" 200 620
+INFO 2025-06-15 11:57:25,813 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 206
+INFO 2025-06-15 11:57:25,851 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 206
+INFO 2025-06-15 11:57:25,932 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 6156
+INFO 2025-06-15 11:57:26,155 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 6156
+INFO 2025-06-15 11:57:26,334 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 6156
+INFO 2025-06-15 11:57:39,782 basehttp "POST /api/business/switch-business/ HTTP/1.1" 200 195
+INFO 2025-06-15 11:57:39,809 basehttp "GET /api/accounts/user-info/ HTTP/1.1" 200 635
+INFO 2025-06-15 11:57:39,937 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 206
+INFO 2025-06-15 11:57:39,979 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 206
+INFO 2025-06-15 11:57:40,059 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 6486
+INFO 2025-06-15 11:57:40,247 basehttp "POST /api/business/switch-business/ HTTP/1.1" 200 150
+INFO 2025-06-15 11:57:40,292 basehttp "GET /api/accounts/user-info/ HTTP/1.1" 200 620
+INFO 2025-06-15 11:57:40,308 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 6396
+INFO 2025-06-15 11:57:40,441 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 206
+INFO 2025-06-15 11:57:40,467 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 206
+INFO 2025-06-15 11:57:40,500 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 6156
+INFO 2025-06-15 11:57:40,587 basehttp "POST /api/business/switch-business/ HTTP/1.1" 200 195
+INFO 2025-06-15 11:57:40,691 basehttp "GET /api/accounts/user-info/ HTTP/1.1" 200 635
+INFO 2025-06-15 11:57:40,752 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 6396
+INFO 2025-06-15 11:57:40,824 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 206
+INFO 2025-06-15 11:57:40,898 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 206
+INFO 2025-06-15 11:57:41,020 basehttp "POST /api/business/switch-business/ HTTP/1.1" 200 150
+INFO 2025-06-15 11:57:41,040 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 6456
+INFO 2025-06-15 11:57:41,105 basehttp "GET /api/accounts/user-info/ HTTP/1.1" 200 620
+INFO 2025-06-15 11:57:41,208 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 6156
+INFO 2025-06-15 11:57:41,242 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 206
+INFO 2025-06-15 11:57:41,288 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 206
+INFO 2025-06-15 11:57:41,414 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 6156
+INFO 2025-06-15 11:57:41,584 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 6156
+INFO 2025-06-15 11:57:41,736 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 6156
+INFO 2025-06-15 11:57:41,898 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 6156
+INFO 2025-06-15 11:57:42,056 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 6156
+INFO 2025-06-15 11:57:42,204 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 6156
+INFO 2025-06-15 11:58:13,717 basehttp "POST /api/business/switch-business/ HTTP/1.1" 200 195
+INFO 2025-06-15 11:58:13,747 basehttp "GET /api/accounts/user-info/ HTTP/1.1" 200 635
+INFO 2025-06-15 11:58:13,923 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 206
+INFO 2025-06-15 11:58:13,963 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 206
+INFO 2025-06-15 11:58:14,009 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 6486
+INFO 2025-06-15 11:58:14,191 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 6486
+INFO 2025-06-15 11:58:14,350 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 6486
+INFO 2025-06-15 11:58:51,593 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 206
+INFO 2025-06-15 11:58:51,626 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 206
+INFO 2025-06-15 11:58:51,774 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 6486
+INFO 2025-06-15 11:58:51,941 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 6486
+INFO 2025-06-15 11:58:52,407 basehttp "POST /api/business/switch-business/ HTTP/1.1" 200 150
+INFO 2025-06-15 11:58:52,434 basehttp "GET /api/accounts/user-info/ HTTP/1.1" 200 620
+INFO 2025-06-15 11:58:52,589 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 206
+INFO 2025-06-15 11:58:52,626 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 206
+INFO 2025-06-15 11:58:52,686 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 6156
+INFO 2025-06-15 11:58:52,858 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 6156
+INFO 2025-06-15 11:58:53,011 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 6156
+INFO 2025-06-15 12:01:48,447 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 206
+INFO 2025-06-15 12:01:48,495 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 206
+INFO 2025-06-15 12:01:48,612 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 6156
+INFO 2025-06-15 12:01:48,779 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 6156
+INFO 2025-06-15 12:14:09,946 basehttp "GET /api/accounts/user-info/ HTTP/1.1" 200 620
+INFO 2025-06-15 12:14:09,965 basehttp "GET /api/accounts/user-info/ HTTP/1.1" 200 620
+INFO 2025-06-15 12:14:10,033 basehttp "GET /api/accounts/user-info/ HTTP/1.1" 200 620
+INFO 2025-06-15 12:14:10,094 basehttp "GET /api/accounts/user-info/ HTTP/1.1" 200 620
+INFO 2025-06-15 12:14:10,377 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 206
+INFO 2025-06-15 12:14:10,427 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 206
+INFO 2025-06-15 12:14:10,508 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 206
+INFO 2025-06-15 12:14:10,582 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 6156
+INFO 2025-06-15 12:14:10,743 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 6156
+INFO 2025-06-15 12:14:10,966 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 6156
+INFO 2025-06-15 12:15:11,082 basehttp "GET /api/accounts/user-info/ HTTP/1.1" 200 620
+INFO 2025-06-15 12:15:11,099 basehttp "GET /api/accounts/user-info/ HTTP/1.1" 200 620
+INFO 2025-06-15 12:15:27,420 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 206
+INFO 2025-06-15 12:15:27,465 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 206
+INFO 2025-06-15 12:15:27,593 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 6156
+INFO 2025-06-15 12:15:27,770 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 6156
+INFO 2025-06-15 12:17:47,715 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 206
+INFO 2025-06-15 12:17:47,750 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 206
+INFO 2025-06-15 12:17:47,892 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 6156
+INFO 2025-06-15 12:17:48,051 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 6156
+INFO 2025-06-15 12:17:51,504 basehttp "POST /api/business/switch-business/ HTTP/1.1" 200 195
+INFO 2025-06-15 12:17:51,528 basehttp "GET /api/accounts/user-info/ HTTP/1.1" 200 635
+INFO 2025-06-15 12:17:51,665 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 206
+INFO 2025-06-15 12:17:51,709 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 206
+INFO 2025-06-15 12:17:51,808 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 6486
+INFO 2025-06-15 12:17:51,991 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 6486
+INFO 2025-06-15 12:17:52,134 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 6486
+INFO 2025-06-16 13:42:23,994 autoreload Watching for file changes with StatReloader
+WARNING 2025-06-16 13:42:33,143 log Not Found: /
+WARNING 2025-06-16 13:42:33,144 basehttp "GET / HTTP/1.1" 404 3284
+WARNING 2025-06-16 13:42:33,276 log Not Found: /favicon.ico
+WARNING 2025-06-16 13:42:33,276 basehttp "GET /favicon.ico HTTP/1.1" 404 3338
+INFO 2025-06-16 13:43:00,505 basehttp "OPTIONS /api/accounts/login/ HTTP/1.1" 200 0
+INFO 2025-06-16 13:43:00,962 basehttp "POST /api/accounts/login/ HTTP/1.1" 200 1126
+INFO 2025-06-16 13:43:01,107 basehttp "OPTIONS /api/posts/feed/ HTTP/1.1" 200 0
+INFO 2025-06-16 13:43:01,107 basehttp "OPTIONS /api/business/user-businesses/ HTTP/1.1" 200 0
+INFO 2025-06-16 13:43:01,120 basehttp "OPTIONS /api/business/user-businesses/ HTTP/1.1" 200 0
+INFO 2025-06-16 13:43:01,121 basehttp "OPTIONS /api/posts/feed/ HTTP/1.1" 200 0
+INFO 2025-06-16 13:43:01,140 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 206
+INFO 2025-06-16 13:43:01,206 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 206
+INFO 2025-06-16 13:43:01,261 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 6486
+INFO 2025-06-16 13:43:01,408 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 6486
+INFO 2025-06-16 13:43:03,239 basehttp "OPTIONS /api/business/switch-business/ HTTP/1.1" 200 0
+INFO 2025-06-16 13:43:03,268 basehttp "POST /api/business/switch-business/ HTTP/1.1" 200 150
+INFO 2025-06-16 13:43:03,319 basehttp "OPTIONS /api/accounts/user-info/ HTTP/1.1" 200 0
+INFO 2025-06-16 13:43:03,380 basehttp "GET /api/accounts/user-info/ HTTP/1.1" 200 620
+INFO 2025-06-16 13:43:03,493 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 206
+INFO 2025-06-16 13:43:03,526 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 206
+INFO 2025-06-16 13:43:03,567 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 6156
+INFO 2025-06-16 13:43:03,693 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 6156
+INFO 2025-06-16 13:43:03,776 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 6156
+INFO 2025-06-16 13:43:08,150 basehttp "POST /api/business/switch-business/ HTTP/1.1" 200 195
+INFO 2025-06-16 13:43:08,173 basehttp "GET /api/accounts/user-info/ HTTP/1.1" 200 635
+INFO 2025-06-16 13:43:08,310 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 206
+INFO 2025-06-16 13:43:08,354 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 206
+INFO 2025-06-16 13:43:08,383 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 6486
+INFO 2025-06-16 13:43:08,509 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 6486
+INFO 2025-06-16 13:43:08,632 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 6486
+INFO 2025-06-16 13:43:19,341 basehttp "POST /api/business/switch-business/ HTTP/1.1" 200 150
+INFO 2025-06-16 13:43:19,369 basehttp "GET /api/accounts/user-info/ HTTP/1.1" 200 620
+INFO 2025-06-16 13:43:19,503 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 206
+INFO 2025-06-16 13:43:19,538 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 206
+INFO 2025-06-16 13:43:19,579 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 6156
+INFO 2025-06-16 13:43:19,717 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 6156
+INFO 2025-06-16 13:43:19,813 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 6156
+INFO 2025-06-16 13:43:46,331 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 206
+INFO 2025-06-16 13:43:46,373 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 206
+INFO 2025-06-16 13:43:46,471 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 6156
+INFO 2025-06-16 13:43:46,567 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 6156
+INFO 2025-06-16 14:08:50,237 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 206
+INFO 2025-06-16 14:08:50,281 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 206
+INFO 2025-06-16 14:08:50,371 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 6156
+INFO 2025-06-16 14:08:50,473 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 6156
+INFO 2025-06-16 14:13:16,728 basehttp "POST /api/accounts/login/ HTTP/1.1" 200 1111
+INFO 2025-06-16 14:13:16,808 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 206
+INFO 2025-06-16 14:13:16,834 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 206
+INFO 2025-06-16 14:13:16,912 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 6156
+INFO 2025-06-16 14:13:17,029 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 6156
+INFO 2025-06-16 14:14:55,318 basehttp "POST /api/business/switch-business/ HTTP/1.1" 200 195
+INFO 2025-06-16 14:14:55,332 basehttp "GET /api/accounts/user-info/ HTTP/1.1" 200 635
+INFO 2025-06-16 14:14:55,455 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 206
+INFO 2025-06-16 14:14:55,482 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 206
+INFO 2025-06-16 14:14:55,495 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 6486
+INFO 2025-06-16 14:14:55,638 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 6486
+INFO 2025-06-16 14:14:55,772 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 6486
+INFO 2025-06-16 14:15:07,197 basehttp "POST /api/business/switch-business/ HTTP/1.1" 200 150
+INFO 2025-06-16 14:15:07,214 basehttp "GET /api/accounts/user-info/ HTTP/1.1" 200 620
+INFO 2025-06-16 14:15:07,398 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 206
+INFO 2025-06-16 14:15:07,403 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 6156
+INFO 2025-06-16 14:15:07,413 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 206
+INFO 2025-06-16 14:15:07,555 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 6156
+INFO 2025-06-16 14:15:07,656 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 6156
+INFO 2025-06-16 14:15:21,195 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 206
+INFO 2025-06-16 14:15:21,220 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 206
+INFO 2025-06-16 14:15:21,296 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 6156
+INFO 2025-06-16 14:15:21,408 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 6156
+INFO 2025-06-16 23:16:45,007 autoreload Watching for file changes with StatReloader
+INFO 2025-06-16 23:16:51,845 basehttp "OPTIONS /api/accounts/login/ HTTP/1.1" 200 0
+WARNING 2025-06-16 23:16:52,296 log Bad Request: /api/accounts/login/
+WARNING 2025-06-16 23:16:52,297 basehttp "POST /api/accounts/login/ HTTP/1.1" 400 48
+INFO 2025-06-16 23:17:00,501 basehttp "POST /api/accounts/login/ HTTP/1.1" 200 1111
+INFO 2025-06-16 23:17:00,616 basehttp "OPTIONS /api/business/user-businesses/ HTTP/1.1" 200 0
+INFO 2025-06-16 23:17:00,630 basehttp "OPTIONS /api/posts/feed/ HTTP/1.1" 200 0
+INFO 2025-06-16 23:17:00,636 basehttp "OPTIONS /api/posts/feed/ HTTP/1.1" 200 0
+INFO 2025-06-16 23:17:00,637 basehttp "OPTIONS /api/business/user-businesses/ HTTP/1.1" 200 0
+INFO 2025-06-16 23:17:00,661 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 206
+INFO 2025-06-16 23:17:00,741 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 206
+INFO 2025-06-16 23:17:00,801 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 6156
+INFO 2025-06-16 23:17:00,959 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 6156
+INFO 2025-06-16 23:17:06,797 basehttp "OPTIONS /api/business/switch-business/ HTTP/1.1" 200 0
+INFO 2025-06-16 23:17:06,826 basehttp "POST /api/business/switch-business/ HTTP/1.1" 200 195
+INFO 2025-06-16 23:17:06,877 basehttp "OPTIONS /api/accounts/user-info/ HTTP/1.1" 200 0
+INFO 2025-06-16 23:17:06,936 basehttp "GET /api/accounts/user-info/ HTTP/1.1" 200 635
+INFO 2025-06-16 23:17:07,076 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 206
+INFO 2025-06-16 23:17:07,102 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 206
+INFO 2025-06-16 23:17:07,149 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 6486
+INFO 2025-06-16 23:17:07,285 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 6486
+INFO 2025-06-16 23:17:07,373 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 6486
+INFO 2025-06-16 23:21:59,133 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 206
+INFO 2025-06-16 23:21:59,184 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 206
+INFO 2025-06-16 23:21:59,308 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 6486
+INFO 2025-06-16 23:21:59,420 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 6486
+INFO 2025-06-16 23:22:13,575 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 206
+INFO 2025-06-16 23:22:13,614 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 206
+INFO 2025-06-16 23:22:13,698 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 6486
+INFO 2025-06-16 23:22:13,834 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 6486
+INFO 2025-06-16 23:23:59,962 basehttp "POST /api/accounts/login/ HTTP/1.1" 200 1126
+INFO 2025-06-16 23:24:00,091 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 206
+INFO 2025-06-16 23:24:00,132 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 206
+INFO 2025-06-16 23:24:00,243 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 6486
+INFO 2025-06-16 23:24:00,347 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 6486
+INFO 2025-06-17 00:16:26,900 autoreload Watching for file changes with StatReloader
+WARNING 2025-06-17 00:16:29,400 log Not Found: /
+WARNING 2025-06-17 00:16:29,401 basehttp "GET / HTTP/1.1" 404 3440
+WARNING 2025-06-17 00:16:29,613 log Not Found: /favicon.ico
+WARNING 2025-06-17 00:16:29,614 basehttp "GET /favicon.ico HTTP/1.1" 404 3494
+INFO 2025-06-17 00:16:30,295 basehttp "OPTIONS /api/accounts/user-info/ HTTP/1.1" 200 0
+INFO 2025-06-17 00:16:30,296 basehttp "OPTIONS /api/accounts/user-info/ HTTP/1.1" 200 0
+WARNING 2025-06-17 00:16:30,313 log Unauthorized: /api/accounts/user-info/
+WARNING 2025-06-17 00:16:30,314 basehttp "GET /api/accounts/user-info/ HTTP/1.1" 401 184
+WARNING 2025-06-17 00:16:30,360 log Unauthorized: /api/accounts/user-info/
+WARNING 2025-06-17 00:16:30,361 basehttp "GET /api/accounts/user-info/ HTTP/1.1" 401 184
+INFO 2025-06-17 00:16:34,987 basehttp "GET /admin/login/?next=/admin/ HTTP/1.1" 302 0
+INFO 2025-06-17 00:16:35,053 basehttp "GET /admin/ HTTP/1.1" 200 18450
+INFO 2025-06-17 00:16:35,153 basehttp "GET /static/admin/css/dark_mode.css HTTP/1.1" 304 0
+INFO 2025-06-17 00:16:35,155 basehttp "GET /static/admin/css/base.css HTTP/1.1" 304 0
+INFO 2025-06-17 00:16:35,165 basehttp "GET /static/admin/css/nav_sidebar.css HTTP/1.1" 304 0
+INFO 2025-06-17 00:16:35,166 basehttp "GET /static/admin/css/dashboard.css HTTP/1.1" 304 0
+INFO 2025-06-17 00:16:35,167 basehttp "GET /static/admin/css/responsive.css HTTP/1.1" 304 0
+INFO 2025-06-17 00:16:35,167 basehttp "GET /static/admin/js/theme.js HTTP/1.1" 304 0
+INFO 2025-06-17 00:16:35,183 basehttp "GET /static/admin/js/nav_sidebar.js HTTP/1.1" 304 0
+INFO 2025-06-17 00:16:35,193 basehttp "GET /static/admin/img/icon-changelink.svg HTTP/1.1" 304 0
+INFO 2025-06-17 00:16:35,193 basehttp "GET /static/admin/img/icon-addlink.svg HTTP/1.1" 304 0
+ERROR 2025-06-17 00:16:42,076 log Internal Server Error: /admin/settings/notificationtemplate/
+Traceback (most recent call last):
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/backends/utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/backends/sqlite3/base.py", line 360, in execute
+    return super().execute(query, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sqlite3.OperationalError: no such table: settings_notification_template
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/contrib/admin/options.py", line 719, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/utils/decorators.py", line 192, in _view_wrapper
+    result = _process_exception(request, e)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/utils/decorators.py", line 190, in _view_wrapper
+    response = view_func(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/views/decorators/cache.py", line 80, in _view_wrapper
+    response = view_func(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/contrib/admin/sites.py", line 246, in inner
+    return view(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/utils/decorators.py", line 48, in _wrapper
+    return bound_method(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/utils/decorators.py", line 192, in _view_wrapper
+    result = _process_exception(request, e)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/utils/decorators.py", line 190, in _view_wrapper
+    response = view_func(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/contrib/admin/options.py", line 2024, in changelist_view
+    cl = self.get_changelist_instance(request)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/contrib/admin/options.py", line 867, in get_changelist_instance
+    return ChangeList(
+           ^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/contrib/admin/views/main.py", line 146, in __init__
+    self.get_results(request)
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/contrib/admin/views/main.py", line 313, in get_results
+    result_count = paginator.count
+                   ^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/utils/functional.py", line 47, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+                                         ^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/core/paginator.py", line 110, in count
+    return c()
+           ^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/models/query.py", line 604, in count
+    return self.query.get_count(using=self.db)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/models/sql/query.py", line 644, in get_count
+    return obj.get_aggregation(using, {"__count": Count("*")})["__count"]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/models/sql/query.py", line 626, in get_aggregation
+    result = compiler.execute_sql(SINGLE)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/models/sql/compiler.py", line 1622, in execute_sql
+    cursor.execute(sql, params)
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/backends/utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/backends/utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/backends/utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/backends/utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/backends/utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/backends/sqlite3/base.py", line 360, in execute
+    return super().execute(query, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+django.db.utils.OperationalError: no such table: settings_notification_template
+ERROR 2025-06-17 00:16:42,086 basehttp "GET /admin/settings/notificationtemplate/ HTTP/1.1" 500 211101
+INFO 2025-06-17 00:16:43,972 basehttp "GET /admin/ HTTP/1.1" 200 18450
+ERROR 2025-06-17 00:16:45,581 log Internal Server Error: /admin/settings/usersettings/
+Traceback (most recent call last):
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/backends/utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/backends/sqlite3/base.py", line 360, in execute
+    return super().execute(query, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sqlite3.OperationalError: no such table: settings_user_settings
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/contrib/admin/options.py", line 719, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/utils/decorators.py", line 192, in _view_wrapper
+    result = _process_exception(request, e)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/utils/decorators.py", line 190, in _view_wrapper
+    response = view_func(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/views/decorators/cache.py", line 80, in _view_wrapper
+    response = view_func(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/contrib/admin/sites.py", line 246, in inner
+    return view(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/utils/decorators.py", line 48, in _wrapper
+    return bound_method(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/utils/decorators.py", line 192, in _view_wrapper
+    result = _process_exception(request, e)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/utils/decorators.py", line 190, in _view_wrapper
+    response = view_func(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/contrib/admin/options.py", line 2024, in changelist_view
+    cl = self.get_changelist_instance(request)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/contrib/admin/options.py", line 867, in get_changelist_instance
+    return ChangeList(
+           ^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/contrib/admin/views/main.py", line 146, in __init__
+    self.get_results(request)
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/contrib/admin/views/main.py", line 313, in get_results
+    result_count = paginator.count
+                   ^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/utils/functional.py", line 47, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+                                         ^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/core/paginator.py", line 110, in count
+    return c()
+           ^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/models/query.py", line 604, in count
+    return self.query.get_count(using=self.db)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/models/sql/query.py", line 644, in get_count
+    return obj.get_aggregation(using, {"__count": Count("*")})["__count"]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/models/sql/query.py", line 626, in get_aggregation
+    result = compiler.execute_sql(SINGLE)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/models/sql/compiler.py", line 1622, in execute_sql
+    cursor.execute(sql, params)
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/backends/utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/backends/utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/backends/utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/backends/utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/backends/utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/backends/sqlite3/base.py", line 360, in execute
+    return super().execute(query, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+django.db.utils.OperationalError: no such table: settings_user_settings
+ERROR 2025-06-17 00:16:45,585 basehttp "GET /admin/settings/usersettings/ HTTP/1.1" 500 210792
+INFO 2025-06-17 00:16:47,926 basehttp "GET /admin/ HTTP/1.1" 200 18450
+ERROR 2025-06-17 00:16:49,586 log Internal Server Error: /admin/settings/businesssettings/
+Traceback (most recent call last):
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/backends/utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/backends/sqlite3/base.py", line 360, in execute
+    return super().execute(query, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sqlite3.OperationalError: no such table: settings_business_settings
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/contrib/admin/options.py", line 719, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/utils/decorators.py", line 192, in _view_wrapper
+    result = _process_exception(request, e)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/utils/decorators.py", line 190, in _view_wrapper
+    response = view_func(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/views/decorators/cache.py", line 80, in _view_wrapper
+    response = view_func(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/contrib/admin/sites.py", line 246, in inner
+    return view(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/utils/decorators.py", line 48, in _wrapper
+    return bound_method(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/utils/decorators.py", line 192, in _view_wrapper
+    result = _process_exception(request, e)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/utils/decorators.py", line 190, in _view_wrapper
+    response = view_func(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/contrib/admin/options.py", line 2024, in changelist_view
+    cl = self.get_changelist_instance(request)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/contrib/admin/options.py", line 867, in get_changelist_instance
+    return ChangeList(
+           ^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/contrib/admin/views/main.py", line 146, in __init__
+    self.get_results(request)
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/contrib/admin/views/main.py", line 313, in get_results
+    result_count = paginator.count
+                   ^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/utils/functional.py", line 47, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+                                         ^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/core/paginator.py", line 110, in count
+    return c()
+           ^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/models/query.py", line 604, in count
+    return self.query.get_count(using=self.db)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/models/sql/query.py", line 644, in get_count
+    return obj.get_aggregation(using, {"__count": Count("*")})["__count"]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/models/sql/query.py", line 626, in get_aggregation
+    result = compiler.execute_sql(SINGLE)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/models/sql/compiler.py", line 1622, in execute_sql
+    cursor.execute(sql, params)
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/backends/utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/backends/utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/backends/utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/backends/utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/backends/utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/backends/sqlite3/base.py", line 360, in execute
+    return super().execute(query, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+django.db.utils.OperationalError: no such table: settings_business_settings
+ERROR 2025-06-17 00:16:49,590 basehttp "GET /admin/settings/businesssettings/ HTTP/1.1" 500 211016
+INFO 2025-06-17 00:16:51,753 basehttp "GET /admin/ HTTP/1.1" 200 18450
+INFO 2025-06-21 10:02:09,532 autoreload Watching for file changes with StatReloader
+INFO 2025-06-21 10:11:09,413 autoreload Watching for file changes with StatReloader
+INFO 2025-06-21 10:12:07,076 basehttp "OPTIONS /api/accounts/login/ HTTP/1.1" 200 0
+INFO 2025-06-21 10:12:07,567 basehttp "POST /api/accounts/login/ HTTP/1.1" 200 1126
+INFO 2025-06-21 10:12:07,727 basehttp "OPTIONS /api/business/user-businesses/ HTTP/1.1" 200 0
+INFO 2025-06-21 10:12:07,737 basehttp "OPTIONS /api/business/user-businesses/ HTTP/1.1" 200 0
+INFO 2025-06-21 10:12:07,741 basehttp "OPTIONS /api/posts/feed/ HTTP/1.1" 200 0
+INFO 2025-06-21 10:12:07,751 basehttp "OPTIONS /api/posts/feed/ HTTP/1.1" 200 0
+INFO 2025-06-21 10:12:07,788 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 206
+INFO 2025-06-21 10:12:07,853 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 206
+INFO 2025-06-21 10:12:07,935 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 6486
+INFO 2025-06-21 10:12:08,073 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 6486
+INFO 2025-06-21 10:12:12,765 basehttp "OPTIONS /api/api/settings/user-settings/ HTTP/1.1" 200 0
+INFO 2025-06-21 10:12:12,766 basehttp "OPTIONS /api/api/settings/user-settings/ HTTP/1.1" 200 0
+WARNING 2025-06-21 10:12:12,775 log Not Found: /api/api/settings/user-settings/
+WARNING 2025-06-21 10:12:12,775 basehttp "GET /api/api/settings/user-settings/ HTTP/1.1" 404 3573
+WARNING 2025-06-21 10:12:12,823 log Not Found: /api/api/settings/user-settings/
+WARNING 2025-06-21 10:12:12,824 basehttp "GET /api/api/settings/user-settings/ HTTP/1.1" 404 3573
+WARNING 2025-06-21 10:12:20,762 log Forbidden (Origin checking failed - http://localhost:8080 does not match any trusted origins.): /api/api/settings/user-settings/
+WARNING 2025-06-21 10:12:20,763 basehttp "PATCH /api/api/settings/user-settings/ HTTP/1.1" 403 2565
+WARNING 2025-06-21 10:12:26,141 log Forbidden (Origin checking failed - http://localhost:8080 does not match any trusted origins.): /api/api/settings/user-settings/
+WARNING 2025-06-21 10:12:26,141 basehttp "PATCH /api/api/settings/user-settings/ HTTP/1.1" 403 2565
+INFO 2025-06-21 10:25:44,227 basehttp "OPTIONS /api/accounts/user-info/ HTTP/1.1" 200 0
+INFO 2025-06-21 10:25:44,228 basehttp "OPTIONS /api/accounts/user-info/ HTTP/1.1" 200 0
+INFO 2025-06-21 10:25:44,242 basehttp "GET /api/accounts/user-info/ HTTP/1.1" 200 635
+INFO 2025-06-21 10:25:44,304 basehttp "GET /api/accounts/user-info/ HTTP/1.1" 200 635
+INFO 2025-06-21 10:25:44,506 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 206
+INFO 2025-06-21 10:25:44,537 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 206
+INFO 2025-06-21 10:25:44,596 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 6486
+INFO 2025-06-21 10:25:44,599 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 206
+INFO 2025-06-21 10:25:44,690 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 6486
+INFO 2025-06-21 10:25:44,778 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 6486
+INFO 2025-06-21 10:25:48,309 basehttp "OPTIONS /api/api/settings/user/ HTTP/1.1" 200 0
+INFO 2025-06-21 10:25:48,311 basehttp "OPTIONS /api/api/settings/notifications/ HTTP/1.1" 200 0
+INFO 2025-06-21 10:25:48,312 basehttp "OPTIONS /api/api/settings/business/ HTTP/1.1" 200 0
+INFO 2025-06-21 10:25:48,313 basehttp "OPTIONS /api/api/settings/summary/ HTTP/1.1" 200 0
+INFO 2025-06-21 10:25:48,334 basehttp "OPTIONS /api/api/settings/notifications/ HTTP/1.1" 200 0
+INFO 2025-06-21 10:25:48,334 basehttp "OPTIONS /api/api/settings/business/ HTTP/1.1" 200 0
+INFO 2025-06-21 10:25:48,334 basehttp "OPTIONS /api/api/settings/user/ HTTP/1.1" 200 0
+WARNING 2025-06-21 10:25:48,339 log Not Found: /api/api/settings/user/
+WARNING 2025-06-21 10:25:48,346 log Not Found: /api/api/settings/business/
+INFO 2025-06-21 10:25:48,347 basehttp "OPTIONS /api/api/settings/summary/ HTTP/1.1" 200 0
+WARNING 2025-06-21 10:25:48,351 log Not Found: /api/api/settings/notifications/
+WARNING 2025-06-21 10:25:48,353 basehttp "GET /api/api/settings/user/ HTTP/1.1" 404 3537
+WARNING 2025-06-21 10:25:48,353 basehttp "GET /api/api/settings/business/ HTTP/1.1" 404 3553
+WARNING 2025-06-21 10:25:48,355 basehttp "GET /api/api/settings/notifications/ HTTP/1.1" 404 3573
+WARNING 2025-06-21 10:25:48,366 log Not Found: /api/api/settings/summary/
+WARNING 2025-06-21 10:25:48,369 basehttp "GET /api/api/settings/summary/ HTTP/1.1" 404 3549
+WARNING 2025-06-21 10:25:48,375 log Not Found: /api/api/settings/notifications/
+WARNING 2025-06-21 10:25:48,376 basehttp "GET /api/api/settings/notifications/ HTTP/1.1" 404 3573
+WARNING 2025-06-21 10:25:48,402 log Not Found: /api/api/settings/user/
+WARNING 2025-06-21 10:25:48,409 log Not Found: /api/api/settings/business/
+WARNING 2025-06-21 10:25:48,410 basehttp "GET /api/api/settings/business/ HTTP/1.1" 404 3553
+WARNING 2025-06-21 10:25:48,409 basehttp "GET /api/api/settings/user/ HTTP/1.1" 404 3537
+WARNING 2025-06-21 10:25:48,416 log Not Found: /api/api/settings/summary/
+WARNING 2025-06-21 10:25:48,417 basehttp "GET /api/api/settings/summary/ HTTP/1.1" 404 3549
+WARNING 2025-06-21 10:27:17,514 log Not Found: /api/api/settings/notifications/
+WARNING 2025-06-21 10:27:17,523 log Not Found: /api/api/settings/business/
+WARNING 2025-06-21 10:27:17,527 log Not Found: /api/api/settings/user/
+WARNING 2025-06-21 10:27:17,532 log Not Found: /api/api/settings/summary/
+WARNING 2025-06-21 10:27:17,535 basehttp "GET /api/api/settings/summary/ HTTP/1.1" 404 3549
+WARNING 2025-06-21 10:27:17,534 basehttp "GET /api/api/settings/business/ HTTP/1.1" 404 3553
+WARNING 2025-06-21 10:27:17,535 basehttp "GET /api/api/settings/user/ HTTP/1.1" 404 3537
+WARNING 2025-06-21 10:27:17,534 basehttp "GET /api/api/settings/notifications/ HTTP/1.1" 404 3573
+WARNING 2025-06-21 10:27:29,927 log Not Found: /api/api/settings/user/
+WARNING 2025-06-21 10:27:29,934 log Not Found: /api/api/settings/summary/
+WARNING 2025-06-21 10:27:29,939 log Not Found: /api/api/settings/business/
+WARNING 2025-06-21 10:27:29,940 basehttp "GET /api/api/settings/user/ HTTP/1.1" 404 3537
+WARNING 2025-06-21 10:27:29,945 log Not Found: /api/api/settings/notifications/
+WARNING 2025-06-21 10:27:29,946 basehttp "GET /api/api/settings/summary/ HTTP/1.1" 404 3549
+WARNING 2025-06-21 10:27:29,947 basehttp "GET /api/api/settings/business/ HTTP/1.1" 404 3553
+WARNING 2025-06-21 10:27:29,947 basehttp "GET /api/api/settings/notifications/ HTTP/1.1" 404 3573
+INFO 2025-06-21 10:27:39,967 basehttp "GET /api/accounts/user-info/ HTTP/1.1" 200 635
+INFO 2025-06-21 10:27:39,977 basehttp "GET /api/accounts/user-info/ HTTP/1.1" 200 635
+WARNING 2025-06-21 10:27:40,143 log Not Found: /api/api/settings/summary/
+WARNING 2025-06-21 10:27:40,147 log Not Found: /api/api/settings/business/
+WARNING 2025-06-21 10:27:40,152 log Not Found: /api/api/settings/user/
+WARNING 2025-06-21 10:27:40,156 log Not Found: /api/api/settings/notifications/
+WARNING 2025-06-21 10:27:40,156 basehttp "GET /api/api/settings/summary/ HTTP/1.1" 404 3549
+WARNING 2025-06-21 10:27:40,157 basehttp "GET /api/api/settings/business/ HTTP/1.1" 404 3553
+WARNING 2025-06-21 10:27:40,158 basehttp "GET /api/api/settings/user/ HTTP/1.1" 404 3537
+WARNING 2025-06-21 10:27:40,158 basehttp "GET /api/api/settings/notifications/ HTTP/1.1" 404 3573
+WARNING 2025-06-21 10:27:40,177 log Not Found: /api/api/settings/business/
+WARNING 2025-06-21 10:27:40,185 log Not Found: /api/api/settings/user/
+WARNING 2025-06-21 10:27:40,189 log Not Found: /api/api/settings/notifications/
+WARNING 2025-06-21 10:27:40,195 basehttp "GET /api/api/settings/business/ HTTP/1.1" 404 3553
+WARNING 2025-06-21 10:27:40,195 basehttp "GET /api/api/settings/user/ HTTP/1.1" 404 3537
+WARNING 2025-06-21 10:27:40,196 basehttp "GET /api/api/settings/notifications/ HTTP/1.1" 404 3573
+WARNING 2025-06-21 10:27:40,196 log Not Found: /api/api/settings/summary/
+WARNING 2025-06-21 10:27:40,197 basehttp "GET /api/api/settings/summary/ HTTP/1.1" 404 3549
+INFO 2025-06-21 10:30:13,197 basehttp "OPTIONS /api/settings/user/ HTTP/1.1" 200 0
+WARNING 2025-06-21 10:30:13,209 log Not Found: /api/api/settings/summary/
+WARNING 2025-06-21 10:30:13,214 log Not Found: /api/api/settings/business/
+WARNING 2025-06-21 10:30:13,219 log Not Found: /api/api/settings/notifications/
+WARNING 2025-06-21 10:30:13,220 basehttp "GET /api/api/settings/business/ HTTP/1.1" 404 3553
+WARNING 2025-06-21 10:30:13,220 basehttp "GET /api/api/settings/summary/ HTTP/1.1" 404 3549
+WARNING 2025-06-21 10:30:13,221 basehttp "GET /api/api/settings/notifications/ HTTP/1.1" 404 3573
+INFO 2025-06-21 10:30:13,242 basehttp "GET /api/settings/user/ HTTP/1.1" 200 494
+WARNING 2025-06-21 10:30:22,179 log Not Found: /api/api/settings/summary/
+WARNING 2025-06-21 10:30:22,185 log Not Found: /api/api/settings/business/
+WARNING 2025-06-21 10:30:22,186 basehttp "GET /api/api/settings/summary/ HTTP/1.1" 404 3549
+WARNING 2025-06-21 10:30:22,186 basehttp "GET /api/api/settings/business/ HTTP/1.1" 404 3553
+WARNING 2025-06-21 10:30:22,191 log Not Found: /api/api/settings/notifications/
+WARNING 2025-06-21 10:30:22,194 basehttp "GET /api/api/settings/notifications/ HTTP/1.1" 404 3573
+INFO 2025-06-21 10:30:22,198 basehttp "GET /api/settings/user/ HTTP/1.1" 200 494
+INFO 2025-06-21 10:31:04,900 basehttp "OPTIONS /api/settings/notifications/ HTTP/1.1" 200 0
+INFO 2025-06-21 10:31:04,901 basehttp "OPTIONS /api/settings/summary/ HTTP/1.1" 200 0
+INFO 2025-06-21 10:31:04,901 basehttp "OPTIONS /api/settings/business/ HTTP/1.1" 200 0
+INFO 2025-06-21 10:31:04,925 basehttp "GET /api/settings/user/ HTTP/1.1" 200 494
+INFO 2025-06-21 10:31:04,929 basehttp "GET /api/settings/notifications/ HTTP/1.1" 200 52
+INFO 2025-06-21 10:31:04,946 basehttp "GET /api/settings/business/ HTTP/1.1" 200 622
+INFO 2025-06-21 10:31:04,961 basehttp "GET /api/settings/summary/ HTTP/1.1" 200 1233
+INFO 2025-06-21 10:31:13,179 basehttp "GET /api/accounts/user-info/ HTTP/1.1" 200 635
+INFO 2025-06-21 10:31:13,188 basehttp "GET /api/accounts/user-info/ HTTP/1.1" 200 635
+INFO 2025-06-21 10:31:13,366 basehttp "GET /api/settings/notifications/ HTTP/1.1" 200 52
+INFO 2025-06-21 10:31:13,375 basehttp "GET /api/settings/user/ HTTP/1.1" 200 494
+INFO 2025-06-21 10:31:13,394 basehttp "GET /api/settings/business/ HTTP/1.1" 200 622
+INFO 2025-06-21 10:31:13,404 basehttp "GET /api/settings/summary/ HTTP/1.1" 200 1233
+INFO 2025-06-21 10:31:13,418 basehttp "GET /api/settings/user/ HTTP/1.1" 200 494
+INFO 2025-06-21 10:31:13,422 basehttp "GET /api/settings/notifications/ HTTP/1.1" 200 52
+INFO 2025-06-21 10:31:13,434 basehttp "GET /api/settings/business/ HTTP/1.1" 200 622
+INFO 2025-06-21 10:31:13,444 basehttp "GET /api/settings/summary/ HTTP/1.1" 200 1233
+INFO 2025-06-21 10:31:43,101 basehttp "OPTIONS /api/settings/notifications/create_default_templates/ HTTP/1.1" 200 0
+INFO 2025-06-21 10:31:43,123 basehttp "POST /api/settings/notifications/create_default_templates/ HTTP/1.1" 200 71
+INFO 2025-06-21 10:31:43,190 basehttp "GET /api/settings/notifications/ HTTP/1.1" 200 2910
+INFO 2025-06-21 10:31:50,138 basehttp "OPTIONS /api/settings/notifications/7/ HTTP/1.1" 200 0
+INFO 2025-06-21 10:31:50,159 basehttp "DELETE /api/settings/notifications/7/ HTTP/1.1" 204 0
+INFO 2025-06-21 10:31:50,246 basehttp "GET /api/settings/notifications/ HTTP/1.1" 200 2488
+INFO 2025-06-21 10:31:52,467 basehttp "OPTIONS /api/settings/notifications/2/ HTTP/1.1" 200 0
+INFO 2025-06-21 10:31:52,488 basehttp "DELETE /api/settings/notifications/2/ HTTP/1.1" 204 0
+INFO 2025-06-21 10:31:52,690 basehttp "GET /api/settings/notifications/ HTTP/1.1" 200 2071
+INFO 2025-06-21 10:31:55,538 basehttp "OPTIONS /api/settings/notifications/5/ HTTP/1.1" 200 0
+INFO 2025-06-21 10:31:55,556 basehttp "DELETE /api/settings/notifications/5/ HTTP/1.1" 204 0
+INFO 2025-06-21 10:31:55,639 basehttp "GET /api/settings/notifications/ HTTP/1.1" 200 1647
+INFO 2025-06-21 10:31:56,478 basehttp "OPTIONS /api/settings/notifications/1/ HTTP/1.1" 200 0
+INFO 2025-06-21 10:31:56,500 basehttp "DELETE /api/settings/notifications/1/ HTTP/1.1" 204 0
+INFO 2025-06-21 10:31:56,688 basehttp "GET /api/settings/notifications/ HTTP/1.1" 200 1234
+INFO 2025-06-21 10:31:57,354 basehttp "OPTIONS /api/settings/notifications/4/ HTTP/1.1" 200 0
+INFO 2025-06-21 10:31:57,379 basehttp "DELETE /api/settings/notifications/4/ HTTP/1.1" 204 0
+INFO 2025-06-21 10:31:57,551 basehttp "GET /api/settings/notifications/ HTTP/1.1" 200 827
+INFO 2025-06-21 10:31:58,459 basehttp "OPTIONS /api/settings/notifications/3/ HTTP/1.1" 200 0
+INFO 2025-06-21 10:31:58,477 basehttp "DELETE /api/settings/notifications/3/ HTTP/1.1" 204 0
+INFO 2025-06-21 10:31:58,638 basehttp "GET /api/settings/notifications/ HTTP/1.1" 200 434
+INFO 2025-06-21 10:31:59,819 basehttp "OPTIONS /api/settings/notifications/6/ HTTP/1.1" 200 0
+INFO 2025-06-21 10:31:59,847 basehttp "DELETE /api/settings/notifications/6/ HTTP/1.1" 204 0
+INFO 2025-06-21 10:31:59,988 basehttp "GET /api/settings/notifications/ HTTP/1.1" 200 52
+INFO 2025-06-21 10:32:17,430 basehttp "GET /api/accounts/user-info/ HTTP/1.1" 200 635
+INFO 2025-06-21 10:32:17,445 basehttp "GET /api/accounts/user-info/ HTTP/1.1" 200 635
+INFO 2025-06-21 10:32:17,661 basehttp "GET /api/settings/notifications/ HTTP/1.1" 200 52
+INFO 2025-06-21 10:32:17,667 basehttp "GET /api/settings/user/ HTTP/1.1" 200 494
+INFO 2025-06-21 10:32:17,669 basehttp "GET /api/settings/business/ HTTP/1.1" 200 622
+INFO 2025-06-21 10:32:17,703 basehttp "GET /api/settings/summary/ HTTP/1.1" 200 1233
+INFO 2025-06-21 10:32:17,719 basehttp "GET /api/settings/user/ HTTP/1.1" 200 494
+INFO 2025-06-21 10:32:17,730 basehttp "GET /api/settings/notifications/ HTTP/1.1" 200 52
+INFO 2025-06-21 10:32:17,742 basehttp "GET /api/settings/business/ HTTP/1.1" 200 622
+INFO 2025-06-21 10:32:17,752 basehttp "GET /api/settings/summary/ HTTP/1.1" 200 1233
+WARNING 2025-06-21 10:32:50,366 log Method Not Allowed: /api/settings/business/
+WARNING 2025-06-21 10:32:50,367 basehttp "PATCH /api/settings/business/ HTTP/1.1" 405 44
+WARNING 2025-06-21 10:33:09,011 log Method Not Allowed: /api/settings/user/
+WARNING 2025-06-21 10:33:09,012 basehttp "PATCH /api/settings/user/ HTTP/1.1" 405 44
