@@ -4447,3 +4447,163 @@ Traceback (most recent call last):
 django.db.utils.OperationalError: no such table: settings_business_settings
 ERROR 2025-06-17 00:16:49,590 basehttp "GET /admin/settings/businesssettings/ HTTP/1.1" 500 211016
 INFO 2025-06-17 00:16:51,753 basehttp "GET /admin/ HTTP/1.1" 200 18450
+INFO 2025-06-21 10:02:09,532 autoreload Watching for file changes with StatReloader
+INFO 2025-06-21 10:11:09,413 autoreload Watching for file changes with StatReloader
+INFO 2025-06-21 10:12:07,076 basehttp "OPTIONS /api/accounts/login/ HTTP/1.1" 200 0
+INFO 2025-06-21 10:12:07,567 basehttp "POST /api/accounts/login/ HTTP/1.1" 200 1126
+INFO 2025-06-21 10:12:07,727 basehttp "OPTIONS /api/business/user-businesses/ HTTP/1.1" 200 0
+INFO 2025-06-21 10:12:07,737 basehttp "OPTIONS /api/business/user-businesses/ HTTP/1.1" 200 0
+INFO 2025-06-21 10:12:07,741 basehttp "OPTIONS /api/posts/feed/ HTTP/1.1" 200 0
+INFO 2025-06-21 10:12:07,751 basehttp "OPTIONS /api/posts/feed/ HTTP/1.1" 200 0
+INFO 2025-06-21 10:12:07,788 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 206
+INFO 2025-06-21 10:12:07,853 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 206
+INFO 2025-06-21 10:12:07,935 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 6486
+INFO 2025-06-21 10:12:08,073 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 6486
+INFO 2025-06-21 10:12:12,765 basehttp "OPTIONS /api/api/settings/user-settings/ HTTP/1.1" 200 0
+INFO 2025-06-21 10:12:12,766 basehttp "OPTIONS /api/api/settings/user-settings/ HTTP/1.1" 200 0
+WARNING 2025-06-21 10:12:12,775 log Not Found: /api/api/settings/user-settings/
+WARNING 2025-06-21 10:12:12,775 basehttp "GET /api/api/settings/user-settings/ HTTP/1.1" 404 3573
+WARNING 2025-06-21 10:12:12,823 log Not Found: /api/api/settings/user-settings/
+WARNING 2025-06-21 10:12:12,824 basehttp "GET /api/api/settings/user-settings/ HTTP/1.1" 404 3573
+WARNING 2025-06-21 10:12:20,762 log Forbidden (Origin checking failed - http://localhost:8080 does not match any trusted origins.): /api/api/settings/user-settings/
+WARNING 2025-06-21 10:12:20,763 basehttp "PATCH /api/api/settings/user-settings/ HTTP/1.1" 403 2565
+WARNING 2025-06-21 10:12:26,141 log Forbidden (Origin checking failed - http://localhost:8080 does not match any trusted origins.): /api/api/settings/user-settings/
+WARNING 2025-06-21 10:12:26,141 basehttp "PATCH /api/api/settings/user-settings/ HTTP/1.1" 403 2565
+INFO 2025-06-21 10:25:44,227 basehttp "OPTIONS /api/accounts/user-info/ HTTP/1.1" 200 0
+INFO 2025-06-21 10:25:44,228 basehttp "OPTIONS /api/accounts/user-info/ HTTP/1.1" 200 0
+INFO 2025-06-21 10:25:44,242 basehttp "GET /api/accounts/user-info/ HTTP/1.1" 200 635
+INFO 2025-06-21 10:25:44,304 basehttp "GET /api/accounts/user-info/ HTTP/1.1" 200 635
+INFO 2025-06-21 10:25:44,506 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 206
+INFO 2025-06-21 10:25:44,537 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 206
+INFO 2025-06-21 10:25:44,596 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 6486
+INFO 2025-06-21 10:25:44,599 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 206
+INFO 2025-06-21 10:25:44,690 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 6486
+INFO 2025-06-21 10:25:44,778 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 6486
+INFO 2025-06-21 10:25:48,309 basehttp "OPTIONS /api/api/settings/user/ HTTP/1.1" 200 0
+INFO 2025-06-21 10:25:48,311 basehttp "OPTIONS /api/api/settings/notifications/ HTTP/1.1" 200 0
+INFO 2025-06-21 10:25:48,312 basehttp "OPTIONS /api/api/settings/business/ HTTP/1.1" 200 0
+INFO 2025-06-21 10:25:48,313 basehttp "OPTIONS /api/api/settings/summary/ HTTP/1.1" 200 0
+INFO 2025-06-21 10:25:48,334 basehttp "OPTIONS /api/api/settings/notifications/ HTTP/1.1" 200 0
+INFO 2025-06-21 10:25:48,334 basehttp "OPTIONS /api/api/settings/business/ HTTP/1.1" 200 0
+INFO 2025-06-21 10:25:48,334 basehttp "OPTIONS /api/api/settings/user/ HTTP/1.1" 200 0
+WARNING 2025-06-21 10:25:48,339 log Not Found: /api/api/settings/user/
+WARNING 2025-06-21 10:25:48,346 log Not Found: /api/api/settings/business/
+INFO 2025-06-21 10:25:48,347 basehttp "OPTIONS /api/api/settings/summary/ HTTP/1.1" 200 0
+WARNING 2025-06-21 10:25:48,351 log Not Found: /api/api/settings/notifications/
+WARNING 2025-06-21 10:25:48,353 basehttp "GET /api/api/settings/user/ HTTP/1.1" 404 3537
+WARNING 2025-06-21 10:25:48,353 basehttp "GET /api/api/settings/business/ HTTP/1.1" 404 3553
+WARNING 2025-06-21 10:25:48,355 basehttp "GET /api/api/settings/notifications/ HTTP/1.1" 404 3573
+WARNING 2025-06-21 10:25:48,366 log Not Found: /api/api/settings/summary/
+WARNING 2025-06-21 10:25:48,369 basehttp "GET /api/api/settings/summary/ HTTP/1.1" 404 3549
+WARNING 2025-06-21 10:25:48,375 log Not Found: /api/api/settings/notifications/
+WARNING 2025-06-21 10:25:48,376 basehttp "GET /api/api/settings/notifications/ HTTP/1.1" 404 3573
+WARNING 2025-06-21 10:25:48,402 log Not Found: /api/api/settings/user/
+WARNING 2025-06-21 10:25:48,409 log Not Found: /api/api/settings/business/
+WARNING 2025-06-21 10:25:48,410 basehttp "GET /api/api/settings/business/ HTTP/1.1" 404 3553
+WARNING 2025-06-21 10:25:48,409 basehttp "GET /api/api/settings/user/ HTTP/1.1" 404 3537
+WARNING 2025-06-21 10:25:48,416 log Not Found: /api/api/settings/summary/
+WARNING 2025-06-21 10:25:48,417 basehttp "GET /api/api/settings/summary/ HTTP/1.1" 404 3549
+WARNING 2025-06-21 10:27:17,514 log Not Found: /api/api/settings/notifications/
+WARNING 2025-06-21 10:27:17,523 log Not Found: /api/api/settings/business/
+WARNING 2025-06-21 10:27:17,527 log Not Found: /api/api/settings/user/
+WARNING 2025-06-21 10:27:17,532 log Not Found: /api/api/settings/summary/
+WARNING 2025-06-21 10:27:17,535 basehttp "GET /api/api/settings/summary/ HTTP/1.1" 404 3549
+WARNING 2025-06-21 10:27:17,534 basehttp "GET /api/api/settings/business/ HTTP/1.1" 404 3553
+WARNING 2025-06-21 10:27:17,535 basehttp "GET /api/api/settings/user/ HTTP/1.1" 404 3537
+WARNING 2025-06-21 10:27:17,534 basehttp "GET /api/api/settings/notifications/ HTTP/1.1" 404 3573
+WARNING 2025-06-21 10:27:29,927 log Not Found: /api/api/settings/user/
+WARNING 2025-06-21 10:27:29,934 log Not Found: /api/api/settings/summary/
+WARNING 2025-06-21 10:27:29,939 log Not Found: /api/api/settings/business/
+WARNING 2025-06-21 10:27:29,940 basehttp "GET /api/api/settings/user/ HTTP/1.1" 404 3537
+WARNING 2025-06-21 10:27:29,945 log Not Found: /api/api/settings/notifications/
+WARNING 2025-06-21 10:27:29,946 basehttp "GET /api/api/settings/summary/ HTTP/1.1" 404 3549
+WARNING 2025-06-21 10:27:29,947 basehttp "GET /api/api/settings/business/ HTTP/1.1" 404 3553
+WARNING 2025-06-21 10:27:29,947 basehttp "GET /api/api/settings/notifications/ HTTP/1.1" 404 3573
+INFO 2025-06-21 10:27:39,967 basehttp "GET /api/accounts/user-info/ HTTP/1.1" 200 635
+INFO 2025-06-21 10:27:39,977 basehttp "GET /api/accounts/user-info/ HTTP/1.1" 200 635
+WARNING 2025-06-21 10:27:40,143 log Not Found: /api/api/settings/summary/
+WARNING 2025-06-21 10:27:40,147 log Not Found: /api/api/settings/business/
+WARNING 2025-06-21 10:27:40,152 log Not Found: /api/api/settings/user/
+WARNING 2025-06-21 10:27:40,156 log Not Found: /api/api/settings/notifications/
+WARNING 2025-06-21 10:27:40,156 basehttp "GET /api/api/settings/summary/ HTTP/1.1" 404 3549
+WARNING 2025-06-21 10:27:40,157 basehttp "GET /api/api/settings/business/ HTTP/1.1" 404 3553
+WARNING 2025-06-21 10:27:40,158 basehttp "GET /api/api/settings/user/ HTTP/1.1" 404 3537
+WARNING 2025-06-21 10:27:40,158 basehttp "GET /api/api/settings/notifications/ HTTP/1.1" 404 3573
+WARNING 2025-06-21 10:27:40,177 log Not Found: /api/api/settings/business/
+WARNING 2025-06-21 10:27:40,185 log Not Found: /api/api/settings/user/
+WARNING 2025-06-21 10:27:40,189 log Not Found: /api/api/settings/notifications/
+WARNING 2025-06-21 10:27:40,195 basehttp "GET /api/api/settings/business/ HTTP/1.1" 404 3553
+WARNING 2025-06-21 10:27:40,195 basehttp "GET /api/api/settings/user/ HTTP/1.1" 404 3537
+WARNING 2025-06-21 10:27:40,196 basehttp "GET /api/api/settings/notifications/ HTTP/1.1" 404 3573
+WARNING 2025-06-21 10:27:40,196 log Not Found: /api/api/settings/summary/
+WARNING 2025-06-21 10:27:40,197 basehttp "GET /api/api/settings/summary/ HTTP/1.1" 404 3549
+INFO 2025-06-21 10:30:13,197 basehttp "OPTIONS /api/settings/user/ HTTP/1.1" 200 0
+WARNING 2025-06-21 10:30:13,209 log Not Found: /api/api/settings/summary/
+WARNING 2025-06-21 10:30:13,214 log Not Found: /api/api/settings/business/
+WARNING 2025-06-21 10:30:13,219 log Not Found: /api/api/settings/notifications/
+WARNING 2025-06-21 10:30:13,220 basehttp "GET /api/api/settings/business/ HTTP/1.1" 404 3553
+WARNING 2025-06-21 10:30:13,220 basehttp "GET /api/api/settings/summary/ HTTP/1.1" 404 3549
+WARNING 2025-06-21 10:30:13,221 basehttp "GET /api/api/settings/notifications/ HTTP/1.1" 404 3573
+INFO 2025-06-21 10:30:13,242 basehttp "GET /api/settings/user/ HTTP/1.1" 200 494
+WARNING 2025-06-21 10:30:22,179 log Not Found: /api/api/settings/summary/
+WARNING 2025-06-21 10:30:22,185 log Not Found: /api/api/settings/business/
+WARNING 2025-06-21 10:30:22,186 basehttp "GET /api/api/settings/summary/ HTTP/1.1" 404 3549
+WARNING 2025-06-21 10:30:22,186 basehttp "GET /api/api/settings/business/ HTTP/1.1" 404 3553
+WARNING 2025-06-21 10:30:22,191 log Not Found: /api/api/settings/notifications/
+WARNING 2025-06-21 10:30:22,194 basehttp "GET /api/api/settings/notifications/ HTTP/1.1" 404 3573
+INFO 2025-06-21 10:30:22,198 basehttp "GET /api/settings/user/ HTTP/1.1" 200 494
+INFO 2025-06-21 10:31:04,900 basehttp "OPTIONS /api/settings/notifications/ HTTP/1.1" 200 0
+INFO 2025-06-21 10:31:04,901 basehttp "OPTIONS /api/settings/summary/ HTTP/1.1" 200 0
+INFO 2025-06-21 10:31:04,901 basehttp "OPTIONS /api/settings/business/ HTTP/1.1" 200 0
+INFO 2025-06-21 10:31:04,925 basehttp "GET /api/settings/user/ HTTP/1.1" 200 494
+INFO 2025-06-21 10:31:04,929 basehttp "GET /api/settings/notifications/ HTTP/1.1" 200 52
+INFO 2025-06-21 10:31:04,946 basehttp "GET /api/settings/business/ HTTP/1.1" 200 622
+INFO 2025-06-21 10:31:04,961 basehttp "GET /api/settings/summary/ HTTP/1.1" 200 1233
+INFO 2025-06-21 10:31:13,179 basehttp "GET /api/accounts/user-info/ HTTP/1.1" 200 635
+INFO 2025-06-21 10:31:13,188 basehttp "GET /api/accounts/user-info/ HTTP/1.1" 200 635
+INFO 2025-06-21 10:31:13,366 basehttp "GET /api/settings/notifications/ HTTP/1.1" 200 52
+INFO 2025-06-21 10:31:13,375 basehttp "GET /api/settings/user/ HTTP/1.1" 200 494
+INFO 2025-06-21 10:31:13,394 basehttp "GET /api/settings/business/ HTTP/1.1" 200 622
+INFO 2025-06-21 10:31:13,404 basehttp "GET /api/settings/summary/ HTTP/1.1" 200 1233
+INFO 2025-06-21 10:31:13,418 basehttp "GET /api/settings/user/ HTTP/1.1" 200 494
+INFO 2025-06-21 10:31:13,422 basehttp "GET /api/settings/notifications/ HTTP/1.1" 200 52
+INFO 2025-06-21 10:31:13,434 basehttp "GET /api/settings/business/ HTTP/1.1" 200 622
+INFO 2025-06-21 10:31:13,444 basehttp "GET /api/settings/summary/ HTTP/1.1" 200 1233
+INFO 2025-06-21 10:31:43,101 basehttp "OPTIONS /api/settings/notifications/create_default_templates/ HTTP/1.1" 200 0
+INFO 2025-06-21 10:31:43,123 basehttp "POST /api/settings/notifications/create_default_templates/ HTTP/1.1" 200 71
+INFO 2025-06-21 10:31:43,190 basehttp "GET /api/settings/notifications/ HTTP/1.1" 200 2910
+INFO 2025-06-21 10:31:50,138 basehttp "OPTIONS /api/settings/notifications/7/ HTTP/1.1" 200 0
+INFO 2025-06-21 10:31:50,159 basehttp "DELETE /api/settings/notifications/7/ HTTP/1.1" 204 0
+INFO 2025-06-21 10:31:50,246 basehttp "GET /api/settings/notifications/ HTTP/1.1" 200 2488
+INFO 2025-06-21 10:31:52,467 basehttp "OPTIONS /api/settings/notifications/2/ HTTP/1.1" 200 0
+INFO 2025-06-21 10:31:52,488 basehttp "DELETE /api/settings/notifications/2/ HTTP/1.1" 204 0
+INFO 2025-06-21 10:31:52,690 basehttp "GET /api/settings/notifications/ HTTP/1.1" 200 2071
+INFO 2025-06-21 10:31:55,538 basehttp "OPTIONS /api/settings/notifications/5/ HTTP/1.1" 200 0
+INFO 2025-06-21 10:31:55,556 basehttp "DELETE /api/settings/notifications/5/ HTTP/1.1" 204 0
+INFO 2025-06-21 10:31:55,639 basehttp "GET /api/settings/notifications/ HTTP/1.1" 200 1647
+INFO 2025-06-21 10:31:56,478 basehttp "OPTIONS /api/settings/notifications/1/ HTTP/1.1" 200 0
+INFO 2025-06-21 10:31:56,500 basehttp "DELETE /api/settings/notifications/1/ HTTP/1.1" 204 0
+INFO 2025-06-21 10:31:56,688 basehttp "GET /api/settings/notifications/ HTTP/1.1" 200 1234
+INFO 2025-06-21 10:31:57,354 basehttp "OPTIONS /api/settings/notifications/4/ HTTP/1.1" 200 0
+INFO 2025-06-21 10:31:57,379 basehttp "DELETE /api/settings/notifications/4/ HTTP/1.1" 204 0
+INFO 2025-06-21 10:31:57,551 basehttp "GET /api/settings/notifications/ HTTP/1.1" 200 827
+INFO 2025-06-21 10:31:58,459 basehttp "OPTIONS /api/settings/notifications/3/ HTTP/1.1" 200 0
+INFO 2025-06-21 10:31:58,477 basehttp "DELETE /api/settings/notifications/3/ HTTP/1.1" 204 0
+INFO 2025-06-21 10:31:58,638 basehttp "GET /api/settings/notifications/ HTTP/1.1" 200 434
+INFO 2025-06-21 10:31:59,819 basehttp "OPTIONS /api/settings/notifications/6/ HTTP/1.1" 200 0
+INFO 2025-06-21 10:31:59,847 basehttp "DELETE /api/settings/notifications/6/ HTTP/1.1" 204 0
+INFO 2025-06-21 10:31:59,988 basehttp "GET /api/settings/notifications/ HTTP/1.1" 200 52
+INFO 2025-06-21 10:32:17,430 basehttp "GET /api/accounts/user-info/ HTTP/1.1" 200 635
+INFO 2025-06-21 10:32:17,445 basehttp "GET /api/accounts/user-info/ HTTP/1.1" 200 635
+INFO 2025-06-21 10:32:17,661 basehttp "GET /api/settings/notifications/ HTTP/1.1" 200 52
+INFO 2025-06-21 10:32:17,667 basehttp "GET /api/settings/user/ HTTP/1.1" 200 494
+INFO 2025-06-21 10:32:17,669 basehttp "GET /api/settings/business/ HTTP/1.1" 200 622
+INFO 2025-06-21 10:32:17,703 basehttp "GET /api/settings/summary/ HTTP/1.1" 200 1233
+INFO 2025-06-21 10:32:17,719 basehttp "GET /api/settings/user/ HTTP/1.1" 200 494
+INFO 2025-06-21 10:32:17,730 basehttp "GET /api/settings/notifications/ HTTP/1.1" 200 52
+INFO 2025-06-21 10:32:17,742 basehttp "GET /api/settings/business/ HTTP/1.1" 200 622
+INFO 2025-06-21 10:32:17,752 basehttp "GET /api/settings/summary/ HTTP/1.1" 200 1233
+WARNING 2025-06-21 10:32:50,366 log Method Not Allowed: /api/settings/business/
+WARNING 2025-06-21 10:32:50,367 basehttp "PATCH /api/settings/business/ HTTP/1.1" 405 44
+WARNING 2025-06-21 10:33:09,011 log Method Not Allowed: /api/settings/user/
+WARNING 2025-06-21 10:33:09,012 basehttp "PATCH /api/settings/user/ HTTP/1.1" 405 44
