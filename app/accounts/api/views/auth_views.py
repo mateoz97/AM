@@ -21,18 +21,31 @@ class RegisterUserView(generics.CreateAPIView):
     permission_classes = [permissions.AllowAny]
 
     def create(self, request, *args, **kwargs):
-        serializer = self.get_serializer(data=request.data)
-        serializer.is_valid(raise_exception=True)
-        user = serializer.save()
-        
-        # Generar tokens
-        refresh = RefreshToken.for_user(user)
-        
-        return Response({
-            "user": serializer.data,
-            "refresh": str(refresh),
-            "access": str(refresh.access_token),
-        }, status=status.HTTP_201_CREATED)
+        try:
+            serializer = self.get_serializer(data=request.data)
+            serializer.is_valid(raise_exception=True)
+            user = serializer.save()
+            
+            # Log registro exitoso
+            logger.info(f"Nuevo usuario registrado: {user.username} (ID: {user.id})")
+            
+            # Generar tokens
+            refresh = RefreshToken.for_user(user)
+            
+            return Response({
+                "user": serializer.data,
+                "refresh": str(refresh),
+                "access": str(refresh.access_token),
+            }, status=status.HTTP_201_CREATED)
+            
+        except serializers.ValidationError as e:
+            logger.warning(f"Error de validación en registro: {e.detail}")
+            raise e
+        except Exception as e:
+            logger.error(f"Error inesperado durante registro: {str(e)}", exc_info=True)
+            return Response({
+                "error": "Error interno durante el registro"
+            }, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
 class CustomLoginView(TokenObtainPairView):
     serializer_class = LoginSerializer

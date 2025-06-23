@@ -31,8 +31,8 @@ class BusinessOwnerFilter(admin.SimpleListFilter):
 # Inline para ver miembros de un negocio
 class BusinessMemberInline(admin.TabularInline):
     model = CustomUser
-    fk_name = 'business'
-    fields = ('username', 'email', 'business_role', 'is_active')
+    fk_name = 'current_business'
+    fields = ('username', 'email', 'current_business_role', 'is_active')
     extra = 0
     verbose_name = _("Miembro")
     verbose_name_plural = _("Miembros")
@@ -256,9 +256,9 @@ class BusinessJoinRequestAdmin(admin.ModelAdmin):
                 
             # Asignar usuario al negocio con rol de visualizador
             user = join_request.user
-            user.business = join_request.business
-            user.business_role = viewer_role
-            user.save(update_fields=['business', 'business_role'])
+            user.current_business = join_request.business
+            user.current_business_role = viewer_role
+            user.save(update_fields=['current_business', 'current_business_role'])
             
             # Actualizar estado de la solicitud
             join_request.status = 'approved'

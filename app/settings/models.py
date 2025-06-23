@@ -2,6 +2,7 @@
 from django.db import models
 from django.contrib.auth import get_user_model
 from app.business.models.business import Business
+from app.core.managers import UserSpecificManager, BusinessSpecificManager
 
 User = get_user_model()
 
@@ -96,6 +97,9 @@ class UserSettings(models.Model):
     # Metadatos
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+    
+    # Manager consciente de esquemas
+    objects = UserSpecificManager()
     
     class Meta:
         verbose_name = 'Configuración de Usuario'
@@ -197,6 +201,9 @@ class BusinessSettings(models.Model):
         verbose_name='Creado por'
     )
     
+    # Manager consciente de esquemas
+    objects = BusinessSpecificManager()
+    
     class Meta:
         verbose_name = 'Configuración de Negocio'
         verbose_name_plural = 'Configuraciones de Negocio'
@@ -245,6 +252,9 @@ class NotificationTemplate(models.Model):
     # Metadatos
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+    
+    # Manager consciente de esquemas
+    objects = BusinessSpecificManager()
     
     class Meta:
         verbose_name = 'Plantilla de Notificación'

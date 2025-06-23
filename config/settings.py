@@ -92,44 +92,22 @@ WSGI_APPLICATION = 'config.wsgi.application'
 # Database
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db_django_core.sqlite3',
-        'ATOMIC_REQUESTS': False,  # o True, según tus necesidades
-        'AUTOCOMMIT': True,
-        'OPTIONS': {},
-        'TIME_ZONE': None,
-        'USER': '',
-        'PASSWORD': '',
-        'HOST': '',
-        'PORT': '',
+        'ENGINE': os.getenv('ENGINE', 'django.db.backends.postgresql'),
+        'NAME': os.getenv('DATABASE_NAME', 'bistartless_main'),
+        'USER': os.getenv('USERNAME', 'bistartless-dev'),
+        'PASSWORD': os.getenv('PASSWORD', ''),
+        'HOST': os.getenv('HOST', 'localhost'),
+        'PORT': os.getenv('PORT', '5432'),
+        'OPTIONS': {
+            # PostgreSQL specific options can go here if needed
+        },
+        'CONN_MAX_AGE': 600,
+        'ATOMIC_REQUESTS': True,
     },
 }
 
-# Cargar bases de datos de negocios existentes
-try:
-    import os
-    for file in os.listdir(BASE_DIR):
-        if file.startswith('db_business_') and file.endswith('.sqlite3'):
-            # Extraer el ID del negocio del nombre del archivo
-            business_id = file[12:-8]  # Quitar 'db_business_' del principio y '.sqlite3' del final
-            if business_id.isdigit():
-                db_name = f'business_{business_id}'
-                if db_name not in DATABASES:
-                    DATABASES[db_name] = {
-                        'ENGINE': 'django.db.backends.sqlite3',
-                        'NAME': BASE_DIR / file,
-                        'ATOMIC_REQUESTS': False,
-                        'AUTOCOMMIT': True,
-                        'OPTIONS': {},
-                        'TIME_ZONE': None,
-                        'USER': '',
-                        'PASSWORD': '',
-                        'HOST': '',
-                        'PORT': '',
-                    }
-                    print(f"Configurada base de datos {db_name} desde archivo existente")
-except Exception as e:
-    print(f"Error al cargar bases de datos existentes: {str(e)}")
+# Con PostgreSQL, usaremos esquemas separados para cada negocio en lugar de bases de datos separadas
+# Esta funcionalidad se manejará dinámicamente en el router de base de datos
 
 # Router para dirigir consultas a la base de datos correcta
 DATABASE_ROUTERS = ['config.db_routers.BusinessRouter']

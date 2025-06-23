@@ -6,6 +6,11 @@ from rest_framework.routers import DefaultRouter
 
 # Viewsas imports
 from app.roles.api.views.role_views import BusinessRoleViewSet, AssignRoleToUserView, RolePermissionUpdateView, UserPermissionsView
+from app.roles.api.views.role_management_views import (
+    BusinessRoleManagementView,
+    RoleTemplatesView,
+    CreateRoleFromTemplateView
+)
 
 
 
@@ -18,5 +23,12 @@ urlpatterns = [
     path("assign-role/", AssignRoleToUserView.as_view(), name="assign_role"),
     path("roles/<int:role_id>/permissions/", RolePermissionUpdateView.as_view(), name="update_role_permissions"),
     path("permissions/", UserPermissionsView.as_view(), name="user_permissions"),
+    
+    # New role management endpoints
+    path("management/", BusinessRoleManagementView.as_view(), name="role_management"),
+    path("management/<int:role_id>/", BusinessRoleManagementView.as_view(), name="role_management_detail"),
+    path("templates/", RoleTemplatesView.as_view(), name="role_templates"),
+    path("create-from-template/", CreateRoleFromTemplateView.as_view(), name="create_role_from_template"),
+    
     path('', include(router.urls)),  # Include router URLs for roles
 ]

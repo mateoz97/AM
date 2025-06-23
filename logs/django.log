@@ -4607,3 +4607,60 @@ WARNING 2025-06-21 10:32:50,366 log Method Not Allowed: /api/settings/business/
 WARNING 2025-06-21 10:32:50,367 basehttp "PATCH /api/settings/business/ HTTP/1.1" 405 44
 WARNING 2025-06-21 10:33:09,011 log Method Not Allowed: /api/settings/user/
 WARNING 2025-06-21 10:33:09,012 basehttp "PATCH /api/settings/user/ HTTP/1.1" 405 44
+INFO 2025-06-21 10:40:09,110 autoreload Watching for file changes with StatReloader
+INFO 2025-06-21 10:40:29,130 basehttp "GET /api/accounts/user-info/ HTTP/1.1" 200 635
+INFO 2025-06-21 10:40:29,143 basehttp "GET /api/accounts/user-info/ HTTP/1.1" 200 635
+INFO 2025-06-21 10:40:29,295 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 206
+INFO 2025-06-21 10:40:29,329 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 206
+INFO 2025-06-21 10:40:29,397 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 206
+INFO 2025-06-21 10:40:29,442 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 6486
+INFO 2025-06-21 10:40:29,539 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 6486
+INFO 2025-06-21 10:40:29,667 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 6486
+INFO 2025-06-21 10:40:34,815 basehttp "OPTIONS /api/business/switch-business/ HTTP/1.1" 200 0
+INFO 2025-06-21 10:40:34,836 basehttp "POST /api/business/switch-business/ HTTP/1.1" 200 150
+INFO 2025-06-21 10:40:34,899 basehttp "GET /api/accounts/user-info/ HTTP/1.1" 200 620
+INFO 2025-06-21 10:40:35,042 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 206
+INFO 2025-06-21 10:40:35,067 basehttp "GET /api/business/user-businesses/ HTTP/1.1" 200 206
+INFO 2025-06-21 10:40:35,153 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 6156
+INFO 2025-06-21 10:40:35,285 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 6156
+INFO 2025-06-21 10:40:35,373 basehttp "GET /api/posts/feed/ HTTP/1.1" 200 6156
+INFO 2025-06-21 10:40:39,773 basehttp "GET /api/settings/notifications/ HTTP/1.1" 200 52
+INFO 2025-06-21 10:40:39,778 basehttp "GET /api/settings/user/ HTTP/1.1" 200 494
+INFO 2025-06-21 10:40:39,788 basehttp "GET /api/settings/business/ HTTP/1.1" 200 607
+INFO 2025-06-21 10:40:39,840 basehttp "GET /api/settings/user/ HTTP/1.1" 200 494
+INFO 2025-06-21 10:40:39,844 basehttp "GET /api/settings/notifications/ HTTP/1.1" 200 52
+INFO 2025-06-21 10:40:39,844 basehttp "GET /api/settings/summary/ HTTP/1.1" 200 1218
+INFO 2025-06-21 10:40:39,849 basehttp "GET /api/settings/business/ HTTP/1.1" 200 607
+INFO 2025-06-21 10:40:39,867 basehttp "GET /api/settings/summary/ HTTP/1.1" 200 1218
+WARNING 2025-06-21 10:40:47,404 log Method Not Allowed: /api/settings/user/
+WARNING 2025-06-21 10:40:47,405 basehttp "PATCH /api/settings/user/ HTTP/1.1" 405 44
+WARNING 2025-06-21 10:40:54,899 log Method Not Allowed: /api/settings/business/
+WARNING 2025-06-21 10:40:54,900 basehttp "PATCH /api/settings/business/ HTTP/1.1" 405 44
+INFO 2025-06-21 10:40:58,928 basehttp "POST /api/settings/notifications/create_default_templates/ HTTP/1.1" 200 71
+INFO 2025-06-21 10:40:58,966 basehttp "GET /api/settings/notifications/ HTTP/1.1" 200 2810
+INFO 2025-06-21 10:41:03,804 basehttp "GET /api/settings/summary/ HTTP/1.1" 200 1218
+INFO 2025-06-21 10:41:08,552 basehttp "OPTIONS /api/settings/notifications/14/ HTTP/1.1" 200 0
+INFO 2025-06-21 10:41:08,572 basehttp "DELETE /api/settings/notifications/14/ HTTP/1.1" 204 0
+INFO 2025-06-21 10:41:08,638 basehttp "GET /api/settings/notifications/ HTTP/1.1" 200 2402
+INFO 2025-06-21 10:41:09,543 basehttp "OPTIONS /api/settings/notifications/12/ HTTP/1.1" 200 0
+INFO 2025-06-21 10:41:09,561 basehttp "DELETE /api/settings/notifications/12/ HTTP/1.1" 204 0
+INFO 2025-06-21 10:41:09,663 basehttp "GET /api/settings/notifications/ HTTP/1.1" 200 1992
+INFO 2025-06-21 10:41:10,058 basehttp "OPTIONS /api/settings/notifications/9/ HTTP/1.1" 200 0
+INFO 2025-06-21 10:41:10,081 basehttp "DELETE /api/settings/notifications/9/ HTTP/1.1" 204 0
+INFO 2025-06-21 10:41:10,167 basehttp "GET /api/settings/notifications/ HTTP/1.1" 200 1590
+INFO 2025-06-21 10:41:10,393 basehttp "OPTIONS /api/settings/notifications/8/ HTTP/1.1" 200 0
+INFO 2025-06-21 10:41:10,410 basehttp "DELETE /api/settings/notifications/8/ HTTP/1.1" 204 0
+INFO 2025-06-21 10:41:10,534 basehttp "GET /api/settings/notifications/ HTTP/1.1" 200 1192
+INFO 2025-06-21 10:41:11,459 basehttp "OPTIONS /api/settings/notifications/11/ HTTP/1.1" 200 0
+INFO 2025-06-21 10:41:11,485 basehttp "DELETE /api/settings/notifications/11/ HTTP/1.1" 204 0
+INFO 2025-06-21 10:41:11,570 basehttp "GET /api/settings/notifications/ HTTP/1.1" 200 799
+WARNING 2025-06-21 10:41:11,616 log Not Found: /api/settings/notifications/11/
+WARNING 2025-06-21 10:41:11,617 basehttp "DELETE /api/settings/notifications/11/ HTTP/1.1" 404 61
+INFO 2025-06-21 10:41:12,026 basehttp "OPTIONS /api/settings/notifications/10/ HTTP/1.1" 200 0
+INFO 2025-06-21 10:41:12,045 basehttp "DELETE /api/settings/notifications/10/ HTTP/1.1" 204 0
+INFO 2025-06-21 10:41:12,110 basehttp "GET /api/settings/notifications/ HTTP/1.1" 200 420
+INFO 2025-06-21 10:41:12,773 basehttp "OPTIONS /api/settings/notifications/13/ HTTP/1.1" 200 0
+INFO 2025-06-21 10:41:12,793 basehttp "DELETE /api/settings/notifications/13/ HTTP/1.1" 204 0
+INFO 2025-06-21 10:41:12,863 basehttp "GET /api/settings/notifications/ HTTP/1.1" 200 52
+INFO 2025-06-22 22:58:13,274 basehttp "GET /admin/ HTTP/1.1" 302 0
+INFO 2025-06-22 23:07:07,591 basehttp "GET /api/business/ HTTP/1.1" 200 760

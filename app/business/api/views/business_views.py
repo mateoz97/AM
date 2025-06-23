@@ -48,15 +48,17 @@ class BusinessViewSet(viewsets.ModelViewSet):
         from app.roles.services.role_service import BusinessRoleService
         roles = BusinessRoleService.create_business_roles(business)
         
-        # Asignar rol de administrador al creador
-        admin_role = roles.get("Admin") or roles.get("Administrador")
-        if admin_role:
-            self.request.user.business_role = admin_role
-            self.request.user.save(update_fields=['business', 'business_role'])
+        # Asignar rol de owner al creador
+        owner_role = roles.get("Owner")
+        if owner_role:
+            self.request.user.current_business_role = owner_role
+            self.request.user.current_business = business
+            self.request.user.promote_to_business_owner()
+            self.request.user.save(update_fields=['current_business', 'current_business_role'])
         
         # Crear base de datos para el negocio - Asegurarse que esto se ejecute
         from app.business.services.business_service import DatabaseService
-        print(f"Creando base de datos para negocio: {business.name} (ID: {business.id})")
+        logger.info(f"Creando base de datos para negocio: {business.name} (ID: {business.id})")
         success = DatabaseService.create_business_database(business)
         
         if not success:
@@ -177,9 +179,8 @@ class SwitchBusinessView(APIView):
         try:
             business_id = request.data.get('business_id')
             
-            # Debug: Imprimir datos recibidos
-            print(f"Datos recibidos: {request.data}")
-            print(f"Business ID: {business_id}")
+            # Log para auditoría
+            logger.info(f"Usuario {request.user.id} intentando cambiar a negocio {business_id}")
             
             if not business_id:
                 return Response({"error": "Se requiere business_id"}, status=status.HTTP_400_BAD_REQUEST)
@@ -231,16 +232,24 @@ class SwitchBusinessView(APIView):
             request.user.business_role = role
             request.user.save(update_fields=['business', 'business_role'])
             
-            # Configurar la base de datos para el negocio si no existe
+            # Configurar el contexto del negocio y el esquema
             from config.middleware import set_current_business_id
+            from app.business.services.business_service import DatabaseService
+            
             set_current_business_id(business.id)
             
-            # Verificar si la base de datos existe y crearla si no
-            from django.conf import settings
-            db_name = f'business_{business.id}'
-            if db_name not in settings.DATABASES:
-                from app.business.services.business_service import DatabaseService
-                DatabaseService.create_business_database(business)
+            # Verificar si el esquema existe y crearlo si no
+            success, result = DatabaseService.verify_business_database(business.id)
+            if not success:
+                logger.info(f"Creando esquema para negocio {business.id}")
+                schema_created = DatabaseService.create_business_database(business)
+                if schema_created:
+                    logger.info(f"✅ Esquema para negocio {business.id} creado exitosamente")
+                else:
+                    logger.warning(f"⚠️ No se pudo crear esquema para negocio {business.id}")
+            
+            # Cambiar al esquema del negocio
+            DatabaseService.switch_to_business_schema(business.id)
             
             # Formatear nombre del negocio para la respuesta
             formatted_name = business.name.replace("_", " ").title()
@@ -256,13 +265,14 @@ class SwitchBusinessView(APIView):
             })
             
         except Business.DoesNotExist:
+            logger.warning(f"Usuario {request.user.id} intentó acceder a negocio inexistente {business_id}")
             return Response({"error": "Negocio no encontrado"}, status=status.HTTP_404_NOT_FOUND)
+        except ValueError as e:
+            logger.error(f"Error de validación en SwitchBusinessView para usuario {request.user.id}: {str(e)}")
+            return Response({"error": "Datos inválidos proporcionados"}, status=status.HTTP_400_BAD_REQUEST)
         except Exception as e:
-            # Debug: Imprimir error completo
-            import traceback
-            print(f"Error en SwitchBusinessView: {str(e)}")
-            print(f"Traceback: {traceback.format_exc()}")
-            return Response({"error": str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+            logger.error(f"Error inesperado en SwitchBusinessView para usuario {request.user.id}: {str(e)}", exc_info=True)
+            return Response({"error": "Error interno del servidor"}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
     
     # AGREGAR: Método OPTIONS para CORS
     def options(self, request, *args, **kwargs):

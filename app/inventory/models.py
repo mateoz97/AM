@@ -3,6 +3,7 @@ from django.db import models
 from django.utils.translation import gettext_lazy as _
 from app.accounts.models.user import CustomUser
 from app.business.models.business import Business
+from app.core.managers import BusinessSpecificManager
 
 class Product(models.Model):
     """Modelo para productos del inventario"""
@@ -30,6 +31,9 @@ class Product(models.Model):
         blank=True
     )
     
+    # Manager consciente de esquemas
+    objects = BusinessSpecificManager()
+    
     class Meta:
         verbose_name = _("Producto")
         verbose_name_plural = _("Productos")
@@ -55,6 +59,9 @@ class ProductCategory(models.Model):
     name = models.CharField(_("Nombre"), max_length=50)
     description = models.TextField(_("Descripción"), blank=True, null=True)
     is_active = models.BooleanField(_("Activa"), default=True)
+    
+    # Manager consciente de esquemas
+    objects = BusinessSpecificManager()
     
     class Meta:
         verbose_name = _("Categoría de Producto")
@@ -96,6 +103,9 @@ class StockMovement(models.Model):
         null=True, 
         blank=True
     )
+    
+    # Manager consciente de esquemas
+    objects = BusinessSpecificManager()
     
     class Meta:
         verbose_name = _("Movimiento de Stock")

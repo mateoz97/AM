@@ -64,12 +64,16 @@ class Business(models.Model):
         if is_new:
             try:
                 from app.business.services.business_service import DatabaseService
-                print(f"Creando base de datos para negocio: {self.name} (ID: {self.id})")
+                import logging
+                logger = logging.getLogger(__name__)
+                logger.info(f"Creando base de datos para negocio: {self.name} (ID: {self.id})")
                 success = DatabaseService.create_business_database(self)
                 if not success:
-                    print(f"⚠️ Advertencia: No se pudo crear la base de datos para el negocio {self.name}")
+                    logger.warning(f"⚠️ Advertencia: No se pudo crear la base de datos para el negocio {self.name}")
             except Exception as e:
-                print(f"❌ Error al crear base de datos para negocio {self.name}: {str(e)}")
+                import logging
+                logger = logging.getLogger(__name__)
+                logger.error(f"❌ Error al crear base de datos para negocio {self.name}: {str(e)}")
 
 class BusinessJoinRequest(models.Model):
     user = models.ForeignKey(

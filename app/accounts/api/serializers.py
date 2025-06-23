@@ -61,6 +61,18 @@ class UserSerializer(serializers.ModelSerializer):
             }
         return None
 
+    def validate_email(self, value):
+        """Valida que el email sea único en todo el sistema"""
+        if CustomUser.objects.filter(email=value).exists():
+            raise serializers.ValidationError("Este correo electrónico ya está en uso.")
+        return value
+    
+    def validate_username(self, value):
+        """Valida que el username sea único y válido"""
+        if CustomUser.objects.filter(username=value).exists():
+            raise serializers.ValidationError("Este nombre de usuario ya está en uso.")
+        return value
+
     def create(self, validated_data):
         role_id = validated_data.pop("business_role", None)
         business = validated_data.pop("business", None)
@@ -76,13 +88,13 @@ class UserSerializer(serializers.ModelSerializer):
             else:
                 # Buscar rol de visualizador para asignar por defecto
                 try:
-                    default_role = BusinessRole.objects.get(business=business, is_default=True, name="admin")
+                    default_role = BusinessRole.objects.get(business=business, is_default=True, name="Viewer")
                     user.business_role = default_role
                 except BusinessRole.DoesNotExist:
                     # Si no existe el rol, crear roles por defecto
-                    from app.accounts.services import BusinessRoleService
-                    roles = BusinessRoleService.create_default_roles(business)
-                    user.business_role = roles.get("viewer")
+                    from app.roles.services.role_service import BusinessRoleService
+                    roles = BusinessRoleService.create_business_roles(business)
+                    user.business_role = roles.get("Viewer")
 
         user.save()
         

@@ -11,6 +11,29 @@ class BusinessSerializer(serializers.ModelSerializer):
                  "phone", "email", "website", "created_at", "updated_at"]
         read_only_fields = ["owner", "created_at", "updated_at"]
 
+    def validate_name(self, value):
+        """Valida que el nombre del negocio sea único"""
+        # Convertir a formato normalizado (sin espacios, con guiones bajos)
+        normalized_name = value.replace(" ", "_")
+        
+        if Business.objects.filter(name=normalized_name).exists():
+            raise serializers.ValidationError("Ya existe un negocio con este nombre.")
+        return value
+    
+    def validate(self, data):
+        """Validaciones generales del negocio"""
+        # Validar que el email sea válido si se proporciona
+        email = data.get('email')
+        if email:
+            from django.core.validators import validate_email
+            from django.core.exceptions import ValidationError
+            try:
+                validate_email(email)
+            except ValidationError:
+                raise serializers.ValidationError({"email": "Formato de email inválido."})
+        
+        return data
+
     def create(self, validated_data):
         business = Business.objects.create(**validated_data)
         

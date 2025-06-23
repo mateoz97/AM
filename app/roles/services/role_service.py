@@ -12,12 +12,17 @@ class BusinessRoleService:
     
     @staticmethod
     def create_business_roles(business):
+        """
+        Crea solo el rol de Owner por defecto para el negocio.
+        Los demás roles deben ser creados manualmente por el propietario.
+        """
         if not business or not business.id:
             return {}
 
+        # Solo crear el rol de Owner por defecto
         roles_data = {
-            "Admin": {
-                "description": "Control total sobre el negocio",
+            "Owner": {
+                "description": "Propietario del negocio con control total",
                 "is_default": True,
                 "can_modify": False,
                 "permissions": {
@@ -32,56 +37,6 @@ class BusinessRoleService:
                     "can_manage_inventory": True,
                     "can_view_reports": True,
                     "can_export_data": True
-                }
-            },
-            "Viewer": {
-                "description": "Acceso de solo lectura a información básica",
-                "is_default": True,
-                "can_modify": True,
-                "permissions": {
-                    "can_view_dashboard": True,
-                    "can_view_orders": True,
-                    "can_view_inventory": True,
-                    "can_view_reports": True
-                }
-            },
-            "Gerente": {
-                "description": "Gestión general del negocio",
-                "is_default": True,
-                "can_modify": True,
-                "permissions": {
-                    "can_view_dashboard": True,
-                    "can_manage_users": True,
-                    "can_view_orders": True,
-                    "can_create_orders": True,
-                    "can_update_orders": True,
-                    "can_view_inventory": True,
-                    "can_manage_inventory": True,
-                    "can_view_reports": True,
-                    "can_export_data": True
-                }
-            },
-            "Mesero": {
-                "description": "Puede gestionar pedidos y ver inventario",
-                "is_default": True,
-                "can_modify": True,
-                "permissions": {
-                    "can_view_dashboard": True,
-                    "can_view_orders": True,
-                    "can_create_orders": True,
-                    "can_update_orders": True,
-                    "can_view_inventory": True
-                }
-            },
-            "Cocinero": {
-                "description": "Puede ver y actualizar pedidos",
-                "is_default": True,
-                "can_modify": True,
-                "permissions": {
-                    "can_view_dashboard": True,
-                    "can_view_orders": True,
-                    "can_update_orders": True,
-                    "can_view_inventory": True
                 }
             }
         }
@@ -120,9 +75,70 @@ class BusinessRoleService:
                             **role_data["permissions"]
                         )
             except Exception as e:
-                print(f"Error creando rol {role_name} para negocio {business.id}: {str(e)}")
+                logger.error(f"Error creando rol {role_name} para negocio {business.id}: {str(e)}")
         
         return created_roles
+    
+    @staticmethod
+    def create_default_role_templates():
+        """
+        Retorna plantillas de roles que pueden ser creados por los propietarios.
+        No crea los roles, solo proporciona las plantillas.
+        """
+        return {
+            "Manager": {
+                "description": "Gestión general del negocio",
+                "permissions": {
+                    "can_view_dashboard": True,
+                    "can_manage_users": True,
+                    "can_view_orders": True,
+                    "can_create_orders": True,
+                    "can_update_orders": True,
+                    "can_view_inventory": True,
+                    "can_manage_inventory": True,
+                    "can_view_reports": True,
+                    "can_export_data": True
+                }
+            },
+            "Employee": {
+                "description": "Empleado con permisos básicos",
+                "permissions": {
+                    "can_view_dashboard": True,
+                    "can_view_orders": True,
+                    "can_create_orders": True,
+                    "can_update_orders": True,
+                    "can_view_inventory": True
+                }
+            },
+            "Viewer": {
+                "description": "Acceso de solo lectura",
+                "permissions": {
+                    "can_view_dashboard": True,
+                    "can_view_orders": True,
+                    "can_view_inventory": True,
+                    "can_view_reports": True
+                }
+            },
+            "Waiter": {
+                "description": "Mesero - gestión de pedidos",
+                "permissions": {
+                    "can_view_dashboard": True,
+                    "can_view_orders": True,
+                    "can_create_orders": True,
+                    "can_update_orders": True,
+                    "can_view_inventory": True
+                }
+            },
+            "Chef": {
+                "description": "Cocinero - actualización de pedidos",
+                "permissions": {
+                    "can_view_dashboard": True,
+                    "can_view_orders": True,
+                    "can_update_orders": True,
+                    "can_view_inventory": True
+                }
+            }
+        }
             
     @staticmethod
     def assign_role_to_user(user, role_name):
@@ -200,5 +216,5 @@ class BusinessRoleService:
             permissions.save()
             return role
         except Exception as e:
-            print(f"Error creando rol personalizado: {str(e)}")
+            logger.error(f"Error creando rol personalizado: {str(e)}")
             return None
