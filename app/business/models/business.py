@@ -46,8 +46,43 @@ class Business(models.Model):
         return f"{self.name} ({status})"
     
     def get_active_members(self):
-        """Retorna todos los miembros activos del negocio"""
-        return self.members.filter(is_active=True)
+        """Retorna todos los usuarios activos del negocio (propietario + co-propietarios + empleados)"""
+        from app.accounts.models.user import CustomUser
+        
+        # Obtener propietario
+        members = []
+        if self.owner:
+            members.append(self.owner)
+        
+        # Obtener co-propietarios
+        members.extend(list(self.co_owners.filter(is_active=True)))
+        
+        # Obtener empleados (usuarios con roles en este negocio)
+        employees = CustomUser.objects.filter(
+            current_business_role__business=self,
+            is_active=True
+        ).exclude(
+            id__in=[member.id for member in members]
+        )
+        members.extend(list(employees))
+        
+        return members
+    
+    def is_owner(self, user):
+        """Verifica si el usuario es propietario del negocio"""
+        return self.owner == user
+    
+    def is_co_owner(self, user):
+        """Verifica si el usuario es co-propietario del negocio"""
+        return user in self.co_owners.all()
+    
+    def has_access(self, user):
+        """Verifica si el usuario tiene acceso al negocio"""
+        return (
+            self.is_owner(user) or 
+            self.is_co_owner(user) or 
+            user in [member for member in self.get_active_members()]
+        )
     
     def save(self, *args, **kwargs):
         # Código existente para manejar el nombre
@@ -74,6 +109,36 @@ class Business(models.Model):
                 import logging
                 logger = logging.getLogger(__name__)
                 logger.error(f"❌ Error al crear base de datos para negocio {self.name}: {str(e)}")
+    
+    def delete(self, *args, **kwargs):
+        """Override delete para eliminar también el esquema de base de datos"""
+        business_id = self.id
+        business_name = self.name
+        
+        try:
+            from app.business.services.business_service import DatabaseService
+            import logging
+            logger = logging.getLogger(__name__)
+            
+            logger.info(f"Eliminando negocio: {business_name} (ID: {business_id})")
+            
+            # Eliminar el esquema de base de datos primero
+            if business_id:
+                success = DatabaseService.delete_business_schema(business_id)
+                if success:
+                    logger.info(f"✅ Esquema eliminado exitosamente para negocio {business_name}")
+                else:
+                    logger.warning(f"⚠️ No se pudo eliminar el esquema para negocio {business_name}")
+            
+            # Eliminar el negocio de la base de datos
+            super().delete(*args, **kwargs)
+            logger.info(f"✅ Negocio {business_name} eliminado exitosamente")
+            
+        except Exception as e:
+            import logging
+            logger = logging.getLogger(__name__)
+            logger.error(f"❌ Error al eliminar negocio {business_name}: {str(e)}")
+            raise  # Re-lanzar la excepción para que el admin muestre el error
 
 class BusinessJoinRequest(models.Model):
     user = models.ForeignKey(

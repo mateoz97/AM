@@ -1,5 +1,6 @@
 # Django admin configuration for the Business models
 from django.contrib import admin
+from django.contrib.admin import helpers
 from django.utils.translation import gettext_lazy as _
 from django.urls import path
 from django.shortcuts import get_object_or_404, render
@@ -114,7 +115,7 @@ class BusinessAdmin(admin.ModelAdmin):
             'classes': ('collapse',)
         }),
     )
-    actions = ['activate_businesses', 'deactivate_businesses', 'create_database_for_businesses']
+    actions = ['activate_businesses', 'deactivate_businesses', 'create_database_for_businesses', 'verify_database_schemas', 'delete_with_schema', 'safe_delete_with_schema']
 
     def get_urls(self):
         urls = super().get_urls()
@@ -134,7 +135,7 @@ class BusinessAdmin(admin.ModelAdmin):
         # En una implementación real, podrías generar un PDF, Excel, etc.
         context = {
             'business': business,
-            'members': business.members.all(),
+            'members': business.get_active_members(),
             'generated_at': timezone.now(),
             'title': f'Reporte de {business.name}',
         }
@@ -189,8 +190,164 @@ class BusinessAdmin(admin.ModelAdmin):
             )
     create_database_for_businesses.short_description = _('Crear base de datos para negocios seleccionados')
     
+    def verify_database_schemas(self, request, queryset):
+        """Verifica el estado de los esquemas de base de datos para los negocios seleccionados"""
+        from app.business.services.business_service import DatabaseService
+        
+        verified_count = 0
+        missing_count = 0
+        error_count = 0
+        
+        for business in queryset:
+            try:
+                exists, info = DatabaseService.verify_business_database(business.id)
+                if exists:
+                    verified_count += 1
+                    table_count = info.get('table_count', 0)
+                    self.message_user(
+                        request,
+                        f"✅ {business.name}: Esquema existe con {table_count} tablas",
+                        level='SUCCESS'
+                    )
+                else:
+                    missing_count += 1
+                    self.message_user(
+                        request,
+                        f"⚠️ {business.name}: Esquema NO existe - {info.get('error', 'Error desconocido')}",
+                        level='WARNING'
+                    )
+            except Exception as e:
+                error_count += 1
+                self.message_user(
+                    request,
+                    f"❌ Error verificando {business.name}: {str(e)}",
+                    level='ERROR'
+                )
+        
+        # Resumen final
+        if verified_count > 0:
+            self.message_user(
+                request,
+                f"Verificación completada: {verified_count} esquemas OK, {missing_count} faltantes, {error_count} errores",
+                level='INFO'
+            )
+    verify_database_schemas.short_description = _('Verificar esquemas de base de datos')
+    
+    def delete_with_schema(self, request, queryset):
+        """Elimina negocios junto con sus esquemas de base de datos"""
+        total_businesses = queryset.count()
+        
+        # Mostrar advertencia pero proceder directamente
+        self.message_user(
+            request,
+            f"⚠️ ADVERTENCIA: Se eliminarán {total_businesses} negocio{'s' if total_businesses > 1 else ''} "
+            f"junto con sus esquemas de base de datos. Esta operación es IRREVERSIBLE.",
+            level='WARNING'
+        )
+        
+        # Mostrar lista de negocios que se van a eliminar
+        business_names = list(queryset.values_list('name', flat=True))
+        self.message_user(
+            request,
+            f"📋 Negocios a eliminar: {', '.join(business_names)}",
+            level='INFO'
+        )
+        
+        deleted_businesses = 0
+        deleted_schemas = 0
+        errors = 0
+        
+        self.message_user(
+            request,
+            f"🚀 Iniciando eliminación de {total_businesses} negocio{'s' if total_businesses > 1 else ''}...",
+            level='INFO'
+        )
+        
+        for i, business in enumerate(queryset, 1):
+            business_name = business.name
+            business_id = business.id
+            
+            try:
+                self.message_user(
+                    request,
+                    f"🗑️ ({i}/{total_businesses}) Eliminando {business_name}...",
+                    level='INFO'
+                )
+                
+                # Eliminar el negocio (esto también elimina el esquema automáticamente)
+                business.delete()
+                deleted_businesses += 1
+                deleted_schemas += 1
+                
+                self.message_user(
+                    request,
+                    f"✅ ({i}/{total_businesses}) {business_name}: Negocio y esquema eliminados exitosamente",
+                    level='SUCCESS'
+                )
+                
+            except Exception as e:
+                errors += 1
+                error_detail = str(e)
+                if len(error_detail) > 100:
+                    error_detail = error_detail[:100] + "..."
+                
+                self.message_user(
+                    request,
+                    f"❌ ({i}/{total_businesses}) Error eliminando {business_name}: {error_detail}",
+                    level='ERROR'
+                )
+                
+                # Log completo del error para debugging
+                import logging
+                logger = logging.getLogger(__name__)
+                logger.error(f"Error eliminando negocio {business_name} (ID: {business_id}): {str(e)}", exc_info=True)
+        
+        # Mensaje final
+        if deleted_businesses > 0:
+            self.message_user(
+                request,
+                f"🎉 Eliminación completada exitosamente: {deleted_businesses} negocios y {deleted_schemas} esquemas eliminados",
+                level='SUCCESS'
+            )
+        
+        if errors > 0:
+            self.message_user(
+                request,
+                f"⚠️ Se encontraron {errors} errores durante la eliminación. Revisar logs para más detalles.",
+                level='WARNING'
+            )
+    
+    delete_with_schema.short_description = _('⚠️ Eliminar negocios CON sus esquemas de BD')
+    
+    def safe_delete_with_schema(self, request, queryset):
+        """Versión más segura que requiere confirmación especial"""
+        total_businesses = queryset.count()
+        
+        # Si hay más de 1 negocio, requerir confirmación especial
+        if total_businesses > 1:
+            # Verificar si se ha confirmado la operación
+            if not request.POST.get('confirmed_mass_delete'):
+                self.message_user(
+                    request,
+                    f"🚨 ATENCIÓN: Intentas eliminar {total_businesses} negocios. "
+                    f"Para confirmar esta operación masiva, ejecuta el comando: "
+                    f"python manage.py shell -c \"print('CONFIRMADO: Eliminar {total_businesses} negocios')\" "
+                    f"y luego agrega '?confirmed_mass_delete=1' al final de la URL de esta página.",
+                    level='ERROR'
+                )
+                return
+        
+        # Proceder con la eliminación usando el método existente
+        return self.delete_with_schema(request, queryset)
+    
+    safe_delete_with_schema.short_description = _('🔒 Eliminar negocios (SEGURO - con confirmación)')
+    
     def member_count(self, obj):
-        return obj.members.count()
+        """Cuenta los miembros activos del negocio"""
+        try:
+            return len(obj.get_active_members())
+        except Exception:
+            return 0
     member_count.short_description = _('Miembros')
     
 

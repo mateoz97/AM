@@ -32,7 +32,7 @@ class BusinessViewSet(viewsets.ModelViewSet):
         user_businesses = Business.objects.filter(
             models.Q(owner=user) | 
             models.Q(co_owners=user) | 
-            models.Q(members=user)
+            models.Q(business_roles__users=user)
         ).distinct()
         
         return user_businesses
@@ -109,6 +109,142 @@ class BusinessViewSet(viewsets.ModelViewSet):
             })
         
         return Response(businesses_data)
+    
+    @action(detail=True, methods=['delete'], url_path='delete-with-schema')
+    def delete_with_schema(self, request, pk=None):
+        """
+        Elimina un negocio junto con su esquema de base de datos
+        Solo permite al propietario eliminar el negocio
+        """
+        try:
+            business = self.get_object()
+            
+            # Verificar permisos - solo el propietario puede eliminar
+            if business.owner != request.user and not request.user.is_superuser:
+                return Response({
+                    'error': 'Solo el propietario del negocio puede eliminarlo'
+                }, status=status.HTTP_403_FORBIDDEN)
+            
+            # Verificar si hay otros usuarios dependientes
+            active_members = business.get_active_members()
+            other_members = [member for member in active_members if member != request.user]
+            
+            if other_members and not request.data.get('force_delete', False):
+                return Response({
+                    'error': f'El negocio tiene {len(other_members)} miembros activos. '
+                           f'Para eliminar, agrega "force_delete": true al cuerpo de la petición.',
+                    'members_count': len(other_members),
+                    'members': [{'id': m.id, 'name': m.get_full_name()} for m in other_members[:5]]
+                }, status=status.HTTP_400_BAD_REQUEST)
+            
+            business_name = business.name
+            business_id = business.id
+            
+            # Log de auditoría
+            logger.warning(f"Usuario {request.user.id} eliminando negocio {business_name} (ID: {business_id})")
+            
+            # Desasociar usuarios antes de eliminar
+            for member in other_members:
+                if member.current_business_id == business_id:
+                    member.current_business = None
+                    member.current_business_role = None
+                    member.save(update_fields=['current_business', 'current_business_role'])
+            
+            # Eliminar el negocio (esto también elimina el esquema automáticamente)
+            business.delete()
+            
+            # Si el usuario actual tenía este negocio como activo, limpiarlo
+            if request.user.current_business_id == business_id:
+                request.user.current_business = None
+                request.user.current_business_role = None
+                request.user.save(update_fields=['current_business', 'current_business_role'])
+            
+            return Response({
+                'message': f'Negocio "{business_name}" eliminado exitosamente junto con su esquema de base de datos',
+                'deleted_business_id': business_id,
+                'affected_users': len(other_members)
+            }, status=status.HTTP_200_OK)
+            
+        except Exception as e:
+            logger.error(f"Error eliminando negocio {pk}: {str(e)}", exc_info=True)
+            return Response({
+                'error': f'Error al eliminar el negocio: {str(e)}'
+            }, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+    
+    @action(detail=True, methods=['get'], url_path='schema-status')
+    def schema_status(self, request, pk=None):
+        """
+        Verifica el estado del esquema de base de datos del negocio
+        """
+        try:
+            business = self.get_object()
+            
+            # Verificar permisos
+            if not business.has_access(request.user) and not request.user.is_superuser:
+                return Response({
+                    'error': 'No tienes acceso a este negocio'
+                }, status=status.HTTP_403_FORBIDDEN)
+            
+            from app.business.services.business_service import DatabaseService
+            
+            exists, info = DatabaseService.verify_business_database(business.id)
+            
+            return Response({
+                'business_id': business.id,
+                'business_name': business.name,
+                'schema_exists': exists,
+                'schema_info': info,
+                'schema_name': DatabaseService.get_business_schema_name(business.id)
+            })
+            
+        except Exception as e:
+            logger.error(f"Error verificando esquema del negocio {pk}: {str(e)}")
+            return Response({
+                'error': f'Error al verificar el esquema: {str(e)}'
+            }, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+    
+    @action(detail=True, methods=['post'], url_path='create-schema')
+    def create_schema(self, request, pk=None):
+        """
+        Crea el esquema de base de datos para el negocio si no existe
+        """
+        try:
+            business = self.get_object()
+            
+            # Verificar permisos - solo propietarios o admins
+            if business.owner != request.user and not request.user.is_superuser:
+                return Response({
+                    'error': 'Solo el propietario del negocio puede crear su esquema'
+                }, status=status.HTTP_403_FORBIDDEN)
+            
+            from app.business.services.business_service import DatabaseService
+            
+            # Verificar si ya existe
+            exists, info = DatabaseService.verify_business_database(business.id)
+            if exists:
+                return Response({
+                    'message': 'El esquema ya existe',
+                    'schema_info': info
+                }, status=status.HTTP_200_OK)
+            
+            # Crear el esquema
+            success = DatabaseService.create_business_database(business)
+            
+            if success:
+                return Response({
+                    'message': f'Esquema creado exitosamente para el negocio "{business.name}"',
+                    'schema_name': DatabaseService.get_business_schema_name(business.id)
+                }, status=status.HTTP_201_CREATED)
+            else:
+                return Response({
+                    'error': 'No se pudo crear el esquema de base de datos'
+                }, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+                
+        except Exception as e:
+            logger.error(f"Error creando esquema para negocio {pk}: {str(e)}")
+            return Response({
+                'error': f'Error al crear el esquema: {str(e)}'
+            }, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
             
 class JoinBusinessView(APIView):
     permission_classes = [permissions.IsAuthenticated]
@@ -190,7 +326,7 @@ class SwitchBusinessView(APIView):
             
             is_owner = business.owner == request.user
             is_co_owner = request.user in business.co_owners.all()
-            is_member = business.members.filter(id=request.user.id).exists()
+            is_member = request.user.current_business == business
             
             if not (is_owner or is_co_owner or is_member):
                 return Response({"error": "No tienes acceso a este negocio"}, status=status.HTTP_403_FORBIDDEN)
