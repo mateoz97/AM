@@ -40,6 +40,13 @@ class ProductViewSet(viewsets.ModelViewSet):
         """
         Asigna el negocio del usuario al crear un producto.
         """
+        # Verificar que el usuario tiene un negocio asignado
+        if not self.request.user.business:
+            from rest_framework.exceptions import ValidationError
+            raise ValidationError({
+                'business': 'Debes tener un negocio asignado para crear productos'
+            })
+        
         serializer.save(business=self.request.user.business)
     
     def check_permissions(self, request):
@@ -198,6 +205,13 @@ class ProductCategoryViewSet(viewsets.ModelViewSet):
         """
         Asigna el negocio del usuario al crear una categoría.
         """
+        # Verificar que el usuario tiene un negocio asignado
+        if not self.request.user.business:
+            from rest_framework.exceptions import ValidationError
+            raise ValidationError({
+                'business': 'Debes tener un negocio asignado para crear categorías'
+            })
+        
         serializer.save(business=self.request.user.business)
     
     def check_permissions(self, request):
