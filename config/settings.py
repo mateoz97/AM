@@ -28,6 +28,7 @@ elif not SECRET_KEY:
 
 # Application definition
 INSTALLED_APPS = [
+    'daphne',  # Django Channels ASGI server
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -39,6 +40,7 @@ INSTALLED_APPS = [
     'rest_framework_simplejwt',
     'corsheaders',
     'django_filters',
+    'channels',  # Django Channels
     'app.accounts',
     'app.roles',
     'app.business',
@@ -46,6 +48,7 @@ INSTALLED_APPS = [
     'app.posts',
     'app.inventory',
     'app.settings',
+    'app.orders',  # New orders app
 ]
 
 CORS_ALLOWED_ORIGINS = [
@@ -242,3 +245,32 @@ LOGGING = {
 # Crear directorio de logs si no existe
 if not os.path.exists(BASE_DIR / 'logs'):
     os.makedirs(BASE_DIR / 'logs')
+
+# =====================================
+# DJANGO CHANNELS CONFIGURATION
+# =====================================
+
+# ASGI application
+ASGI_APPLICATION = 'config.asgi.application'
+
+# Channel layers configuration (Redis backend)
+CHANNEL_LAYERS = {
+    'default': {
+        'BACKEND': 'channels_redis.core.RedisChannelLayer',
+        'CONFIG': {
+            "hosts": [os.getenv('REDIS_URL', 'redis://localhost:6379')],
+        },
+    },
+}
+
+# WebSocket settings
+WEBSOCKET_ACCEPT_ALL = DEBUG  # Solo en desarrollo
+WEBSOCKET_URL_PREFIX = '/ws/'
+
+# Orders real-time settings
+ORDERS_BROADCAST_GROUPS = {
+    'business': 'orders_business_{business_id}',
+    'kitchen': 'orders_kitchen_{business_id}',
+    'waiters': 'orders_waiters_{business_id}',
+    'managers': 'orders_managers_{business_id}',
+}

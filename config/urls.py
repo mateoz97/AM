@@ -11,6 +11,7 @@ urlpatterns = [
     path('api/posts/', include('app.posts.api.urls')),
     path('api/inventory/', include('app.inventory.api.urls')),  
     path('api/settings/', include('app.settings.api.urls')),
+    path('api/', include('app.orders.urls')),  # Orders API
 ]
 
 if settings.DEBUG:

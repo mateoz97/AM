@@ -247,7 +247,9 @@ class CustomUser(AbstractUser):
             else:
                 self.main_role = MainRole.get_client_role()
             
-            self.save(update_fields=['main_role'])
+            # Solo guardar si el usuario ya existe en la base de datos
+            if self.pk:
+                self.save(update_fields=['main_role'])
     
     def has_main_permission(self, permission_name):
         """
