@@ -324,6 +324,34 @@ class OrderSummarySerializer(serializers.ModelSerializer):
         return obj.items.count()
 
 
+class OrderCancellationSerializer(serializers.Serializer):
+    """Serializer para cancelar órdenes"""
+    
+    reason = serializers.CharField(
+        required=False, 
+        allow_blank=True, 
+        max_length=500,
+        help_text="Motivo de la cancelación"
+    )
+    refund_requested = serializers.BooleanField(
+        default=False,
+        help_text="Indica si se solicita reembolso"
+    )
+    
+    def validate(self, attrs):
+        """Valida que la orden pueda ser cancelada"""
+        order = self.context['order']
+        
+        # Verificar que la orden se puede cancelar
+        if not order.can_transition_to(OrderStatus.CANCELLED):
+            current_status = order.get_status_display()
+            raise serializers.ValidationError(
+                f"No se puede cancelar una orden en estado '{current_status}'"
+            )
+        
+        return attrs
+
+
 class OrderStatsSerializer(serializers.Serializer):
     """Serializer para estadísticas de órdenes"""
     

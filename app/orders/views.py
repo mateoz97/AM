@@ -14,7 +14,7 @@ from app.orders.models import Order, OrderStatus
 from app.orders.serializers import (
     OrderSerializer, OrderCreateSerializer, OrderSummarySerializer,
     OrderStatusUpdateSerializer, OrderAssignmentSerializer, 
-    OrderHistorySerializer, OrderStatsSerializer
+    OrderHistorySerializer, OrderStatsSerializer, OrderCancellationSerializer
 )
 
 logger = logging.getLogger(__name__)
@@ -35,6 +35,8 @@ class OrderViewSet(viewsets.ModelViewSet):
             return OrderStatusUpdateSerializer
         elif self.action == 'assign_staff':
             return OrderAssignmentSerializer
+        elif self.action == 'cancel_order':
+            return OrderCancellationSerializer
         elif self.action == 'history':
             return OrderHistorySerializer
         elif self.action == 'stats':
@@ -228,6 +230,67 @@ class OrderViewSet(viewsets.ModelViewSet):
         
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     
+    @action(detail=True, methods=['post'])
+    def cancel_order(self, request, pk=None):
+        """Cancela una orden específica"""
+        order = self.get_object()
+        business = request.user.current_business
+        
+        # Verificar permisos para cancelar órdenes
+        if not self.can_cancel_orders(request.user, order):
+            return Response({
+                'error': 'No tienes permisos para cancelar esta orden'
+            }, status=status.HTTP_403_FORBIDDEN)
+        
+        serializer = self.get_serializer(
+            data=request.data, 
+            context={'order': order}
+        )
+        
+        if serializer.is_valid():
+            reason = serializer.validated_data.get('reason', '')
+            refund_requested = serializer.validated_data.get('refund_requested', False)
+            
+            try:
+                old_status = order.status
+                
+                # Crear notas de cancelación
+                cancellation_notes = f"Orden cancelada por {request.user.get_full_name()}"
+                if reason:
+                    cancellation_notes += f". Motivo: {reason}"
+                if refund_requested:
+                    cancellation_notes += ". Reembolso solicitado."
+                
+                # Usar el método de transición segura
+                order.transition_to(
+                    OrderStatus.CANCELLED, 
+                    user=request.user, 
+                    notes=cancellation_notes
+                )
+                
+                # Notificar cancelación
+                self.broadcast_order_cancellation(order, reason, refund_requested)
+                
+                logger.info(f"Orden {order.order_number} cancelada por usuario {request.user.id}")
+                
+                return Response({
+                    'message': f'Orden {order.order_number} cancelada exitosamente',
+                    'order_id': str(order.id),
+                    'order_number': order.order_number,
+                    'old_status': old_status,
+                    'new_status': OrderStatus.CANCELLED,
+                    'cancelled_at': order.cancelled_at,
+                    'reason': reason,
+                    'refund_requested': refund_requested
+                })
+                
+            except Exception as e:
+                return Response({
+                    'error': str(e)
+                }, status=status.HTTP_400_BAD_REQUEST)
+        
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    
     @action(detail=True, methods=['get'])
     def history(self, request, pk=None):
         """Obtiene el historial de cambios de una orden"""
@@ -386,6 +449,30 @@ class OrderViewSet(viewsets.ModelViewSet):
         role_name = user.current_business_role.name.lower()
         return role_name in ['admin', 'owner', 'manager']
     
+    def can_cancel_orders(self, user, order):
+        """Verifica si el usuario puede cancelar órdenes"""
+        if not user.current_business_role:
+            return False
+        
+        role_name = user.current_business_role.name.lower()
+        
+        # Los administradores pueden cancelar cualquier orden
+        admin_roles = ['admin', 'owner', 'manager', 'restaurant admin', 'administrador', 'gerente']
+        if any(admin_role in role_name for admin_role in admin_roles):
+            return True
+        
+        # Los meseros pueden cancelar sus propias órdenes si están pendientes
+        waiter_roles = ['waiter', 'mesero', 'waitress', 'camarero']
+        if any(waiter_role in role_name for waiter_role in waiter_roles):
+            return (order.waiter == user and 
+                   order.status in [OrderStatus.PENDING, OrderStatus.CONFIRMED])
+        
+        # Los clientes pueden cancelar sus órdenes si están pendientes
+        if order.customer == user and order.status == OrderStatus.PENDING:
+            return True
+        
+        return False
+    
     def broadcast_order_created(self, order):
         """Notifica creación de orden via WebSocket"""
         channel_layer = get_channel_layer()
@@ -489,5 +576,41 @@ class OrderViewSet(viewsets.ModelViewSet):
                     'assignment_type': assignment_type,
                     'assigned_to': assigned_name,
                     'message': f'{assignment_type.title()} asignado: {assigned_name}'
+                }
+            )
+    
+    def broadcast_order_cancellation(self, order, reason=None, refund_requested=False):
+        """Notifica cancelación de orden via WebSocket"""
+        channel_layer = get_channel_layer()
+        business_id = order.business.id
+        
+        # Serializar orden para broadcast
+        order_data = OrderSerializer(order).data
+        
+        groups = [
+            f"orders_business_{business_id}",
+            f"orders_managers_{business_id}",
+            f"orders_kitchen_{business_id}",
+            f"orders_waiters_{business_id}"
+        ]
+        
+        cancellation_message = f"Orden {order.order_number} cancelada"
+        if reason:
+            cancellation_message += f" - {reason}"
+        
+        for group in groups:
+            async_to_sync(channel_layer.group_send)(
+                group,
+                {
+                    'type': 'order_cancelled',
+                    'order_data': order_data,
+                    'order_id': str(order.id),
+                    'order_number': order.order_number,
+                    'reason': reason or '',
+                    'refund_requested': refund_requested,
+                    'cancelled_at': order.cancelled_at.isoformat() if order.cancelled_at else None,
+                    'cancelled_by': self.request.user.get_full_name(),
+                    'message': cancellation_message,
+                    'timestamp': timezone.now().isoformat()
                 }
             )
