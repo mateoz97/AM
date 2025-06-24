@@ -94,6 +94,13 @@ class OrderViewSet(viewsets.ModelViewSet):
             'customer', 'waiter', 'chef'
         ).prefetch_related('items').order_by('-created_at')
     
+    def get_serializer_context(self):
+        """Agrega contexto adicional al serializer"""
+        context = super().get_serializer_context()
+        if self.request.user.current_business:
+            context['business'] = self.request.user.current_business
+        return context
+    
     def perform_create(self, serializer):
         """Crea una nueva orden y notifica en tiempo real"""
         business = self.request.user.current_business

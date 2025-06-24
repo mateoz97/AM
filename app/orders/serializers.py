@@ -16,7 +16,7 @@ class OrderItemSerializer(serializers.ModelSerializer):
             'unit_price', 'total_price', 'modifications', 'cooking_instructions',
             'status', 'started_cooking_at', 'finished_cooking_at'
         ]
-        read_only_fields = ['id', 'total_price', 'started_cooking_at', 'finished_cooking_at']
+        read_only_fields = ['id', 'started_cooking_at', 'finished_cooking_at']
     
     def validate_quantity(self, value):
         """Valida que la cantidad sea positiva"""
@@ -29,6 +29,16 @@ class OrderItemSerializer(serializers.ModelSerializer):
         if value <= 0:
             raise serializers.ValidationError("El precio debe ser mayor a cero")
         return value
+    
+    def validate(self, attrs):
+        """Calcula el total_price automáticamente"""
+        quantity = attrs.get('quantity')
+        unit_price = attrs.get('unit_price')
+        
+        if quantity and unit_price:
+            attrs['total_price'] = quantity * unit_price
+        
+        return attrs
 
 
 class UserBasicSerializer(serializers.ModelSerializer):
@@ -49,6 +59,11 @@ class OrderSerializer(serializers.ModelSerializer):
     customer_detail = UserBasicSerializer(source='customer', read_only=True)
     waiter_detail = UserBasicSerializer(source='waiter', read_only=True)
     chef_detail = UserBasicSerializer(source='chef', read_only=True)
+    
+    # Hacer campos opcionales explícitamente
+    customer_name = serializers.CharField(required=False, allow_blank=True, allow_null=True)
+    customer_phone = serializers.CharField(required=False, allow_blank=True, allow_null=True)
+    table_number = serializers.CharField(required=False, allow_blank=True, allow_null=True)
     
     # Campos calculados
     preparation_time_elapsed = serializers.CharField(read_only=True)
@@ -181,6 +196,11 @@ class OrderCreateSerializer(serializers.ModelSerializer):
     """Serializer optimizado para crear órdenes"""
     
     items = OrderItemSerializer(many=True)
+    
+    # Hacer campos opcionales explícitamente
+    customer_name = serializers.CharField(required=False, allow_blank=True, allow_null=True)
+    customer_phone = serializers.CharField(required=False, allow_blank=True, allow_null=True)
+    table_number = serializers.CharField(required=False, allow_blank=True, allow_null=True)
     
     class Meta:
         model = Order
