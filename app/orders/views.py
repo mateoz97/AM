@@ -10,11 +10,12 @@ from channels.layers import get_channel_layer
 from asgiref.sync import async_to_sync
 import logging
 
-from app.orders.models import Order, OrderStatus
+from app.orders.models import Order, OrderItem, OrderStatus
 from app.orders.serializers import (
     OrderSerializer, OrderCreateSerializer, OrderSummarySerializer,
     OrderStatusUpdateSerializer, OrderAssignmentSerializer, 
-    OrderHistorySerializer, OrderStatsSerializer, OrderCancellationSerializer
+    OrderHistorySerializer, OrderStatsSerializer, OrderCancellationSerializer,
+    OrderItemManagementSerializer, OrderItemUpdateSerializer
 )
 
 logger = logging.getLogger(__name__)
@@ -291,6 +292,144 @@ class OrderViewSet(viewsets.ModelViewSet):
         
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     
+    @action(detail=True, methods=['post'])
+    def add_item(self, request, pk=None):
+        """Agrega un nuevo item a la orden"""
+        order = self.get_object()
+        
+        # Verificar permisos para modificar órdenes
+        if not self.can_modify_orders(request.user, order):
+            return Response({
+                'error': 'No tienes permisos para modificar esta orden'
+            }, status=status.HTTP_403_FORBIDDEN)
+        
+        serializer = OrderItemManagementSerializer(data=request.data)
+        
+        if serializer.is_valid():
+            try:
+                # Crear el nuevo item
+                item_data = serializer.validated_data
+                item_data['total_price'] = item_data['quantity'] * item_data['unit_price']
+                
+                new_item = OrderItem.objects.create(order=order, **item_data)
+                
+                # Actualizar totales de la orden
+                order.refresh_from_db()
+                order.save()  # Esto recalculará los totales
+                
+                # Serializar el item creado
+                item_serializer = OrderItemSerializer(new_item)
+                
+                logger.info(f"Item agregado a orden {order.order_number} por usuario {request.user.id}")
+                
+                return Response({
+                    'message': f'Item agregado exitosamente a la orden {order.order_number}',
+                    'item': item_serializer.data,
+                    'order_total': order.total_amount
+                }, status=status.HTTP_201_CREATED)
+                
+            except Exception as e:
+                return Response({
+                    'error': str(e)
+                }, status=status.HTTP_400_BAD_REQUEST)
+        
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    
+    @action(detail=True, methods=['patch'], url_path='items/(?P<item_id>[^/.]+)')
+    def update_item(self, request, pk=None, item_id=None):
+        """Actualiza un item específico de la orden"""
+        order = self.get_object()
+        
+        # Verificar permisos para modificar órdenes
+        if not self.can_modify_orders(request.user, order):
+            return Response({
+                'error': 'No tienes permisos para modificar esta orden'
+            }, status=status.HTTP_403_FORBIDDEN)
+        
+        try:
+            item = OrderItem.objects.get(id=item_id, order=order)
+        except OrderItem.DoesNotExist:
+            return Response({
+                'error': 'Item no encontrado'
+            }, status=status.HTTP_404_NOT_FOUND)
+        
+        serializer = OrderItemUpdateSerializer(item, data=request.data, partial=True)
+        
+        if serializer.is_valid():
+            try:
+                # Actualizar el item
+                updated_item = serializer.save()
+                
+                # Recalcular el total_price si se cambió quantity o unit_price
+                if 'quantity' in request.data or 'unit_price' in request.data:
+                    updated_item.total_price = updated_item.quantity * updated_item.unit_price
+                    updated_item.save()
+                
+                # Actualizar totales de la orden
+                order.refresh_from_db()
+                order.save()
+                
+                item_serializer = OrderItemSerializer(updated_item)
+                
+                logger.info(f"Item {item_id} actualizado en orden {order.order_number} por usuario {request.user.id}")
+                
+                return Response({
+                    'message': f'Item actualizado exitosamente',
+                    'item': item_serializer.data,
+                    'order_total': order.total_amount
+                })
+                
+            except Exception as e:
+                return Response({
+                    'error': str(e)
+                }, status=status.HTTP_400_BAD_REQUEST)
+        
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    
+    @action(detail=True, methods=['delete'], url_path='items/(?P<item_id>[^/.]+)')
+    def remove_item(self, request, pk=None, item_id=None):
+        """Elimina un item específico de la orden"""
+        order = self.get_object()
+        
+        # Verificar permisos para modificar órdenes
+        if not self.can_modify_orders(request.user, order):
+            return Response({
+                'error': 'No tienes permisos para modificar esta orden'
+            }, status=status.HTTP_403_FORBIDDEN)
+        
+        try:
+            item = OrderItem.objects.get(id=item_id, order=order)
+        except OrderItem.DoesNotExist:
+            return Response({
+                'error': 'Item no encontrado'
+            }, status=status.HTTP_404_NOT_FOUND)
+        
+        # Verificar que no sea el último item
+        if order.items.count() <= 1:
+            return Response({
+                'error': 'No se puede eliminar el último item de la orden'
+            }, status=status.HTTP_400_BAD_REQUEST)
+        
+        try:
+            item_name = item.product_name
+            item.delete()
+            
+            # Actualizar totales de la orden
+            order.refresh_from_db()
+            order.save()
+            
+            logger.info(f"Item {item_name} eliminado de orden {order.order_number} por usuario {request.user.id}")
+            
+            return Response({
+                'message': f'Item "{item_name}" eliminado exitosamente',
+                'order_total': order.total_amount
+            })
+            
+        except Exception as e:
+            return Response({
+                'error': str(e)
+            }, status=status.HTTP_400_BAD_REQUEST)
+    
     @action(detail=True, methods=['get'])
     def history(self, request, pk=None):
         """Obtiene el historial de cambios de una orden"""
@@ -330,10 +469,11 @@ class OrderViewSet(viewsets.ModelViewSet):
             'pending_orders': orders_today.filter(status=OrderStatus.PENDING).count(),
             'preparing_orders': orders_today.filter(status=OrderStatus.PREPARING).count(),
             'ready_orders': orders_today.filter(status=OrderStatus.READY).count(),
+            'paid_orders': orders_today.filter(status=OrderStatus.PAID).count(),
             'delivered_orders': orders_today.filter(status=OrderStatus.DELIVERED).count(),
             'cancelled_orders': orders_today.filter(status=OrderStatus.CANCELLED).count(),
             'total_revenue': orders_today.filter(
-                status=OrderStatus.DELIVERED
+                status__in=[OrderStatus.PAID, OrderStatus.DELIVERED]
             ).aggregate(Sum('total_amount'))['total_amount__sum'] or 0,
             'average_preparation_time': timedelta(minutes=0),
             'orders_per_hour': 0
@@ -384,7 +524,8 @@ class OrderViewSet(viewsets.ModelViewSet):
                 OrderStatus.PENDING,
                 OrderStatus.CONFIRMED,
                 OrderStatus.PREPARING,
-                OrderStatus.READY
+                OrderStatus.READY,
+                OrderStatus.PAID
             ]
         ).select_related(
             'customer', 'waiter', 'chef'
@@ -470,6 +611,26 @@ class OrderViewSet(viewsets.ModelViewSet):
         # Los clientes pueden cancelar sus órdenes si están pendientes
         if order.customer == user and order.status == OrderStatus.PENDING:
             return True
+        
+        return False
+    
+    def can_modify_orders(self, user, order):
+        """Verifica si el usuario puede modificar órdenes (agregar/quitar items)"""
+        if not user.current_business_role:
+            return False
+        
+        role_name = user.current_business_role.name.lower()
+        
+        # Los administradores pueden modificar cualquier orden
+        admin_roles = ['admin', 'owner', 'manager', 'restaurant admin', 'administrador', 'gerente']
+        if any(admin_role in role_name for admin_role in admin_roles):
+            return True
+        
+        # Los meseros pueden modificar sus propias órdenes antes de que estén listas
+        waiter_roles = ['waiter', 'mesero', 'waitress', 'camarero']
+        if any(waiter_role in role_name for waiter_role in waiter_roles):
+            return (order.waiter == user and 
+                   order.status in [OrderStatus.PENDING, OrderStatus.CONFIRMED, OrderStatus.PREPARING])
         
         return False
     

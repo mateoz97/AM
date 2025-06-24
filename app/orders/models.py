@@ -16,6 +16,7 @@ class OrderStatus(models.TextChoices):
     CONFIRMED = 'confirmed', _('Confirmada')
     PREPARING = 'preparing', _('Preparando')
     READY = 'ready', _('Lista')
+    PAID = 'paid', _('Pagada')
     DELIVERED = 'delivered', _('Entregada')
     CANCELLED = 'cancelled', _('Cancelada')
     REFUNDED = 'refunded', _('Reembolsada')
@@ -173,6 +174,7 @@ class Order(models.Model):
     confirmed_at = models.DateTimeField(_("Confirmado"), null=True, blank=True)
     started_at = models.DateTimeField(_("Iniciado"), null=True, blank=True)
     ready_at = models.DateTimeField(_("Listo"), null=True, blank=True)
+    paid_at = models.DateTimeField(_("Pagado"), null=True, blank=True)
     delivered_at = models.DateTimeField(_("Entregado"), null=True, blank=True)
     cancelled_at = models.DateTimeField(_("Cancelado"), null=True, blank=True)
     
@@ -256,6 +258,8 @@ class Order(models.Model):
             self.started_at = now
         elif self.status == OrderStatus.READY and not self.ready_at:
             self.ready_at = now
+        elif self.status == OrderStatus.PAID and not self.paid_at:
+            self.paid_at = now
         elif self.status == OrderStatus.DELIVERED and not self.delivered_at:
             self.delivered_at = now
         elif self.status == OrderStatus.CANCELLED and not self.cancelled_at:
@@ -267,7 +271,8 @@ class Order(models.Model):
             OrderStatus.PENDING: [OrderStatus.CONFIRMED, OrderStatus.CANCELLED],
             OrderStatus.CONFIRMED: [OrderStatus.PREPARING, OrderStatus.CANCELLED],
             OrderStatus.PREPARING: [OrderStatus.READY, OrderStatus.CANCELLED],
-            OrderStatus.READY: [OrderStatus.DELIVERED, OrderStatus.CANCELLED],
+            OrderStatus.READY: [OrderStatus.PAID, OrderStatus.DELIVERED, OrderStatus.CANCELLED],
+            OrderStatus.PAID: [OrderStatus.DELIVERED, OrderStatus.REFUNDED],
             OrderStatus.DELIVERED: [OrderStatus.REFUNDED],
             OrderStatus.CANCELLED: [],
             OrderStatus.REFUNDED: [],
@@ -292,7 +297,7 @@ class Order(models.Model):
             old_status=old_status,
             new_status=new_status,
             changed_by=user,
-            notes=notes
+            notes=notes or ''
         )
         
         return True

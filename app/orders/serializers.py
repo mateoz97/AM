@@ -75,6 +75,7 @@ class OrderSerializer(serializers.ModelSerializer):
     confirmed_at = serializers.DateTimeField(read_only=True)
     started_at = serializers.DateTimeField(read_only=True)
     ready_at = serializers.DateTimeField(read_only=True)
+    paid_at = serializers.DateTimeField(read_only=True)
     delivered_at = serializers.DateTimeField(read_only=True)
     cancelled_at = serializers.DateTimeField(read_only=True)
     
@@ -87,14 +88,14 @@ class OrderSerializer(serializers.ModelSerializer):
             'customer', 'customer_detail', 'waiter', 'waiter_detail', 
             'chef', 'chef_detail', 'estimated_preparation_time',
             'customer_notes', 'kitchen_notes', 'internal_notes',
-            'created_at', 'confirmed_at', 'started_at', 'ready_at', 
+            'created_at', 'confirmed_at', 'started_at', 'ready_at', 'paid_at',
             'delivered_at', 'cancelled_at', 'updated_at',
             'preparation_time_elapsed', 'is_overdue', 'estimated_ready_time',
             'items'
         ]
         read_only_fields = [
             'id', 'order_number', 'subtotal', 'total_amount',
-            'created_at', 'confirmed_at', 'started_at', 'ready_at', 
+            'created_at', 'confirmed_at', 'started_at', 'ready_at', 'paid_at',
             'delivered_at', 'cancelled_at', 'updated_at',
             'preparation_time_elapsed', 'is_overdue', 'estimated_ready_time'
         ]
@@ -352,6 +353,52 @@ class OrderCancellationSerializer(serializers.Serializer):
         return attrs
 
 
+class OrderItemManagementSerializer(serializers.Serializer):
+    """Serializer para agregar/modificar items de órdenes"""
+    
+    product_name = serializers.CharField(max_length=200)
+    product_description = serializers.CharField(required=False, allow_blank=True)
+    quantity = serializers.IntegerField(min_value=1)
+    unit_price = serializers.DecimalField(max_digits=10, decimal_places=2, min_value=0)
+    modifications = serializers.CharField(required=False, allow_blank=True)
+    cooking_instructions = serializers.CharField(required=False, allow_blank=True)
+    
+    def validate_quantity(self, value):
+        """Valida que la cantidad sea positiva"""
+        if value <= 0:
+            raise serializers.ValidationError("La cantidad debe ser mayor a cero")
+        return value
+    
+    def validate_unit_price(self, value):
+        """Valida que el precio sea positivo"""
+        if value <= 0:
+            raise serializers.ValidationError("El precio debe ser mayor a cero")
+        return value
+
+
+class OrderItemUpdateSerializer(serializers.ModelSerializer):
+    """Serializer para actualizar items existentes"""
+    
+    class Meta:
+        model = OrderItem
+        fields = [
+            'product_name', 'product_description', 'quantity',
+            'unit_price', 'modifications', 'cooking_instructions'
+        ]
+    
+    def validate_quantity(self, value):
+        """Valida que la cantidad sea positiva"""
+        if value <= 0:
+            raise serializers.ValidationError("La cantidad debe ser mayor a cero")
+        return value
+    
+    def validate_unit_price(self, value):
+        """Valida que el precio sea positivo"""
+        if value <= 0:
+            raise serializers.ValidationError("El precio debe ser mayor a cero")
+        return value
+
+
 class OrderStatsSerializer(serializers.Serializer):
     """Serializer para estadísticas de órdenes"""
     
@@ -359,6 +406,7 @@ class OrderStatsSerializer(serializers.Serializer):
     pending_orders = serializers.IntegerField()
     preparing_orders = serializers.IntegerField()
     ready_orders = serializers.IntegerField()
+    paid_orders = serializers.IntegerField()
     delivered_orders = serializers.IntegerField()
     cancelled_orders = serializers.IntegerField()
     total_revenue = serializers.DecimalField(max_digits=12, decimal_places=2)
