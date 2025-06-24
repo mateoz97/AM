@@ -6,6 +6,7 @@ from channels.db import database_sync_to_async
 from django.contrib.auth.models import AnonymousUser
 from django.core.exceptions import ValidationError
 from django.db import models
+from django.utils import timezone
 from app.orders.models import Order, OrderStatus
 from app.business.models.business import Business
 from app.accounts.models.user import CustomUser
@@ -71,6 +72,10 @@ class OrderConsumer(AsyncWebsocketConsumer):
                 await self.handle_add_note(data)
             elif action == 'request_orders_update':
                 await self.send_initial_data()
+            elif action == 'ping':
+                await self.handle_ping()
+            elif action == 'subscribe_to_updates':
+                await self.handle_subscription(data)
             else:
                 await self.send_error(f"Acción desconocida: {action}")
                 
@@ -155,6 +160,34 @@ class OrderConsumer(AsyncWebsocketConsumer):
             logger.error(f"Error en handle_add_note: {str(e)}", exc_info=True)
             await self.send_error("Error al agregar nota")
     
+    async def handle_ping(self):
+        """Maneja ping para mantener conexión viva"""
+        await self.send_json({
+            'type': 'pong',
+            'timestamp': timezone.now().isoformat(),
+            'server_time': timezone.now().isoformat()
+        })
+    
+    async def handle_subscription(self, data):
+        """Maneja suscripciones a actualizaciones específicas"""
+        try:
+            subscription_types = data.get('subscription_types', [])
+            
+            # Validar tipos de suscripción
+            valid_types = ['orders', 'inventory', 'notifications', 'business_events']
+            filtered_types = [t for t in subscription_types if t in valid_types]
+            
+            # Enviar confirmación de suscripción
+            await self.send_json({
+                'type': 'subscription_confirmed',
+                'subscribed_to': filtered_types,
+                'message': f'Suscrito a {len(filtered_types)} tipos de eventos'
+            })
+            
+        except Exception as e:
+            logger.error(f"Error en handle_subscription: {str(e)}", exc_info=True)
+            await self.send_error("Error al procesar suscripción")
+    
     # Eventos de grupo (recibidos desde otros consumers o views)
     async def order_created(self, event):
         """Maneja evento de orden creada"""
@@ -195,6 +228,37 @@ class OrderConsumer(AsyncWebsocketConsumer):
             'message': event['message']
         })
     
+    async def order_cancelled(self, event):
+        """Maneja evento de orden cancelada"""
+        await self.send_json({
+            'type': 'order_cancelled',
+            'order': event['order_data'],
+            'order_id': event['order_id'],
+            'order_number': event['order_number'],
+            'reason': event.get('reason', ''),
+            'refund_requested': event.get('refund_requested', False),
+            'cancelled_at': event.get('cancelled_at'),
+            'cancelled_by': event.get('cancelled_by'),
+            'message': event['message'],
+            'timestamp': event['timestamp']
+        })
+    
+    async def order_refunded(self, event):
+        """Maneja evento de orden reembolsada"""
+        await self.send_json({
+            'type': 'order_refunded',
+            'order': event['order_data'],
+            'order_id': event['order_id'],
+            'order_number': event['order_number'],
+            'refund_amount': event['refund_amount'],
+            'reason': event.get('reason', ''),
+            'transaction_id': event.get('transaction_id'),
+            'refunded_at': event.get('refunded_at'),
+            'refunded_by': event.get('refunded_by'),
+            'message': event['message'],
+            'timestamp': event['timestamp']
+        })
+    
     async def order_notification(self, event):
         """Maneja notificaciones generales"""
         await self.send_json({
@@ -202,7 +266,8 @@ class OrderConsumer(AsyncWebsocketConsumer):
             'notification_type': event['notification_type'],
             'message': event['message'],
             'order_id': event.get('order_id'),
-            'urgent': event.get('urgent', False)
+            'urgent': event.get('urgent', False),
+            'timestamp': event.get('timestamp', '')
         })
     
     # Métodos auxiliares

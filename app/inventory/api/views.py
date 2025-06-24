@@ -20,7 +20,7 @@ class ProductViewSet(viewsets.ModelViewSet):
     filter_backends = [DjangoFilterBackend, filters.SearchFilter, filters.OrderingFilter]
     filterset_fields = ['category', 'is_active']
     search_fields = ['name', 'description', 'category']
-    ordering_fields = ['name', 'price', 'stock', 'created_at']
+    ordering_fields = ['name', 'price', 'stock', 'created_at', 'updated_at']
     ordering = ['name']
     
     def get_queryset(self):
@@ -30,24 +30,24 @@ class ProductViewSet(viewsets.ModelViewSet):
         user = self.request.user
         
         # Verificar si el usuario tiene un negocio asignado
-        if not user.business:
+        if not user.current_business:
             return Product.objects.none()
             
         # Filtrar por el negocio del usuario
-        return Product.objects.filter(business=user.business)
+        return Product.objects.filter(business=user.current_business)
     
     def perform_create(self, serializer):
         """
         Asigna el negocio del usuario al crear un producto.
         """
         # Verificar que el usuario tiene un negocio asignado
-        if not self.request.user.business:
+        if not self.request.user.current_business:
             from rest_framework.exceptions import ValidationError
             raise ValidationError({
                 'business': 'Debes tener un negocio asignado para crear productos'
             })
         
-        serializer.save(business=self.request.user.business)
+        serializer.save(business=self.request.user.current_business)
     
     def check_permissions(self, request):
         """
@@ -71,13 +71,13 @@ class ProductViewSet(viewsets.ModelViewSet):
         """
         # Obtener categorías de las categorías personalizadas
         custom_categories = ProductCategory.objects.filter(
-            business=request.user.business,
+            business=request.user.current_business,
             is_active=True
         ).values_list('name', flat=True)
         
         # Obtener categorías utilizadas en productos
         product_categories = Product.objects.filter(
-            business=request.user.business
+            business=request.user.current_business
         ).exclude(
             category__isnull=True
         ).exclude(
@@ -176,6 +176,269 @@ class ProductViewSet(viewsets.ModelViewSet):
             
         serializer = StockMovementSerializer(queryset, many=True)
         return Response(serializer.data)
+    
+    @action(detail=False, methods=['get'])
+    def low_stock(self, request):
+        """
+        Devuelve productos con stock bajo según el umbral configurado del negocio.
+        """
+        business = request.user.current_business
+        if not business:
+            return Response([])
+        
+        # Obtener el umbral de stock bajo del negocio (default: 5)
+        threshold = getattr(business.business_settings, 'low_stock_threshold', 5) if hasattr(business, 'business_settings') else 5
+        
+        # Filtrar productos con stock bajo
+        low_stock_products = Product.objects.filter(
+            business=business,
+            is_active=True,
+            stock__lte=threshold
+        ).order_by('stock', 'name')
+        
+        serializer = self.get_serializer(low_stock_products, many=True)
+        return Response(serializer.data)
+    
+    @action(detail=False, methods=['get'])
+    def advanced_search(self, request):
+        """
+        Búsqueda avanzada con múltiples filtros.
+        """
+        queryset = self.get_queryset()
+        
+        # Filtros básicos
+        name = request.query_params.get('name')
+        category = request.query_params.get('category')
+        min_price = request.query_params.get('min_price')
+        max_price = request.query_params.get('max_price')
+        min_stock = request.query_params.get('min_stock')
+        max_stock = request.query_params.get('max_stock')
+        is_active = request.query_params.get('is_active')
+        
+        # Aplicar filtros
+        if name:
+            queryset = queryset.filter(name__icontains=name)
+        
+        if category:
+            queryset = queryset.filter(category__icontains=category)
+        
+        if min_price:
+            try:
+                queryset = queryset.filter(price__gte=float(min_price))
+            except ValueError:
+                pass
+        
+        if max_price:
+            try:
+                queryset = queryset.filter(price__lte=float(max_price))
+            except ValueError:
+                pass
+        
+        if min_stock:
+            try:
+                queryset = queryset.filter(stock__gte=int(min_stock))
+            except ValueError:
+                pass
+        
+        if max_stock:
+            try:
+                queryset = queryset.filter(stock__lte=int(max_stock))
+            except ValueError:
+                pass
+        
+        if is_active is not None:
+            queryset = queryset.filter(is_active=is_active.lower() == 'true')
+        
+        # Ordenamiento personalizado
+        sort_by = request.query_params.get('sort_by', 'name')
+        sort_order = request.query_params.get('sort_order', 'asc')
+        
+        if sort_by in self.ordering_fields:
+            if sort_order == 'desc':
+                sort_by = f'-{sort_by}'
+            queryset = queryset.order_by(sort_by)
+        
+        # Paginación
+        page = self.paginate_queryset(queryset)
+        if page is not None:
+            serializer = self.get_serializer(page, many=True)
+            return self.get_paginated_response(serializer.data)
+        
+        serializer = self.get_serializer(queryset, many=True)
+        return Response(serializer.data)
+    
+    @action(detail=False, methods=['get'])
+    def inventory_summary(self, request):
+        """
+        Resumen del inventario con estadísticas útiles.
+        """
+        business = request.user.current_business
+        if not business:
+            return Response({
+                'error': 'Usuario no tiene negocio asignado'
+            }, status=status.HTTP_404_NOT_FOUND)
+        
+        products = Product.objects.filter(business=business)
+        
+        # Estadísticas básicas
+        total_products = products.count()
+        active_products = products.filter(is_active=True).count()
+        inactive_products = products.filter(is_active=False).count()
+        
+        # Análisis de stock
+        total_stock_value = sum(
+            product.price * product.stock 
+            for product in products.filter(is_active=True)
+        )
+        
+        # Stock bajo
+        threshold = getattr(business.business_settings, 'low_stock_threshold', 5) if hasattr(business, 'business_settings') else 5
+        low_stock_count = products.filter(
+            is_active=True,
+            stock__lte=threshold
+        ).count()
+        
+        # Stock cero
+        out_of_stock_count = products.filter(
+            is_active=True,
+            stock=0
+        ).count()
+        
+        # Categorías
+        categories = products.exclude(
+            category__isnull=True
+        ).exclude(
+            category=''
+        ).values_list('category', flat=True).distinct()
+        
+        categories_stats = {}
+        for category in categories:
+            category_products = products.filter(category=category, is_active=True)
+            categories_stats[category] = {
+                'count': category_products.count(),
+                'total_stock': sum(p.stock for p in category_products),
+                'total_value': sum(p.price * p.stock for p in category_products)
+            }
+        
+        # Top productos por valor de stock
+        top_products_by_value = []
+        for product in products.filter(is_active=True).order_by('-stock')[:5]:
+            top_products_by_value.append({
+                'id': product.id,
+                'name': product.name,
+                'stock': product.stock,
+                'price': product.price,
+                'stock_value': product.price * product.stock
+            })
+        
+        summary = {
+            'overview': {
+                'total_products': total_products,
+                'active_products': active_products,
+                'inactive_products': inactive_products,
+                'total_stock_value': total_stock_value,
+                'low_stock_count': low_stock_count,
+                'out_of_stock_count': out_of_stock_count,
+                'low_stock_threshold': threshold
+            },
+            'categories': {
+                'total_categories': len(categories),
+                'categories_stats': categories_stats
+            },
+            'top_products_by_value': top_products_by_value
+        }
+        
+        return Response(summary)
+    
+    @action(detail=False, methods=['post'])
+    def bulk_update_stock(self, request):
+        """
+        Actualización masiva de stock para múltiples productos.
+        """
+        if not request.user.has_business_permission('can_manage_inventory'):
+            return Response(
+                {"error": "No tienes permiso para actualizar stock masivamente"},
+                status=status.HTTP_403_FORBIDDEN
+            )
+        
+        updates = request.data.get('updates', [])
+        if not updates:
+            return Response(
+                {"error": "No se proporcionaron actualizaciones"},
+                status=status.HTTP_400_BAD_REQUEST
+            )
+        
+        results = {
+            'successful_updates': [],
+            'failed_updates': [],
+            'total_processed': len(updates)
+        }
+        
+        for update in updates:
+            try:
+                product_id = update.get('product_id')
+                quantity = update.get('quantity')
+                movement_type = update.get('movement_type', 'adjustment')
+                notes = update.get('notes', 'Actualización masiva de stock')
+                
+                if not product_id or quantity is None:
+                    results['failed_updates'].append({
+                        'product_id': product_id,
+                        'error': 'ID de producto y cantidad son requeridos'
+                    })
+                    continue
+                
+                try:
+                    product = Product.objects.get(
+                        id=product_id,
+                        business=request.user.current_business
+                    )
+                except Product.DoesNotExist:
+                    results['failed_updates'].append({
+                        'product_id': product_id,
+                        'error': 'Producto no encontrado'
+                    })
+                    continue
+                
+                # Crear movimiento de stock
+                movement_data = {
+                    'product': product,
+                    'movement_type': movement_type,
+                    'quantity': int(quantity),
+                    'notes': notes,
+                    'created_by': request.user
+                }
+                
+                movement_serializer = StockMovementSerializer(
+                    data=movement_data, 
+                    context={'request': request}
+                )
+                
+                if movement_serializer.is_valid():
+                    movement_serializer.save()
+                    results['successful_updates'].append({
+                        'product_id': product_id,
+                        'product_name': product.name,
+                        'new_stock': product.stock,
+                        'movement_type': movement_type,
+                        'quantity': quantity
+                    })
+                else:
+                    results['failed_updates'].append({
+                        'product_id': product_id,
+                        'error': movement_serializer.errors
+                    })
+                    
+            except Exception as e:
+                results['failed_updates'].append({
+                    'product_id': update.get('product_id', 'unknown'),
+                    'error': str(e)
+                })
+        
+        return Response({
+            'message': f'Actualización masiva completada. {len(results["successful_updates"])} exitosas, {len(results["failed_updates"])} fallidas.',
+            'results': results
+        })
 
 class ProductCategoryViewSet(viewsets.ModelViewSet):
     """
@@ -195,24 +458,24 @@ class ProductCategoryViewSet(viewsets.ModelViewSet):
         user = self.request.user
         
         # Verificar si el usuario tiene un negocio asignado
-        if not user.business:
+        if not user.current_business:
             return ProductCategory.objects.none()
             
         # Filtrar por el negocio del usuario
-        return ProductCategory.objects.filter(business=user.business)
+        return ProductCategory.objects.filter(business=user.current_business)
     
     def perform_create(self, serializer):
         """
         Asigna el negocio del usuario al crear una categoría.
         """
         # Verificar que el usuario tiene un negocio asignado
-        if not self.request.user.business:
+        if not self.request.user.current_business:
             from rest_framework.exceptions import ValidationError
             raise ValidationError({
                 'business': 'Debes tener un negocio asignado para crear categorías'
             })
         
-        serializer.save(business=self.request.user.business)
+        serializer.save(business=self.request.user.current_business)
     
     def check_permissions(self, request):
         """
@@ -248,8 +511,8 @@ class StockMovementViewSet(viewsets.ReadOnlyModelViewSet):
         user = self.request.user
         
         # Verificar si el usuario tiene un negocio asignado
-        if not user.business:
+        if not user.current_business:
             return StockMovement.objects.none()
             
         # Filtrar por productos del negocio del usuario
-        return StockMovement.objects.filter(product__business=user.business)
+        return StockMovement.objects.filter(product__business=user.current_business)

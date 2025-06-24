@@ -302,6 +302,34 @@ class Order(models.Model):
         
         return True
     
+    def log_audit(self, action, user=None, old_values=None, new_values=None, details=None, request=None):
+        """Registra una acción de auditoría para esta orden"""
+        try:
+            audit_data = {
+                'order': self,
+                'action': action,
+                'user': user,
+                'old_values': old_values,
+                'new_values': new_values,
+                'details': details or '',
+            }
+            
+            # Obtener información de la request si está disponible
+            if request:
+                x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
+                if x_forwarded_for:
+                    audit_data['ip_address'] = x_forwarded_for.split(',')[0]
+                else:
+                    audit_data['ip_address'] = request.META.get('REMOTE_ADDR')
+                
+                audit_data['user_agent'] = request.META.get('HTTP_USER_AGENT', '')
+            
+            OrderAuditLog.objects.create(**audit_data)
+            
+        except Exception as e:
+            # No fallar si hay error en auditoría
+            logger.error(f"Error creando log de auditoría: {str(e)}")
+    
     @property
     def preparation_time_elapsed(self):
         """Tiempo transcurrido desde que comenzó la preparación"""
@@ -502,3 +530,88 @@ class OrderNotification(models.Model):
     
     def __str__(self):
         return f"Notificación para {self.order.order_number}: {self.notification_type}"
+
+
+class OrderAuditLog(models.Model):
+    """Registro de auditoría para operaciones en órdenes"""
+    
+    ACTION_CHOICES = [
+        ('created', _('Creada')),
+        ('updated', _('Actualizada')),
+        ('status_changed', _('Estado cambiado')),
+        ('assigned', _('Asignada')),
+        ('item_added', _('Item agregado')),
+        ('item_updated', _('Item actualizado')),
+        ('item_removed', _('Item eliminado')),
+        ('cancelled', _('Cancelada')),
+        ('refunded', _('Reembolsada')),
+        ('note_added', _('Nota agregada')),
+    ]
+    
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    order = models.ForeignKey(
+        Order,
+        on_delete=models.CASCADE,
+        related_name='audit_logs',
+        verbose_name=_("Orden")
+    )
+    
+    action = models.CharField(
+        _("Acción"),
+        max_length=20,
+        choices=ACTION_CHOICES
+    )
+    user = models.ForeignKey(
+        'accounts.CustomUser',
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        verbose_name=_("Usuario")
+    )
+    
+    # Datos de la acción
+    old_values = models.JSONField(
+        _("Valores anteriores"),
+        null=True,
+        blank=True,
+        help_text=_("Valores antes del cambio")
+    )
+    new_values = models.JSONField(
+        _("Valores nuevos"),
+        null=True,
+        blank=True,
+        help_text=_("Valores después del cambio")
+    )
+    details = models.TextField(
+        _("Detalles"),
+        blank=True,
+        help_text=_("Información adicional sobre la acción")
+    )
+    
+    # Metadatos
+    timestamp = models.DateTimeField(_("Fecha y hora"), auto_now_add=True)
+    ip_address = models.GenericIPAddressField(
+        _("Dirección IP"),
+        null=True,
+        blank=True
+    )
+    user_agent = models.TextField(
+        _("User Agent"),
+        blank=True
+    )
+    
+    # Manager para esquemas de negocio
+    objects = BusinessSpecificManager()
+    
+    class Meta:
+        verbose_name = _("Registro de Auditoría")
+        verbose_name_plural = _("Registros de Auditoría")
+        ordering = ['-timestamp']
+        indexes = [
+            models.Index(fields=['order', '-timestamp']),
+            models.Index(fields=['action', '-timestamp']),
+            models.Index(fields=['user', '-timestamp']),
+        ]
+    
+    def __str__(self):
+        return f"{self.order.order_number}: {self.get_action_display()} por {self.user.username if self.user else 'Sistema'}"

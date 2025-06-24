@@ -6,11 +6,12 @@ from django.db.models import Q, Sum, Avg
 from django.utils import timezone
 from django.core.exceptions import ValidationError
 from datetime import datetime, timedelta
+from decimal import Decimal
 from channels.layers import get_channel_layer
 from asgiref.sync import async_to_sync
 import logging
 
-from app.orders.models import Order, OrderItem, OrderStatus
+from app.orders.models import Order, OrderItem, OrderStatus, OrderType, OrderPriority, OrderAuditLog
 from app.orders.serializers import (
     OrderSerializer, OrderCreateSerializer, OrderSummarySerializer,
     OrderStatusUpdateSerializer, OrderAssignmentSerializer, 
@@ -117,6 +118,20 @@ class OrderViewSet(viewsets.ModelViewSet):
         # Crear la orden
         order = serializer.save(business=business)
         
+        # Registrar auditoría
+        order.log_audit(
+            action='created',
+            user=self.request.user,
+            new_values={
+                'order_number': order.order_number,
+                'status': order.status,
+                'total_amount': float(order.total_amount),
+                'order_type': order.order_type
+            },
+            details=f"Orden creada con {order.items.count()} items",
+            request=self.request
+        )
+        
         # Notificar en tiempo real
         self.broadcast_order_created(order)
         
@@ -152,6 +167,16 @@ class OrderViewSet(viewsets.ModelViewSet):
             try:
                 # Usar el método de transición segura
                 order.transition_to(new_status, user=request.user, notes=notes)
+                
+                # Registrar auditoría
+                order.log_audit(
+                    action='status_changed',
+                    user=request.user,
+                    old_values={'status': old_status},
+                    new_values={'status': new_status},
+                    details=f"Estado cambiado de {old_status} a {new_status}. Notas: {notes}",
+                    request=request
+                )
                 
                 # Notificar cambio de estado
                 self.broadcast_status_change(order, old_status, new_status)
@@ -269,6 +294,16 @@ class OrderViewSet(viewsets.ModelViewSet):
                     notes=cancellation_notes
                 )
                 
+                # Registrar auditoría
+                order.log_audit(
+                    action='cancelled',
+                    user=request.user,
+                    old_values={'status': old_status},
+                    new_values={'status': OrderStatus.CANCELLED},
+                    details=f"Orden cancelada. Motivo: {reason}. Reembolso solicitado: {refund_requested}",
+                    request=request
+                )
+                
                 # Notificar cancelación
                 self.broadcast_order_cancellation(order, reason, refund_requested)
                 
@@ -291,6 +326,117 @@ class OrderViewSet(viewsets.ModelViewSet):
                 }, status=status.HTTP_400_BAD_REQUEST)
         
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    
+    @action(detail=True, methods=['post'])
+    def refund_order(self, request, pk=None):
+        """Procesa un reembolso para una orden específica"""
+        order = self.get_object()
+        business = request.user.current_business
+        
+        # Verificar permisos para procesar reembolsos
+        if not self.can_process_refunds(request.user):
+            return Response({
+                'error': 'No tienes permisos para procesar reembolsos'
+            }, status=status.HTTP_403_FORBIDDEN)
+        
+        # Verificar que la orden esté en un estado que permita reembolso
+        if order.status not in [OrderStatus.PAID, OrderStatus.DELIVERED, OrderStatus.CANCELLED]:
+            return Response({
+                'error': f'No se puede reembolsar una orden en estado {order.get_status_display()}'
+            }, status=status.HTTP_400_BAD_REQUEST)
+        
+        # Validar datos del reembolso
+        refund_amount = request.data.get('refund_amount')
+        refund_reason = request.data.get('refund_reason', '')
+        partial_refund = request.data.get('partial_refund', False)
+        
+        # Si no se especifica monto, reembolsar el total
+        if not refund_amount:
+            refund_amount = order.total_amount
+        else:
+            try:
+                refund_amount = Decimal(str(refund_amount))
+            except (ValueError, TypeError):
+                return Response({
+                    'error': 'Monto de reembolso inválido'
+                }, status=status.HTTP_400_BAD_REQUEST)
+        
+        # Validar que el monto no exceda el total de la orden
+        if refund_amount > order.total_amount:
+            return Response({
+                'error': 'El monto de reembolso no puede exceder el total de la orden'
+            }, status=status.HTTP_400_BAD_REQUEST)
+        
+        # Validar que no se haya reembolsado previamente
+        if order.status == OrderStatus.REFUNDED:
+            return Response({
+                'error': 'Esta orden ya ha sido reembolsada'
+            }, status=status.HTTP_400_BAD_REQUEST)
+        
+        try:
+            old_status = order.status
+            
+            # Crear notas del reembolso
+            refund_notes = f"Reembolso procesado por {request.user.get_full_name()}"
+            if refund_reason:
+                refund_notes += f". Motivo: {refund_reason}"
+            refund_notes += f". Monto: ${refund_amount}"
+            if partial_refund:
+                refund_notes += " (Reembolso parcial)"
+            
+            # Cambiar estado a reembolsada
+            order.transition_to(
+                OrderStatus.REFUNDED, 
+                user=request.user, 
+                notes=refund_notes
+            )
+            
+            # Aquí se implementaría la lógica real de reembolso con el procesador de pagos
+            # Por ahora simulamos un reembolso exitoso
+            refund_success = True
+            transaction_id = f"REF-{timezone.now().strftime('%Y%m%d')}-{order.order_number}"
+            
+            if refund_success:
+                # Registrar auditoría
+                order.log_audit(
+                    action='refunded',
+                    user=request.user,
+                    old_values={'status': old_status},
+                    new_values={'status': OrderStatus.REFUNDED},
+                    details=f"Reembolso procesado. Monto: ${refund_amount}. Motivo: {refund_reason}. Transaction ID: {transaction_id}",
+                    request=request
+                )
+                
+                # Notificar reembolso
+                self.broadcast_order_refund(order, refund_amount, refund_reason, transaction_id)
+                
+                logger.info(f"Reembolso procesado para orden {order.order_number} por usuario {request.user.id}")
+                
+                return Response({
+                    'message': f'Reembolso procesado exitosamente para la orden {order.order_number}',
+                    'order_id': str(order.id),
+                    'order_number': order.order_number,
+                    'old_status': old_status,
+                    'new_status': OrderStatus.REFUNDED,
+                    'refund_amount': refund_amount,
+                    'transaction_id': transaction_id,
+                    'refunded_at': order.updated_at,
+                    'reason': refund_reason,
+                    'partial_refund': partial_refund
+                })
+            else:
+                # Si falla el reembolso, revertir el cambio de estado
+                order.status = old_status
+                order.save()
+                
+                return Response({
+                    'error': 'Error al procesar el reembolso. Intente nuevamente.'
+                }, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+                
+        except Exception as e:
+            return Response({
+                'error': str(e)
+            }, status=status.HTTP_400_BAD_REQUEST)
     
     @action(detail=True, methods=['post'])
     def add_item(self, request, pk=None):
@@ -438,9 +584,44 @@ class OrderViewSet(viewsets.ModelViewSet):
         serializer = self.get_serializer(history, many=True)
         return Response(serializer.data)
     
+    @action(detail=True, methods=['get'])
+    def audit_log(self, request, pk=None):
+        """Obtiene el registro de auditoría de una orden"""
+        order = self.get_object()
+        
+        # Verificar permisos para ver auditoría
+        if not self.can_view_audit_logs(request.user):
+            return Response({
+                'error': 'No tienes permisos para ver registros de auditoría'
+            }, status=status.HTTP_403_FORBIDDEN)
+        
+        audit_logs = order.audit_logs.all()
+        
+        # Serializar logs manualmente para incluir información útil
+        logs_data = []
+        for log in audit_logs:
+            logs_data.append({
+                'id': str(log.id),
+                'action': log.action,
+                'action_display': log.get_action_display(),
+                'user': {
+                    'id': log.user.id,
+                    'username': log.user.username,
+                    'full_name': log.user.get_full_name()
+                } if log.user else None,
+                'old_values': log.old_values,
+                'new_values': log.new_values,
+                'details': log.details,
+                'timestamp': log.timestamp.isoformat(),
+                'ip_address': log.ip_address,
+                'user_agent': log.user_agent
+            })
+        
+        return Response(logs_data)
+    
     @action(detail=False, methods=['get'])
     def stats(self, request):
-        """Obtiene estadísticas de órdenes del negocio"""
+        """Obtiene estadísticas detalladas de órdenes del negocio"""
         business = request.user.current_business
         if not business:
             return Response({
@@ -451,60 +632,201 @@ class OrderViewSet(viewsets.ModelViewSet):
         from app.business.services.business_service import DatabaseService
         DatabaseService.switch_to_business_schema(business.id)
         
-        # Filtro de fecha (por defecto hoy)
+        # Filtros de fecha
         date_filter = request.query_params.get('date', timezone.now().date())
+        period = request.query_params.get('period', 'day')  # day, week, month, year
+        
         if isinstance(date_filter, str):
             try:
                 date_filter = datetime.strptime(date_filter, '%Y-%m-%d').date()
             except ValueError:
                 date_filter = timezone.now().date()
         
-        orders_today = Order.objects.filter(
+        # Calcular rangos de fechas según el período
+        end_date = date_filter
+        if period == 'week':
+            start_date = end_date - timedelta(days=7)
+        elif period == 'month':
+            start_date = end_date.replace(day=1)
+        elif period == 'year':
+            start_date = end_date.replace(month=1, day=1)
+        else:  # day
+            start_date = end_date
+        
+        # Órdenes del período
+        orders_period = Order.objects.filter(
             business=business,
-            created_at__date=date_filter
+            created_at__date__range=[start_date, end_date]
         )
         
-        stats = {
+        # Órdenes del día específico
+        orders_today = orders_period.filter(created_at__date=date_filter)
+        
+        # Estadísticas básicas por estado
+        basic_stats = {
             'total_orders': orders_today.count(),
             'pending_orders': orders_today.filter(status=OrderStatus.PENDING).count(),
+            'confirmed_orders': orders_today.filter(status=OrderStatus.CONFIRMED).count(),
             'preparing_orders': orders_today.filter(status=OrderStatus.PREPARING).count(),
             'ready_orders': orders_today.filter(status=OrderStatus.READY).count(),
             'paid_orders': orders_today.filter(status=OrderStatus.PAID).count(),
             'delivered_orders': orders_today.filter(status=OrderStatus.DELIVERED).count(),
             'cancelled_orders': orders_today.filter(status=OrderStatus.CANCELLED).count(),
-            'total_revenue': orders_today.filter(
-                status__in=[OrderStatus.PAID, OrderStatus.DELIVERED]
-            ).aggregate(Sum('total_amount'))['total_amount__sum'] or 0,
-            'average_preparation_time': timedelta(minutes=0),
-            'orders_per_hour': 0
+            'refunded_orders': orders_today.filter(status=OrderStatus.REFUNDED).count(),
         }
         
-        # Calcular tiempo promedio de preparación
+        # Métricas financieras
         completed_orders = orders_today.filter(
+            status__in=[OrderStatus.PAID, OrderStatus.DELIVERED]
+        )
+        financial_stats = {
+            'total_revenue': completed_orders.aggregate(Sum('total_amount'))['total_amount__sum'] or 0,
+            'average_order_value': completed_orders.aggregate(Avg('total_amount'))['total_amount__avg'] or 0,
+            'total_tax': completed_orders.aggregate(Sum('tax_amount'))['tax_amount__sum'] or 0,
+            'total_discounts': completed_orders.aggregate(Sum('discount_amount'))['discount_amount__sum'] or 0,
+            'delivery_fees': completed_orders.aggregate(Sum('delivery_fee'))['delivery_fee__sum'] or 0,
+        }
+        
+        # Métricas de tiempo
+        delivered_orders = orders_today.filter(
             status=OrderStatus.DELIVERED,
             started_at__isnull=False,
             delivered_at__isnull=False
         )
         
-        if completed_orders.exists():
-            avg_seconds = completed_orders.extra(
-                select={'prep_time': 'EXTRACT(EPOCH FROM (delivered_at - started_at))'}
-            ).aggregate(Avg('prep_time'))['prep_time__avg']
-            
-            if avg_seconds:
-                stats['average_preparation_time'] = timedelta(seconds=avg_seconds)
+        time_stats = {
+            'average_preparation_time': 0,
+            'fastest_order': 0,
+            'slowest_order': 0,
+            'orders_per_hour': 0,
+            'peak_hour': None,
+        }
         
-        # Calcular órdenes por hora
-        if stats['total_orders'] > 0:
+        if delivered_orders.exists():
+            # Calcular tiempos de preparación
+            prep_times = []
+            for order in delivered_orders:
+                if order.started_at and order.delivered_at:
+                    prep_time = (order.delivered_at - order.started_at).total_seconds()
+                    prep_times.append(prep_time)
+            
+            if prep_times:
+                time_stats.update({
+                    'average_preparation_time': sum(prep_times) / len(prep_times),
+                    'fastest_order': min(prep_times),
+                    'slowest_order': max(prep_times),
+                })
+        
+        # Calcular órdenes por hora y hora pico
+        if basic_stats['total_orders'] > 0:
             hours_elapsed = max(
                 (timezone.now() - timezone.make_aware(
                     datetime.combine(date_filter, datetime.min.time())
                 )).total_seconds() / 3600,
-                1  # Al menos 1 hora para evitar división por cero
+                1
             )
-            stats['orders_per_hour'] = round(stats['total_orders'] / hours_elapsed, 2)
+            time_stats['orders_per_hour'] = round(basic_stats['total_orders'] / hours_elapsed, 2)
+            
+            # Encontrar hora pico
+            hourly_orders = {}
+            for order in orders_today:
+                hour = order.created_at.hour
+                hourly_orders[hour] = hourly_orders.get(hour, 0) + 1
+            
+            if hourly_orders:
+                peak_hour = max(hourly_orders, key=hourly_orders.get)
+                time_stats['peak_hour'] = {
+                    'hour': peak_hour,
+                    'orders': hourly_orders[peak_hour]
+                }
         
-        serializer = self.get_serializer(stats)
+        # Análisis por tipo de orden
+        order_type_stats = {}
+        for order_type, display_name in OrderType.choices:
+            type_orders = orders_today.filter(order_type=order_type)
+            order_type_stats[order_type] = {
+                'count': type_orders.count(),
+                'revenue': type_orders.filter(
+                    status__in=[OrderStatus.PAID, OrderStatus.DELIVERED]
+                ).aggregate(Sum('total_amount'))['total_amount__sum'] or 0
+            }
+        
+        # Análisis por prioridad
+        priority_stats = {}
+        for priority, display_name in OrderPriority.choices:
+            priority_orders = orders_today.filter(priority=priority)
+            priority_stats[priority] = {
+                'count': priority_orders.count(),
+                'average_prep_time': 0
+            }
+            
+            # Calcular tiempo promedio para esta prioridad
+            priority_delivered = priority_orders.filter(
+                status=OrderStatus.DELIVERED,
+                started_at__isnull=False,
+                delivered_at__isnull=False
+            )
+            
+            if priority_delivered.exists():
+                times = []
+                for order in priority_delivered:
+                    if order.started_at and order.delivered_at:
+                        prep_time = (order.delivered_at - order.started_at).total_seconds()
+                        times.append(prep_time)
+                
+                if times:
+                    priority_stats[priority]['average_prep_time'] = sum(times) / len(times)
+        
+        # Métricas de comparación (período anterior)
+        previous_period = {
+            'start_date': start_date - (end_date - start_date + timedelta(days=1)),
+            'end_date': start_date - timedelta(days=1)
+        }
+        
+        previous_orders = Order.objects.filter(
+            business=business,
+            created_at__date__range=[previous_period['start_date'], previous_period['end_date']]
+        )
+        
+        comparison_stats = {
+            'previous_total_orders': previous_orders.count(),
+            'previous_revenue': previous_orders.filter(
+                status__in=[OrderStatus.PAID, OrderStatus.DELIVERED]
+            ).aggregate(Sum('total_amount'))['total_amount__sum'] or 0,
+            'orders_growth': 0,
+            'revenue_growth': 0,
+        }
+        
+        # Calcular crecimiento
+        if comparison_stats['previous_total_orders'] > 0:
+            comparison_stats['orders_growth'] = (
+                (basic_stats['total_orders'] - comparison_stats['previous_total_orders']) / 
+                comparison_stats['previous_total_orders']
+            ) * 100
+        
+        if comparison_stats['previous_revenue'] > 0:
+            comparison_stats['revenue_growth'] = (
+                (financial_stats['total_revenue'] - comparison_stats['previous_revenue']) / 
+                comparison_stats['previous_revenue']
+            ) * 100
+        
+        # Combinar todas las estadísticas
+        comprehensive_stats = {
+            'period': period,
+            'date': date_filter.isoformat(),
+            'date_range': {
+                'start': start_date.isoformat(),
+                'end': end_date.isoformat()
+            },
+            **basic_stats,
+            'financial': financial_stats,
+            'timing': time_stats,
+            'order_types': order_type_stats,
+            'priorities': priority_stats,
+            'comparison': comparison_stats,
+        }
+        
+        serializer = self.get_serializer(comprehensive_stats)
         return Response(serializer.data)
     
     @action(detail=False, methods=['get'])
@@ -633,6 +955,28 @@ class OrderViewSet(viewsets.ModelViewSet):
                    order.status in [OrderStatus.PENDING, OrderStatus.CONFIRMED, OrderStatus.PREPARING])
         
         return False
+    
+    def can_process_refunds(self, user):
+        """Verifica si el usuario puede procesar reembolsos"""
+        if not user.current_business_role:
+            return False
+        
+        role_name = user.current_business_role.name.lower()
+        
+        # Solo administradores y managers pueden procesar reembolsos
+        admin_roles = ['admin', 'owner', 'manager', 'restaurant admin', 'administrador', 'gerente']
+        return any(admin_role in role_name for admin_role in admin_roles)
+    
+    def can_view_audit_logs(self, user):
+        """Verifica si el usuario puede ver registros de auditoría"""
+        if not user.current_business_role:
+            return False
+        
+        role_name = user.current_business_role.name.lower()
+        
+        # Solo administradores y managers pueden ver auditorías
+        admin_roles = ['admin', 'owner', 'manager', 'restaurant admin', 'administrador', 'gerente']
+        return any(admin_role in role_name for admin_role in admin_roles)
     
     def broadcast_order_created(self, order):
         """Notifica creación de orden via WebSocket"""
@@ -772,6 +1116,42 @@ class OrderViewSet(viewsets.ModelViewSet):
                     'cancelled_at': order.cancelled_at.isoformat() if order.cancelled_at else None,
                     'cancelled_by': self.request.user.get_full_name(),
                     'message': cancellation_message,
+                    'timestamp': timezone.now().isoformat()
+                }
+            )
+    
+    def broadcast_order_refund(self, order, refund_amount, reason, transaction_id):
+        """Notifica reembolso de orden via WebSocket"""
+        channel_layer = get_channel_layer()
+        business_id = order.business.id
+        
+        # Serializar orden para broadcast
+        order_data = OrderSerializer(order).data
+        
+        groups = [
+            f"orders_business_{business_id}",
+            f"orders_managers_{business_id}",
+            f"orders_waiters_{business_id}"
+        ]
+        
+        refund_message = f"Orden {order.order_number} reembolsada - ${refund_amount}"
+        if reason:
+            refund_message += f" - {reason}"
+        
+        for group in groups:
+            async_to_sync(channel_layer.group_send)(
+                group,
+                {
+                    'type': 'order_refunded',
+                    'order_data': order_data,
+                    'order_id': str(order.id),
+                    'order_number': order.order_number,
+                    'refund_amount': float(refund_amount),
+                    'reason': reason or '',
+                    'transaction_id': transaction_id,
+                    'refunded_at': order.updated_at.isoformat() if order.updated_at else None,
+                    'refunded_by': self.request.user.get_full_name(),
+                    'message': refund_message,
                     'timestamp': timezone.now().isoformat()
                 }
             )
