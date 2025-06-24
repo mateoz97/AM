@@ -58,7 +58,11 @@ def order_saved(sender, instance, created, **kwargs):
             logger.info(f"Orden {instance.order_number} actualizada y notificada via WebSocket")
             
     except Exception as e:
-        logger.error(f"Error en signal order_saved: {str(e)}", exc_info=True)
+        # Log warning instead of error if it's a Redis connection issue
+        if "Connect call failed" in str(e) or "redis" in str(e).lower():
+            logger.warning(f"WebSocket notification failed (Redis not available): {str(e)}")
+        else:
+            logger.error(f"Error en signal order_saved: {str(e)}", exc_info=True)
 
 
 @receiver(post_save, sender=OrderStatusHistory)
@@ -118,7 +122,11 @@ def order_status_changed(sender, instance, created, **kwargs):
         logger.info(f"Cambio de estado de orden {order.order_number} notificado: {instance.old_status} → {instance.new_status}")
         
     except Exception as e:
-        logger.error(f"Error en signal order_status_changed: {str(e)}", exc_info=True)
+        # Log warning instead of error if it's a Redis connection issue
+        if "Connect call failed" in str(e) or "redis" in str(e).lower():
+            logger.warning(f"WebSocket notification failed (Redis not available): {str(e)}")
+        else:
+            logger.error(f"Error en signal order_status_changed: {str(e)}", exc_info=True)
 
 
 def send_order_delay_notification(order):
@@ -149,7 +157,11 @@ def send_order_delay_notification(order):
         logger.warning(f"Notificación de retraso enviada para orden {order.order_number}")
         
     except Exception as e:
-        logger.error(f"Error enviando notificación de retraso: {str(e)}", exc_info=True)
+        # Log warning instead of error if it's a Redis connection issue
+        if "Connect call failed" in str(e) or "redis" in str(e).lower():
+            logger.warning(f"WebSocket notification failed (Redis not available): {str(e)}")
+        else:
+            logger.error(f"Error enviando notificación de retraso: {str(e)}", exc_info=True)
 
 
 def send_kitchen_notification(order, message):
@@ -173,4 +185,8 @@ def send_kitchen_notification(order, message):
         logger.info(f"Notificación a cocina enviada para orden {order.order_number}: {message}")
         
     except Exception as e:
-        logger.error(f"Error enviando notificación a cocina: {str(e)}", exc_info=True)
+        # Log warning instead of error if it's a Redis connection issue
+        if "Connect call failed" in str(e) or "redis" in str(e).lower():
+            logger.warning(f"WebSocket notification failed (Redis not available): {str(e)}")
+        else:
+            logger.error(f"Error enviando notificación a cocina: {str(e)}", exc_info=True)

@@ -1,0 +1,42 @@
+# Production Requirements for Google Cloud Platform
+# =================================================
+
+# Include base requirements
+-r requirements.txt
+
+# Database
+psycopg2-binary>=2.9.0  # Para Cloud SQL PostgreSQL
+dj-database-url>=2.0.0
+
+# Redis y WebSockets
+redis>=4.5.0
+channels>=4.0.0
+channels-redis>=4.1.0
+
+# Google Cloud
+google-cloud-storage>=2.10.0
+google-cloud-logging>=3.5.0
+google-cloud-secret-manager>=2.16.0
+django-storages[google]>=1.13.0
+
+# Authentication & Security
+PyJWT>=2.6.0
+cryptography>=40.0.0
+django-extensions>=3.2.0
+
+# API Documentation
+drf-spectacular>=0.26.0
+
+# Monitoring y Logging
+sentry-sdk[django]>=1.25.0
+structlog>=23.1.0
+
+# Utils
+python-decouple>=3.8
+requests>=2.31.0
+celery>=5.2.0  # Para tareas en background
+flower>=2.0.0  # Monitoring de Celery
+
+# Development (opcional)
+gunicorn>=20.1.0  # WSGI server para producción
+whitenoise>=6.5.0  # Static files serving

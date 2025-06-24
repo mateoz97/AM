@@ -1,26 +1,53 @@
-# Entornos virtuales
-.venv/
-venv/
-ENV/
-
-# Poetry
-.poetry/
-poetry.lock
-# No excluir poetry.lock si quieres que esté en el control de versiones
-
-# Archivos de caché
+*.pyc
 __pycache__/
-*.py[cod]
-*$py.class
-.pytest_cache/
-.coverage
-htmlcov/
+*.pyo
+*.pyd
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
 
-# Archivos locales
-.env
+# Database
 *.sqlite3
+db_django_core.sqlite3
 
-# Archivos de entorno
+# Logs
+logs/
+*.log
+
+# Environment
 .env
-.env.*
-!.env.example
+.venv
+env/
+venv/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Temporary files
+*.tmp
+*.temp
+app.yaml
+app_minimal.yaml
+
+# GCP temporary files
+app.yaml.temp

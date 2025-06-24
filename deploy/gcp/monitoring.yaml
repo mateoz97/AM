@@ -1,0 +1,57 @@
+# Configuración de monitoreo para Redis en GCP
+# ============================================
+
+# Cloud Monitoring Dashboard para Redis
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: redis-monitoring
+  labels:
+    app: adb-redis
+spec:
+  selector:
+    matchLabels:
+      app: adb-redis
+  endpoints:
+  - port: metrics
+    interval: 30s
+    path: /metrics
+
+---
+# Alertas para Redis
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  name: redis-alerts
+  labels:
+    app: adb-redis
+spec:
+  groups:
+  - name: redis
+    rules:
+    - alert: RedisDown
+      expr: redis_up == 0
+      for: 1m
+      labels:
+        severity: critical
+      annotations:
+        summary: "Redis está caído"
+        description: "La instancia de Redis {{ $labels.instance }} está inaccesible"
+    
+    - alert: RedisHighMemoryUsage
+      expr: redis_memory_used_bytes / redis_memory_max_bytes > 0.8
+      for: 5m
+      labels:
+        severity: warning
+      annotations:
+        summary: "Alto uso de memoria en Redis"
+        description: "Redis está usando {{ $value | humanizePercentage }} de memoria"
+    
+    - alert: RedisHighConnections
+      expr: redis_connected_clients > 100
+      for: 5m
+      labels:
+        severity: warning
+      annotations:
+        summary: "Muchas conexiones a Redis"
+        description: "Redis tiene {{ $value }} conexiones activas"

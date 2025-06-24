@@ -253,15 +253,80 @@ if not os.path.exists(BASE_DIR / 'logs'):
 # ASGI application
 ASGI_APPLICATION = 'config.asgi.application'
 
-# Channel layers configuration (Redis backend)
-CHANNEL_LAYERS = {
-    'default': {
+# Channel layers configuration (Redis backend with fallback)
+# Configuración para diferentes entornos
+def get_redis_config():
+    """Configura Redis según el entorno (local, GCP, etc.)"""
+    
+    # Variables de entorno para Redis
+    redis_url = os.getenv('REDIS_URL')
+    redis_host = os.getenv('REDIS_HOST', 'localhost')
+    redis_port = int(os.getenv('REDIS_PORT', 6379))
+    redis_password = os.getenv('REDIS_PASSWORD')
+    redis_db = int(os.getenv('REDIS_DB', 0))
+    
+    # Si hay REDIS_URL, úsala directamente
+    if redis_url:
+        return {
+            'BACKEND': 'channels_redis.core.RedisChannelLayer',
+            'CONFIG': {
+                "hosts": [redis_url],
+            },
+        }
+    
+    # Configuración detallada para GCP o local
+    redis_config = {
         'BACKEND': 'channels_redis.core.RedisChannelLayer',
         'CONFIG': {
-            "hosts": [os.getenv('REDIS_URL', 'redis://localhost:6379')],
+            "hosts": [(redis_host, redis_port)],
         },
-    },
-}
+    }
+    
+    # Agregar password si está configurado
+    if redis_password:
+        redis_config['CONFIG']['hosts'] = [f"redis://:{redis_password}@{redis_host}:{redis_port}/{redis_db}"]
+    
+    return redis_config
+
+# Detectar si Redis está disponible
+REDIS_AVAILABLE = True
+try:
+    import redis
+    redis_host = os.getenv('REDIS_HOST', 'localhost')
+    redis_port = int(os.getenv('REDIS_PORT', 6379))
+    redis_password = os.getenv('REDIS_PASSWORD')
+    
+    r = redis.Redis(
+        host=redis_host, 
+        port=redis_port, 
+        password=redis_password,
+        db=int(os.getenv('REDIS_DB', 0))
+    )
+    r.ping()
+    
+    # Configurar Channel Layers con Redis
+    CHANNEL_LAYERS = {
+        'default': get_redis_config()
+    }
+    
+    if DEBUG:
+        print(f"✅ Redis conectado exitosamente en {redis_host}:{redis_port}")
+        
+except Exception as e:
+    REDIS_AVAILABLE = False
+    
+    # Usar backend en memoria para desarrollo
+    CHANNEL_LAYERS = {
+        'default': {
+            'BACKEND': 'channels.layers.InMemoryChannelLayer',
+        },
+    }
+    
+    if DEBUG:
+        print("⚠️  Redis no está disponible. Usando InMemoryChannelLayer para WebSockets.")
+        print(f"   Error: {str(e)}")
+        print("   Para GCP: Configura REDIS_URL o REDIS_HOST en variables de entorno")
+        print("   Para local: sudo apt install redis-server && sudo systemctl start redis-server")
 
 # WebSocket settings
 WEBSOCKET_ACCEPT_ALL = DEBUG  # Solo en desarrollo

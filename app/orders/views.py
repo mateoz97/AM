@@ -980,178 +980,197 @@ class OrderViewSet(viewsets.ModelViewSet):
     
     def broadcast_order_created(self, order):
         """Notifica creación de orden via WebSocket"""
-        channel_layer = get_channel_layer()
-        business_id = order.business.id
-        
-        # Serializar orden para broadcast
-        order_data = OrderSerializer(order).data
-        
-        # Enviar a todos los grupos del negocio
-        groups = [
-            f"orders_business_{business_id}",
-            f"orders_managers_{business_id}",
-            f"orders_kitchen_{business_id}",
-            f"orders_waiters_{business_id}"
-        ]
-        
-        for group in groups:
-            async_to_sync(channel_layer.group_send)(
-                group,
-                {
-                    'type': 'order_created',
-                    'order_data': order_data
-                }
-            )
+        try:
+            channel_layer = get_channel_layer()
+            business_id = order.business.id
+            
+            # Serializar orden para broadcast
+            order_data = OrderSerializer(order).data
+            
+            # Enviar a todos los grupos del negocio
+            groups = [
+                f"orders_business_{business_id}",
+                f"orders_managers_{business_id}",
+                f"orders_kitchen_{business_id}",
+                f"orders_waiters_{business_id}"
+            ]
+            
+            for group in groups:
+                async_to_sync(channel_layer.group_send)(
+                    group,
+                    {
+                        'type': 'order_created',
+                        'order_data': order_data
+                    }
+                )
+        except Exception as e:
+            # Log error but don't fail the request
+            logger.warning(f"Failed to broadcast order_created: {str(e)}")
     
     def broadcast_order_updated(self, order):
         """Notifica actualización de orden via WebSocket"""
-        channel_layer = get_channel_layer()
-        business_id = order.business.id
-        
-        order_data = OrderSerializer(order).data
-        
-        groups = [
-            f"orders_business_{business_id}",
-            f"orders_managers_{business_id}",
-            f"orders_kitchen_{business_id}",
-            f"orders_waiters_{business_id}"
-        ]
-        
-        for group in groups:
-            async_to_sync(channel_layer.group_send)(
-                group,
-                {
-                    'type': 'order_updated',
-                    'order_data': order_data
-                }
-            )
+        try:
+            channel_layer = get_channel_layer()
+            business_id = order.business.id
+            
+            order_data = OrderSerializer(order).data
+            
+            groups = [
+                f"orders_business_{business_id}",
+                f"orders_managers_{business_id}",
+                f"orders_kitchen_{business_id}",
+                f"orders_waiters_{business_id}"
+            ]
+            
+            for group in groups:
+                async_to_sync(channel_layer.group_send)(
+                    group,
+                    {
+                        'type': 'order_updated',
+                        'order_data': order_data
+                    }
+                )
+        except Exception as e:
+            logger.warning(f"Failed to broadcast order_updated: {str(e)}")
     
     def broadcast_status_change(self, order, old_status, new_status):
         """Notifica cambio de estado via WebSocket"""
-        channel_layer = get_channel_layer()
-        business_id = order.business.id
-        
-        groups = [
-            f"orders_business_{business_id}",
-            f"orders_managers_{business_id}",
-            f"orders_kitchen_{business_id}",
-            f"orders_waiters_{business_id}"
-        ]
-        
-        for group in groups:
-            async_to_sync(channel_layer.group_send)(
-                group,
-                {
-                    'type': 'order_status_changed',
-                    'order_id': str(order.id),
-                    'order_number': order.order_number,
-                    'old_status': old_status,
-                    'new_status': new_status,
-                    'new_status_display': order.get_status_display(),
-                    'changed_by': self.request.user.get_full_name(),
-                    'timestamp': timezone.now().isoformat()
-                }
-            )
+        try:
+            channel_layer = get_channel_layer()
+            business_id = order.business.id
+            
+            groups = [
+                f"orders_business_{business_id}",
+                f"orders_managers_{business_id}",
+                f"orders_kitchen_{business_id}",
+                f"orders_waiters_{business_id}"
+            ]
+            
+            for group in groups:
+                async_to_sync(channel_layer.group_send)(
+                    group,
+                    {
+                        'type': 'order_status_changed',
+                        'order_id': str(order.id),
+                        'order_number': order.order_number,
+                        'old_status': old_status,
+                        'new_status': new_status,
+                        'new_status_display': order.get_status_display(),
+                        'changed_by': self.request.user.get_full_name(),
+                        'timestamp': timezone.now().isoformat()
+                    }
+                )
+        except Exception as e:
+            logger.warning(f"Failed to broadcast status_change: {str(e)}")
     
     def broadcast_order_assignment(self, order, assignment_type, user_id):
         """Notifica asignación de personal via WebSocket"""
-        channel_layer = get_channel_layer()
-        business_id = order.business.id
-        
-        assigned_name = "Sin asignar"
-        if user_id:
-            from app.accounts.models.user import CustomUser
-            try:
-                assigned_user = CustomUser.objects.get(id=user_id)
-                assigned_name = assigned_user.get_full_name()
-            except CustomUser.DoesNotExist:
-                pass
-        
-        groups = [
-            f"orders_business_{business_id}",
-            f"orders_managers_{business_id}"
-        ]
-        
-        for group in groups:
-            async_to_sync(channel_layer.group_send)(
-                group,
-                {
-                    'type': 'order_assigned',
-                    'order_id': str(order.id),
-                    'assignment_type': assignment_type,
-                    'assigned_to': assigned_name,
-                    'message': f'{assignment_type.title()} asignado: {assigned_name}'
-                }
-            )
+        try:
+            channel_layer = get_channel_layer()
+            business_id = order.business.id
+            
+            assigned_name = "Sin asignar"
+            if user_id:
+                from app.accounts.models.user import CustomUser
+                try:
+                    assigned_user = CustomUser.objects.get(id=user_id)
+                    assigned_name = assigned_user.get_full_name()
+                except CustomUser.DoesNotExist:
+                    pass
+            
+            groups = [
+                f"orders_business_{business_id}",
+                f"orders_managers_{business_id}"
+            ]
+            
+            for group in groups:
+                async_to_sync(channel_layer.group_send)(
+                    group,
+                    {
+                        'type': 'order_assigned',
+                        'order_id': str(order.id),
+                        'assignment_type': assignment_type,
+                        'assigned_to': assigned_name,
+                        'message': f'{assignment_type.title()} asignado: {assigned_name}'
+                    }
+                )
+        except Exception as e:
+            logger.warning(f"Failed to broadcast order_assignment: {str(e)}")
     
     def broadcast_order_cancellation(self, order, reason=None, refund_requested=False):
         """Notifica cancelación de orden via WebSocket"""
-        channel_layer = get_channel_layer()
-        business_id = order.business.id
-        
-        # Serializar orden para broadcast
-        order_data = OrderSerializer(order).data
-        
-        groups = [
-            f"orders_business_{business_id}",
-            f"orders_managers_{business_id}",
-            f"orders_kitchen_{business_id}",
-            f"orders_waiters_{business_id}"
-        ]
-        
-        cancellation_message = f"Orden {order.order_number} cancelada"
-        if reason:
-            cancellation_message += f" - {reason}"
-        
-        for group in groups:
-            async_to_sync(channel_layer.group_send)(
-                group,
-                {
-                    'type': 'order_cancelled',
-                    'order_data': order_data,
-                    'order_id': str(order.id),
-                    'order_number': order.order_number,
-                    'reason': reason or '',
-                    'refund_requested': refund_requested,
-                    'cancelled_at': order.cancelled_at.isoformat() if order.cancelled_at else None,
-                    'cancelled_by': self.request.user.get_full_name(),
-                    'message': cancellation_message,
-                    'timestamp': timezone.now().isoformat()
-                }
-            )
+        try:
+            channel_layer = get_channel_layer()
+            business_id = order.business.id
+            
+            # Serializar orden para broadcast
+            order_data = OrderSerializer(order).data
+            
+            groups = [
+                f"orders_business_{business_id}",
+                f"orders_managers_{business_id}",
+                f"orders_kitchen_{business_id}",
+                f"orders_waiters_{business_id}"
+            ]
+            
+            cancellation_message = f"Orden {order.order_number} cancelada"
+            if reason:
+                cancellation_message += f" - {reason}"
+            
+            for group in groups:
+                async_to_sync(channel_layer.group_send)(
+                    group,
+                    {
+                        'type': 'order_cancelled',
+                        'order_data': order_data,
+                        'order_id': str(order.id),
+                        'order_number': order.order_number,
+                        'reason': reason or '',
+                        'refund_requested': refund_requested,
+                        'cancelled_at': order.cancelled_at.isoformat() if order.cancelled_at else None,
+                        'cancelled_by': self.request.user.get_full_name(),
+                        'message': cancellation_message,
+                        'timestamp': timezone.now().isoformat()
+                    }
+                )
+        except Exception as e:
+            logger.warning(f"Failed to broadcast order_cancellation: {str(e)}")
     
     def broadcast_order_refund(self, order, refund_amount, reason, transaction_id):
         """Notifica reembolso de orden via WebSocket"""
-        channel_layer = get_channel_layer()
-        business_id = order.business.id
-        
-        # Serializar orden para broadcast
-        order_data = OrderSerializer(order).data
-        
-        groups = [
-            f"orders_business_{business_id}",
-            f"orders_managers_{business_id}",
-            f"orders_waiters_{business_id}"
-        ]
-        
-        refund_message = f"Orden {order.order_number} reembolsada - ${refund_amount}"
-        if reason:
-            refund_message += f" - {reason}"
-        
-        for group in groups:
-            async_to_sync(channel_layer.group_send)(
-                group,
-                {
-                    'type': 'order_refunded',
-                    'order_data': order_data,
-                    'order_id': str(order.id),
-                    'order_number': order.order_number,
-                    'refund_amount': float(refund_amount),
-                    'reason': reason or '',
-                    'transaction_id': transaction_id,
-                    'refunded_at': order.updated_at.isoformat() if order.updated_at else None,
-                    'refunded_by': self.request.user.get_full_name(),
-                    'message': refund_message,
-                    'timestamp': timezone.now().isoformat()
-                }
-            )
+        try:
+            channel_layer = get_channel_layer()
+            business_id = order.business.id
+            
+            # Serializar orden para broadcast
+            order_data = OrderSerializer(order).data
+            
+            groups = [
+                f"orders_business_{business_id}",
+                f"orders_managers_{business_id}",
+                f"orders_waiters_{business_id}"
+            ]
+            
+            refund_message = f"Orden {order.order_number} reembolsada - ${refund_amount}"
+            if reason:
+                refund_message += f" - {reason}"
+            
+            for group in groups:
+                async_to_sync(channel_layer.group_send)(
+                    group,
+                    {
+                        'type': 'order_refunded',
+                        'order_data': order_data,
+                        'order_id': str(order.id),
+                        'order_number': order.order_number,
+                        'refund_amount': float(refund_amount),
+                        'reason': reason or '',
+                        'transaction_id': transaction_id,
+                        'refunded_at': order.updated_at.isoformat() if order.updated_at else None,
+                        'refunded_by': self.request.user.get_full_name(),
+                        'message': refund_message,
+                        'timestamp': timezone.now().isoformat()
+                    }
+                )
+        except Exception as e:
+            logger.warning(f"Failed to broadcast order_refund: {str(e)}")

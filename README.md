@@ -221,7 +221,7 @@ python manage.py orders_maintenance --task summary    # Resumen diario
 
 ```
 ADB/
-├── app/
+├── app/                       # Aplicaciones Django
 │   ├── accounts/              # Gestión de usuarios
 │   │   ├── models/user.py        # CustomUser con multi-business
 │   │   ├── api/views/            # Auth + Profile switching
@@ -260,15 +260,36 @@ ADB/
 │           ├── list_business_schemas.py
 │           ├── cleanup_orphaned_schemas.py
 │           └── orders_maintenance.py
-├── config/
+├── config/                    # Configuración Django
 │   ├── settings.py            # Django Channels + PostgreSQL
 │   ├── asgi.py               # WebSocket routing
 │   ├── urls.py               # URL routing
 │   └── middleware.py         # Business context middleware
-├── templates/                 # (No necesario para admin)
-├── logs/                     # Log files
-├── BUSINESS_ADMIN_GUIDE.md   # Guía de uso del admin
-├── BUSINESS_MANAGEMENT_COMPLETE.md  # Documentación completa
+├── deploy/                    # Scripts de deployment
+│   └── gcp/                  # Google Cloud Platform
+│       ├── app.yaml             # Configuración App Engine
+│       ├── deploy.sh            # Script de deployment completo
+│       ├── startup.sh           # Encender servicios GCP
+│       ├── shutdown.sh          # Apagar servicios (ahorrar costos)
+│       ├── monitoring.yaml      # Monitoreo Redis
+│       └── shutdown_state.txt   # Estado de servicios
+├── docs/                      # Documentación
+│   ├── README.md               # Índice de documentación
+│   ├── BUSINESS_ADMIN_GUIDE.md # Guía de administración
+│   ├── BUSINESS_MANAGEMENT_COMPLETE.md # Gestión completa
+│   ├── setup.md               # Configuración GCP
+│   └── cost-management.md     # Gestión de costos GCP
+├── scripts/                   # Scripts de utilidad
+│   ├── README.md              # Documentación de scripts
+│   ├── test_api.py           # Testing de API endpoints
+│   └── test_orders.py        # Testing de órdenes
+├── static/                    # Archivos estáticos
+├── templates/                 # Plantillas HTML
+├── logs/                      # Archivos de log
+├── requirements.txt           # Dependencias base
+├── requirements-dev.txt       # Dependencias desarrollo
+├── requirements-gcp.txt       # Dependencias producción GCP
+├── CLAUDE.md                 # Información para Claude Code
 └── README.md                 # Este archivo
 ```
 
@@ -292,11 +313,11 @@ ADB/
 ### **Requisitos Previos:**
 ```bash
 # PostgreSQL 12+
-# Redis (para WebSockets)
+# Redis (para WebSockets) - Opcional en desarrollo
 # Python 3.8+
 ```
 
-### **Instalación:**
+### **Instalación Local:**
 ```bash
 # Clonar repositorio
 git clone [repository-url]
@@ -308,16 +329,16 @@ source venv/bin/activate  # Linux/Mac
 # o
 venv\Scripts\activate     # Windows
 
-# Instalar dependencias
-pip install -r requirements.txt
+# Instalar dependencias de desarrollo
+pip install -r requirements-dev.txt
 
 # Configurar variables de entorno
 cp .env.example .env
 # Editar .env con configuraciones
 
-# Configurar PostgreSQL y Redis
+# Configurar PostgreSQL (o SQLite para desarrollo)
 # DATABASE_URL="postgresql://user:pass@host:5432/dbname"
-# REDIS_URL="redis://localhost:6379"
+# REDIS_URL="redis://localhost:6379"  # Opcional
 
 # Aplicar migraciones
 python manage.py migrate
@@ -327,10 +348,28 @@ python manage.py createsuperuser
 
 # Ejecutar servidor de desarrollo
 python manage.py runserver
-
-# En otra terminal: servidor WebSocket
-python manage.py runserver 8001
 ```
+
+### **Deployment en Google Cloud Platform:**
+```bash
+# Configurar gcloud CLI
+gcloud auth login
+gcloud config set project gcp-vm-357012
+
+# Encender servicios GCP (Redis, VPC, etc.)
+./deploy/gcp/startup.sh
+
+# Desplegar aplicación
+./deploy/gcp/deploy.sh
+
+# Para ahorrar costos cuando no uses el proyecto
+./deploy/gcp/shutdown.sh
+```
+
+### **Estructura de Requirements:**
+- **`requirements.txt`**: Dependencias base para todos los entornos
+- **`requirements-dev.txt`**: Incluye dependencias base + herramientas de desarrollo
+- **`requirements-gcp.txt`**: Incluye dependencias base + librerías específicas para GCP
 
 ## 📊 **Ejemplos de Uso**
 
