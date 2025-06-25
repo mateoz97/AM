@@ -23,7 +23,17 @@ class OrderConsumer(AsyncWebsocketConsumer):
     async def connect(self):
         """Maneja la conexión inicial del WebSocket"""
         self.user = self.scope["user"]
-        self.business_id = self.scope['url_route']['kwargs']['business_id']
+        # Obtener business_id de la URL o del contexto del usuario
+        self.business_id = self.scope['url_route']['kwargs'].get('business_id')
+        
+        # Si no hay business_id en la URL, usar el negocio actual del usuario
+        if not self.business_id:
+            self.business_id = await self.get_user_current_business_id()
+            if not self.business_id:
+                logger.warning("No se pudo determinar business_id para WebSocket")
+                await self.close()
+                return
+        
         self.groups = []
         
         # Verificar autenticación
@@ -549,3 +559,20 @@ class OrderConsumer(AsyncWebsocketConsumer):
         
         role_name = self.user.current_business_role.name.lower()
         return role_name in ['admin', 'owner', 'manager']
+    
+    @database_sync_to_async
+    def get_user_current_business_id(self):
+        """Obtiene el business_id actual del usuario"""
+        try:
+            if hasattr(self.user, 'current_business') and self.user.current_business:
+                return str(self.user.current_business.id)
+            
+            # Fallback: obtener el primer negocio del usuario
+            first_business = self.user.businesses.first()
+            if first_business:
+                return str(first_business.id)
+            
+            return None
+        except Exception as e:
+            logger.error(f"Error obteniendo business_id del usuario: {str(e)}", exc_info=True)
+            return None
