@@ -1,1 +1,1088 @@
 mar 24 jun 2025 16:36:54 -05: Log rotated during cleanup
+INFO 2025-07-06 12:40:37,522 autoreload Watching for file changes with StatReloader
+INFO 2025-07-06 12:43:09,413 autoreload Watching for file changes with StatReloader
+INFO 2025-07-06 12:47:29,132 autoreload Watching for file changes with StatReloader
+INFO 2025-07-06 12:47:36,371 runserver HTTP OPTIONS /api/accounts/login/ 200 [0.00, 127.0.0.1:39422]
+ERROR 2025-07-06 12:47:38,552 log Internal Server Error: /api/accounts/login/
+Traceback (most recent call last):
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/backends/utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+psycopg2.errors.UndefinedColumn: column accounts_customuser.user_type does not exist
+LINE 1: SELECT "accounts_customuser"."id", "accounts_customuser"."us...
+                                           ^
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/asgiref/sync.py", line 518, in thread_handler
+    raise exc_info[1]
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/core/handlers/exception.py", line 42, in inner
+    response = await get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/asgiref/sync.py", line 518, in thread_handler
+    raise exc_info[1]
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/core/handlers/base.py", line 253, in _get_response_async
+    response = await wrapped_callback(
+               ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/asgiref/sync.py", line 468, in __call__
+    ret = await asyncio.shield(exec_coro)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/asgiref/current_thread_executor.py", line 40, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/asgiref/sync.py", line 522, in thread_handler
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/contextlib.py", line 81, in inner
+    return func(*args, **kwds)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/views/decorators/csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/rest_framework/views.py", line 515, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/rest_framework/views.py", line 475, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/rest_framework/views.py", line 486, in raise_uncaught_exception
+    raise exc
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/rest_framework/views.py", line 512, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/Documents/ADB/app/accounts/api/views/auth_views.py", line 55, in post
+    serializer.is_valid(raise_exception=True)
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/rest_framework/serializers.py", line 225, in is_valid
+    self._validated_data = self.run_validation(self.initial_data)
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/rest_framework/serializers.py", line 447, in run_validation
+    value = self.validate(value)
+            ^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/Documents/ADB/app/accounts/api/serializers.py", line 183, in validate
+    user = CustomUser.objects.filter(email=identifier).first()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/models/query.py", line 1104, in first
+    for obj in queryset[:1]:
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/models/query.py", line 384, in __iter__
+    self._fetch_all()
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/models/query.py", line 1935, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/models/query.py", line 91, in __iter__
+    results = compiler.execute_sql(
+              ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/models/sql/compiler.py", line 1622, in execute_sql
+    cursor.execute(sql, params)
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/backends/utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/backends/utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/backends/utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/backends/utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/backends/utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+django.db.utils.ProgrammingError: column accounts_customuser.user_type does not exist
+LINE 1: SELECT "accounts_customuser"."id", "accounts_customuser"."us...
+                                           ^
+
+ERROR 2025-07-06 12:47:38,638 runserver HTTP POST /api/accounts/login/ 500 [2.27, 127.0.0.1:39422]
+ERROR 2025-07-06 12:47:51,015 log Internal Server Error: /api/accounts/login/
+Traceback (most recent call last):
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/backends/utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+psycopg2.errors.UndefinedColumn: column accounts_customuser.user_type does not exist
+LINE 1: SELECT "accounts_customuser"."id", "accounts_customuser"."us...
+                                           ^
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/asgiref/sync.py", line 518, in thread_handler
+    raise exc_info[1]
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/core/handlers/exception.py", line 42, in inner
+    response = await get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/asgiref/sync.py", line 518, in thread_handler
+    raise exc_info[1]
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/core/handlers/base.py", line 253, in _get_response_async
+    response = await wrapped_callback(
+               ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/asgiref/sync.py", line 468, in __call__
+    ret = await asyncio.shield(exec_coro)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/asgiref/current_thread_executor.py", line 40, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/asgiref/sync.py", line 522, in thread_handler
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/contextlib.py", line 81, in inner
+    return func(*args, **kwds)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/views/decorators/csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/rest_framework/views.py", line 515, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/rest_framework/views.py", line 475, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/rest_framework/views.py", line 486, in raise_uncaught_exception
+    raise exc
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/rest_framework/views.py", line 512, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/Documents/ADB/app/accounts/api/views/auth_views.py", line 55, in post
+    serializer.is_valid(raise_exception=True)
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/rest_framework/serializers.py", line 225, in is_valid
+    self._validated_data = self.run_validation(self.initial_data)
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/rest_framework/serializers.py", line 447, in run_validation
+    value = self.validate(value)
+            ^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/Documents/ADB/app/accounts/api/serializers.py", line 183, in validate
+    user = CustomUser.objects.filter(email=identifier).first()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/models/query.py", line 1104, in first
+    for obj in queryset[:1]:
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/models/query.py", line 384, in __iter__
+    self._fetch_all()
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/models/query.py", line 1935, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/models/query.py", line 91, in __iter__
+    results = compiler.execute_sql(
+              ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/models/sql/compiler.py", line 1622, in execute_sql
+    cursor.execute(sql, params)
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/backends/utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/backends/utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/backends/utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/backends/utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/backends/utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+django.db.utils.ProgrammingError: column accounts_customuser.user_type does not exist
+LINE 1: SELECT "accounts_customuser"."id", "accounts_customuser"."us...
+                                           ^
+
+ERROR 2025-07-06 12:47:51,193 runserver HTTP POST /api/accounts/login/ 500 [1.56, 127.0.0.1:39422]
+WARNING 2025-07-06 12:47:59,703 log Not Found: /
+WARNING 2025-07-06 12:47:59,703 runserver HTTP GET / 404 [0.83, 127.0.0.1:60744]
+WARNING 2025-07-06 12:48:00,522 log Not Found: /favicon.ico
+WARNING 2025-07-06 12:48:00,523 runserver HTTP GET /favicon.ico 404 [0.78, 127.0.0.1:60744]
+INFO 2025-07-06 12:48:10,595 runserver HTTP GET /admin/ 302 [0.79, 127.0.0.1:60744]
+INFO 2025-07-06 12:48:11,386 runserver HTTP GET /admin/login/?next=/admin/ 200 [0.79, 127.0.0.1:60744]
+INFO 2025-07-06 12:48:11,422 runserver HTTP GET /static/admin/css/dark_mode.css 304 [0.01, 127.0.0.1:35256]
+INFO 2025-07-06 12:48:11,423 runserver HTTP GET /static/admin/css/base.css 304 [0.01, 127.0.0.1:60744]
+INFO 2025-07-06 12:48:11,424 runserver HTTP GET /static/admin/css/login.css 304 [0.01, 127.0.0.1:35264]
+INFO 2025-07-06 12:48:11,424 runserver HTTP GET /static/admin/css/nav_sidebar.css 304 [0.01, 127.0.0.1:35258]
+INFO 2025-07-06 12:48:11,424 runserver HTTP GET /static/admin/js/theme.js 304 [0.01, 127.0.0.1:35272]
+INFO 2025-07-06 12:48:11,424 runserver HTTP GET /static/admin/css/responsive.css 304 [0.01, 127.0.0.1:35280]
+INFO 2025-07-06 12:48:11,431 runserver HTTP GET /static/admin/js/nav_sidebar.js 304 [0.00, 127.0.0.1:35280]
+ERROR 2025-07-06 12:48:15,270 log Internal Server Error: /admin/login/
+Traceback (most recent call last):
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/backends/utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+psycopg2.errors.UndefinedColumn: column accounts_customuser.user_type does not exist
+LINE 1: SELECT "accounts_customuser"."id", "accounts_customuser"."us...
+                                           ^
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/asgiref/sync.py", line 518, in thread_handler
+    raise exc_info[1]
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/core/handlers/exception.py", line 42, in inner
+    response = await get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/asgiref/sync.py", line 518, in thread_handler
+    raise exc_info[1]
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/core/handlers/base.py", line 253, in _get_response_async
+    response = await wrapped_callback(
+               ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/asgiref/sync.py", line 468, in __call__
+    ret = await asyncio.shield(exec_coro)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/asgiref/current_thread_executor.py", line 40, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/asgiref/sync.py", line 522, in thread_handler
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/contextlib.py", line 81, in inner
+    return func(*args, **kwds)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/utils/decorators.py", line 48, in _wrapper
+    return bound_method(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/views/decorators/cache.py", line 80, in _view_wrapper
+    response = view_func(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/contrib/admin/sites.py", line 449, in login
+    return LoginView.as_view(**defaults)(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/utils/decorators.py", line 48, in _wrapper
+    return bound_method(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/utils/decorators.py", line 48, in _wrapper
+    return bound_method(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/views/decorators/debug.py", line 143, in sensitive_post_parameters_wrapper
+    return view(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/utils/decorators.py", line 48, in _wrapper
+    return bound_method(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/utils/decorators.py", line 192, in _view_wrapper
+    result = _process_exception(request, e)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/utils/decorators.py", line 190, in _view_wrapper
+    response = view_func(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/utils/decorators.py", line 48, in _wrapper
+    return bound_method(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/views/decorators/cache.py", line 80, in _view_wrapper
+    response = view_func(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/contrib/auth/views.py", line 89, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/views/generic/base.py", line 143, in dispatch
+    return handler(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/views/generic/edit.py", line 150, in post
+    if form.is_valid():
+       ^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/forms/forms.py", line 206, in is_valid
+    return self.is_bound and not self.errors
+                                 ^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/forms/forms.py", line 201, in errors
+    self.full_clean()
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/forms/forms.py", line 338, in full_clean
+    self._clean_form()
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/forms/forms.py", line 354, in _clean_form
+    cleaned_data = self.clean()
+                   ^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/views/decorators/debug.py", line 75, in sensitive_variables_wrapper
+    return func(*func_args, **func_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/contrib/auth/forms.py", line 366, in clean
+    self.user_cache = authenticate(
+                      ^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/views/decorators/debug.py", line 75, in sensitive_variables_wrapper
+    return func(*func_args, **func_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/contrib/auth/__init__.py", line 114, in authenticate
+    user = backend.authenticate(request, **credentials)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/contrib/auth/backends.py", line 65, in authenticate
+    user = UserModel._default_manager.get_by_natural_key(username)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/contrib/auth/base_user.py", line 37, in get_by_natural_key
+    return self.get(**{self.model.USERNAME_FIELD: username})
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/models/manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/models/query.py", line 629, in get
+    num = len(clone)
+          ^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/models/query.py", line 366, in __len__
+    self._fetch_all()
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/models/query.py", line 1935, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/models/query.py", line 91, in __iter__
+    results = compiler.execute_sql(
+              ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/models/sql/compiler.py", line 1622, in execute_sql
+    cursor.execute(sql, params)
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/backends/utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/backends/utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/backends/utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/backends/utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/backends/utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+django.db.utils.ProgrammingError: column accounts_customuser.user_type does not exist
+LINE 1: SELECT "accounts_customuser"."id", "accounts_customuser"."us...
+                                           ^
+
+ERROR 2025-07-06 12:48:15,354 runserver HTTP POST /admin/login/?next=/admin/ 500 [1.75, 127.0.0.1:35280]
+INFO 2025-07-06 12:55:15,355 autoreload /home/teo/Documents/ADB/app/business/models/business.py changed, reloading.
+INFO 2025-07-06 12:55:15,358 autoreload /home/teo/Documents/ADB/app/business/models/business.py changed, reloading.
+INFO 2025-07-06 12:55:15,996 autoreload Watching for file changes with StatReloader
+INFO 2025-07-06 12:55:15,998 autoreload Watching for file changes with StatReloader
+INFO 2025-07-06 13:05:18,568 autoreload Watching for file changes with StatReloader
+INFO 2025-07-06 13:07:25,100 runserver HTTP POST /api/accounts/login/ 200 [1.70, 127.0.0.1:59272]
+INFO 2025-07-06 13:07:57,946 runserver HTTP GET /api/accounts/user-info/ 200 [1.18, 127.0.0.1:36818]
+INFO 2025-07-06 13:08:06,731 runserver HTTP GET /admin/ 302 [0.96, 127.0.0.1:34562]
+INFO 2025-07-08 17:55:41,199 autoreload Watching for file changes with StatReloader
+WARNING 2025-07-08 17:55:46,501 log Not Found: /
+WARNING 2025-07-08 17:55:46,505 runserver HTTP GET / 404 [1.24, 127.0.0.1:58110]
+WARNING 2025-07-08 17:55:47,421 log Not Found: /favicon.ico
+WARNING 2025-07-08 17:55:47,422 runserver HTTP GET /favicon.ico 404 [0.83, 127.0.0.1:58110]
+INFO 2025-07-08 17:55:50,556 runserver HTTP GET /admin/ 302 [0.98, 127.0.0.1:58110]
+INFO 2025-07-08 17:55:51,517 runserver HTTP GET /admin/login/?next=/admin/ 200 [0.95, 127.0.0.1:58110]
+INFO 2025-07-08 17:55:51,554 runserver HTTP GET /static/admin/css/nav_sidebar.css 304 [0.01, 127.0.0.1:42736]
+INFO 2025-07-08 17:55:51,556 runserver HTTP GET /static/admin/css/base.css 304 [0.01, 127.0.0.1:58110]
+INFO 2025-07-08 17:55:51,557 runserver HTTP GET /static/admin/css/responsive.css 304 [0.01, 127.0.0.1:42754]
+INFO 2025-07-08 17:55:51,557 runserver HTTP GET /static/admin/css/login.css 304 [0.01, 127.0.0.1:42750]
+INFO 2025-07-08 17:55:51,558 runserver HTTP GET /static/admin/css/dark_mode.css 304 [0.01, 127.0.0.1:42730]
+INFO 2025-07-08 17:55:51,559 runserver HTTP GET /static/admin/js/theme.js 304 [0.01, 127.0.0.1:42748]
+INFO 2025-07-08 17:55:51,567 runserver HTTP GET /static/admin/js/nav_sidebar.js 304 [0.00, 127.0.0.1:42748]
+INFO 2025-07-08 17:55:58,448 runserver HTTP POST /admin/login/?next=/admin/ 302 [2.51, 127.0.0.1:42748]
+INFO 2025-07-08 17:55:59,464 runserver HTTP GET /admin/ 200 [1.01, 127.0.0.1:42748]
+INFO 2025-07-08 17:55:59,525 runserver HTTP GET /static/admin/css/dark_mode.css 304 [0.01, 127.0.0.1:42730]
+INFO 2025-07-08 17:55:59,525 runserver HTTP GET /static/admin/css/nav_sidebar.css 304 [0.01, 127.0.0.1:42750]
+INFO 2025-07-08 17:55:59,526 runserver HTTP GET /static/admin/css/base.css 304 [0.01, 127.0.0.1:42748]
+INFO 2025-07-08 17:55:59,527 runserver HTTP GET /static/admin/js/theme.js 304 [0.01, 127.0.0.1:42736]
+INFO 2025-07-08 17:55:59,531 runserver HTTP GET /static/admin/css/responsive.css 304 [0.02, 127.0.0.1:58110]
+INFO 2025-07-08 17:55:59,532 runserver HTTP GET /static/admin/css/dashboard.css 304 [0.02, 127.0.0.1:42754]
+INFO 2025-07-08 17:55:59,546 runserver HTTP GET /static/admin/js/nav_sidebar.js 304 [0.00, 127.0.0.1:42754]
+INFO 2025-07-08 17:55:59,554 runserver HTTP GET /static/admin/img/icon-changelink.svg 304 [0.00, 127.0.0.1:58110]
+INFO 2025-07-08 17:55:59,554 runserver HTTP GET /static/admin/img/icon-addlink.svg 304 [0.00, 127.0.0.1:42754]
+INFO 2025-07-08 17:56:10,025 runserver HTTP GET /admin/orders/orderstatushistory/ 200 [3.14, 127.0.0.1:42754]
+INFO 2025-07-08 17:56:10,063 runserver HTTP GET /static/admin/css/base.css 304 [0.01, 127.0.0.1:58110]
+INFO 2025-07-08 17:56:10,064 runserver HTTP GET /static/admin/css/nav_sidebar.css 304 [0.01, 127.0.0.1:42748]
+INFO 2025-07-08 17:56:10,064 runserver HTTP GET /static/admin/css/changelists.css 304 [0.01, 127.0.0.1:42750]
+INFO 2025-07-08 17:56:10,065 runserver HTTP GET /static/admin/css/dark_mode.css 304 [0.01, 127.0.0.1:42736]
+INFO 2025-07-08 17:56:10,066 runserver HTTP GET /static/admin/css/responsive.css 304 [0.01, 127.0.0.1:42730]
+INFO 2025-07-08 17:56:10,082 runserver HTTP GET /static/admin/js/theme.js 304 [0.01, 127.0.0.1:58110]
+INFO 2025-07-08 17:56:10,082 runserver HTTP GET /static/admin/js/jquery.init.js 304 [0.01, 127.0.0.1:42750]
+INFO 2025-07-08 17:56:10,082 runserver HTTP GET /static/admin/js/core.js 304 [0.01, 127.0.0.1:42736]
+INFO 2025-07-08 17:56:10,082 runserver HTTP GET /static/admin/js/vendor/jquery/jquery.js 304 [0.01, 127.0.0.1:42748]
+INFO 2025-07-08 17:56:10,083 runserver HTTP GET /static/admin/js/admin/RelatedObjectLookups.js 304 [0.01, 127.0.0.1:42730]
+INFO 2025-07-08 17:56:10,096 runserver HTTP GET /static/admin/js/actions.js 304 [0.01, 127.0.0.1:58110]
+INFO 2025-07-08 17:56:10,096 runserver HTTP GET /static/admin/js/vendor/xregexp/xregexp.js 304 [0.01, 127.0.0.1:42748]
+INFO 2025-07-08 17:56:10,097 runserver HTTP GET /static/admin/js/urlify.js 304 [0.01, 127.0.0.1:42750]
+INFO 2025-07-08 17:56:10,098 runserver HTTP GET /static/admin/img/search.svg 304 [0.01, 127.0.0.1:42730]
+INFO 2025-07-08 17:56:10,098 runserver HTTP GET /static/admin/js/prepopulate.js 304 [0.01, 127.0.0.1:42736]
+INFO 2025-07-08 17:56:10,114 runserver HTTP GET /static/admin/js/nav_sidebar.js 304 [0.00, 127.0.0.1:42736]
+INFO 2025-07-08 17:56:10,125 runserver HTTP GET /static/admin/js/filters.js 304 [0.00, 127.0.0.1:42736]
+INFO 2025-07-08 17:56:11,304 runserver HTTP GET /admin/jsi18n/ 200 [1.25, 127.0.0.1:42754]
+INFO 2025-07-08 17:56:11,358 runserver HTTP GET /static/admin/img/tooltag-add.svg 304 [0.00, 127.0.0.1:42754]
+INFO 2025-07-08 17:56:11,365 runserver HTTP GET /static/admin/img/sorting-icons.svg 304 [0.00, 127.0.0.1:42754]
+INFO 2025-07-08 17:56:11,366 runserver HTTP GET /static/admin/img/icon-viewlink.svg 304 [0.00, 127.0.0.1:42736]
+INFO 2025-07-08 17:56:23,917 runserver HTTP GET /admin/orders/orderitem/ 200 [2.99, 127.0.0.1:42736]
+INFO 2025-07-08 17:56:23,982 runserver HTTP GET /static/admin/css/base.css 304 [0.01, 127.0.0.1:42754]
+INFO 2025-07-08 17:56:23,983 runserver HTTP GET /static/admin/css/nav_sidebar.css 304 [0.01, 127.0.0.1:42750]
+INFO 2025-07-08 17:56:23,983 runserver HTTP GET /static/admin/css/dark_mode.css 304 [0.02, 127.0.0.1:42730]
+INFO 2025-07-08 17:56:23,984 runserver HTTP GET /static/admin/css/changelists.css 304 [0.01, 127.0.0.1:42748]
+INFO 2025-07-08 17:56:23,986 runserver HTTP GET /static/admin/css/responsive.css 304 [0.02, 127.0.0.1:58110]
+INFO 2025-07-08 17:56:24,010 runserver HTTP GET /static/admin/js/vendor/jquery/jquery.js 304 [0.01, 127.0.0.1:42750]
+INFO 2025-07-08 17:56:24,011 runserver HTTP GET /static/admin/js/admin/RelatedObjectLookups.js 304 [0.01, 127.0.0.1:58110]
+INFO 2025-07-08 17:56:24,012 runserver HTTP GET /static/admin/js/jquery.init.js 304 [0.01, 127.0.0.1:42730]
+INFO 2025-07-08 17:56:24,012 runserver HTTP GET /static/admin/js/core.js 304 [0.01, 127.0.0.1:42748]
+INFO 2025-07-08 17:56:24,014 runserver HTTP GET /static/admin/js/theme.js 304 [0.02, 127.0.0.1:42754]
+INFO 2025-07-08 17:56:24,032 runserver HTTP GET /static/admin/js/urlify.js 304 [0.01, 127.0.0.1:58110]
+INFO 2025-07-08 17:56:24,034 runserver HTTP GET /static/admin/js/actions.js 304 [0.01, 127.0.0.1:42750]
+INFO 2025-07-08 17:56:24,035 runserver HTTP GET /static/admin/js/vendor/xregexp/xregexp.js 304 [0.01, 127.0.0.1:42748]
+INFO 2025-07-08 17:56:24,036 runserver HTTP GET /static/admin/js/prepopulate.js 304 [0.01, 127.0.0.1:42730]
+INFO 2025-07-08 17:56:24,037 runserver HTTP GET /static/admin/img/search.svg 304 [0.01, 127.0.0.1:42754]
+INFO 2025-07-08 17:56:24,051 runserver HTTP GET /static/admin/js/nav_sidebar.js 304 [0.00, 127.0.0.1:42754]
+INFO 2025-07-08 17:56:24,062 runserver HTTP GET /static/admin/js/filters.js 304 [0.00, 127.0.0.1:42754]
+INFO 2025-07-08 17:56:26,379 runserver HTTP GET /admin/jsi18n/ 200 [2.41, 127.0.0.1:42736]
+INFO 2025-07-08 17:56:36,695 runserver HTTP GET /admin/orders/ordernotification/ 200 [2.58, 127.0.0.1:42736]
+INFO 2025-07-08 17:56:36,721 runserver HTTP GET /static/admin/css/base.css 304 [0.00, 127.0.0.1:42736]
+INFO 2025-07-08 17:56:36,733 runserver HTTP GET /static/admin/css/nav_sidebar.css 304 [0.01, 127.0.0.1:42730]
+INFO 2025-07-08 17:56:36,735 runserver HTTP GET /static/admin/css/dark_mode.css 304 [0.01, 127.0.0.1:42736]
+INFO 2025-07-08 17:56:36,736 runserver HTTP GET /static/admin/css/changelists.css 304 [0.01, 127.0.0.1:42748]
+INFO 2025-07-08 17:56:36,736 runserver HTTP GET /static/admin/css/responsive.css 304 [0.01, 127.0.0.1:58110]
+INFO 2025-07-08 17:56:36,738 runserver HTTP GET /static/admin/js/theme.js 304 [0.01, 127.0.0.1:42750]
+INFO 2025-07-08 17:56:36,744 runserver HTTP GET /static/admin/js/vendor/jquery/jquery.js 304 [0.01, 127.0.0.1:42730]
+INFO 2025-07-08 17:56:36,747 runserver HTTP GET /static/admin/js/jquery.init.js 304 [0.01, 127.0.0.1:42736]
+INFO 2025-07-08 17:56:36,749 runserver HTTP GET /static/admin/js/core.js 304 [0.01, 127.0.0.1:42748]
+INFO 2025-07-08 17:56:36,751 runserver HTTP GET /static/admin/js/admin/RelatedObjectLookups.js 304 [0.01, 127.0.0.1:58110]
+INFO 2025-07-08 17:56:36,753 runserver HTTP GET /static/admin/js/actions.js 304 [0.01, 127.0.0.1:42750]
+INFO 2025-07-08 17:56:36,756 runserver HTTP GET /static/admin/js/urlify.js 304 [0.01, 127.0.0.1:42730]
+INFO 2025-07-08 17:56:36,757 runserver HTTP GET /static/admin/js/prepopulate.js 304 [0.01, 127.0.0.1:42736]
+INFO 2025-07-08 17:56:36,759 runserver HTTP GET /static/admin/js/vendor/xregexp/xregexp.js 304 [0.01, 127.0.0.1:42748]
+INFO 2025-07-08 17:56:36,760 runserver HTTP GET /static/admin/img/search.svg 304 [0.01, 127.0.0.1:58110]
+INFO 2025-07-08 17:56:36,779 runserver HTTP GET /static/admin/js/nav_sidebar.js 304 [0.00, 127.0.0.1:58110]
+INFO 2025-07-08 17:56:36,787 runserver HTTP GET /static/admin/js/filters.js 304 [0.00, 127.0.0.1:58110]
+INFO 2025-07-08 17:56:38,729 runserver HTTP GET /admin/jsi18n/ 200 [2.00, 127.0.0.1:42754]
+INFO 2025-07-08 17:56:51,885 runserver HTTP GET /admin/orders/order/ 200 [1.84, 127.0.0.1:48380]
+INFO 2025-07-08 17:56:51,923 runserver HTTP GET /static/admin/css/dark_mode.css 304 [0.01, 127.0.0.1:48412]
+INFO 2025-07-08 17:56:51,923 runserver HTTP GET /static/admin/css/nav_sidebar.css 304 [0.01, 127.0.0.1:48422]
+INFO 2025-07-08 17:56:51,924 runserver HTTP GET /static/admin/css/base.css 304 [0.01, 127.0.0.1:48396]
+INFO 2025-07-08 17:56:51,925 runserver HTTP GET /static/admin/css/changelists.css 304 [0.01, 127.0.0.1:48424]
+INFO 2025-07-08 17:56:51,926 runserver HTTP GET /static/admin/js/theme.js 304 [0.01, 127.0.0.1:48436]
+INFO 2025-07-08 17:56:51,937 runserver HTTP GET /static/admin/js/core.js 304 [0.01, 127.0.0.1:48424]
+INFO 2025-07-08 17:56:51,938 runserver HTTP GET /static/admin/css/responsive.css 304 [0.01, 127.0.0.1:48412]
+INFO 2025-07-08 17:56:51,939 runserver HTTP GET /static/admin/js/vendor/jquery/jquery.js 304 [0.01, 127.0.0.1:48422]
+INFO 2025-07-08 17:56:51,940 runserver HTTP GET /static/admin/js/admin/RelatedObjectLookups.js 304 [0.01, 127.0.0.1:48436]
+INFO 2025-07-08 17:56:51,941 runserver HTTP GET /static/admin/js/jquery.init.js 304 [0.01, 127.0.0.1:48396]
+INFO 2025-07-08 17:56:51,947 runserver HTTP GET /static/admin/js/urlify.js 304 [0.00, 127.0.0.1:48412]
+INFO 2025-07-08 17:56:51,948 runserver HTTP GET /static/admin/js/prepopulate.js 304 [0.00, 127.0.0.1:48422]
+INFO 2025-07-08 17:56:51,948 runserver HTTP GET /static/admin/js/actions.js 304 [0.01, 127.0.0.1:48424]
+INFO 2025-07-08 17:56:51,950 runserver HTTP GET /static/admin/js/vendor/xregexp/xregexp.js 304 [0.01, 127.0.0.1:48436]
+INFO 2025-07-08 17:56:51,950 runserver HTTP GET /static/admin/img/search.svg 304 [0.01, 127.0.0.1:48396]
+INFO 2025-07-08 17:56:51,957 runserver HTTP GET /static/admin/js/nav_sidebar.js 304 [0.00, 127.0.0.1:48396]
+INFO 2025-07-08 17:56:51,966 runserver HTTP GET /static/admin/js/filters.js 304 [0.00, 127.0.0.1:48396]
+INFO 2025-07-08 17:56:52,874 runserver HTTP GET /admin/jsi18n/ 200 [0.96, 127.0.0.1:48380]
+INFO 2025-07-08 17:57:06,559 runserver HTTP GET /admin/business/business/ 200 [2.12, 127.0.0.1:48396]
+INFO 2025-07-08 17:57:06,603 runserver HTTP GET /static/admin/css/base.css 304 [0.01, 127.0.0.1:48436]
+INFO 2025-07-08 17:57:06,605 runserver HTTP GET /static/admin/css/nav_sidebar.css 304 [0.01, 127.0.0.1:48422]
+INFO 2025-07-08 17:57:06,606 runserver HTTP GET /static/admin/css/responsive.css 304 [0.01, 127.0.0.1:48542]
+INFO 2025-07-08 17:57:06,606 runserver HTTP GET /static/admin/css/dark_mode.css 304 [0.01, 127.0.0.1:48424]
+INFO 2025-07-08 17:57:06,606 runserver HTTP GET /static/admin/css/changelists.css 304 [0.01, 127.0.0.1:48412]
+INFO 2025-07-08 17:57:06,611 runserver HTTP GET /static/admin/js/theme.js 304 [0.00, 127.0.0.1:48436]
+INFO 2025-07-08 17:57:06,619 runserver HTTP GET /static/admin/js/vendor/jquery/jquery.js 304 [0.01, 127.0.0.1:48422]
+INFO 2025-07-08 17:57:06,620 runserver HTTP GET /static/admin/js/admin/RelatedObjectLookups.js 304 [0.01, 127.0.0.1:48412]
+INFO 2025-07-08 17:57:06,621 runserver HTTP GET /static/admin/js/jquery.init.js 304 [0.01, 127.0.0.1:48542]
+INFO 2025-07-08 17:57:06,622 runserver HTTP GET /static/admin/js/actions.js 304 [0.01, 127.0.0.1:48436]
+INFO 2025-07-08 17:57:06,623 runserver HTTP GET /static/admin/js/core.js 304 [0.01, 127.0.0.1:48424]
+INFO 2025-07-08 17:57:06,629 runserver HTTP GET /static/admin/js/urlify.js 304 [0.01, 127.0.0.1:48422]
+INFO 2025-07-08 17:57:06,633 runserver HTTP GET /static/admin/js/prepopulate.js 304 [0.01, 127.0.0.1:48412]
+INFO 2025-07-08 17:57:06,635 runserver HTTP GET /static/admin/img/search.svg 304 [0.01, 127.0.0.1:48424]
+INFO 2025-07-08 17:57:06,636 runserver HTTP GET /static/admin/js/vendor/xregexp/xregexp.js 304 [0.01, 127.0.0.1:48542]
+INFO 2025-07-08 17:57:06,637 runserver HTTP GET /static/admin/img/icon-yes.svg 304 [0.01, 127.0.0.1:48436]
+INFO 2025-07-08 17:57:06,646 runserver HTTP GET /static/admin/js/nav_sidebar.js 304 [0.00, 127.0.0.1:48436]
+INFO 2025-07-08 17:57:06,654 runserver HTTP GET /static/admin/js/filters.js 304 [0.00, 127.0.0.1:48436]
+INFO 2025-07-08 17:57:07,547 runserver HTTP GET /admin/jsi18n/ 200 [0.95, 127.0.0.1:48396]
+INFO 2025-07-08 17:57:13,586 runserver HTTP GET /admin/business/business/ 200 [2.39, 127.0.0.1:48396]
+INFO 2025-07-08 17:57:13,639 runserver HTTP GET /static/admin/css/changelists.css 304 [0.01, 127.0.0.1:48412]
+INFO 2025-07-08 17:57:13,639 runserver HTTP GET /static/admin/js/theme.js 304 [0.01, 127.0.0.1:48422]
+INFO 2025-07-08 17:57:13,640 runserver HTTP GET /static/admin/css/nav_sidebar.css 304 [0.01, 127.0.0.1:48424]
+INFO 2025-07-08 17:57:13,640 runserver HTTP GET /static/admin/css/base.css 304 [0.01, 127.0.0.1:48436]
+INFO 2025-07-08 17:57:13,641 runserver HTTP GET /static/admin/css/dark_mode.css 304 [0.01, 127.0.0.1:48542]
+INFO 2025-07-08 17:57:13,657 runserver HTTP GET /static/admin/js/vendor/jquery/jquery.js 304 [0.01, 127.0.0.1:48422]
+INFO 2025-07-08 17:57:13,657 runserver HTTP GET /static/admin/css/responsive.css 304 [0.01, 127.0.0.1:48412]
+INFO 2025-07-08 17:57:13,659 runserver HTTP GET /static/admin/js/core.js 304 [0.01, 127.0.0.1:48436]
+INFO 2025-07-08 17:57:13,660 runserver HTTP GET /static/admin/js/jquery.init.js 304 [0.01, 127.0.0.1:48424]
+INFO 2025-07-08 17:57:13,661 runserver HTTP GET /static/admin/js/admin/RelatedObjectLookups.js 304 [0.01, 127.0.0.1:48542]
+INFO 2025-07-08 17:57:13,676 runserver HTTP GET /static/admin/img/search.svg 304 [0.01, 127.0.0.1:48542]
+INFO 2025-07-08 17:57:13,676 runserver HTTP GET /static/admin/js/urlify.js 304 [0.01, 127.0.0.1:48412]
+INFO 2025-07-08 17:57:13,677 runserver HTTP GET /static/admin/js/prepopulate.js 304 [0.01, 127.0.0.1:48436]
+INFO 2025-07-08 17:57:13,677 runserver HTTP GET /static/admin/js/vendor/xregexp/xregexp.js 304 [0.01, 127.0.0.1:48424]
+INFO 2025-07-08 17:57:13,677 runserver HTTP GET /static/admin/js/actions.js 304 [0.01, 127.0.0.1:48422]
+INFO 2025-07-08 17:57:13,685 runserver HTTP GET /static/admin/img/icon-yes.svg 304 [0.00, 127.0.0.1:48422]
+INFO 2025-07-08 17:57:13,692 runserver HTTP GET /static/admin/js/nav_sidebar.js 304 [0.00, 127.0.0.1:48422]
+INFO 2025-07-08 17:57:13,699 runserver HTTP GET /static/admin/js/filters.js 304 [0.00, 127.0.0.1:48422]
+INFO 2025-07-08 17:57:14,906 runserver HTTP GET /admin/jsi18n/ 200 [1.28, 127.0.0.1:48396]
+INFO 2025-07-08 17:57:17,808 runserver HTTP GET /admin/business/businessinvitation/ 200 [1.91, 127.0.0.1:48396]
+INFO 2025-07-08 17:57:17,859 runserver HTTP GET /static/admin/css/base.css 304 [0.01, 127.0.0.1:48422]
+INFO 2025-07-08 17:57:17,860 runserver HTTP GET /static/admin/css/dark_mode.css 304 [0.01, 127.0.0.1:48424]
+INFO 2025-07-08 17:57:17,860 runserver HTTP GET /static/admin/css/nav_sidebar.css 304 [0.01, 127.0.0.1:48436]
+INFO 2025-07-08 17:57:17,861 runserver HTTP GET /static/admin/css/changelists.css 304 [0.01, 127.0.0.1:48412]
+INFO 2025-07-08 17:57:17,861 runserver HTTP GET /static/admin/css/responsive.css 304 [0.01, 127.0.0.1:48542]
+INFO 2025-07-08 17:57:17,886 runserver HTTP GET /static/admin/js/theme.js 304 [0.01, 127.0.0.1:48422]
+INFO 2025-07-08 17:57:17,886 runserver HTTP GET /static/admin/js/core.js 304 [0.01, 127.0.0.1:48412]
+INFO 2025-07-08 17:57:17,887 runserver HTTP GET /static/admin/js/vendor/jquery/jquery.js 304 [0.01, 127.0.0.1:48424]
+INFO 2025-07-08 17:57:17,888 runserver HTTP GET /static/admin/js/jquery.init.js 304 [0.01, 127.0.0.1:48436]
+INFO 2025-07-08 17:57:17,888 runserver HTTP GET /static/admin/js/admin/RelatedObjectLookups.js 304 [0.01, 127.0.0.1:48542]
+INFO 2025-07-08 17:57:17,909 runserver HTTP GET /static/admin/js/urlify.js 304 [0.01, 127.0.0.1:48412]
+INFO 2025-07-08 17:57:17,910 runserver HTTP GET /static/admin/js/prepopulate.js 304 [0.01, 127.0.0.1:48424]
+INFO 2025-07-08 17:57:17,911 runserver HTTP GET /static/admin/js/vendor/xregexp/xregexp.js 304 [0.01, 127.0.0.1:48436]
+INFO 2025-07-08 17:57:17,911 runserver HTTP GET /static/admin/js/actions.js 304 [0.01, 127.0.0.1:48422]
+INFO 2025-07-08 17:57:17,915 runserver HTTP GET /static/admin/img/search.svg 304 [0.01, 127.0.0.1:48542]
+INFO 2025-07-08 17:57:17,928 runserver HTTP GET /static/admin/js/nav_sidebar.js 304 [0.00, 127.0.0.1:48542]
+INFO 2025-07-08 17:57:17,939 runserver HTTP GET /static/admin/js/filters.js 304 [0.00, 127.0.0.1:48542]
+INFO 2025-07-08 17:57:18,916 runserver HTTP GET /admin/jsi18n/ 200 [1.07, 127.0.0.1:48396]
+INFO 2025-07-08 17:57:26,150 runserver HTTP GET /admin/business/businessjoinrequest/ 200 [2.42, 127.0.0.1:48396]
+INFO 2025-07-08 17:57:26,202 runserver HTTP GET /static/admin/css/dark_mode.css 304 [0.01, 127.0.0.1:48422]
+INFO 2025-07-08 17:57:26,205 runserver HTTP GET /static/admin/css/base.css 304 [0.01, 127.0.0.1:48542]
+INFO 2025-07-08 17:57:26,206 runserver HTTP GET /static/admin/css/changelists.css 304 [0.01, 127.0.0.1:48424]
+INFO 2025-07-08 17:57:26,207 runserver HTTP GET /static/admin/css/nav_sidebar.css 304 [0.01, 127.0.0.1:48436]
+INFO 2025-07-08 17:57:26,211 runserver HTTP GET /static/admin/css/responsive.css 304 [0.02, 127.0.0.1:48412]
+INFO 2025-07-08 17:57:26,217 runserver HTTP GET /static/admin/js/theme.js 304 [0.01, 127.0.0.1:48422]
+INFO 2025-07-08 17:57:26,218 runserver HTTP GET /static/admin/js/vendor/jquery/jquery.js 304 [0.01, 127.0.0.1:48542]
+INFO 2025-07-08 17:57:26,221 runserver HTTP GET /static/admin/js/jquery.init.js 304 [0.01, 127.0.0.1:48424]
+INFO 2025-07-08 17:57:26,221 runserver HTTP GET /static/admin/js/core.js 304 [0.01, 127.0.0.1:48436]
+INFO 2025-07-08 17:57:26,224 runserver HTTP GET /static/admin/js/admin/RelatedObjectLookups.js 304 [0.01, 127.0.0.1:48412]
+INFO 2025-07-08 17:57:26,232 runserver HTTP GET /static/admin/js/actions.js 304 [0.01, 127.0.0.1:48422]
+INFO 2025-07-08 17:57:26,236 runserver HTTP GET /static/admin/js/urlify.js 304 [0.01, 127.0.0.1:48542]
+INFO 2025-07-08 17:57:26,237 runserver HTTP GET /static/admin/js/prepopulate.js 304 [0.01, 127.0.0.1:48424]
+INFO 2025-07-08 17:57:26,238 runserver HTTP GET /static/admin/js/vendor/xregexp/xregexp.js 304 [0.01, 127.0.0.1:48436]
+INFO 2025-07-08 17:57:26,239 runserver HTTP GET /static/admin/img/search.svg 304 [0.01, 127.0.0.1:48412]
+INFO 2025-07-08 17:57:26,252 runserver HTTP GET /static/admin/js/nav_sidebar.js 304 [0.00, 127.0.0.1:48412]
+INFO 2025-07-08 17:57:26,261 runserver HTTP GET /static/admin/js/filters.js 304 [0.00, 127.0.0.1:48412]
+INFO 2025-07-08 17:57:27,518 runserver HTTP GET /admin/jsi18n/ 200 [1.32, 127.0.0.1:48396]
+INFO 2025-07-08 17:57:33,504 runserver HTTP GET /admin/inventory/product/ 200 [3.14, 127.0.0.1:48396]
+INFO 2025-07-08 17:57:33,556 runserver HTTP GET /static/admin/css/base.css 304 [0.01, 127.0.0.1:48412]
+INFO 2025-07-08 17:57:33,557 runserver HTTP GET /static/admin/css/changelists.css 304 [0.01, 127.0.0.1:48542]
+INFO 2025-07-08 17:57:33,557 runserver HTTP GET /static/admin/css/nav_sidebar.css 304 [0.01, 127.0.0.1:48424]
+INFO 2025-07-08 17:57:33,557 runserver HTTP GET /static/admin/css/responsive.css 304 [0.01, 127.0.0.1:48422]
+INFO 2025-07-08 17:57:33,559 runserver HTTP GET /static/admin/css/dark_mode.css 304 [0.01, 127.0.0.1:48436]
+INFO 2025-07-08 17:57:33,575 runserver HTTP GET /static/admin/js/vendor/jquery/jquery.js 304 [0.01, 127.0.0.1:48542]
+INFO 2025-07-08 17:57:33,576 runserver HTTP GET /static/admin/js/theme.js 304 [0.01, 127.0.0.1:48412]
+INFO 2025-07-08 17:57:33,576 runserver HTTP GET /static/admin/js/jquery.init.js 304 [0.01, 127.0.0.1:48424]
+INFO 2025-07-08 17:57:33,576 runserver HTTP GET /static/admin/js/core.js 304 [0.01, 127.0.0.1:48422]
+INFO 2025-07-08 17:57:33,577 runserver HTTP GET /static/admin/js/admin/RelatedObjectLookups.js 304 [0.01, 127.0.0.1:48436]
+INFO 2025-07-08 17:57:33,594 runserver HTTP GET /static/admin/js/urlify.js 304 [0.01, 127.0.0.1:48412]
+INFO 2025-07-08 17:57:33,595 runserver HTTP GET /static/admin/js/prepopulate.js 304 [0.01, 127.0.0.1:48424]
+INFO 2025-07-08 17:57:33,596 runserver HTTP GET /static/admin/js/vendor/xregexp/xregexp.js 304 [0.01, 127.0.0.1:48422]
+INFO 2025-07-08 17:57:33,597 runserver HTTP GET /static/admin/img/search.svg 304 [0.01, 127.0.0.1:48436]
+INFO 2025-07-08 17:57:33,597 runserver HTTP GET /static/admin/js/actions.js 304 [0.01, 127.0.0.1:48542]
+INFO 2025-07-08 17:57:33,605 runserver HTTP GET /static/admin/img/icon-yes.svg 304 [0.00, 127.0.0.1:48542]
+INFO 2025-07-08 17:57:33,613 runserver HTTP GET /static/admin/js/nav_sidebar.js 304 [0.00, 127.0.0.1:48542]
+INFO 2025-07-08 17:57:33,622 runserver HTTP GET /static/admin/js/filters.js 304 [0.00, 127.0.0.1:48542]
+INFO 2025-07-08 17:57:35,231 runserver HTTP GET /admin/jsi18n/ 200 [1.69, 127.0.0.1:48396]
+INFO 2025-07-08 17:57:47,956 runserver HTTP GET /admin/inventory/stockmovement/ 200 [2.37, 127.0.0.1:48396]
+INFO 2025-07-08 17:57:48,018 runserver HTTP GET /static/admin/css/dark_mode.css 304 [0.01, 127.0.0.1:48436]
+INFO 2025-07-08 17:57:48,019 runserver HTTP GET /static/admin/css/base.css 304 [0.01, 127.0.0.1:48542]
+INFO 2025-07-08 17:57:48,019 runserver HTTP GET /static/admin/css/nav_sidebar.css 304 [0.01, 127.0.0.1:48422]
+INFO 2025-07-08 17:57:48,020 runserver HTTP GET /static/admin/css/responsive.css 304 [0.01, 127.0.0.1:48412]
+INFO 2025-07-08 17:57:48,022 runserver HTTP GET /static/admin/css/changelists.css 304 [0.01, 127.0.0.1:48424]
+INFO 2025-07-08 17:57:48,035 runserver HTTP GET /static/admin/js/theme.js 304 [0.01, 127.0.0.1:48436]
+INFO 2025-07-08 17:57:48,036 runserver HTTP GET /static/admin/js/vendor/jquery/jquery.js 304 [0.01, 127.0.0.1:48542]
+INFO 2025-07-08 17:57:48,036 runserver HTTP GET /static/admin/js/admin/RelatedObjectLookups.js 304 [0.01, 127.0.0.1:48424]
+INFO 2025-07-08 17:57:48,036 runserver HTTP GET /static/admin/js/core.js 304 [0.01, 127.0.0.1:48412]
+INFO 2025-07-08 17:57:48,037 runserver HTTP GET /static/admin/js/jquery.init.js 304 [0.01, 127.0.0.1:48422]
+INFO 2025-07-08 17:57:48,055 runserver HTTP GET /static/admin/js/actions.js 304 [0.01, 127.0.0.1:48436]
+INFO 2025-07-08 17:57:48,056 runserver HTTP GET /static/admin/js/urlify.js 304 [0.01, 127.0.0.1:48542]
+INFO 2025-07-08 17:57:48,057 runserver HTTP GET /static/admin/js/vendor/xregexp/xregexp.js 304 [0.01, 127.0.0.1:48412]
+INFO 2025-07-08 17:57:48,057 runserver HTTP GET /static/admin/js/prepopulate.js 304 [0.01, 127.0.0.1:48424]
+INFO 2025-07-08 17:57:48,060 runserver HTTP GET /static/admin/img/search.svg 304 [0.01, 127.0.0.1:48422]
+INFO 2025-07-08 17:57:48,074 runserver HTTP GET /static/admin/js/nav_sidebar.js 304 [0.00, 127.0.0.1:48422]
+INFO 2025-07-08 17:57:48,085 runserver HTTP GET /static/admin/js/filters.js 304 [0.00, 127.0.0.1:48422]
+INFO 2025-07-08 17:57:50,194 runserver HTTP GET /admin/jsi18n/ 200 [2.19, 127.0.0.1:48396]
+INFO 2025-07-08 17:57:55,851 runserver HTTP GET /admin/inventory/productcategory/ 200 [1.57, 127.0.0.1:48396]
+INFO 2025-07-08 17:57:55,892 runserver HTTP GET /static/admin/css/base.css 304 [0.01, 127.0.0.1:48422]
+INFO 2025-07-08 17:57:55,894 runserver HTTP GET /static/admin/css/nav_sidebar.css 304 [0.01, 127.0.0.1:48412]
+INFO 2025-07-08 17:57:55,895 runserver HTTP GET /static/admin/css/dark_mode.css 304 [0.01, 127.0.0.1:48424]
+INFO 2025-07-08 17:57:55,896 runserver HTTP GET /static/admin/css/changelists.css 304 [0.01, 127.0.0.1:48542]
+INFO 2025-07-08 17:57:55,898 runserver HTTP GET /static/admin/css/responsive.css 304 [0.01, 127.0.0.1:48436]
+INFO 2025-07-08 17:57:55,902 runserver HTTP GET /static/admin/js/theme.js 304 [0.01, 127.0.0.1:48422]
+INFO 2025-07-08 17:57:55,909 runserver HTTP GET /static/admin/js/vendor/jquery/jquery.js 304 [0.01, 127.0.0.1:48412]
+INFO 2025-07-08 17:57:55,911 runserver HTTP GET /static/admin/js/core.js 304 [0.01, 127.0.0.1:48542]
+INFO 2025-07-08 17:57:55,911 runserver HTTP GET /static/admin/js/admin/RelatedObjectLookups.js 304 [0.01, 127.0.0.1:48436]
+INFO 2025-07-08 17:57:55,915 runserver HTTP GET /static/admin/js/actions.js 304 [0.01, 127.0.0.1:48422]
+INFO 2025-07-08 17:57:55,916 runserver HTTP GET /static/admin/js/jquery.init.js 304 [0.01, 127.0.0.1:48424]
+INFO 2025-07-08 17:57:55,922 runserver HTTP GET /static/admin/js/urlify.js 304 [0.01, 127.0.0.1:48412]
+INFO 2025-07-08 17:57:55,924 runserver HTTP GET /static/admin/js/prepopulate.js 304 [0.01, 127.0.0.1:48542]
+INFO 2025-07-08 17:57:55,925 runserver HTTP GET /static/admin/js/vendor/xregexp/xregexp.js 304 [0.01, 127.0.0.1:48436]
+INFO 2025-07-08 17:57:55,928 runserver HTTP GET /static/admin/img/icon-yes.svg 304 [0.01, 127.0.0.1:48422]
+INFO 2025-07-08 17:57:55,928 runserver HTTP GET /static/admin/img/search.svg 304 [0.01, 127.0.0.1:48424]
+INFO 2025-07-08 17:57:55,936 runserver HTTP GET /static/admin/js/nav_sidebar.js 304 [0.00, 127.0.0.1:48424]
+INFO 2025-07-08 17:57:55,944 runserver HTTP GET /static/admin/js/filters.js 304 [0.00, 127.0.0.1:48424]
+INFO 2025-07-08 17:57:56,951 runserver HTTP GET /admin/jsi18n/ 200 [1.07, 127.0.0.1:48396]
+INFO 2025-07-08 17:58:10,908 runserver HTTP GET /admin/accounts/customuser/ 200 [3.00, 127.0.0.1:48396]
+INFO 2025-07-08 17:58:10,965 runserver HTTP GET /static/admin/css/dark_mode.css 304 [0.01, 127.0.0.1:48422]
+INFO 2025-07-08 17:58:10,967 runserver HTTP GET /static/admin/css/base.css 304 [0.01, 127.0.0.1:48424]
+INFO 2025-07-08 17:58:10,968 runserver HTTP GET /static/admin/css/changelists.css 304 [0.01, 127.0.0.1:48542]
+INFO 2025-07-08 17:58:10,968 runserver HTTP GET /static/admin/css/nav_sidebar.css 304 [0.01, 127.0.0.1:48436]
+INFO 2025-07-08 17:58:10,968 runserver HTTP GET /static/admin/css/responsive.css 304 [0.01, 127.0.0.1:48412]
+INFO 2025-07-08 17:58:10,974 runserver HTTP GET /static/admin/js/theme.js 304 [0.00, 127.0.0.1:48422]
+INFO 2025-07-08 17:58:10,984 runserver HTTP GET /static/admin/js/vendor/jquery/jquery.js 304 [0.01, 127.0.0.1:48424]
+INFO 2025-07-08 17:58:10,988 runserver HTTP GET /static/admin/js/admin/RelatedObjectLookups.js 304 [0.01, 127.0.0.1:48412]
+INFO 2025-07-08 17:58:10,990 runserver HTTP GET /static/admin/js/jquery.init.js 304 [0.01, 127.0.0.1:48542]
+INFO 2025-07-08 17:58:10,991 runserver HTTP GET /static/admin/js/core.js 304 [0.01, 127.0.0.1:48436]
+INFO 2025-07-08 17:58:10,991 runserver HTTP GET /static/admin/js/actions.js 304 [0.01, 127.0.0.1:48422]
+INFO 2025-07-08 17:58:11,006 runserver HTTP GET /static/admin/js/urlify.js 304 [0.01, 127.0.0.1:48424]
+INFO 2025-07-08 17:58:11,011 runserver HTTP GET /static/admin/js/prepopulate.js 304 [0.01, 127.0.0.1:48412]
+INFO 2025-07-08 17:58:11,012 runserver HTTP GET /static/admin/img/icon-yes.svg 304 [0.01, 127.0.0.1:48436]
+INFO 2025-07-08 17:58:11,014 runserver HTTP GET /static/admin/js/vendor/xregexp/xregexp.js 304 [0.01, 127.0.0.1:48542]
+INFO 2025-07-08 17:58:11,015 runserver HTTP GET /static/admin/img/search.svg 304 [0.01, 127.0.0.1:48422]
+INFO 2025-07-08 17:58:11,028 runserver HTTP GET /static/admin/js/nav_sidebar.js 304 [0.00, 127.0.0.1:48422]
+INFO 2025-07-08 17:58:11,038 runserver HTTP GET /static/admin/js/filters.js 304 [0.00, 127.0.0.1:48422]
+INFO 2025-07-08 17:58:12,122 runserver HTTP GET /admin/jsi18n/ 200 [1.16, 127.0.0.1:48396]
+INFO 2025-07-08 17:58:35,466 runserver HTTP GET /admin/accounts/customuser/add/ 200 [1.88, 127.0.0.1:48396]
+INFO 2025-07-08 17:58:35,520 runserver HTTP GET /static/admin/css/base.css 304 [0.01, 127.0.0.1:48542]
+INFO 2025-07-08 17:58:35,521 runserver HTTP GET /static/admin/css/nav_sidebar.css 304 [0.01, 127.0.0.1:48412]
+INFO 2025-07-08 17:58:35,522 runserver HTTP GET /static/admin/css/forms.css 304 [0.01, 127.0.0.1:48424]
+INFO 2025-07-08 17:58:35,522 runserver HTTP GET /static/admin/css/dark_mode.css 304 [0.01, 127.0.0.1:48436]
+INFO 2025-07-08 17:58:35,547 runserver HTTP GET /static/admin/css/unusable_password_field.css 200 [0.04, 127.0.0.1:48422]
+INFO 2025-07-08 17:58:35,548 runserver HTTP GET /static/admin/js/jquery.init.js 304 [0.01, 127.0.0.1:48436]
+INFO 2025-07-08 17:58:35,550 runserver HTTP GET /static/admin/js/theme.js 304 [0.01, 127.0.0.1:48412]
+INFO 2025-07-08 17:58:35,552 runserver HTTP GET /static/admin/css/responsive.css 304 [0.03, 127.0.0.1:48542]
+INFO 2025-07-08 17:58:35,555 runserver HTTP GET /static/admin/js/vendor/jquery/jquery.js 304 [0.02, 127.0.0.1:48424]
+INFO 2025-07-08 17:58:35,571 runserver HTTP GET /static/admin/js/admin/RelatedObjectLookups.js 304 [0.01, 127.0.0.1:48412]
+INFO 2025-07-08 17:58:35,573 runserver HTTP GET /static/admin/js/inlines.js 304 [0.01, 127.0.0.1:48422]
+INFO 2025-07-08 17:58:35,573 runserver HTTP GET /static/admin/js/actions.js 304 [0.01, 127.0.0.1:48542]
+INFO 2025-07-08 17:58:35,574 runserver HTTP GET /static/admin/js/core.js 304 [0.01, 127.0.0.1:48436]
+INFO 2025-07-08 17:58:35,575 runserver HTTP GET /static/admin/js/urlify.js 304 [0.01, 127.0.0.1:48424]
+INFO 2025-07-08 17:58:35,588 runserver HTTP GET /static/admin/css/widgets.css 304 [0.01, 127.0.0.1:48412]
+INFO 2025-07-08 17:58:35,589 runserver HTTP GET /static/admin/js/prepopulate.js 304 [0.01, 127.0.0.1:48422]
+INFO 2025-07-08 17:58:35,589 runserver HTTP GET /static/admin/js/vendor/xregexp/xregexp.js 304 [0.01, 127.0.0.1:48542]
+INFO 2025-07-08 17:58:35,590 runserver HTTP GET /static/admin/js/prepopulate_init.js 304 [0.01, 127.0.0.1:48436]
+INFO 2025-07-08 17:58:35,600 runserver HTTP GET /static/admin/js/nav_sidebar.js 304 [0.00, 127.0.0.1:48436]
+INFO 2025-07-08 17:58:35,608 runserver HTTP GET /static/admin/js/change_form.js 304 [0.00, 127.0.0.1:48436]
+INFO 2025-07-08 17:58:35,617 runserver HTTP GET /static/admin/js/unusable_password_field.js 200 [0.00, 127.0.0.1:48436]
+INFO 2025-07-08 17:58:37,212 runserver HTTP GET /admin/jsi18n/ 200 [1.70, 127.0.0.1:48396]
+INFO 2025-07-08 17:58:43,881 runserver HTTP GET /admin/business/business/ 200 [3.06, 127.0.0.1:48396]
+INFO 2025-07-08 17:58:43,945 runserver HTTP GET /static/admin/css/nav_sidebar.css 304 [0.01, 127.0.0.1:48422]
+INFO 2025-07-08 17:58:43,946 runserver HTTP GET /static/admin/css/base.css 304 [0.02, 127.0.0.1:48436]
+INFO 2025-07-08 17:58:43,947 runserver HTTP GET /static/admin/css/changelists.css 304 [0.02, 127.0.0.1:48412]
+INFO 2025-07-08 17:58:43,948 runserver HTTP GET /static/admin/css/responsive.css 304 [0.01, 127.0.0.1:48424]
+INFO 2025-07-08 17:58:43,949 runserver HTTP GET /static/admin/css/dark_mode.css 304 [0.02, 127.0.0.1:48542]
+INFO 2025-07-08 17:58:43,967 runserver HTTP GET /static/admin/js/vendor/jquery/jquery.js 304 [0.01, 127.0.0.1:48436]
+INFO 2025-07-08 17:58:43,969 runserver HTTP GET /static/admin/js/admin/RelatedObjectLookups.js 304 [0.01, 127.0.0.1:48542]
+INFO 2025-07-08 17:58:43,972 runserver HTTP GET /static/admin/js/theme.js 304 [0.01, 127.0.0.1:48422]
+INFO 2025-07-08 17:58:43,973 runserver HTTP GET /static/admin/js/jquery.init.js 304 [0.01, 127.0.0.1:48412]
+INFO 2025-07-08 17:58:43,974 runserver HTTP GET /static/admin/js/core.js 304 [0.01, 127.0.0.1:48424]
+INFO 2025-07-08 17:58:43,984 runserver HTTP GET /static/admin/js/actions.js 304 [0.01, 127.0.0.1:48436]
+INFO 2025-07-08 17:58:43,988 runserver HTTP GET /static/admin/js/urlify.js 304 [0.01, 127.0.0.1:48542]
+INFO 2025-07-08 17:58:44,000 runserver HTTP GET /static/admin/js/prepopulate.js 304 [0.02, 127.0.0.1:48422]
+INFO 2025-07-08 17:58:44,003 runserver HTTP GET /static/admin/js/vendor/xregexp/xregexp.js 304 [0.02, 127.0.0.1:48412]
+INFO 2025-07-08 17:58:44,004 runserver HTTP GET /static/admin/img/search.svg 304 [0.02, 127.0.0.1:48424]
+INFO 2025-07-08 17:58:44,008 runserver HTTP GET /static/admin/img/icon-yes.svg 304 [0.02, 127.0.0.1:48436]
+INFO 2025-07-08 17:58:44,021 runserver HTTP GET /static/admin/js/nav_sidebar.js 304 [0.00, 127.0.0.1:48436]
+INFO 2025-07-08 17:58:44,033 runserver HTTP GET /static/admin/js/filters.js 304 [0.00, 127.0.0.1:48436]
+INFO 2025-07-08 17:58:45,364 runserver HTTP GET /admin/jsi18n/ 200 [1.44, 127.0.0.1:48396]
+INFO 2025-07-08 17:58:58,657 runserver HTTP GET /admin/business/business/add/ 200 [6.82, 127.0.0.1:48396]
+INFO 2025-07-08 17:58:58,720 runserver HTTP GET /static/admin/css/nav_sidebar.css 304 [0.01, 127.0.0.1:48412]
+INFO 2025-07-08 17:58:58,721 runserver HTTP GET /static/admin/css/base.css 304 [0.01, 127.0.0.1:48436]
+INFO 2025-07-08 17:58:58,722 runserver HTTP GET /static/admin/css/forms.css 304 [0.01, 127.0.0.1:48422]
+INFO 2025-07-08 17:58:58,725 runserver HTTP GET /static/admin/css/responsive.css 304 [0.01, 127.0.0.1:48542]
+INFO 2025-07-08 17:58:58,726 runserver HTTP GET /static/admin/css/dark_mode.css 304 [0.01, 127.0.0.1:48424]
+INFO 2025-07-08 17:58:58,733 runserver HTTP GET /static/admin/js/vendor/jquery/jquery.js 304 [0.01, 127.0.0.1:48436]
+INFO 2025-07-08 17:58:58,734 runserver HTTP GET /static/admin/js/theme.js 304 [0.01, 127.0.0.1:48412]
+INFO 2025-07-08 17:58:58,734 runserver HTTP GET /static/admin/js/calendar.js 304 [0.01, 127.0.0.1:48422]
+INFO 2025-07-08 17:58:58,737 runserver HTTP GET /static/admin/js/jquery.init.js 304 [0.01, 127.0.0.1:48542]
+INFO 2025-07-08 17:58:58,737 runserver HTTP GET /static/admin/js/admin/DateTimeShortcuts.js 304 [0.01, 127.0.0.1:48424]
+INFO 2025-07-08 17:58:58,746 runserver HTTP GET /static/admin/js/core.js 304 [0.01, 127.0.0.1:48436]
+INFO 2025-07-08 17:58:58,748 runserver HTTP GET /static/admin/js/admin/RelatedObjectLookups.js 304 [0.01, 127.0.0.1:48412]
+INFO 2025-07-08 17:58:58,752 runserver HTTP GET /static/admin/js/prepopulate.js 304 [0.01, 127.0.0.1:48424]
+INFO 2025-07-08 17:58:58,753 runserver HTTP GET /static/admin/js/actions.js 304 [0.01, 127.0.0.1:48422]
+INFO 2025-07-08 17:58:58,760 runserver HTTP GET /static/admin/js/urlify.js 304 [0.02, 127.0.0.1:48542]
+INFO 2025-07-08 17:58:58,769 runserver HTTP GET /static/admin/js/vendor/xregexp/xregexp.js 304 [0.02, 127.0.0.1:48412]
+INFO 2025-07-08 17:58:58,770 runserver HTTP GET /static/admin/css/widgets.css 304 [0.02, 127.0.0.1:48436]
+INFO 2025-07-08 17:58:58,781 runserver HTTP GET /static/admin/js/prepopulate_init.js 304 [0.01, 127.0.0.1:48542]
+INFO 2025-07-08 17:58:58,791 runserver HTTP GET /static/admin/js/nav_sidebar.js 304 [0.00, 127.0.0.1:48542]
+INFO 2025-07-08 17:58:58,799 runserver HTTP GET /static/admin/img/icon-changelink.svg 304 [0.00, 127.0.0.1:48542]
+INFO 2025-07-08 17:58:58,807 runserver HTTP GET /static/admin/img/icon-addlink.svg 304 [0.00, 127.0.0.1:48542]
+INFO 2025-07-08 17:58:58,817 runserver HTTP GET /static/admin/img/icon-deletelink.svg 304 [0.00, 127.0.0.1:48542]
+INFO 2025-07-08 17:58:58,825 runserver HTTP GET /static/admin/img/icon-viewlink.svg 304 [0.00, 127.0.0.1:48542]
+INFO 2025-07-08 17:58:58,832 runserver HTTP GET /static/admin/js/change_form.js 304 [0.00, 127.0.0.1:48542]
+INFO 2025-07-08 17:58:59,767 runserver HTTP GET /admin/jsi18n/ 200 [1.06, 127.0.0.1:48396]
+INFO 2025-07-08 17:58:59,847 runserver HTTP GET /static/admin/img/inline-delete.svg 304 [0.00, 127.0.0.1:48396]
+ERROR 2025-07-08 17:59:43,391 log Internal Server Error: /admin/business/business/add/
+Traceback (most recent call last):
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/backends/utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+psycopg2.errors.UniqueViolation: duplicate key value violates unique constraint "business_business_name_key"
+DETAIL:  Key (name)=(Asados_el_Mello) already exists.
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/asgiref/sync.py", line 518, in thread_handler
+    raise exc_info[1]
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/core/handlers/exception.py", line 42, in inner
+    response = await get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/asgiref/sync.py", line 518, in thread_handler
+    raise exc_info[1]
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/core/handlers/base.py", line 253, in _get_response_async
+    response = await wrapped_callback(
+               ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/asgiref/sync.py", line 468, in __call__
+    ret = await asyncio.shield(exec_coro)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/asgiref/current_thread_executor.py", line 40, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/asgiref/sync.py", line 522, in thread_handler
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/contextlib.py", line 81, in inner
+    return func(*args, **kwds)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/contrib/admin/options.py", line 719, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/utils/decorators.py", line 192, in _view_wrapper
+    result = _process_exception(request, e)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/utils/decorators.py", line 190, in _view_wrapper
+    response = view_func(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/views/decorators/cache.py", line 80, in _view_wrapper
+    response = view_func(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/contrib/admin/sites.py", line 246, in inner
+    return view(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/contrib/admin/options.py", line 1984, in add_view
+    return self.changeform_view(request, None, form_url, extra_context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/utils/decorators.py", line 48, in _wrapper
+    return bound_method(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/utils/decorators.py", line 192, in _view_wrapper
+    result = _process_exception(request, e)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/utils/decorators.py", line 190, in _view_wrapper
+    response = view_func(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/contrib/admin/options.py", line 1843, in changeform_view
+    return self._changeform_view(request, object_id, form_url, extra_context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/contrib/admin/options.py", line 1894, in _changeform_view
+    self.save_model(request, new_object, form, not add)
+  File "/home/teo/Documents/ADB/app/business/admin.py", line 89, in save_model
+    obj.save(using=self.using)
+  File "/home/teo/Documents/ADB/app/business/models/business.py", line 112, in save
+    super().save(*args, **kwargs)
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/models/base.py", line 902, in save
+    self.save_base(
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/models/base.py", line 1008, in save_base
+    updated = self._save_table(
+              ^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/models/base.py", line 1169, in _save_table
+    results = self._do_insert(
+              ^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/models/base.py", line 1210, in _do_insert
+    return manager._insert(
+           ^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/models/manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/models/query.py", line 1854, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/models/sql/compiler.py", line 1881, in execute_sql
+    cursor.execute(sql, params)
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/backends/utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/backends/utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/backends/utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/backends/utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/backends/utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+django.db.utils.IntegrityError: duplicate key value violates unique constraint "business_business_name_key"
+DETAIL:  Key (name)=(Asados_el_Mello) already exists.
+
+ERROR 2025-07-08 17:59:43,499 runserver HTTP POST /admin/business/business/add/ 500 [6.53, 127.0.0.1:48542]
+INFO 2025-07-08 18:00:11,382 runserver HTTP GET /admin/business/business/add/ 200 [8.21, 127.0.0.1:48542]
+ERROR 2025-07-08 18:01:09,076 log Internal Server Error: /admin/business/business/add/
+Traceback (most recent call last):
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/backends/utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+psycopg2.errors.UniqueViolation: duplicate key value violates unique constraint "business_business_name_key"
+DETAIL:  Key (name)=(Asados_el_Mello) already exists.
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/asgiref/sync.py", line 518, in thread_handler
+    raise exc_info[1]
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/core/handlers/exception.py", line 42, in inner
+    response = await get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/asgiref/sync.py", line 518, in thread_handler
+    raise exc_info[1]
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/core/handlers/base.py", line 253, in _get_response_async
+    response = await wrapped_callback(
+               ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/asgiref/sync.py", line 468, in __call__
+    ret = await asyncio.shield(exec_coro)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/asgiref/current_thread_executor.py", line 40, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/asgiref/sync.py", line 522, in thread_handler
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/contextlib.py", line 81, in inner
+    return func(*args, **kwds)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/contrib/admin/options.py", line 719, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/utils/decorators.py", line 192, in _view_wrapper
+    result = _process_exception(request, e)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/utils/decorators.py", line 190, in _view_wrapper
+    response = view_func(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/views/decorators/cache.py", line 80, in _view_wrapper
+    response = view_func(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/contrib/admin/sites.py", line 246, in inner
+    return view(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/contrib/admin/options.py", line 1984, in add_view
+    return self.changeform_view(request, None, form_url, extra_context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/utils/decorators.py", line 48, in _wrapper
+    return bound_method(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/utils/decorators.py", line 192, in _view_wrapper
+    result = _process_exception(request, e)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/utils/decorators.py", line 190, in _view_wrapper
+    response = view_func(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/contrib/admin/options.py", line 1843, in changeform_view
+    return self._changeform_view(request, object_id, form_url, extra_context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/contrib/admin/options.py", line 1894, in _changeform_view
+    self.save_model(request, new_object, form, not add)
+  File "/home/teo/Documents/ADB/app/business/admin.py", line 89, in save_model
+    obj.save(using=self.using)
+  File "/home/teo/Documents/ADB/app/business/models/business.py", line 112, in save
+    super().save(*args, **kwargs)
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/models/base.py", line 902, in save
+    self.save_base(
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/models/base.py", line 1008, in save_base
+    updated = self._save_table(
+              ^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/models/base.py", line 1169, in _save_table
+    results = self._do_insert(
+              ^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/models/base.py", line 1210, in _do_insert
+    return manager._insert(
+           ^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/models/manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/models/query.py", line 1854, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/models/sql/compiler.py", line 1881, in execute_sql
+    cursor.execute(sql, params)
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/backends/utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/backends/utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/backends/utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/backends/utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/django/db/backends/utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+django.db.utils.IntegrityError: duplicate key value violates unique constraint "business_business_name_key"
+DETAIL:  Key (name)=(Asados_el_Mello) already exists.
+
+ERROR 2025-07-08 18:01:09,341 runserver HTTP POST /admin/business/business/add/ 500 [5.15, 127.0.0.1:48542]
+INFO 2025-07-08 18:01:28,795 runserver HTTP GET /admin/business/business/add/ 200 [9.42, 127.0.0.1:48542]
+INFO 2025-07-08 18:01:34,312 runserver HTTP GET /admin/business/business/ 200 [2.80, 127.0.0.1:48542]
+INFO 2025-07-08 18:01:34,365 runserver HTTP GET /static/admin/css/dark_mode.css 304 [0.01, 127.0.0.1:57850]
+INFO 2025-07-08 18:01:34,366 runserver HTTP GET /static/admin/css/base.css 304 [0.01, 127.0.0.1:57834]
+INFO 2025-07-08 18:01:34,366 runserver HTTP GET /static/admin/css/changelists.css 304 [0.01, 127.0.0.1:57866]
+INFO 2025-07-08 18:01:34,368 runserver HTTP GET /static/admin/css/responsive.css 304 [0.01, 127.0.0.1:57868]
+INFO 2025-07-08 18:01:34,369 runserver HTTP GET /static/admin/css/nav_sidebar.css 304 [0.02, 127.0.0.1:57860]
+INFO 2025-07-08 18:01:34,388 runserver HTTP GET /static/admin/js/theme.js 304 [0.01, 127.0.0.1:57850]
+INFO 2025-07-08 18:01:34,389 runserver HTTP GET /static/admin/js/vendor/jquery/jquery.js 304 [0.01, 127.0.0.1:57834]
+INFO 2025-07-08 18:01:34,391 runserver HTTP GET /static/admin/js/jquery.init.js 304 [0.01, 127.0.0.1:57866]
+INFO 2025-07-08 18:01:34,393 runserver HTTP GET /static/admin/js/core.js 304 [0.01, 127.0.0.1:57868]
+INFO 2025-07-08 18:01:34,393 runserver HTTP GET /static/admin/js/admin/RelatedObjectLookups.js 304 [0.01, 127.0.0.1:57860]
+INFO 2025-07-08 18:01:34,409 runserver HTTP GET /static/admin/js/actions.js 304 [0.01, 127.0.0.1:57850]
+INFO 2025-07-08 18:01:34,410 runserver HTTP GET /static/admin/js/prepopulate.js 304 [0.01, 127.0.0.1:57866]
+INFO 2025-07-08 18:01:34,411 runserver HTTP GET /static/admin/js/vendor/xregexp/xregexp.js 304 [0.01, 127.0.0.1:57868]
+INFO 2025-07-08 18:01:34,412 runserver HTTP GET /static/admin/img/search.svg 304 [0.01, 127.0.0.1:57860]
+INFO 2025-07-08 18:01:34,413 runserver HTTP GET /static/admin/js/urlify.js 304 [0.01, 127.0.0.1:57834]
+INFO 2025-07-08 18:01:34,422 runserver HTTP GET /static/admin/img/icon-yes.svg 304 [0.00, 127.0.0.1:57834]
+INFO 2025-07-08 18:01:34,433 runserver HTTP GET /static/admin/js/nav_sidebar.js 304 [0.00, 127.0.0.1:57834]
+INFO 2025-07-08 18:01:34,443 runserver HTTP GET /static/admin/js/filters.js 304 [0.00, 127.0.0.1:57834]
+INFO 2025-07-08 18:01:35,848 runserver HTTP GET /admin/jsi18n/ 200 [1.50, 127.0.0.1:48542]
+INFO 2025-07-08 18:01:52,313 runserver HTTP GET /admin/business/business/2/change/ 200 [9.50, 127.0.0.1:48542]
+INFO 2025-07-08 18:01:52,370 runserver HTTP GET /static/admin/css/base.css 304 [0.01, 127.0.0.1:57834]
+INFO 2025-07-08 18:01:52,371 runserver HTTP GET /static/admin/css/dark_mode.css 304 [0.01, 127.0.0.1:57860]
+INFO 2025-07-08 18:01:52,371 runserver HTTP GET /static/admin/css/responsive.css 304 [0.01, 127.0.0.1:57850]
+INFO 2025-07-08 18:01:52,372 runserver HTTP GET /static/admin/css/nav_sidebar.css 304 [0.01, 127.0.0.1:57868]
+INFO 2025-07-08 18:01:52,374 runserver HTTP GET /static/admin/css/forms.css 304 [0.01, 127.0.0.1:57866]
+INFO 2025-07-08 18:01:52,387 runserver HTTP GET /static/admin/js/theme.js 304 [0.01, 127.0.0.1:57834]
+INFO 2025-07-08 18:01:52,391 runserver HTTP GET /static/admin/js/core.js 304 [0.01, 127.0.0.1:57868]
+INFO 2025-07-08 18:01:52,391 runserver HTTP GET /static/admin/js/vendor/jquery/jquery.js 304 [0.01, 127.0.0.1:57860]
+INFO 2025-07-08 18:01:52,391 runserver HTTP GET /static/admin/js/admin/RelatedObjectLookups.js 304 [0.01, 127.0.0.1:57866]
+INFO 2025-07-08 18:01:52,392 runserver HTTP GET /static/admin/js/jquery.init.js 304 [0.01, 127.0.0.1:57850]
+INFO 2025-07-08 18:01:52,397 runserver HTTP GET /static/admin/js/actions.js 304 [0.01, 127.0.0.1:57834]
+INFO 2025-07-08 18:01:52,412 runserver HTTP GET /static/admin/js/prepopulate.js 304 [0.01, 127.0.0.1:57860]
+INFO 2025-07-08 18:01:52,412 runserver HTTP GET /static/admin/js/urlify.js 304 [0.01, 127.0.0.1:57868]
+INFO 2025-07-08 18:01:52,414 runserver HTTP GET /static/admin/css/widgets.css 304 [0.01, 127.0.0.1:57834]
+INFO 2025-07-08 18:01:52,416 runserver HTTP GET /static/admin/js/vendor/xregexp/xregexp.js 304 [0.01, 127.0.0.1:57866]
+INFO 2025-07-08 18:01:52,416 runserver HTTP GET /static/admin/js/prepopulate_init.js 304 [0.01, 127.0.0.1:57850]
+INFO 2025-07-08 18:01:52,428 runserver HTTP GET /static/admin/js/nav_sidebar.js 304 [0.00, 127.0.0.1:57850]
+INFO 2025-07-08 18:01:52,439 runserver HTTP GET /static/admin/img/icon-changelink.svg 304 [0.00, 127.0.0.1:57850]
+INFO 2025-07-08 18:01:52,450 runserver HTTP GET /static/admin/img/icon-addlink.svg 304 [0.00, 127.0.0.1:57850]
+INFO 2025-07-08 18:01:52,461 runserver HTTP GET /static/admin/img/icon-viewlink.svg 304 [0.00, 127.0.0.1:57850]
+INFO 2025-07-08 18:01:52,473 runserver HTTP GET /static/admin/js/change_form.js 304 [0.00, 127.0.0.1:57850]
+INFO 2025-07-08 18:01:55,429 runserver HTTP GET /admin/jsi18n/ 200 [3.07, 127.0.0.1:48542]
+INFO 2025-07-08 18:02:11,790 runserver HTTP GET /admin/accounts/customuser/6/change/?_to_field=id&_popup=1 200 [3.83, 127.0.0.1:57850]
+INFO 2025-07-08 18:02:11,830 runserver HTTP GET /static/admin/css/dark_mode.css 304 [0.01, 127.0.0.1:57834]
+INFO 2025-07-08 18:02:11,831 runserver HTTP GET /static/admin/js/theme.js 304 [0.01, 127.0.0.1:57860]
+INFO 2025-07-08 18:02:11,833 runserver HTTP GET /static/admin/css/forms.css 304 [0.01, 127.0.0.1:57868]
+INFO 2025-07-08 18:02:11,833 runserver HTTP GET /static/admin/css/responsive.css 304 [0.01, 127.0.0.1:34388]
+INFO 2025-07-08 18:02:11,834 runserver HTTP GET /static/admin/css/base.css 304 [0.01, 127.0.0.1:57866]
+INFO 2025-07-08 18:02:11,846 runserver HTTP GET /static/admin/js/vendor/jquery/jquery.js 304 [0.01, 127.0.0.1:57834]
+INFO 2025-07-08 18:02:11,847 runserver HTTP GET /static/admin/js/jquery.init.js 304 [0.01, 127.0.0.1:57860]
+INFO 2025-07-08 18:02:11,850 runserver HTTP GET /static/admin/js/core.js 304 [0.01, 127.0.0.1:57868]
+INFO 2025-07-08 18:02:11,851 runserver HTTP GET /static/admin/js/admin/RelatedObjectLookups.js 304 [0.01, 127.0.0.1:34388]
+INFO 2025-07-08 18:02:11,851 runserver HTTP GET /static/admin/js/actions.js 304 [0.01, 127.0.0.1:57866]
+INFO 2025-07-08 18:02:11,865 runserver HTTP GET /static/admin/css/widgets.css 304 [0.01, 127.0.0.1:57834]
+INFO 2025-07-08 18:02:11,870 runserver HTTP GET /static/admin/js/urlify.js 304 [0.02, 127.0.0.1:57860]
+INFO 2025-07-08 18:02:11,871 runserver HTTP GET /static/admin/js/vendor/xregexp/xregexp.js 304 [0.01, 127.0.0.1:34388]
+INFO 2025-07-08 18:02:11,872 runserver HTTP GET /static/admin/js/prepopulate_init.js 304 [0.01, 127.0.0.1:57866]
+INFO 2025-07-08 18:02:11,875 runserver HTTP GET /static/admin/js/prepopulate.js 304 [0.01, 127.0.0.1:57868]
+INFO 2025-07-08 18:02:11,890 runserver HTTP GET /static/admin/img/icon-changelink.svg 304 [0.00, 127.0.0.1:57868]
+INFO 2025-07-08 18:02:11,900 runserver HTTP GET /static/admin/img/icon-addlink.svg 304 [0.00, 127.0.0.1:57868]
+INFO 2025-07-08 18:02:11,911 runserver HTTP GET /static/admin/img/icon-viewlink.svg 304 [0.00, 127.0.0.1:57868]
+INFO 2025-07-08 18:02:11,925 runserver HTTP GET /static/admin/js/change_form.js 304 [0.00, 127.0.0.1:57868]
+INFO 2025-07-08 18:02:13,552 runserver HTTP GET /admin/jsi18n/ 200 [1.73, 127.0.0.1:57850]
+INFO 2025-07-08 18:02:13,614 runserver HTTP GET /static/admin/img/icon-calendar.svg 200 [0.00, 127.0.0.1:57850]
+INFO 2025-07-08 18:02:45,999 runserver HTTP POST /admin/accounts/customuser/6/change/?_to_field=id&_popup=1 200 [4.26, 127.0.0.1:57850]
+INFO 2025-07-08 18:02:46,030 runserver HTTP GET /static/admin/js/popup_response.js 200 [0.00, 127.0.0.1:57850]
+INFO 2025-07-08 18:04:37,223 runserver HTTP GET /admin/business/business/2/change/ 200 [17.02, 127.0.0.1:54292]
+INFO 2025-07-08 18:04:37,259 runserver HTTP GET /static/admin/css/base.css 304 [0.00, 127.0.0.1:54292]
+INFO 2025-07-08 18:04:37,281 runserver HTTP GET /static/admin/css/dark_mode.css 304 [0.01, 127.0.0.1:57776]
+INFO 2025-07-08 18:04:37,284 runserver HTTP GET /static/admin/css/nav_sidebar.css 304 [0.01, 127.0.0.1:57792]
+INFO 2025-07-08 18:04:37,285 runserver HTTP GET /static/admin/js/theme.js 304 [0.01, 127.0.0.1:57800]
+INFO 2025-07-08 18:04:37,285 runserver HTTP GET /static/admin/css/responsive.css 304 [0.01, 127.0.0.1:57814]
+INFO 2025-07-08 18:04:37,290 runserver HTTP GET /static/admin/css/forms.css 304 [0.02, 127.0.0.1:57794]
+INFO 2025-07-08 18:04:37,295 runserver HTTP GET /static/admin/js/vendor/jquery/jquery.js 304 [0.01, 127.0.0.1:57776]
+INFO 2025-07-08 18:04:37,304 runserver HTTP GET /static/admin/js/jquery.init.js 304 [0.01, 127.0.0.1:57792]
+INFO 2025-07-08 18:04:37,306 runserver HTTP GET /static/admin/js/actions.js 304 [0.01, 127.0.0.1:57794]
+INFO 2025-07-08 18:04:37,307 runserver HTTP GET /static/admin/js/core.js 304 [0.01, 127.0.0.1:57800]
+INFO 2025-07-08 18:04:37,308 runserver HTTP GET /static/admin/js/admin/RelatedObjectLookups.js 304 [0.01, 127.0.0.1:57814]
+INFO 2025-07-08 18:04:37,312 runserver HTTP GET /static/admin/css/widgets.css 304 [0.01, 127.0.0.1:57776]
+INFO 2025-07-08 18:04:37,322 runserver HTTP GET /static/admin/js/urlify.js 304 [0.01, 127.0.0.1:57792]
+INFO 2025-07-08 18:04:37,323 runserver HTTP GET /static/admin/js/prepopulate.js 304 [0.01, 127.0.0.1:57794]
+INFO 2025-07-08 18:04:37,326 runserver HTTP GET /static/admin/js/prepopulate_init.js 304 [0.01, 127.0.0.1:57776]
+INFO 2025-07-08 18:04:37,327 runserver HTTP GET /static/admin/js/vendor/xregexp/xregexp.js 304 [0.01, 127.0.0.1:57800]
+INFO 2025-07-08 18:04:37,338 runserver HTTP GET /static/admin/js/nav_sidebar.js 304 [0.00, 127.0.0.1:57800]
+INFO 2025-07-08 18:04:37,350 runserver HTTP GET /static/admin/img/icon-changelink.svg 304 [0.00, 127.0.0.1:57800]
+INFO 2025-07-08 18:04:37,360 runserver HTTP GET /static/admin/img/icon-addlink.svg 304 [0.00, 127.0.0.1:57800]
+INFO 2025-07-08 18:04:37,370 runserver HTTP GET /static/admin/img/icon-viewlink.svg 304 [0.00, 127.0.0.1:57800]
+INFO 2025-07-08 18:04:37,382 runserver HTTP GET /static/admin/js/change_form.js 304 [0.00, 127.0.0.1:57800]
+INFO 2025-07-08 18:04:38,640 runserver HTTP GET /admin/jsi18n/ 200 [1.37, 127.0.0.1:54292]
+INFO 2025-07-08 18:07:48,382 runserver HTTP GET /admin/business/business/ 200 [2.93, 127.0.0.1:47756]
+INFO 2025-07-08 18:07:48,420 runserver HTTP GET /static/admin/css/base.css 304 [0.00, 127.0.0.1:47756]
+INFO 2025-07-08 18:07:48,450 runserver HTTP GET /static/admin/css/dark_mode.css 304 [0.02, 127.0.0.1:59062]
+INFO 2025-07-08 18:07:48,451 runserver HTTP GET /static/admin/css/changelists.css 304 [0.02, 127.0.0.1:59084]
+INFO 2025-07-08 18:07:48,451 runserver HTTP GET /static/admin/css/nav_sidebar.css 304 [0.02, 127.0.0.1:59072]
+INFO 2025-07-08 18:07:48,452 runserver HTTP GET /static/admin/css/responsive.css 304 [0.01, 127.0.0.1:59114]
+INFO 2025-07-08 18:07:48,452 runserver HTTP GET /static/admin/js/theme.js 304 [0.02, 127.0.0.1:59098]
+INFO 2025-07-08 18:07:48,474 runserver HTTP GET /static/admin/js/core.js 304 [0.01, 127.0.0.1:59072]
+INFO 2025-07-08 18:07:48,474 runserver HTTP GET /static/admin/js/admin/RelatedObjectLookups.js 304 [0.01, 127.0.0.1:59114]
+INFO 2025-07-08 18:07:48,475 runserver HTTP GET /static/admin/js/actions.js 304 [0.01, 127.0.0.1:59098]
+INFO 2025-07-08 18:07:48,475 runserver HTTP GET /static/admin/js/jquery.init.js 304 [0.01, 127.0.0.1:59084]
+INFO 2025-07-08 18:07:48,475 runserver HTTP GET /static/admin/js/vendor/jquery/jquery.js 304 [0.01, 127.0.0.1:59062]
+INFO 2025-07-08 18:07:48,494 runserver HTTP GET /static/admin/js/urlify.js 304 [0.01, 127.0.0.1:59072]
+INFO 2025-07-08 18:07:48,496 runserver HTTP GET /static/admin/js/prepopulate.js 304 [0.01, 127.0.0.1:59114]
+INFO 2025-07-08 18:07:48,500 runserver HTTP GET /static/admin/js/vendor/xregexp/xregexp.js 304 [0.01, 127.0.0.1:59098]
+INFO 2025-07-08 18:07:48,502 runserver HTTP GET /static/admin/img/search.svg 304 [0.01, 127.0.0.1:59062]
+INFO 2025-07-08 18:07:48,503 runserver HTTP GET /static/admin/img/icon-yes.svg 304 [0.02, 127.0.0.1:59084]
+INFO 2025-07-08 18:07:48,518 runserver HTTP GET /static/admin/js/nav_sidebar.js 304 [0.00, 127.0.0.1:59084]
+INFO 2025-07-08 18:07:48,529 runserver HTTP GET /static/admin/js/filters.js 304 [0.00, 127.0.0.1:59084]
+INFO 2025-07-08 18:07:49,850 runserver HTTP GET /admin/jsi18n/ 200 [1.42, 127.0.0.1:47756]
+INFO 2025-07-08 18:21:00,423 runserver HTTP OPTIONS /api/auth/login/ 200 [0.00, 127.0.0.1:34528]
+WARNING 2025-07-08 18:21:01,525 log Forbidden (Origin checking failed - http://localhost:8080 does not match any trusted origins.): /api/auth/login/
+WARNING 2025-07-08 18:21:01,658 runserver HTTP POST /api/auth/login/ 403 [1.23, 127.0.0.1:34528]
+WARNING 2025-07-08 18:21:14,427 log Forbidden (Origin checking failed - http://localhost:8080 does not match any trusted origins.): /api/auth/login/
+WARNING 2025-07-08 18:21:14,556 runserver HTTP POST /api/auth/login/ 403 [1.17, 127.0.0.1:34528]
+WARNING 2025-07-08 18:21:16,655 log Forbidden (Origin checking failed - http://localhost:8080 does not match any trusted origins.): /api/auth/login/
+WARNING 2025-07-08 18:21:16,911 runserver HTTP POST /api/auth/login/ 403 [1.22, 127.0.0.1:34528]
+INFO 2025-07-08 18:22:59,965 runserver HTTP OPTIONS /api/auth/register/ 200 [0.00, 127.0.0.1:43274]
+WARNING 2025-07-08 18:23:00,892 log Forbidden (Origin checking failed - http://localhost:8080 does not match any trusted origins.): /api/auth/register/
+WARNING 2025-07-08 18:23:01,017 runserver HTTP POST /api/auth/register/ 403 [1.05, 127.0.0.1:43274]
+WARNING 2025-07-08 18:23:12,340 log Forbidden (Origin checking failed - http://localhost:8080 does not match any trusted origins.): /api/auth/login/
+WARNING 2025-07-08 18:23:12,429 runserver HTTP POST /api/auth/login/ 403 [0.78, 127.0.0.1:43274]
+INFO 2025-07-08 18:25:58,358 runserver HTTP OPTIONS /api/accounts/login/ 200 [0.00, 127.0.0.1:37866]
+INFO 2025-07-08 18:26:00,532 runserver HTTP POST /api/accounts/login/ 200 [2.17, 127.0.0.1:37866]
+INFO 2025-07-08 18:26:00,738 runserver HTTP OPTIONS /api/business/user-businesses/ 200 [0.01, 127.0.0.1:37866]
+INFO 2025-07-08 18:26:00,738 runserver HTTP OPTIONS /api/posts/feed/ 200 [0.01, 127.0.0.1:37876]
+INFO 2025-07-08 18:26:00,739 runserver HTTP OPTIONS /api/business/user-businesses/ 200 [0.01, 127.0.0.1:37892]
+INFO 2025-07-08 18:26:00,739 runserver HTTP OPTIONS /api/posts/feed/ 200 [0.01, 127.0.0.1:37900]
+INFO 2025-07-08 18:26:02,226 runserver HTTP GET /api/business/user-businesses/ 200 [1.48, 127.0.0.1:37866]
+INFO 2025-07-08 18:26:02,350 runserver HTTP GET /api/posts/feed/ 200 [1.60, 127.0.0.1:37900]
+INFO 2025-07-08 18:26:04,756 runserver HTTP GET /api/business/user-businesses/ 200 [2.53, 127.0.0.1:37866]
+INFO 2025-07-08 18:26:05,024 runserver HTTP GET /api/posts/feed/ 200 [2.67, 127.0.0.1:37900]
+INFO 2025-07-08 18:26:06,905 runserver WebSocket HANDSHAKING /ws/orders/ [127.0.0.1:37910]
+INFO 2025-07-08 18:26:06,911 runserver WebSocket REJECT /ws/orders/ [127.0.0.1:37910]
+INFO 2025-07-08 18:26:06,912 runserver WebSocket DISCONNECT /ws/orders/ [127.0.0.1:37910]
+INFO 2025-07-08 18:26:06,923 runserver WebSocket HANDSHAKING /ws/orders/ [127.0.0.1:37922]
+INFO 2025-07-08 18:26:06,926 runserver WebSocket REJECT /ws/orders/ [127.0.0.1:37922]
+INFO 2025-07-08 18:26:06,926 runserver WebSocket DISCONNECT /ws/orders/ [127.0.0.1:37922]
+INFO 2025-07-08 18:26:06,986 runserver HTTP OPTIONS /api/orders/?status__in=pending,confirmed,preparing,ready,paid,delivered,refunded&date_from=2025-07-08&date_to=2025-07-08 200 [0.00, 127.0.0.1:37900]
+INFO 2025-07-08 18:26:06,987 runserver HTTP OPTIONS /api/inventory/products/ 200 [0.00, 127.0.0.1:37866]
+INFO 2025-07-08 18:26:06,988 runserver HTTP OPTIONS /api/orders/?status__in=pending,confirmed,preparing,ready,paid,delivered,refunded&date_from=2025-07-08&date_to=2025-07-08 200 [0.01, 127.0.0.1:37892]
+INFO 2025-07-08 18:26:06,989 runserver HTTP OPTIONS /api/inventory/products/ 200 [0.01, 127.0.0.1:37876]
+INFO 2025-07-08 18:26:08,481 runserver HTTP GET /api/inventory/products/ 200 [1.49, 127.0.0.1:37866]
+INFO 2025-07-08 18:26:08,581 runserver HTTP GET /api/orders/?status__in=pending,confirmed,preparing,ready,paid,delivered,refunded&date_from=2025-07-08&date_to=2025-07-08 200 [1.59, 127.0.0.1:37900]
+INFO 2025-07-08 18:26:08,590 runserver HTTP OPTIONS /api/orders/?status=cancelled&date_from=2025-07-08&date_to=2025-07-08 200 [0.00, 127.0.0.1:37876]
+INFO 2025-07-08 18:26:10,651 runserver HTTP GET /api/inventory/products/ 200 [2.17, 127.0.0.1:37866]
+INFO 2025-07-08 18:26:11,181 runserver HTTP GET /api/orders/?status__in=pending,confirmed,preparing,ready,paid,delivered,refunded&date_from=2025-07-08&date_to=2025-07-08 200 [2.60, 127.0.0.1:37900]
+INFO 2025-07-08 18:26:11,283 runserver HTTP GET /api/orders/?status=cancelled&date_from=2025-07-08&date_to=2025-07-08 200 [2.69, 127.0.0.1:37876]
+INFO 2025-07-08 18:26:12,693 runserver HTTP GET /api/orders/?status=cancelled&date_from=2025-07-08&date_to=2025-07-08 200 [1.41, 127.0.0.1:37876]
+INFO 2025-07-08 18:26:16,088 runserver HTTP OPTIONS /api/inventory/categories/ 200 [0.01, 127.0.0.1:37900]
+INFO 2025-07-08 18:26:16,090 runserver HTTP OPTIONS /api/inventory/categories/ 200 [0.01, 127.0.0.1:37892]
+INFO 2025-07-08 18:26:16,090 runserver HTTP OPTIONS /api/inventory/stock-movements/?limit=50 200 [0.01, 127.0.0.1:57230]
+INFO 2025-07-08 18:26:16,092 runserver HTTP OPTIONS /api/inventory/stock-movements/?limit=50 200 [0.01, 127.0.0.1:37866]
+INFO 2025-07-08 18:26:17,535 runserver HTTP GET /api/inventory/stock-movements/?limit=50 200 [1.44, 127.0.0.1:37866]
+INFO 2025-07-08 18:26:17,613 runserver HTTP GET /api/inventory/products/ 200 [1.53, 127.0.0.1:37876]
+INFO 2025-07-08 18:26:17,614 runserver HTTP GET /api/inventory/categories/ 200 [1.52, 127.0.0.1:37900]
+INFO 2025-07-08 18:26:18,794 runserver HTTP GET /api/inventory/stock-movements/?limit=50 200 [1.26, 127.0.0.1:37866]
+INFO 2025-07-08 18:26:18,816 runserver HTTP GET /api/inventory/categories/ 200 [1.20, 127.0.0.1:37876]
+INFO 2025-07-08 18:26:18,817 runserver HTTP GET /api/inventory/products/ 200 [1.20, 127.0.0.1:37900]
+INFO 2025-07-08 18:26:36,711 runserver HTTP POST /api/inventory/categories/ 201 [1.58, 127.0.0.1:37876]
+INFO 2025-07-08 18:27:02,453 runserver HTTP POST /api/inventory/products/ 201 [1.35, 127.0.0.1:35568]
+INFO 2025-07-08 18:27:18,398 runserver HTTP OPTIONS /api/accounts/user-info/ 200 [0.01, 127.0.0.1:35568]
+INFO 2025-07-08 18:27:18,399 runserver HTTP OPTIONS /api/accounts/user-info/ 200 [0.00, 127.0.0.1:33378]
+INFO 2025-07-08 18:27:19,790 runserver HTTP GET /api/accounts/user-info/ 200 [1.38, 127.0.0.1:35568]
+INFO 2025-07-08 18:27:21,244 runserver HTTP GET /api/accounts/user-info/ 200 [1.45, 127.0.0.1:35568]
+INFO 2025-07-08 18:27:21,447 runserver HTTP GET /api/inventory/stock-movements/?limit=50 200 [1.44, 127.0.0.1:33402]
+INFO 2025-07-08 18:27:21,512 runserver HTTP GET /api/inventory/categories/ 200 [1.51, 127.0.0.1:33394]
+INFO 2025-07-08 18:27:21,580 runserver HTTP GET /api/inventory/products/ 200 [1.58, 127.0.0.1:33378]
+INFO 2025-07-08 18:27:22,750 runserver HTTP GET /api/inventory/stock-movements/?limit=50 200 [1.30, 127.0.0.1:33402]
+INFO 2025-07-08 18:27:22,812 runserver HTTP GET /api/inventory/categories/ 200 [1.30, 127.0.0.1:33394]
+INFO 2025-07-08 18:27:23,161 runserver HTTP GET /api/inventory/products/ 200 [1.58, 127.0.0.1:33378]
+INFO 2025-07-08 18:27:24,498 runserver HTTP GET /api/inventory/stock-movements/?limit=50 200 [1.74, 127.0.0.1:33402]
+INFO 2025-07-08 18:27:24,578 runserver HTTP GET /api/inventory/categories/ 200 [1.76, 127.0.0.1:33394]
+INFO 2025-07-08 18:27:24,977 runserver HTTP GET /api/inventory/products/ 200 [1.81, 127.0.0.1:33378]
+INFO 2025-07-08 18:27:50,193 runserver HTTP OPTIONS /api/inventory/products/7/ 200 [0.00, 127.0.0.1:33378]
+INFO 2025-07-08 18:27:51,886 runserver HTTP PATCH /api/inventory/products/7/ 200 [1.69, 127.0.0.1:33378]
