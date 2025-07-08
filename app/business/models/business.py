@@ -5,7 +5,23 @@ from django.utils import timezone
 from django.conf import settings
 
 class Business(models.Model):
+    BUSINESS_TYPES = (
+        ('restaurant', _('Restaurante')),
+        ('retail', _('Tienda de venta al por menor')),
+        ('service', _('Servicio')),
+        ('manufacturing', _('Manufactura')),
+        ('technology', _('Tecnología')),
+        ('other', _('Otro')),
+    )
+    
     name = models.CharField(_("Nombre"), max_length=255, unique=True)
+    business_type = models.CharField(
+        _("Tipo de negocio"),
+        max_length=20,
+        choices=BUSINESS_TYPES,
+        default='restaurant',
+        help_text=_("Tipo de negocio que determina el modelo de datos específico")
+    )
     owner = models.ForeignKey(
         settings.AUTH_USER_MODEL,
         on_delete=models.SET_NULL,
