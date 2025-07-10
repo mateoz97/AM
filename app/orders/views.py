@@ -155,7 +155,7 @@ class OrderViewSet(viewsets.ModelViewSet):
     
     @action(detail=True, methods=['patch'])
     def update_status(self, request, pk=None):
-        """Actualiza solo el estado de una orden"""
+        """Actualiza solo el estado de una orden usando State Machine"""
         order = self.get_object()
         serializer = self.get_serializer(data=request.data, context={'order': order})
         
@@ -165,8 +165,8 @@ class OrderViewSet(viewsets.ModelViewSet):
             notes = serializer.validated_data.get('notes', '')
             
             try:
-                # Usar el método de transición segura
-                order.transition_to(new_status, user=request.user, notes=notes)
+                # Usar el nuevo método de State Machine
+                order.change_status(new_status, user=request.user, notes=notes)
                 
                 # Registrar auditoría
                 order.log_audit(
@@ -185,15 +185,35 @@ class OrderViewSet(viewsets.ModelViewSet):
                     'message': f'Estado cambiado a {order.get_status_display()}',
                     'order_id': str(order.id),
                     'old_status': old_status,
-                    'new_status': new_status
+                    'new_status': new_status,
+                    'valid_next_states': order.get_next_valid_states(request.user)
                 })
                 
+            except ValidationError as e:
+                return Response({
+                    'error': str(e),
+                    'valid_next_states': order.get_next_valid_states(request.user)
+                }, status=status.HTTP_400_BAD_REQUEST)
             except Exception as e:
                 return Response({
-                    'error': str(e)
-                }, status=status.HTTP_400_BAD_REQUEST)
+                    'error': f'Error interno: {str(e)}'
+                }, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
         
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    
+    @action(detail=True, methods=['get'])
+    def valid_transitions(self, request, pk=None):
+        """Obtiene las transiciones válidas para una orden según el usuario"""
+        order = self.get_object()
+        
+        valid_states = order.get_next_valid_states(request.user)
+        
+        return Response({
+            'order_id': str(order.id),
+            'current_status': order.status,
+            'valid_next_states': valid_states,
+            'user_role': request.user.current_business_role.name if request.user.current_business_role else None
+        })
     
     @action(detail=True, methods=['patch'])
     def assign_staff(self, request, pk=None):

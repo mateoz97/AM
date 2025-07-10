@@ -1,17 +1,27 @@
 # app/orders/consumers.py
 import json
 import logging
+import time
+from collections import defaultdict
 from channels.generic.websocket import AsyncWebsocketConsumer
 from channels.db import database_sync_to_async
 from django.contrib.auth.models import AnonymousUser
 from django.core.exceptions import ValidationError
 from django.db import models
 from django.utils import timezone
+from django.core.cache import cache
 from app.orders.models import Order, OrderStatus
 from app.business.models.business import Business
 from app.accounts.models.user import CustomUser
+import structlog
 
-logger = logging.getLogger(__name__)
+logger = structlog.get_logger(__name__)
+django_logger = logging.getLogger(__name__)
+
+# Rate limiting global (en producción usar Redis)
+connection_attempts = defaultdict(list)
+message_counts = defaultdict(int)
+last_message_time = defaultdict(float)
 
 
 class OrderConsumer(AsyncWebsocketConsumer):
@@ -21,8 +31,18 @@ class OrderConsumer(AsyncWebsocketConsumer):
     """
     
     async def connect(self):
-        """Maneja la conexión inicial del WebSocket"""
+        """Maneja la conexión inicial del WebSocket con validaciones de seguridad"""
         self.user = self.scope["user"]
+        self.client_ip = self.get_client_ip()
+        
+        # Rate limiting para conexiones
+        if not self.check_connection_rate_limit():
+            logger.warning("connection_rate_limit_exceeded", 
+                          user_id=getattr(self.user, 'id', None),
+                          client_ip=self.client_ip)
+            await self.close(code=1008)  # Policy violation
+            return
+        
         # Obtener business_id de la URL o del contexto del usuario
         self.business_id = self.scope['url_route']['kwargs'].get('business_id')
         
@@ -30,23 +50,36 @@ class OrderConsumer(AsyncWebsocketConsumer):
         if not self.business_id:
             self.business_id = await self.get_user_current_business_id()
             if not self.business_id:
-                logger.warning("No se pudo determinar business_id para WebSocket")
-                await self.close()
+                logger.warning("no_business_id_determined", 
+                              user_id=getattr(self.user, 'id', None))
+                await self.close(code=1002)  # Protocol error
                 return
         
         self.groups = []
         
         # Verificar autenticación
         if self.user == AnonymousUser():
-            logger.warning("Usuario no autenticado intentó conectarse a orders WebSocket")
-            await self.close()
+            logger.warning("unauthenticated_websocket_attempt", 
+                          client_ip=self.client_ip)
+            await self.close(code=1008)  # Policy violation
             return
         
         # Verificar acceso al negocio
         has_access = await self.check_business_access()
         if not has_access:
-            logger.warning(f"Usuario {self.user.id} sin acceso al negocio {self.business_id}")
-            await self.close()
+            logger.warning("unauthorized_business_access", 
+                          user_id=self.user.id,
+                          business_id=self.business_id,
+                          client_ip=self.client_ip)
+            await self.close(code=1008)  # Policy violation
+            return
+        
+        # Verificar si el usuario ya tiene demasiadas conexiones
+        if not await self.check_concurrent_connections():
+            logger.warning("max_concurrent_connections_exceeded", 
+                          user_id=self.user.id,
+                          business_id=self.business_id)
+            await self.close(code=1013)  # Try again later
             return
         
         # Determinar grupos según el rol del usuario
@@ -55,10 +88,16 @@ class OrderConsumer(AsyncWebsocketConsumer):
         # Aceptar la conexión
         await self.accept()
         
+        # Registrar conexión activa
+        await self.register_connection()
+        
         # Enviar estado inicial
         await self.send_initial_data()
         
-        logger.info(f"Usuario {self.user.id} conectado a orders WebSocket para negocio {self.business_id}")
+        logger.info("websocket_connection_established", 
+                   user_id=self.user.id,
+                   business_id=self.business_id,
+                   client_ip=self.client_ip)
     
     async def disconnect(self, close_code):
         """Maneja la desconexión del WebSocket"""
@@ -66,13 +105,38 @@ class OrderConsumer(AsyncWebsocketConsumer):
         for group_name in self.groups:
             await self.channel_layer.group_discard(group_name, self.channel_name)
         
-        logger.info(f"Usuario {self.user.id} desconectado de orders WebSocket")
+        # Desregistrar conexión activa
+        await self.unregister_connection()
+        
+        logger.info("websocket_connection_closed", 
+                   user_id=getattr(self.user, 'id', None),
+                   business_id=getattr(self, 'business_id', None),
+                   close_code=close_code)
     
     async def receive(self, text_data):
-        """Maneja mensajes recibidos del cliente"""
+        """Maneja mensajes recibidos del cliente con rate limiting"""
         try:
+            # Rate limiting para mensajes
+            if not self.check_message_rate_limit():
+                logger.warning("message_rate_limit_exceeded", 
+                              user_id=self.user.id,
+                              client_ip=self.client_ip)
+                await self.send_error("Rate limit exceeded")
+                return
+            
             data = json.loads(text_data)
             action = data.get('action')
+            
+            # Validar estructura del mensaje
+            if not action or not isinstance(action, str):
+                await self.send_error("Acción requerida")
+                return
+            
+            # Registrar actividad
+            logger.info("websocket_message_received", 
+                       user_id=self.user.id,
+                       action=action,
+                       client_ip=self.client_ip)
             
             if action == 'update_order_status':
                 await self.handle_status_update(data)
@@ -92,7 +156,10 @@ class OrderConsumer(AsyncWebsocketConsumer):
         except json.JSONDecodeError:
             await self.send_error("Formato JSON inválido")
         except Exception as e:
-            logger.error(f"Error en receive: {str(e)}", exc_info=True)
+            logger.error("websocket_receive_error", 
+                        user_id=self.user.id,
+                        error=str(e),
+                        exc_info=True)
             await self.send_error("Error interno del servidor")
     
     async def handle_status_update(self, data):
@@ -442,7 +509,7 @@ class OrderConsumer(AsyncWebsocketConsumer):
     
     @database_sync_to_async
     def update_order_status(self, order_id, new_status, notes):
-        """Actualiza el estado de una orden"""
+        """Actualiza el estado de una orden usando State Machine"""
         try:
             # Configurar contexto del negocio
             from app.business.services.business_service import DatabaseService
@@ -450,12 +517,12 @@ class OrderConsumer(AsyncWebsocketConsumer):
             
             order = Order.objects.get(id=order_id, business_id=self.business_id)
             
-            # Verificar permisos
-            if not self.can_update_order_status(order, new_status):
-                return False, "No tienes permisos para cambiar este estado"
+            # Verificar que la orden pertenece al negocio correcto
+            if str(order.business_id) != str(self.business_id):
+                return False, "Orden no pertenece al negocio actual"
             
-            # Realizar la transición
-            order.transition_to(new_status, user=self.user, notes=notes)
+            # Usar el nuevo método de State Machine
+            order.change_status(new_status, user=self.user, notes=notes)
             
             return True, f"Estado cambiado a {order.get_status_display()}"
             
@@ -576,3 +643,102 @@ class OrderConsumer(AsyncWebsocketConsumer):
         except Exception as e:
             logger.error(f"Error obteniendo business_id del usuario: {str(e)}", exc_info=True)
             return None
+    
+    def get_client_ip(self):
+        """Obtiene la IP del cliente"""
+        headers = dict(self.scope.get('headers', []))
+        x_forwarded_for = headers.get(b'x-forwarded-for')
+        if x_forwarded_for:
+            return x_forwarded_for.decode().split(',')[0].strip()
+        return self.scope.get('client', ['unknown'])[0]
+    
+    def check_connection_rate_limit(self):
+        """Verifica rate limiting para conexiones"""
+        now = time.time()
+        client_key = f"{self.client_ip}:{getattr(self.user, 'id', 'anon')}"
+        
+        # Limpiar intentos antiguos (más de 1 minuto)
+        connection_attempts[client_key] = [
+            timestamp for timestamp in connection_attempts[client_key]
+            if now - timestamp < 60
+        ]
+        
+        # Verificar límite (máximo 10 conexiones por minuto)
+        if len(connection_attempts[client_key]) >= 10:
+            return False
+        
+        # Registrar intento
+        connection_attempts[client_key].append(now)
+        return True
+    
+    def check_message_rate_limit(self):
+        """Verifica rate limiting para mensajes"""
+        now = time.time()
+        user_key = f"msg:{self.user.id}:{self.business_id}"
+        
+        # Resetear contador si ha pasado más de 1 minuto
+        if now - last_message_time[user_key] > 60:
+            message_counts[user_key] = 0
+            last_message_time[user_key] = now
+        
+        # Verificar límite (máximo 60 mensajes por minuto)
+        if message_counts[user_key] >= 60:
+            return False
+        
+        # Incrementar contador
+        message_counts[user_key] += 1
+        return True
+    
+    @database_sync_to_async
+    def check_concurrent_connections(self):
+        """Verifica el límite de conexiones concurrentes"""
+        try:
+            # Usar cache para contar conexiones activas
+            user_key = f"ws_connections:{self.user.id}:{self.business_id}"
+            current_connections = cache.get(user_key, 0)
+            
+            # Límite de 5 conexiones concurrentes por usuario por negocio
+            if current_connections >= 5:
+                return False
+            
+            return True
+        except Exception as e:
+            logger.error("concurrent_connections_check_error", 
+                        user_id=self.user.id,
+                        error=str(e))
+            return True  # Permitir conexión si hay error
+    
+    @database_sync_to_async
+    def register_connection(self):
+        """Registra una conexión activa"""
+        try:
+            user_key = f"ws_connections:{self.user.id}:{self.business_id}"
+            current_connections = cache.get(user_key, 0)
+            cache.set(user_key, current_connections + 1, timeout=3600)  # 1 hora
+            
+            logger.info("websocket_connection_registered", 
+                       user_id=self.user.id,
+                       business_id=self.business_id,
+                       total_connections=current_connections + 1)
+        except Exception as e:
+            logger.error("connection_registration_error", 
+                        user_id=self.user.id,
+                        error=str(e))
+    
+    @database_sync_to_async
+    def unregister_connection(self):
+        """Desregistra una conexión activa"""
+        try:
+            user_key = f"ws_connections:{self.user.id}:{self.business_id}"
+            current_connections = cache.get(user_key, 0)
+            if current_connections > 0:
+                cache.set(user_key, current_connections - 1, timeout=3600)
+            
+            logger.info("websocket_connection_unregistered", 
+                       user_id=self.user.id,
+                       business_id=self.business_id,
+                       remaining_connections=max(0, current_connections - 1))
+        except Exception as e:
+            logger.error("connection_unregistration_error", 
+                        user_id=self.user.id,
+                        error=str(e))

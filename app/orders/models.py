@@ -8,6 +8,10 @@ from enum import Enum
 from datetime import datetime, timedelta
 from django.utils import timezone
 from app.core.managers import BusinessSpecificManager
+from .state_machine import OrderStateMachine, OrderState, OrderTransitionValidator
+import structlog
+
+logger = structlog.get_logger(__name__)
 
 
 class OrderStatus(models.TextChoices):
@@ -302,6 +306,120 @@ class Order(models.Model):
         
         return True
     
+    def change_status(self, new_status, user=None, notes=None, force=False):
+        """
+        Cambia el estado de la orden usando la State Machine.
+        
+        Args:
+            new_status: Nuevo estado
+            user: Usuario que realiza el cambio
+            notes: Notas adicionales
+            force: Forzar cambio (solo para managers)
+            
+        Returns:
+            bool: True si el cambio fue exitoso
+            
+        Raises:
+            ValidationError: Si la transición no es válida
+        """
+        from_state = OrderState(self.status)
+        to_state = OrderState(new_status)
+        
+        # Inicializar State Machine
+        state_machine = OrderStateMachine(self)
+        
+        try:
+            # Validar transición si no es forzada
+            if not force:
+                state_machine.validate_transition(from_state, to_state, user)
+                OrderTransitionValidator.validate_business_rules(self, from_state, to_state)
+            
+            # Verificar si requiere confirmación
+            if state_machine.requires_confirmation(from_state, to_state):
+                if not notes:
+                    raise ValidationError(
+                        f"La transición {from_state.value} -> {to_state.value} requiere notas de confirmación"
+                    )
+            
+            # Realizar el cambio
+            old_status = self.status
+            self.status = new_status
+            
+            # Actualizar timestamps automáticamente
+            self.update_status_timestamps()
+            
+            # Guardar cambios
+            self.save()
+            
+            # Registrar en historial
+            self.log_status_change(old_status, new_status, user, notes)
+            
+            # Log estructurado
+            logger.info("order_status_changed",
+                       order_id=str(self.id),
+                       order_number=self.order_number,
+                       from_status=old_status,
+                       to_status=new_status,
+                       user_id=user.id if user else None,
+                       notes=notes or '')
+            
+            return True
+            
+        except ValidationError as e:
+            logger.warning("order_status_change_denied",
+                          order_id=str(self.id),
+                          order_number=self.order_number,
+                          from_status=from_state.value,
+                          to_status=to_state.value,
+                          user_id=user.id if user else None,
+                          error=str(e))
+            raise
+        except Exception as e:
+            logger.error("order_status_change_error",
+                        order_id=str(self.id),
+                        order_number=self.order_number,
+                        from_status=from_state.value,
+                        to_status=to_state.value,
+                        user_id=user.id if user else None,
+                        error=str(e))
+            raise ValidationError(f"Error al cambiar estado: {str(e)}")
+    
+    def get_next_valid_states(self, user=None):
+        """
+        Obtiene los estados válidos siguientes para un usuario.
+        
+        Args:
+            user: Usuario (opcional)
+            
+        Returns:
+            List[str]: Lista de estados válidos
+        """
+        current_state = OrderState(self.status)
+        state_machine = OrderStateMachine(self)
+        
+        valid_states = state_machine.get_next_states(current_state, user)
+        return [state.value for state in valid_states]
+    
+    def can_transition_to(self, new_status, user=None):
+        """
+        Verifica si se puede transicionar a un nuevo estado.
+        
+        Args:
+            new_status: Estado objetivo
+            user: Usuario (opcional)
+            
+        Returns:
+            bool: True si la transición es válida
+        """
+        try:
+            from_state = OrderState(self.status)
+            to_state = OrderState(new_status)
+            
+            state_machine = OrderStateMachine(self)
+            return state_machine.can_transition(from_state, to_state, user)
+        except Exception:
+            return False
+    
     def log_audit(self, action, user=None, old_values=None, new_values=None, details=None, request=None):
         """Registra una acción de auditoría para esta orden"""
         try:
@@ -328,7 +446,7 @@ class Order(models.Model):
             
         except Exception as e:
             # No fallar si hay error en auditoría
-            logger.error(f"Error creando log de auditoría: {str(e)}")
+            logger.error("audit_log_error", order_id=str(self.id), error=str(e))
     
     @property
     def preparation_time_elapsed(self):

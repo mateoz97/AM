@@ -4,57 +4,173 @@
 import logging
 import os
 import traceback
+import time
 from django.conf import settings
+from django.db import transaction, connection
+from django.core.exceptions import ValidationError
+import structlog
 
-
-logger = logging.getLogger(__name__)
+# Configurar logging estructurado
+logger = structlog.get_logger(__name__)
+django_logger = logging.getLogger(__name__)
 
 
 
 class DatabaseService:
     
     @staticmethod
+    @transaction.atomic
     def create_business_database(business):
         """
-        Crea un nuevo esquema en PostgreSQL para un business.
+        Crea un nuevo esquema en PostgreSQL para un business de manera atómica.
         Con PostgreSQL usamos esquemas en lugar de bases de datos separadas.
+        Implementa rollback automático en caso de error.
         """
         if not business or not business.id:
-            logger.error("❌ Se intentó crear esquema para un negocio inválido o sin ID")
-            return False
+            logger.error("schema_creation_failed", 
+                        error="invalid_business", 
+                        business_id=getattr(business, 'id', None))
+            raise ValidationError("Se intentó crear esquema para un negocio inválido o sin ID")
             
         schema_name = f"business_{business.id}"
+        start_time = time.time()
         
-        logger.info(f"Creando esquema PostgreSQL: {schema_name} para negocio {business.name}")
+        logger.info("schema_creation_started", 
+                   business_id=business.id,
+                   business_name=business.name,
+                   schema_name=schema_name)
         
         try:
-            from django.db import connection
+            # Verificar si el esquema ya existe
+            if DatabaseService._schema_exists(schema_name):
+                logger.warning("schema_already_exists", 
+                             schema_name=schema_name, 
+                             business_id=business.id)
+                return True
             
+            # Crear savepoint para rollback granular
+            with transaction.savepoint():
+                with connection.cursor() as cursor:
+                    # Crear el esquema
+                    cursor.execute(f"CREATE SCHEMA {schema_name}")
+                    logger.info("schema_created", 
+                               schema_name=schema_name,
+                               business_id=business.id)
+                    
+                    # Configurar permisos básicos
+                    cursor.execute(f"""
+                        GRANT USAGE ON SCHEMA {schema_name} TO CURRENT_USER;
+                        GRANT CREATE ON SCHEMA {schema_name} TO CURRENT_USER;
+                    """)
+                    
+                    # Verificar creación exitosa
+                    if not DatabaseService._schema_exists(schema_name):
+                        raise ValidationError(f"Schema {schema_name} no fue creado correctamente")
+                    
+                    # Configurar search_path
+                    DatabaseService._configure_search_path(business.id)
+                    
+                    # Crear tablas específicas del negocio si es necesario
+                    DatabaseService._create_business_tables(cursor, schema_name)
+                    
+                    # Verificar integridad post-creación
+                    if not DatabaseService._verify_schema_integrity(schema_name):
+                        raise ValidationError(f"Verificación de integridad falló para {schema_name}")
+                    
+                    duration = time.time() - start_time
+                    logger.info("schema_creation_completed", 
+                               schema_name=schema_name,
+                               business_id=business.id,
+                               duration=round(duration, 3))
+                    
+                    return True
+                    
+        except Exception as e:
+            duration = time.time() - start_time
+            logger.error("schema_creation_failed", 
+                        schema_name=schema_name,
+                        business_id=business.id,
+                        error=str(e),
+                        duration=round(duration, 3),
+                        exc_info=True)
+            
+            # El rollback se maneja automáticamente por @transaction.atomic
+            raise ValidationError(f"Error al crear esquema {schema_name}: {str(e)}")
+    
+    @staticmethod
+    def _schema_exists(schema_name):
+        """
+        Verifica si un esquema existe en PostgreSQL.
+        """
+        try:
             with connection.cursor() as cursor:
-                # Crear el esquema si no existe
-                cursor.execute(f"CREATE SCHEMA IF NOT EXISTS {schema_name}")
-                logger.info(f"✅ Esquema {schema_name} creado exitosamente")
-                
-                # Verificar que el esquema fue creado
+                cursor.execute("""
+                    SELECT 1 FROM information_schema.schemata 
+                    WHERE schema_name = %s
+                """, [schema_name])
+                return cursor.fetchone() is not None
+        except Exception as e:
+            logger.error("schema_exists_check_failed", 
+                        schema_name=schema_name, 
+                        error=str(e))
+            return False
+    
+    @staticmethod
+    def _create_business_tables(cursor, schema_name):
+        """
+        Crea tablas específicas del negocio en el esquema.
+        """
+        try:
+            # Establecer el search_path para crear tablas en el esquema correcto
+            cursor.execute(f"SET search_path TO {schema_name}, public")
+            
+            # Aquí puedes agregar creación de tablas específicas si es necesario
+            # Por ejemplo, tablas de configuración específicas por negocio
+            
+            logger.info("business_tables_created", schema_name=schema_name)
+            
+        except Exception as e:
+            logger.error("business_tables_creation_failed", 
+                        schema_name=schema_name, 
+                        error=str(e))
+            raise
+    
+    @staticmethod
+    def _verify_schema_integrity(schema_name):
+        """
+        Verifica la integridad del esquema después de su creación.
+        """
+        try:
+            with connection.cursor() as cursor:
+                # Verificar que el esquema existe
                 cursor.execute("""
                     SELECT schema_name 
                     FROM information_schema.schemata 
                     WHERE schema_name = %s
                 """, [schema_name])
                 
-                if cursor.fetchone():
-                    logger.info(f"✅ Esquema {schema_name} verificado en PostgreSQL")
-                    
-                    # Configurar el search_path para incluir el nuevo esquema
-                    DatabaseService._configure_search_path(business.id)
-                    
-                    return True
-                else:
-                    logger.error(f"❌ No se pudo verificar la creación del esquema {schema_name}")
+                if not cursor.fetchone():
                     return False
-                    
+                
+                # Verificar permisos básicos
+                cursor.execute(f"""
+                    SELECT has_schema_privilege(CURRENT_USER, '{schema_name}', 'USAGE')
+                """)
+                
+                has_usage = cursor.fetchone()[0]
+                if not has_usage:
+                    logger.error("schema_integrity_failed", 
+                                schema_name=schema_name, 
+                                error="missing_usage_permission")
+                    return False
+                
+                logger.info("schema_integrity_verified", schema_name=schema_name)
+                return True
+                
         except Exception as e:
-            logger.error(f"❌ Error al crear esquema {schema_name}: {str(e)}", exc_info=True)
+            logger.error("schema_integrity_check_failed", 
+                        schema_name=schema_name, 
+                        error=str(e))
             return False
     
     @staticmethod
@@ -63,16 +179,21 @@ class DatabaseService:
         Configura el search_path para incluir el esquema del negocio.
         """
         try:
-            from django.db import connection
             schema_name = f"business_{business_id}"
             
             with connection.cursor() as cursor:
                 # Configurar search_path para incluir el esquema del negocio
                 cursor.execute(f"SET search_path TO {schema_name}, public")
-                logger.info(f"✅ Search path configurado para esquema {schema_name}")
+                logger.info("search_path_configured", 
+                           schema_name=schema_name,
+                           business_id=business_id)
                 
         except Exception as e:
-            logger.error(f"❌ Error al configurar search_path: {str(e)}")
+            logger.error("search_path_configuration_failed", 
+                        schema_name=f"business_{business_id}",
+                        business_id=business_id,
+                        error=str(e))
+            raise
     
     @staticmethod
     def switch_to_business_schema(business_id):
