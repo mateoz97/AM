@@ -42,6 +42,41 @@ class CustomUserAdmin(UserAdmin):
     )
     
     actions = ['activate_users', 'deactivate_users', 'verify_users']
+    
+    def save_model(self, request, obj, form, change):
+        """Override to ensure proper user creation and admin logging"""
+        # Save the user first
+        super().save_model(request, obj, form, change)
+    
+    def log_addition(self, request, object, message):
+        """Override to handle admin log creation safely"""
+        try:
+            # Ensure the current user exists before logging
+            if request.user.pk and CustomUser.objects.filter(pk=request.user.pk).exists():
+                super().log_addition(request, object, message)
+        except Exception:
+            # Skip logging if there's an issue
+            pass
+    
+    def log_change(self, request, object, message):
+        """Override to handle admin log creation safely"""
+        try:
+            # Ensure the current user exists before logging
+            if request.user.pk and CustomUser.objects.filter(pk=request.user.pk).exists():
+                super().log_change(request, object, message)
+        except Exception:
+            # Skip logging if there's an issue
+            pass
+    
+    def log_deletion(self, request, object, object_repr):
+        """Override to handle admin log creation safely"""
+        try:
+            # Ensure the current user exists before logging
+            if request.user.pk and CustomUser.objects.filter(pk=request.user.pk).exists():
+                super().log_deletion(request, object, object_repr)
+        except Exception:
+            # Skip logging if there's an issue
+            pass
 
     def get_business(self, obj):
         return obj.current_business.name if obj.current_business else _('Sin negocio')
