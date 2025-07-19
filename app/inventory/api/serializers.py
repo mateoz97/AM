@@ -5,32 +5,29 @@ from app.inventory.models import Product, ProductCategory, StockMovement
 class ProductSerializer(serializers.ModelSerializer):
     """Serializer para el modelo Product"""
     category_name = serializers.SerializerMethodField()
+    category_id = serializers.SerializerMethodField()
     created_by_name = serializers.SerializerMethodField()
     
     class Meta:
         model = Product
         fields = [
-            'id', 'name', 'description', 'price', 'category', 'category_name',
+            'id', 'name', 'description', 'price', 'category', 'category_id', 'category_name',
             'image', 'stock', 'is_active', 'created_at', 'updated_at',
             'created_by', 'created_by_name'
         ]
-        read_only_fields = ['id', 'created_at', 'updated_at', 'created_by', 'created_by_name']
+        read_only_fields = ['id', 'created_at', 'updated_at', 'created_by', 'created_by_name', 'category_id', 'category_name']
     
     def get_category_name(self, obj):
-        # Obtener el nombre de la categoría personalizada si existe
-        if not obj.category:
-            return None
-        
-        # Verificar si es una categoría personalizada
-        try:
-            category = ProductCategory.objects.get(
-                business=obj.business,
-                name=obj.category
-            )
-            return category.name
-        except ProductCategory.DoesNotExist:
-            # Si no existe como categoría personalizada, devolver el valor del campo
-            return obj.category
+        """Obtener el nombre de la categoría"""
+        if obj.category:
+            return obj.category.name
+        return None
+    
+    def get_category_id(self, obj):
+        """Obtener el ID de la categoría"""
+        if obj.category:
+            return obj.category.id
+        return None
             
     def get_created_by_name(self, obj):
         if obj.created_by:
@@ -44,8 +41,8 @@ class ProductSerializer(serializers.ModelSerializer):
         request = self.context.get('request')
         if request and hasattr(request, 'user'):
             # Asignar el negocio del usuario si no se proporciona
-            if 'business' not in validated_data and request.user.business:
-                validated_data['business'] = request.user.business
+            if 'business' not in validated_data and request.user.current_business:
+                validated_data['business'] = request.user.current_business
                 
             # Asignar el usuario que crea el producto
             validated_data['created_by'] = request.user

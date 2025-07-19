@@ -8,11 +8,8 @@ import time
 from django.conf import settings
 from django.db import transaction, connection
 from django.core.exceptions import ValidationError
-import structlog
 
-# Configurar logging estructurado
-logger = structlog.get_logger(__name__)
-django_logger = logging.getLogger(__name__)
+logger = logging.getLogger(__name__)
 
 
 
@@ -27,35 +24,27 @@ class DatabaseService:
         Implementa rollback automático en caso de error.
         """
         if not business or not business.id:
-            logger.error("schema_creation_failed", 
-                        error="invalid_business", 
-                        business_id=getattr(business, 'id', None))
+            logger.error(f"schema_creation_failed: invalid_business, business_id={getattr(business, 'id', None)}")
             raise ValidationError("Se intentó crear esquema para un negocio inválido o sin ID")
             
         schema_name = f"business_{business.id}"
         start_time = time.time()
         
-        logger.info("schema_creation_started", 
-                   business_id=business.id,
-                   business_name=business.name,
-                   schema_name=schema_name)
+        logger.info(f"schema_creation_started: business_id={business.id}, business_name={business.name}, schema_name={schema_name}")
         
         try:
             # Verificar si el esquema ya existe
             if DatabaseService._schema_exists(schema_name):
-                logger.warning("schema_already_exists", 
-                             schema_name=schema_name, 
-                             business_id=business.id)
+                logger.warning(f"schema_already_exists: {schema_name}, business_id={business.id}")
                 return True
             
             # Crear savepoint para rollback granular
-            with transaction.savepoint():
+            savepoint_id = transaction.savepoint()
+            try:
                 with connection.cursor() as cursor:
                     # Crear el esquema
                     cursor.execute(f"CREATE SCHEMA {schema_name}")
-                    logger.info("schema_created", 
-                               schema_name=schema_name,
-                               business_id=business.id)
+                    logger.info(f"schema_created: {schema_name}, business_id={business.id}")
                     
                     # Configurar permisos básicos
                     cursor.execute(f"""
@@ -78,21 +67,20 @@ class DatabaseService:
                         raise ValidationError(f"Verificación de integridad falló para {schema_name}")
                     
                     duration = time.time() - start_time
-                    logger.info("schema_creation_completed", 
-                               schema_name=schema_name,
-                               business_id=business.id,
-                               duration=round(duration, 3))
+                    logger.info(f"schema_creation_completed: {schema_name}, business_id={business.id}, duration={round(duration, 3)}s")
                     
+                    # Confirmar savepoint
+                    transaction.savepoint_commit(savepoint_id)
                     return True
+                    
+            except Exception as e:
+                # Rollback del savepoint
+                transaction.savepoint_rollback(savepoint_id)
+                raise e
                     
         except Exception as e:
             duration = time.time() - start_time
-            logger.error("schema_creation_failed", 
-                        schema_name=schema_name,
-                        business_id=business.id,
-                        error=str(e),
-                        duration=round(duration, 3),
-                        exc_info=True)
+            logger.error(f"schema_creation_failed: {schema_name}, business_id={business.id}, error={str(e)}, duration={round(duration, 3)}s", exc_info=True)
             
             # El rollback se maneja automáticamente por @transaction.atomic
             raise ValidationError(f"Error al crear esquema {schema_name}: {str(e)}")
@@ -110,9 +98,7 @@ class DatabaseService:
                 """, [schema_name])
                 return cursor.fetchone() is not None
         except Exception as e:
-            logger.error("schema_exists_check_failed", 
-                        schema_name=schema_name, 
-                        error=str(e))
+            logger.error(f"schema_exists_check_failed {schema_name}: {str(e)}")
             return False
     
     @staticmethod
@@ -122,17 +108,15 @@ class DatabaseService:
         """
         try:
             # Establecer el search_path para crear tablas en el esquema correcto
-            cursor.execute(f"SET search_path TO {schema_name}, public")
+            cursor.execute(f"SET search_path TO {schema_name}, main")
             
             # Aquí puedes agregar creación de tablas específicas si es necesario
             # Por ejemplo, tablas de configuración específicas por negocio
             
-            logger.info("business_tables_created", schema_name=schema_name)
+            logger.info(f"business_tables_created: {schema_name}")
             
         except Exception as e:
-            logger.error("business_tables_creation_failed", 
-                        schema_name=schema_name, 
-                        error=str(e))
+            logger.error(f"business_tables_creation_failed {schema_name}: {str(e)}")
             raise
     
     @staticmethod
@@ -159,18 +143,14 @@ class DatabaseService:
                 
                 has_usage = cursor.fetchone()[0]
                 if not has_usage:
-                    logger.error("schema_integrity_failed", 
-                                schema_name=schema_name, 
-                                error="missing_usage_permission")
+                    logger.error(f"schema_integrity_failed {schema_name}: missing_usage_permission")
                     return False
                 
-                logger.info("schema_integrity_verified", schema_name=schema_name)
+                logger.info(f"schema_integrity_verified: {schema_name}")
                 return True
                 
         except Exception as e:
-            logger.error("schema_integrity_check_failed", 
-                        schema_name=schema_name, 
-                        error=str(e))
+            logger.error(f"schema_integrity_check_failed {schema_name}: {str(e)}")
             return False
     
     @staticmethod
@@ -183,16 +163,11 @@ class DatabaseService:
             
             with connection.cursor() as cursor:
                 # Configurar search_path para incluir el esquema del negocio
-                cursor.execute(f"SET search_path TO {schema_name}, public")
-                logger.info("search_path_configured", 
-                           schema_name=schema_name,
-                           business_id=business_id)
+                cursor.execute(f"SET search_path TO {schema_name}, main")
+                logger.info(f"search_path_configured: {schema_name}, business_id={business_id}")
                 
         except Exception as e:
-            logger.error("search_path_configuration_failed", 
-                        schema_name=f"business_{business_id}",
-                        business_id=business_id,
-                        error=str(e))
+            logger.error(f"search_path_configuration_failed business_{business_id}: {str(e)}")
             raise
     
     @staticmethod

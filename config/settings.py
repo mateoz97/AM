@@ -24,7 +24,8 @@ elif not SECRET_KEY:
     SECRET_KEY = 'insecure-dev-key-do-not-use-in-production'
     print("WARNING: Using insecure development SECRET_KEY")
 
-# ALLOWED_HOSTS = ['127.0.0.1:8000']
+ALLOWED_HOSTS = ['127.0.0.1:8000','127.0.0.1', 'testserver', 'localhost']
+
 
 # Application definition
 INSTALLED_APPS = [
@@ -113,7 +114,7 @@ DATABASES = {
 # Esta funcionalidad se manejará dinámicamente en el router de base de datos
 
 # Router para dirigir consultas a la base de datos correcta
-DATABASE_ROUTERS = ['config.db_routers.BusinessRouter']
+DATABASE_ROUTERS = ['config.db_routers.MultitenantRouter']
 
 # Password validation
 AUTH_PASSWORD_VALIDATORS = [
@@ -160,6 +161,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # Rest Framework settings
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.SessionAuthentication',
         'rest_framework_simplejwt.authentication.JWTAuthentication',
     ],
     'DEFAULT_PERMISSION_CLASSES': [

@@ -25,12 +25,18 @@ class PostSerializer(serializers.ModelSerializer):
         }
         
         # Incluir información del negocio
-        if obj.author.business:
-            author_data['business'] = obj.author.business.name
+        try:
+            if obj.author.current_business:
+                author_data['business'] = obj.author.current_business.name
+        except Exception:
+            pass
         
         # Incluir información del rol
-        if obj.author.business_role:
-            author_data['role'] = obj.author.business_role.name
+        try:
+            if obj.author.current_business_role:
+                author_data['role'] = obj.author.current_business_role.name
+        except Exception:
+            pass
             
         return author_data
     
@@ -65,8 +71,11 @@ class PostSerializer(serializers.ModelSerializer):
         validated_data['author'] = self.context['request'].user
         
         # Si no se proporciona un negocio, usar el del autor
-        if 'business' not in validated_data and validated_data['author'].business:
-            validated_data['business'] = validated_data['author'].business
+        try:
+            if 'business' not in validated_data and validated_data['author'].current_business:
+                validated_data['business'] = validated_data['author'].current_business
+        except Exception:
+            pass
             
         return super().create(validated_data)
 
@@ -88,12 +97,18 @@ class CommentSerializer(serializers.ModelSerializer):
         }
         
         # Incluir información del negocio
-        if obj.author.business:
-            author_data['business'] = obj.author.business.name
+        try:
+            if obj.author.current_business:
+                author_data['business'] = obj.author.current_business.name
+        except Exception:
+            pass
         
         # Incluir información del rol
-        if obj.author.business_role:
-            author_data['role'] = obj.author.business_role.name
+        try:
+            if obj.author.current_business_role:
+                author_data['role'] = obj.author.current_business_role.name
+        except Exception:
+            pass
             
         return author_data
         

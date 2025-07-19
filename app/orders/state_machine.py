@@ -3,10 +3,10 @@ from enum import Enum
 from typing import Dict, List, Optional, Set
 from django.core.exceptions import ValidationError
 from django.contrib.auth import get_user_model
-import structlog
+import logging
 
 User = get_user_model()
-logger = structlog.get_logger(__name__)
+logger = logging.getLogger(__name__)
 
 
 class OrderState(Enum):
@@ -114,35 +114,23 @@ class OrderStateMachine:
         try:
             # Validar que la transición existe
             if to_state not in self.ALLOWED_TRANSITIONS.get(from_state, []):
-                logger.warning("transition_not_allowed", 
-                             from_state=from_state.value,
-                             to_state=to_state.value,
-                             user_id=user.id if user else None)
+                logger.warning(f"transition_not_allowed: from_state={from_state.value}, to_state={to_state.value}, user_id={user.id if user else None}")
                 return False
             
             # Validar permisos de rol
             if user and not self._check_role_permission(from_state, to_state, user, role):
-                logger.warning("transition_permission_denied", 
-                             from_state=from_state.value,
-                             to_state=to_state.value,
-                             user_id=user.id,
-                             role=role.value if role else None)
+                logger.warning(f"transition_permission_denied: from_state={from_state.value}, to_state={to_state.value}, user_id={user.id}, role={role.value if role else None}")
                 return False
             
             # Validar estados finales
             if from_state in self.FINAL_STATES:
-                logger.warning("transition_from_final_state", 
-                             from_state=from_state.value,
-                             to_state=to_state.value)
+                logger.warning(f"transition_from_final_state: from_state={from_state.value}, to_state={to_state.value}")
                 return False
             
             return True
             
         except Exception as e:
-            logger.error("transition_validation_error", 
-                        from_state=from_state.value,
-                        to_state=to_state.value,
-                        error=str(e))
+            logger.error(f"transition_validation_error: from_state={from_state.value}, to_state={to_state.value}, error={str(e)}")
             return False
     
     def validate_transition(self, from_state: OrderState, to_state: OrderState, 
@@ -292,9 +280,7 @@ class OrderStateMachine:
             return role_mapping.get(role_name, None)
             
         except Exception as e:
-            logger.error("role_inference_error", 
-                        user_id=user.id,
-                        error=str(e))
+            logger.error(f"role_inference_error: user_id={user.id}, error={str(e)}")
             return None
     
     def _get_required_roles(self, from_state: OrderState, to_state: OrderState) -> List[str]:
@@ -340,9 +326,7 @@ class OrderStateMachine:
             return history
             
         except Exception as e:
-            logger.error("state_history_error", 
-                        order_id=order.id,
-                        error=str(e))
+            logger.error(f"state_history_error: order_id={order.id}, error={str(e)}")
             return []
 
 
@@ -383,7 +367,4 @@ class OrderTransitionValidator:
         if from_state == OrderState.PAID and to_state == OrderState.CANCELLED:
             raise ValidationError("No se puede cancelar una orden pagada. Debe reembolsarse")
         
-        logger.info("business_rules_validated", 
-                   order_id=order.id,
-                   from_state=from_state.value,
-                   to_state=to_state.value)
+        logger.info(f"business_rules_validated: order_id={order.id}, from_state={from_state.value}, to_state={to_state.value}")

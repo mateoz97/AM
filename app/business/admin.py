@@ -76,21 +76,23 @@ class BusinessCoOwnersInline(admin.TabularInline):
 
 @admin.register(Business)
 class BusinessAdmin(admin.ModelAdmin):
-    # Para solucionar el problema de "no such table", forzar que use
-    # siempre la base de datos 'default'
+    # Business models are always in the main/public schema
     using = 'default'
     
     def get_queryset(self, request):
-        # Siempre usar la base de datos default para consultas en el admin
-        return super().get_queryset(request).using('default')
+        # Force queries to use the main schema for business models
+        # Clear any business context for admin queries
+        from config.middleware import set_current_business_id
+        set_current_business_id(None)
+        return super().get_queryset(request)
     
     def save_model(self, request, obj, form, change):
-        # Guardar siempre en la base de datos default
-        obj.save(using=self.using)
+        # Save always in the main schema
+        super().save_model(request, obj, form, change)
     
     def delete_model(self, request, obj):
-        # Eliminar siempre desde la base de datos default
-        obj.delete(using=self.using)
+        # Delete always from the main schema
+        super().delete_model(request, obj)
     
     # Resto del código original
     list_display = ('name', 'owner', 'is_active', 'created_at', 'updated_at', 'member_count')
@@ -367,17 +369,17 @@ class UserOwnedBusinessInline(admin.TabularInline):
 
 @admin.register(BusinessJoinRequest)
 class BusinessJoinRequestAdmin(admin.ModelAdmin):
-    # Forzar base de datos default
+    # BusinessJoinRequest models are in the main/public schema
     using = 'default'
     
     def get_queryset(self, request):
-        return super().get_queryset(request).using('default')
+        return super().get_queryset(request)
     
     def save_model(self, request, obj, form, change):
-        obj.save(using=self.using)
+        super().save_model(request, obj, form, change)
     
     def delete_model(self, request, obj):
-        obj.delete(using=self.using)
+        super().delete_model(request, obj)
         
     list_display = ('user', 'business', 'status', 'created_at', 'updated_at')
     list_filter = ('status', 'created_at', 'business')
@@ -432,17 +434,17 @@ class BusinessJoinRequestAdmin(admin.ModelAdmin):
 
 @admin.register(BusinessInvitation)
 class BusinessInvitationAdmin(admin.ModelAdmin):
-    # Forzar base de datos default
+    # BusinessInvitation models are in the main/public schema
     using = 'default'
     
     def get_queryset(self, request):
-        return super().get_queryset(request).using('default')
+        return super().get_queryset(request)
     
     def save_model(self, request, obj, form, change):
-        obj.save(using=self.using)
+        super().save_model(request, obj, form, change)
     
     def delete_model(self, request, obj):
-        obj.delete(using=self.using)
+        super().delete_model(request, obj)
         
     list_display = ('business', 'created_by', 'token', 'expires_at', 'used', 'created_at')
     list_filter = ('business', 'used', 'created_at')

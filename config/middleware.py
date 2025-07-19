@@ -19,7 +19,7 @@ def get_current_schema():
     business_id = get_current_business_id()
     if business_id:
         return f"business_{business_id}"
-    return "public"
+    return "main"
 
 # Middleware para gestionar el business_id y esquemas en el contexto actual
 class BusinessMiddleware:
@@ -31,14 +31,24 @@ class BusinessMiddleware:
         set_current_business_id(None)
         
         try:
-            # Obtener el business_id del usuario autenticado
-            if request.user.is_authenticated and hasattr(request.user, 'business'):
-                if request.user.business:
-                    business_id = request.user.business.id
+            # Skip business context for ALL admin requests to avoid issues
+            if request.path.startswith('/admin/'):
+                # For all admin access, clear business context completely
+                set_current_business_id(None)
+                self._set_postgres_schema(None)
+                response = self.get_response(request)
+                return response
+            elif request.user.is_authenticated and hasattr(request.user, 'current_business'):
+                # Use current_business instead of business property
+                if request.user.current_business:
+                    business_id = request.user.current_business.id
                     set_current_business_id(business_id)
                     
                     # Configurar el esquema PostgreSQL automáticamente
                     self._set_postgres_schema(business_id)
+                else:
+                    # Si no hay negocio, usar esquema public
+                    self._set_postgres_schema(None)
             else:
                 # Si no hay negocio, usar esquema public
                 self._set_postgres_schema(None)
@@ -59,9 +69,9 @@ class BusinessMiddleware:
             
             if business_id:
                 schema_name = f"business_{business_id}"
-                search_path = f"{schema_name}, public"
+                search_path = f"{schema_name}, main"
             else:
-                search_path = "public"
+                search_path = "main"
             
             with connection.cursor() as cursor:
                 cursor.execute(f"SET search_path TO {search_path}")

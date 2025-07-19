@@ -12,10 +12,8 @@ import logging
 import time
 import threading
 import weakref
-import structlog
 
-logger = structlog.get_logger(__name__)
-django_logger = logging.getLogger(__name__)
+logger = logging.getLogger(__name__)
 
 # Cache global para esquemas verificados
 _schema_cache = {}
@@ -36,6 +34,23 @@ class SchemaAwareManager(models.Manager):
     def __init__(self):
         super().__init__()
         self._local_cache = {}
+        self._router = None
+    
+    def _get_router(self):
+        """Obtiene el router de la configuración"""
+        if not self._router:
+            from config.db_routers import MultitenantRouter
+            self._router = MultitenantRouter()
+        return self._router
+    
+    def _get_current_schema(self):
+        """Obtiene el schema que debe usar este modelo"""
+        try:
+            router = self._get_router()
+            return router.get_schema_for_model(self.model)
+        except Exception as e:
+            logger.error(f"schema_detection_error: {str(e)}")
+            return 'public'
     
     def get_queryset(self):
         """Retorna el queryset con el esquema correcto configurado"""
@@ -43,36 +58,46 @@ class SchemaAwareManager(models.Manager):
             self._ensure_schema_context()
             return super().get_queryset()
         except Exception as e:
-            logger.error("get_queryset_error", error=str(e))
+            logger.error(f"get_queryset_error: {str(e)}")
             # Retornar queryset vacío en caso de error para evitar crashes
             return super().get_queryset().none()
     
     def _ensure_schema_context(self):
         """Asegura que el contexto del esquema esté configurado correctamente"""
         try:
-            from config.middleware import get_current_business_id, get_current_schema
+            # Obtener el schema que debe usar este modelo
+            target_schema = self._get_current_schema()
             
-            business_id = get_current_business_id()
-            if not business_id:
+            # Si es schema public, no hacer nada especial
+            if target_schema == 'public':
                 return
-                
-            schema_name = get_current_schema()
             
             # Verificar cache primero
-            if self._is_schema_cached(schema_name):
+            if self._is_schema_cached(target_schema):
                 return
             
-            # Verificar con timeout
-            if self._verify_schema_exists(schema_name):
-                self._cache_schema(schema_name)
+            # Verificar si el schema existe
+            if self._verify_schema_exists(target_schema):
+                self._cache_schema(target_schema)
+                self._set_search_path(target_schema)
             else:
-                # Si el esquema no existe, crearlo automáticamente
-                self._create_schema_if_needed(business_id)
+                # Si el esquema no existe, intentar crearlo
+                business_id = target_schema.replace('business_', '')
+                if business_id.isdigit():
+                    self._create_schema_if_needed(int(business_id))
                         
         except Exception as e:
-            logger.error("schema_context_error", error=str(e))
+            logger.error(f"schema_context_error: {str(e)}")
             # No fallar las queries por problemas de esquema
             pass
+    
+    def _set_search_path(self, schema_name):
+        """Configura el search_path para incluir el schema correcto"""
+        try:
+            with connection.cursor() as cursor:
+                cursor.execute(f"SET search_path TO {schema_name}, public")
+        except Exception as e:
+            logger.error(f"search_path_error {schema_name}: {str(e)}")
     
     def _is_schema_cached(self, schema_name):
         """Verifica si el esquema está en cache y es válido"""
@@ -112,9 +137,7 @@ class SchemaAwareManager(models.Manager):
                 return result is not None
                 
         except Exception as e:
-            logger.error("schema_verification_error", 
-                        schema_name=schema_name,
-                        error=str(e))
+            logger.error(f"schema_verification_error {schema_name}: {str(e)}")
             return False
     
     def create(self, **kwargs):
@@ -122,9 +145,7 @@ class SchemaAwareManager(models.Manager):
         try:
             return super().create(**kwargs)
         except Exception as e:
-            logger.error("manager_create_error", 
-                        model=self.model.__name__,
-                        error=str(e))
+            logger.error(f"manager_create_error {self.model.__name__}: {str(e)}")
             raise
     
     def bulk_create(self, objs, batch_size=None, ignore_conflicts=False):
@@ -135,10 +156,7 @@ class SchemaAwareManager(models.Manager):
             
             return super().bulk_create(objs, batch_size, ignore_conflicts)
         except Exception as e:
-            logger.error("manager_bulk_create_error", 
-                        model=self.model.__name__,
-                        count=len(objs),
-                        error=str(e))
+            logger.error(f"manager_bulk_create_error {self.model.__name__} ({len(objs)} items): {str(e)}")
             raise
     
     def _create_schema_if_needed(self, business_id):
@@ -147,21 +165,48 @@ class SchemaAwareManager(models.Manager):
             from app.business.services.business_service import DatabaseService
             from app.business.models.business import Business
             
+            # Usar connection sin schema context para obtener business
+            with connection.cursor() as cursor:
+                cursor.execute("SET search_path TO public")
+            
             business = Business.objects.get(id=business_id)
             result = DatabaseService.create_business_database(business)
             
             if result:
-                logger.info("schema_auto_created", 
-                           business_id=business_id,
-                           schema_name=f"business_{business_id}")
+                logger.info(f"schema_auto_created business_{business_id}")
+                # Ejecutar migraciones en el nuevo schema
+                self._run_business_migrations(business_id)
             else:
-                logger.error("schema_auto_creation_failed", 
-                            business_id=business_id)
+                logger.error(f"schema_auto_creation_failed business_{business_id}")
                 
         except Exception as e:
-            logger.error("schema_creation_error", 
-                        business_id=business_id,
-                        error=str(e))
+            logger.error(f"schema_creation_error business_{business_id}: {str(e)}")
+    
+    def _run_business_migrations(self, business_id):
+        """Ejecuta migraciones específicas para el schema de negocio"""
+        try:
+            from django.core.management import call_command
+            from django.db import transaction
+            
+            schema_name = f'business_{business_id}'
+            
+            with transaction.atomic():
+                # Configurar search_path para las migraciones
+                with connection.cursor() as cursor:
+                    cursor.execute(f"SET search_path TO {schema_name}, public")
+                
+                # Lista de apps que deben migrar al schema de negocio
+                business_apps = ['roles', 'inventory', 'orders', 'settings']
+                
+                for app in business_apps:
+                    try:
+                        call_command('migrate', app, verbosity=0, interactive=False)
+                        logger.info(f"migrated_{app}_to_{schema_name}")
+                    except Exception as e:
+                        logger.error(f"migration_error_{app}_{schema_name}: {str(e)}")
+                        
+        except Exception as e:
+            logger.error(f"business_migrations_error business_{business_id}: {str(e)}")
 
 
 class OptimizedBusinessSpecificManager(SchemaAwareManager):
@@ -215,12 +260,39 @@ class OptimizedBusinessSpecificManager(SchemaAwareManager):
         self._query_cache.clear()
         self._cache_hits = 0
         self._cache_misses = 0
-        logger.info("manager_cache_cleared", 
-                   model=self.model.__name__)
+        logger.info(f"manager_cache_cleared {self.model.__name__}")
 
 
 # Alias para compatibilidad
 BusinessSpecificManager = OptimizedBusinessSpecificManager
+
+class PublicSchemaManager(models.Manager):
+    """
+    Manager para modelos que van en el schema público.
+    Incluye usuarios, negocios (metadata), posts, etc.
+    """
+    
+    def get_queryset(self):
+        """Asegura que usamos el schema público"""
+        try:
+            with connection.cursor() as cursor:
+                cursor.execute("SET search_path TO public")
+        except Exception as e:
+            logger.error(f"public_schema_error: {str(e)}")
+        
+        return super().get_queryset()
+    
+    def get_for_user(self, user):
+        """Obtiene objetos para un usuario específico"""
+        return self.filter(user=user)
+    
+    def get_or_create_for_user(self, user, defaults=None):
+        """Obtiene o crea un objeto para un usuario específico"""
+        return self.get_or_create(user=user, defaults=defaults or {})
+
+
+# Alias para compatibilidad
+UserSpecificManager = PublicSchemaManager
 
 
 class ConnectionPoolManager:
@@ -240,10 +312,9 @@ class ConnectionPoolManager:
             import gc
             gc.collect()
             
-            logger.info("connections_cleaned", 
-                       active_connections=len(_connection_pool))
+            logger.info(f"connections_cleaned, active: {len(_connection_pool)}")
         except Exception as e:
-            logger.error("connection_cleanup_error", error=str(e))
+            logger.error(f"connection_cleanup_error: {str(e)}")
     
     @staticmethod
     def get_connection_stats():
@@ -301,8 +372,7 @@ class SchemaCacheManager:
             for key in expired_keys:
                 del _schema_cache[key]
             
-            logger.info("schema_cache_cleanup", 
-                       expired_entries=len(expired_keys))
+            logger.info(f"schema_cache_cleanup, expired: {len(expired_keys)}")
             
             return len(expired_keys)
 
@@ -320,12 +390,11 @@ def cleanup_managers():
         import gc
         collected = gc.collect()
         
-        logger.info("managers_cleanup_completed", 
-                   objects_collected=collected)
+        logger.info(f"managers_cleanup_completed, objects: {collected}")
         
         return True
     except Exception as e:
-        logger.error("managers_cleanup_error", error=str(e))
+        logger.error(f"managers_cleanup_error: {str(e)}")
         return False
 
 

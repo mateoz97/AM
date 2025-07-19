@@ -1,6 +1,7 @@
 # app/roles/models/main_role.py
 from django.db import models
 from django.utils.translation import gettext_lazy as _
+from app.core.managers import PublicSchemaManager
 
 
 class MainRole(models.Model):
@@ -56,6 +57,9 @@ class MainRole(models.Model):
             }
         )
         return role
+    
+    # Manager para schema público
+    objects = PublicSchemaManager()
 
 
 class MainRolePermission(models.Model):
@@ -105,3 +109,6 @@ class MainRolePermission(models.Model):
                 self.can_manage_own_businesses = False
         
         super().save(*args, **kwargs)
+    
+    # Manager para schema público
+    objects = PublicSchemaManager()

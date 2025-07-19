@@ -16,7 +16,14 @@ class Product(models.Model):
     name = models.CharField(_("Nombre"), max_length=100)
     description = models.TextField(_("Descripción"), blank=True, null=True)
     price = models.DecimalField(_("Precio"), max_digits=10, decimal_places=2)
-    category = models.CharField(_("Categoría"), max_length=50, blank=True, null=True)
+    category = models.ForeignKey(
+        'ProductCategory',
+        on_delete=models.SET_NULL,
+        related_name='products',
+        verbose_name=_("Categoría"),
+        blank=True,
+        null=True
+    )
     image = models.ImageField(_("Imagen"), upload_to='products/', blank=True, null=True)
     stock = models.IntegerField(_("Stock"), default=0)
     is_active = models.BooleanField(_("Activo"), default=True)

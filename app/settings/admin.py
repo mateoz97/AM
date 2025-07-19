@@ -44,9 +44,9 @@ class UserSettingsAdmin(admin.ModelAdmin):
         if request.user.is_superuser:
             return qs
         
-        # Si el usuario no es superuser, filtrar por su negocio
-        if hasattr(request.user, 'business') and request.user.business:
-            return qs.filter(user__business=request.user.business)
+        # Si el usuario no es superuser, filtrar por su negocio actual
+        if hasattr(request.user, 'current_business') and request.user.current_business:
+            return qs.filter(user__current_business=request.user.current_business)
         return qs.none()
 
 
@@ -95,8 +95,8 @@ class BusinessSettingsAdmin(admin.ModelAdmin):
         if request.user.is_superuser:
             return qs
         
-        if hasattr(request.user, 'business') and request.user.business:
-            return qs.filter(business=request.user.business)
+        if hasattr(request.user, 'current_business') and request.user.current_business:
+            return qs.filter(business=request.user.current_business)
         return qs.none()
     
     def save_model(self, request, obj, form, change):
@@ -132,6 +132,6 @@ class NotificationTemplateAdmin(admin.ModelAdmin):
         if request.user.is_superuser:
             return qs
         
-        if hasattr(request.user, 'business') and request.user.business:
-            return qs.filter(business=request.user.business)
+        if hasattr(request.user, 'current_business') and request.user.current_business:
+            return qs.filter(business=request.user.current_business)
         return qs.none()

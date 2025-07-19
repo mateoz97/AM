@@ -12,9 +12,11 @@ from app.roles.models.role import BusinessRole
 
 class UserSerializer(serializers.ModelSerializer):
     business_role = serializers.PrimaryKeyRelatedField(
+        source='current_business_role',
         queryset=BusinessRole.objects.all(), required=False, allow_null=True
     )
     business = serializers.PrimaryKeyRelatedField(
+        source='current_business',
         queryset=Business.objects.all(), required=False, allow_null=True
     )
 
@@ -29,36 +31,46 @@ class UserSerializer(serializers.ModelSerializer):
         
     def get_business_info(self, obj):
         """Devuelve información detallada del negocio del usuario"""
-        if obj.business:
-            return {
-                'id': obj.business.id,
-                'name': obj.business.name,
-                'description': obj.business.description,
-                'is_active': obj.business.is_active,
-                'owner_id': obj.business.owner.id if obj.business.owner else None,
-                'is_owner': obj.business.owner == obj if obj.business.owner else False
-            }
+        try:
+            business = obj.current_business
+            if business:
+                return {
+                    'id': business.id,
+                    'name': business.name,
+                    'description': getattr(business, 'description', ''),
+                    'is_active': business.is_active,
+                    'owner_id': business.owner.id if business.owner else None,
+                    'is_owner': business.owner == obj if business.owner else False
+                }
+        except Exception:
+            # Si hay error accediendo al negocio, return None
+            pass
         return None
     
     def get_role_info(self, obj):
         """Devuelve información detallada del rol del usuario"""
-        if obj.business_role:
-            # Incluir los permisos del rol
-            permissions = {}
-            if hasattr(obj.business_role, 'role_permissions'):
-                role_perms = obj.business_role.role_permissions
-                for field in role_perms._meta.get_fields():
-                    if field.name.startswith('can_'):
-                        permissions[field.name] = getattr(role_perms, field.name)
-            
-            return {
-                'id': obj.business_role.id,
-                'name': obj.business_role.name,
-                'description': obj.business_role.description,
-                'is_default': obj.business_role.is_default,
-                'can_modify': obj.business_role.can_modify,
-                'permissions': permissions
-            }
+        try:
+            role = obj.current_business_role
+            if role:
+                # Incluir los permisos del rol
+                permissions = {}
+                if hasattr(role, 'role_permissions'):
+                    role_perms = role.role_permissions
+                    for field in role_perms._meta.get_fields():
+                        if field.name.startswith('can_'):
+                            permissions[field.name] = getattr(role_perms, field.name)
+                
+                return {
+                    'id': role.id,
+                    'name': role.name,
+                    'description': role.description,
+                    'is_default': role.is_default,
+                    'can_modify': role.can_modify,
+                    'permissions': permissions
+                }
+        except Exception:
+            # Si hay error accediendo al rol, return None
+            pass
         return None
 
     def validate_email(self, value):
@@ -160,13 +172,33 @@ class UserSerializer(serializers.ModelSerializer):
     
     def to_representation(self, instance):
         """Sobrescribir para incluir información adicional"""
-        data = super().to_representation(instance)
+        # Manejar los campos problemáticos manualmente para evitar errores de DB routing
+        ret = {}
         
-        # Remover campos que no queremos mostrar en la respuesta
-        data.pop('business', None)
-        data.pop('business_role', None)
+        # Campos básicos que no causan problemas
+        for field_name, field in self.fields.items():
+            if field_name not in ['business', 'business_role']:
+                try:
+                    attribute = field.get_attribute(instance)
+                    if attribute is not None:
+                        ret[field_name] = field.to_representation(attribute)
+                    else:
+                        ret[field_name] = None
+                except Exception:
+                    ret[field_name] = None
         
-        return data
+        # Manejar business y business_role de forma segura
+        try:
+            ret['business'] = instance.current_business.id if instance.current_business else None
+        except Exception:
+            ret['business'] = None
+            
+        try:
+            ret['business_role'] = instance.current_business_role.id if instance.current_business_role else None
+        except Exception:
+            ret['business_role'] = None
+        
+        return ret
 
 class LoginSerializer(serializers.Serializer):
     identifier = serializers.CharField(required=True)  # Puede ser username o email

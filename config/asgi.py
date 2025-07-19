@@ -12,6 +12,7 @@ from channels.routing import ProtocolTypeRouter, URLRouter
 from channels.auth import AuthMiddlewareStack
 from channels.security.websocket import AllowedHostsOriginValidator
 from app.orders.routing import websocket_urlpatterns
+from app.orders.middleware import JWTAuthMiddlewareStack
 
 # ASGI application
 application = ProtocolTypeRouter({
@@ -20,7 +21,7 @@ application = ProtocolTypeRouter({
     
     # WebSocket requests
     "websocket": AllowedHostsOriginValidator(
-        AuthMiddlewareStack(
+        JWTAuthMiddlewareStack(
             URLRouter(websocket_urlpatterns)
         )
     ),

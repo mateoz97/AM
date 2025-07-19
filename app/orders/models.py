@@ -9,9 +9,9 @@ from datetime import datetime, timedelta
 from django.utils import timezone
 from app.core.managers import BusinessSpecificManager
 from .state_machine import OrderStateMachine, OrderState, OrderTransitionValidator
-import structlog
+import logging
 
-logger = structlog.get_logger(__name__)
+logger = logging.getLogger(__name__)
 
 
 class OrderStatus(models.TextChoices):
@@ -352,36 +352,24 @@ class Order(models.Model):
             self.save()
             
             # Registrar en historial
-            self.log_status_change(old_status, new_status, user, notes)
+            OrderStatusHistory.objects.create(
+                order=self,
+                old_status=old_status,
+                new_status=new_status,
+                changed_by=user,
+                notes=notes or ''
+            )
             
             # Log estructurado
-            logger.info("order_status_changed",
-                       order_id=str(self.id),
-                       order_number=self.order_number,
-                       from_status=old_status,
-                       to_status=new_status,
-                       user_id=user.id if user else None,
-                       notes=notes or '')
+            logger.info(f"order_status_changed: order_id={str(self.id)}, order_number={self.order_number}, from_status={old_status}, to_status={new_status}, user_id={user.id if user else None}, notes={notes or ''}")
             
             return True
             
         except ValidationError as e:
-            logger.warning("order_status_change_denied",
-                          order_id=str(self.id),
-                          order_number=self.order_number,
-                          from_status=from_state.value,
-                          to_status=to_state.value,
-                          user_id=user.id if user else None,
-                          error=str(e))
+            logger.warning(f"order_status_change_denied: order_id={str(self.id)}, order_number={self.order_number}, from_status={from_state.value}, to_status={to_state.value}, user_id={user.id if user else None}, error={str(e)}")
             raise
         except Exception as e:
-            logger.error("order_status_change_error",
-                        order_id=str(self.id),
-                        order_number=self.order_number,
-                        from_status=from_state.value,
-                        to_status=to_state.value,
-                        user_id=user.id if user else None,
-                        error=str(e))
+            logger.error(f"order_status_change_error: order_id={str(self.id)}, order_number={self.order_number}, from_status={from_state.value}, to_status={to_state.value}, user_id={user.id if user else None}, error={str(e)}")
             raise ValidationError(f"Error al cambiar estado: {str(e)}")
     
     def get_next_valid_states(self, user=None):
@@ -446,7 +434,7 @@ class Order(models.Model):
             
         except Exception as e:
             # No fallar si hay error en auditoría
-            logger.error("audit_log_error", order_id=str(self.id), error=str(e))
+            logger.error(f"audit_log_error: order_id={str(self.id)}, error={str(e)}")
     
     @property
     def preparation_time_elapsed(self):

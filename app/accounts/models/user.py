@@ -63,12 +63,14 @@ class CustomUser(AbstractUser):
     @property 
     def business_role(self):
         """Compatibilidad: retorna el rol actual"""
-        return self.current_business_role
+        # TODO: Implementar gestión de roles de negocio en schemas separados
+        return None
     
     @business_role.setter
     def business_role(self, value):
         """Compatibilidad: establece el rol actual"""
-        self.current_business_role = value
+        # TODO: Implementar gestión de roles de negocio en schemas separados
+        pass
 
     user_permissions = models.ManyToManyField(
         Permission,
@@ -105,16 +107,14 @@ class CustomUser(AbstractUser):
         ]
 
     def __str__(self):
-        role_name = self.business_role.name if self.business_role else _('Sin rol')
+        main_role_name = self.main_role.name if self.main_role else _('Sin rol')
         business_name = self.business.name if self.business else _('Sin negocio')
-        return f"{self.get_full_name() or self.username} - {role_name} ({business_name})"
+        return f"{self.get_full_name() or self.username} - {main_role_name} ({business_name})"
     
     def has_role(self, role_name):
         """Verifica si el usuario tiene un rol específico"""
-        if not self.business_role:
-            return False
-        
-        return self.business_role.name.lower() == role_name.lower()
+        # TODO: Implementar verificación de roles de negocio
+        return False
     
     def get_full_name(self):
         """Retorna el nombre completo del usuario"""
@@ -297,9 +297,10 @@ class CustomUser(AbstractUser):
     
     def save(self, *args, **kwargs):
         """Override save to ensure main role consistency"""
-        # Asegurar que el rol principal corresponda al tipo de usuario
-        if self.user_type and not self.main_role:
-            self.ensure_main_role()
+        # Temporalmente deshabilitado para migraciones
+        # TODO: Reactivar después de completar migraciones
+        # if self.user_type and not self.main_role:
+        #     self.ensure_main_role()
         
         super().save(*args, **kwargs)
         

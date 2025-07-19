@@ -20,10 +20,10 @@ class PostViewSet(viewsets.ModelViewSet):
         # 1. Posts de su propio negocio
         # 2. Posts públicos si no tienen negocio
         # 3. Sus propios posts
-        if user.business:
+        if user.current_business:
             # Si tiene negocio, mostrar posts de su negocio y propios
             queryset = Post.objects.filter(
-                Q(business=user.business) | Q(author=user)
+                Q(business=user.current_business) | Q(author=user)
             ).distinct()
         else:
             # Si no tiene negocio, mostrar posts públicos y propios
@@ -42,7 +42,7 @@ class PostViewSet(viewsets.ModelViewSet):
         # Guardar autor y negocio automáticamente
         serializer.save(
             author=self.request.user,
-            business=self.request.user.business
+            business=self.request.user.current_business
         )
     
     def perform_destroy(self, instance):

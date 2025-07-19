@@ -3,6 +3,7 @@ from django.db import models
 from django.utils.translation import gettext_lazy as _
 from django.utils import timezone
 from django.conf import settings
+from app.core.managers import PublicSchemaManager
 
 class Business(models.Model):
     BUSINESS_TYPES = (
@@ -155,6 +156,9 @@ class Business(models.Model):
             logger = logging.getLogger(__name__)
             logger.error(f"❌ Error al eliminar negocio {business_name}: {str(e)}")
             raise  # Re-lanzar la excepción para que el admin muestre el error
+    
+    # Manager para schema público
+    objects = PublicSchemaManager()
 
 class BusinessJoinRequest(models.Model):
     user = models.ForeignKey(
@@ -175,6 +179,9 @@ class BusinessJoinRequest(models.Model):
     message = models.TextField(_("Mensaje"), blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+    
+    # Manager para schema público
+    objects = PublicSchemaManager()
     
     class Meta:
         unique_together = ('user', 'business')
@@ -216,6 +223,9 @@ class BusinessInvitation(models.Model):
             from datetime import timedelta
             self.expires_at = timezone.now() + timedelta(days=7)
         super().save(*args, **kwargs)
+    
+    # Manager para schema público
+    objects = PublicSchemaManager()
 
 class BusinessBranch(models.Model):
     """
@@ -246,3 +256,6 @@ class BusinessBranch(models.Model):
         
     def __str__(self):
         return f"{self.main_business.name} - {self.name}"
+    
+    # Manager para schema público
+    objects = PublicSchemaManager()

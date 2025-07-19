@@ -19,7 +19,7 @@ class ProductViewSet(viewsets.ModelViewSet):
     permission_classes = [permissions.IsAuthenticated]
     filter_backends = [DjangoFilterBackend, filters.SearchFilter, filters.OrderingFilter]
     filterset_fields = ['category', 'is_active']
-    search_fields = ['name', 'description', 'category']
+    search_fields = ['name', 'description', 'category__name']
     ordering_fields = ['name', 'price', 'stock', 'created_at', 'updated_at']
     ordering = ['name']
     
@@ -67,27 +67,17 @@ class ProductViewSet(viewsets.ModelViewSet):
     @action(detail=False, methods=['get'])
     def categories(self, request):
         """
-        Devuelve las categorías utilizadas en los productos del negocio.
+        Devuelve las categorías disponibles para el negocio.
         """
-        # Obtener categorías de las categorías personalizadas
-        custom_categories = ProductCategory.objects.filter(
+        # Obtener categorías del negocio
+        categories = ProductCategory.objects.filter(
             business=request.user.current_business,
             is_active=True
-        ).values_list('name', flat=True)
+        ).order_by('name')
         
-        # Obtener categorías utilizadas en productos
-        product_categories = Product.objects.filter(
-            business=request.user.current_business
-        ).exclude(
-            category__isnull=True
-        ).exclude(
-            category=''
-        ).values_list('category', flat=True).distinct()
-        
-        # Combinar y eliminar duplicados
-        all_categories = set(list(custom_categories) + list(product_categories))
-        
-        return Response(sorted(all_categories))
+        # Serializar las categorías
+        serializer = ProductCategorySerializer(categories, many=True)
+        return Response(serializer.data)
     
     @action(detail=True, methods=['post'])
     def adjust_stock(self, request, pk=None):

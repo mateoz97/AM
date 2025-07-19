@@ -33,4 +33,23 @@ class BusinessRoleAdmin(admin.ModelAdmin):
             'classes': ('collapse',)
         }),
     )
+    
+    def get_queryset(self, request):
+        """Override to handle multitenant routing for business roles"""
+        qs = super().get_queryset(request)
+        if request.user.is_superuser:
+            return qs
+        
+        # Filter by user's current business if not superuser
+        if hasattr(request.user, 'current_business') and request.user.current_business:
+            return qs.filter(business=request.user.current_business)
+        return qs.none()
+    
+    def save_model(self, request, obj, form, change):
+        """Ensure proper business context when saving"""
+        super().save_model(request, obj, form, change)
+    
+    def delete_model(self, request, obj):
+        """Ensure proper business context when deleting"""
+        super().delete_model(request, obj)
 

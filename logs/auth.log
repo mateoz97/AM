@@ -1,0 +1,82 @@
+INFO 2025-07-14 12:59:09,991 auth_views Nuevo usuario registrado: testuser_validation (ID: 14)
+ERROR 2025-07-14 13:12:20,172 auth_views Error inesperado durante registro: JSON parse error - Invalid \escape: line 1 column 50 (char 49)
+Traceback (most recent call last):
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/rest_framework/parsers.py", line 66, in parse
+    return json.load(decoded_stream, parse_constant=parse_constant)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/rest_framework/utils/json.py", line 31, in load
+    return json.load(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 293, in load
+    return loads(fp.read(),
+           ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 359, in loads
+    return cls(**kw).decode(s)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 353, in raw_decode
+    obj, end = self.scan_once(s, idx)
+               ^^^^^^^^^^^^^^^^^^^^^^
+json.decoder.JSONDecodeError: Invalid \escape: line 1 column 50 (char 49)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/teo/Documents/ADB/app/accounts/api/views/auth_views.py", line 25, in create
+    serializer = self.get_serializer(data=request.data)
+                                          ^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/rest_framework/request.py", line 221, in data
+    self._load_data_and_files()
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/rest_framework/request.py", line 284, in _load_data_and_files
+    self._data, self._files = self._parse()
+                              ^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/rest_framework/request.py", line 359, in _parse
+    parsed = parser.parse(stream, media_type, self.parser_context)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/rest_framework/parsers.py", line 68, in parse
+    raise ParseError('JSON parse error - %s' % str(exc))
+rest_framework.exceptions.ParseError: JSON parse error - Invalid \escape: line 1 column 50 (char 49)
+WARNING 2025-07-14 13:12:25,372 auth_views Error de validación en registro: {'username': [ErrorDetail(string='Ya existe Usuario con este Nombre de usuario.', code='unique')], 'email': [ErrorDetail(string='Ya existe Usuario con este Correo electrónico.', code='unique')]}
+ERROR 2025-07-14 13:13:02,233 auth_views Error inesperado durante registro: JSON parse error - Invalid \escape: line 1 column 51 (char 50)
+Traceback (most recent call last):
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/rest_framework/parsers.py", line 66, in parse
+    return json.load(decoded_stream, parse_constant=parse_constant)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/rest_framework/utils/json.py", line 31, in load
+    return json.load(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 293, in load
+    return loads(fp.read(),
+           ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 359, in loads
+    return cls(**kw).decode(s)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 353, in raw_decode
+    obj, end = self.scan_once(s, idx)
+               ^^^^^^^^^^^^^^^^^^^^^^
+json.decoder.JSONDecodeError: Invalid \escape: line 1 column 51 (char 50)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/teo/Documents/ADB/app/accounts/api/views/auth_views.py", line 25, in create
+    serializer = self.get_serializer(data=request.data)
+                                          ^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/rest_framework/request.py", line 221, in data
+    self._load_data_and_files()
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/rest_framework/request.py", line 284, in _load_data_and_files
+    self._data, self._files = self._parse()
+                              ^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/rest_framework/request.py", line 359, in _parse
+    parsed = parser.parse(stream, media_type, self.parser_context)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/teo/.cache/pypoetry/virtualenvs/amb-Flwq5Kzd-py3.10/lib/python3.12/site-packages/rest_framework/parsers.py", line 68, in parse
+    raise ParseError('JSON parse error - %s' % str(exc))
+rest_framework.exceptions.ParseError: JSON parse error - Invalid \escape: line 1 column 51 (char 50)
+INFO 2025-07-14 13:29:46,556 auth_views Nuevo usuario registrado: finaltest (ID: 15)
+INFO 2025-07-15 23:14:28,063 auth_views Nuevo usuario registrado: testuser123 (ID: 16)
