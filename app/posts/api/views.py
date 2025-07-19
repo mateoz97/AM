@@ -20,16 +20,21 @@ class PostViewSet(viewsets.ModelViewSet):
         # 1. Posts de su propio negocio
         # 2. Posts públicos si no tienen negocio
         # 3. Sus propios posts
-        if user.current_business:
-            # Si tiene negocio, mostrar posts de su negocio y propios
-            queryset = Post.objects.filter(
-                Q(business=user.current_business) | Q(author=user)
-            ).distinct()
-        else:
-            # Si no tiene negocio, mostrar posts públicos y propios
-            queryset = Post.objects.filter(
-                Q(business__isnull=True) | Q(author=user)
-            ).distinct()
+        try:
+            current_business = user.current_business
+            if current_business:
+                # Si tiene negocio, mostrar posts de su negocio y propios
+                queryset = Post.objects.filter(
+                    Q(business=current_business) | Q(author=user)
+                ).distinct()
+            else:
+                # Si no tiene negocio, mostrar posts públicos y propios
+                queryset = Post.objects.filter(
+                    Q(business__isnull=True) | Q(author=user)
+                ).distinct()
+        except Exception:
+            # Si hay error accediendo al negocio, mostrar solo posts propios
+            queryset = Post.objects.filter(author=user).distinct()
             
         return queryset.order_by('-created_at')
     
@@ -40,9 +45,14 @@ class PostViewSet(viewsets.ModelViewSet):
     
     def perform_create(self, serializer):
         # Guardar autor y negocio automáticamente
+        try:
+            current_business = self.request.user.current_business
+        except Exception:
+            current_business = None
+            
         serializer.save(
             author=self.request.user,
-            business=self.request.user.current_business
+            business=current_business
         )
     
     def perform_destroy(self, instance):

@@ -45,8 +45,19 @@ class CustomUserAdmin(UserAdmin):
     
     def save_model(self, request, obj, form, change):
         """Override to ensure proper user creation and admin logging"""
-        # Save the user first
+        # For new users, ensure password is properly hashed
+        if not change and hasattr(form, 'cleaned_data'):
+            # If creating a new user through admin
+            password = form.cleaned_data.get('password1')
+            if password:
+                obj.set_password(password)
+        
+        # Save the user
         super().save_model(request, obj, form, change)
+        
+        # Ensure main role is set for new users
+        if not change:
+            obj.ensure_main_role()
     
     def log_addition(self, request, object, message):
         """Override to handle admin log creation safely"""

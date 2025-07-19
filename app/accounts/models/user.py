@@ -297,10 +297,9 @@ class CustomUser(AbstractUser):
     
     def save(self, *args, **kwargs):
         """Override save to ensure main role consistency"""
-        # Temporalmente deshabilitado para migraciones
-        # TODO: Reactivar después de completar migraciones
-        # if self.user_type and not self.main_role:
-        #     self.ensure_main_role()
+        # Ensure main role is set for users with user_type
+        if self.user_type and not self.main_role:
+            self.ensure_main_role()
         
         super().save(*args, **kwargs)
         
