@@ -12,6 +12,22 @@ class RolePermissionInline(admin.StackedInline):
     can_delete = False
     verbose_name = _("Permisos")
     verbose_name_plural = _("Permisos")
+    max_num = 1
+    min_num = 1
+    extra = 1
+    
+    def get_formset(self, request, obj=None, **kwargs):
+        """Customize the formset to set default values based on role name"""
+        formset = super().get_formset(request, obj, **kwargs)
+        
+        # If creating a new role, set default permissions based on role name
+        if obj and hasattr(obj, 'get_default_permissions'):
+            defaults = obj.get_default_permissions()
+            for field_name, default_value in defaults.items():
+                if field_name in formset.form.base_fields:
+                    formset.form.base_fields[field_name].initial = default_value
+        
+        return formset
 
 @admin.register(BusinessRole)
 class BusinessRoleAdmin(admin.ModelAdmin):
@@ -47,6 +63,9 @@ class BusinessRoleAdmin(admin.ModelAdmin):
     
     def save_model(self, request, obj, form, change):
         """Ensure proper business context when saving"""
+        # Always disable automatic permission creation in admin
+        # Permissions will be handled by the inline form
+        obj._admin_creation = True
         super().save_model(request, obj, form, change)
     
     def delete_model(self, request, obj):

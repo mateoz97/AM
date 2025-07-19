@@ -40,10 +40,14 @@ class BusinessRole(models.Model):
             
         super().save(*args, **kwargs)
         
-        # Al crear el rol, crear también sus permisos predeterminados
-        if creating:
-            default_permissions = self.get_default_permissions()
-            RolePermission.objects.create(business_role=self, **default_permissions)
+        # Solo crear permisos automáticamente si no se están creando a través del admin
+        # El admin creará los permisos a través del inline form
+        if creating and not getattr(self, '_admin_creation', False):
+            # Usar get_or_create para evitar conflictos de duplicación
+            permission, created = RolePermission.objects.get_or_create(
+                business_role=self,
+                defaults=self.get_default_permissions()
+            )
     
     def get_default_permissions(self):
         """Define permisos predeterminados según el nombre del rol"""
