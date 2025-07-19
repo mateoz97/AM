@@ -42,7 +42,7 @@ class BusinessViewSet(viewsets.ModelViewSet):
         business = serializer.save(owner=self.request.user)
         
         # Actualizar el usuario para asignarle el negocio creado
-        self.request.user.business = business
+        self.request.user.current_business = business
         
         # Crear roles para el negocio
         from app.roles.services.role_service import BusinessRoleService
@@ -83,30 +83,45 @@ class BusinessViewSet(viewsets.ModelViewSet):
                 'role': 'Owner'
             })
         
-        # Negocios donde es empleado
-        if user.business and user.business not in owned_businesses:
-            businesses_data.append({
-                'id': user.business.id,
-                'name': user.business.name,
-                'description': user.business.description or 'Empleado',
-                'isOwner': False,
-                'role': user.business_role.name if user.business_role else 'Empleado'
-            })
+        # Negocios donde es empleado - usar current_business de forma segura
+        try:
+            current_business = user.current_business
+            if current_business and current_business not in owned_businesses:
+                try:
+                    current_role = user.current_business_role
+                    role_name = current_role.name if current_role else 'Empleado'
+                except Exception:
+                    role_name = 'Empleado'
+                    
+                businesses_data.append({
+                    'id': current_business.id,
+                    'name': current_business.name,
+                    'description': current_business.description or 'Empleado',
+                    'isOwner': False,
+                    'role': role_name
+                })
+        except Exception:
+            # Si hay error accediendo al negocio actual, omitir este paso
+            pass
         
         # Negocios donde es co-propietario
-        co_owned_businesses = user.co_owned_businesses.exclude(
-            id__in=[b.id for b in owned_businesses] + 
-            ([user.business.id] if user.business else [])
-        )
-        
-        for business in co_owned_businesses:
-            businesses_data.append({
-                'id': business.id,
-                'name': business.name,
-                'description': business.description or 'Co-propietario',
-                'isOwner': False,
-                'role': 'Co-Owner'
-            })
+        try:
+            co_owned_businesses = user.co_owned_businesses.exclude(
+                id__in=[b.id for b in owned_businesses] + 
+                ([user.current_business.id] if user.current_business else [])
+            )
+            
+            for business in co_owned_businesses:
+                businesses_data.append({
+                    'id': business.id,
+                    'name': business.name,
+                    'description': business.description or 'Co-propietario',
+                    'isOwner': False,
+                    'role': 'Co-Owner'
+                })
+        except Exception:
+            # Si hay error accediendo a co_owned_businesses, omitir este paso
+            pass
         
         return Response(businesses_data)
     
@@ -268,8 +283,8 @@ class JoinBusinessView(APIView):
                 roles_dict = BusinessRoleService.create_business_roles(business)
                 default_role = roles_dict.get("Viewer") or roles_dict.get("Visualizador")
 
-            request.user.business = business
-            request.user.business_role = default_role
+            request.user.current_business = business
+            request.user.current_business_role = default_role
             request.user.save()
 
             return Response({
@@ -286,22 +301,26 @@ class LeaveBusinessView(APIView):
     
     def post(self, request):
         """Permite a un usuario salir del negocio al que pertenece"""
-        if not request.user.business:
-            return Response({"error": "No perteneces a ningún negocio"}, status=400)
-        
-        # Verificar si el usuario es el propietario del negocio
-        if request.user.business.owner == request.user:
-            return Response({
-                "error": "Eres el propietario del negocio. No puedes salir, debes transferir la propiedad primero."
-            }, status=400)
-        
-        # Guardar para la respuesta
-        business_name = request.user.business.name
-        
-        # Remover al usuario del negocio
-        request.user.business = None
-        request.user.business_role = None
-        request.user.save(update_fields=['business', 'business_role'])
+        try:
+            current_business = request.user.current_business
+            if not current_business:
+                return Response({"error": "No perteneces a ningún negocio"}, status=400)
+            
+            # Verificar si el usuario es el propietario del negocio
+            if current_business.owner == request.user:
+                return Response({
+                    "error": "Eres el propietario del negocio. No puedes salir, debes transferir la propiedad primero."
+                }, status=400)
+            
+            # Guardar para la respuesta
+            business_name = current_business.name
+            
+            # Remover al usuario del negocio
+            request.user.current_business = None
+            request.user.current_business_role = None
+            request.user.save(update_fields=['current_business', 'current_business_role'])
+        except Exception:
+            return Response({"error": "Error accediendo a la información del negocio"}, status=500)
         
         return Response({
             "message": f"Has salido exitosamente del negocio {business_name}"
@@ -326,7 +345,10 @@ class SwitchBusinessView(APIView):
             
             is_owner = business.owner == request.user
             is_co_owner = request.user in business.co_owners.all()
-            is_member = request.user.current_business == business
+            try:
+                is_member = request.user.current_business == business
+            except Exception:
+                is_member = False
             
             if not (is_owner or is_co_owner or is_member):
                 return Response({"error": "No tienes acceso a este negocio"}, status=status.HTTP_403_FORBIDDEN)
@@ -342,7 +364,10 @@ class SwitchBusinessView(APIView):
                 role = BusinessRole.objects.filter(business=business, name__in=["Gerente", "Manager"]).first()
             else:
                 # Si es miembro regular, mantener su rol actual o asignar uno básico
-                role = request.user.business_role
+                try:
+                    role = request.user.current_business_role
+                except Exception:
+                    role = None
                 
                 # Si no tiene un rol en este negocio, asignarle uno apropiado
                 if not role or role.business.id != business.id:
@@ -364,9 +389,9 @@ class SwitchBusinessView(APIView):
                     role = roles.get("Viewer")
             
             # Cambiar el negocio activo
-            request.user.business = business
-            request.user.business_role = role
-            request.user.save(update_fields=['business', 'business_role'])
+            request.user.current_business = business
+            request.user.current_business_role = role
+            request.user.save(update_fields=['current_business', 'current_business_role'])
             
             # Configurar el contexto del negocio y el esquema
             from config.middleware import set_current_business_id
